@@ -14,7 +14,7 @@ const defaultConfig = {
   projectName: 'TurtleWolfe',
   projectOwner: 'TortoiseWolfe',
   projectDescription:
-    'Opinionated Next.js template with PWA, theming, and interactive components',
+    'Jonathan Pohlner — Full Stack Developer. Portfolio showcasing React, TypeScript, and Next.js projects.',
   basePath: '',
 };
 

@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code when working with this repository.
 
+## Pending Configuration (TODO)
+
+- **basePath Restoration**: Once the Squarespace domain redirect to GitHub Pages is configured, restore `/TurtleWolfe/` as the basePath in `public/manifest.json` (icon paths, start_url, scope, shortcuts, screenshots, share_target) and verify `next.config.ts` auto-detection picks it up.
+- **Portfolio Mode**: Supabase is currently disabled. `useAuth()` returns a safe default context when used outside `AuthProvider`. No auth secrets are required for CI/CD.
+
 ## Core Development Principles
 
 1. **Proper Solutions Over Quick Fixes** - Implement correctly the first time

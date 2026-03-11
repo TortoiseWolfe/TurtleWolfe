@@ -295,10 +295,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+const defaultAuthContext: AuthContextType = {
+  user: null,
+  session: null,
+  isLoading: false,
+  isAuthenticated: false,
+  error: null,
+  retryCount: 0,
+  signUp: async () => ({ error: new Error('Auth not available') }),
+  signIn: async () => ({ error: new Error('Auth not available') }),
+  signOut: async () => {},
+  refreshSession: async () => {},
+  retry: async () => {},
+  clearError: () => {},
+};
+
 export function useAuth() {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    return defaultAuthContext;
   }
   return context;
 }

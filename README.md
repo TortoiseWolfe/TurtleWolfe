@@ -82,9 +82,15 @@ docker compose up --build
 
 Add these secrets to your repository at **Settings → Secrets and variables → Actions → Repository secrets**.
 
-### ⚠️ Required for CI/CD (Add These First)
+### Portfolio Mode (No Secrets Required)
 
-These secrets are **required** for the build and deployment workflows to succeed:
+For portfolio/demo use, **no secrets are required**. The app builds and deploys without Supabase, PageSpeed, or any other external service. All auth-dependent features gracefully degrade.
+
+> **TODO**: Once the Squarespace domain redirect is configured, restore `/TurtleWolfe/` as the basePath in `manifest.json` and `next.config.ts`. Also add `NEXT_PUBLIC_PAGESPEED_API_KEY` as a repo secret for PageSpeed monitoring.
+
+### Optional - Supabase (Full-Stack Mode)
+
+Enable Supabase for auth, database, and realtime features:
 
 | Secret                          | Description                                                    |
 | ------------------------------- | -------------------------------------------------------------- |

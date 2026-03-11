@@ -110,7 +110,7 @@ export default function CaseStudyLayout({
       </section>
 
       {/* Solution */}
-      <section className="bg-base-100 px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      <section className="section-glow px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <h2 className="text-primary mb-4 text-sm font-semibold tracking-wider uppercase">
             The Solution

@@ -24,7 +24,7 @@ export default function CTABanner({
   return (
     <section
       aria-label="Call to action"
-      className={`bg-primary/5 px-4 py-12 sm:px-6 sm:py-16 lg:px-8${className ? ` ${className}` : ''}`}
+      className={`cta-glow px-4 py-12 sm:px-6 sm:py-16 lg:px-8${className ? ` ${className}` : ''}`}
     >
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="text-base-content mb-4 text-2xl font-bold sm:text-3xl">

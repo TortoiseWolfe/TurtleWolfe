@@ -159,6 +159,84 @@
     0 2px 4px -2px rgb(0 0 0 / 0.2);
 }
 
+/* ── Section gradient transitions ─────────────────────────────────
+ * Replaces hard bg-base-100/bg-base-200 alternation with soft
+ * gradient fades. Scoped to TurtleWolfe themes only — stock
+ * DaisyUI themes keep their original flat look. */
+
+[data-theme='turtlewolfe-dark'] .section-glow,
+[data-theme='turtlewolfe-light'] .section-glow {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-theme='turtlewolfe-dark'] .section-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    oklch(22.84% 0.038 282.93 / 0) 0%,
+    oklch(22.84% 0.038 282.93 / 0.5) 20%,
+    oklch(22.84% 0.038 282.93 / 0.5) 80%,
+    oklch(22.84% 0.038 282.93 / 0) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+[data-theme='turtlewolfe-light'] .section-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    oklch(95.76% 0.009 67.72 / 0) 0%,
+    oklch(95.76% 0.009 67.72 / 0.5) 20%,
+    oklch(95.76% 0.009 67.72 / 0.5) 80%,
+    oklch(95.76% 0.009 67.72 / 0) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* CTA section: warm primary glow that fades in and out */
+[data-theme='turtlewolfe-dark'] .cta-glow,
+[data-theme='turtlewolfe-light'] .cta-glow {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-theme='turtlewolfe-dark'] .cta-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    oklch(21.13% 0.039 282.53 / 0) 0%,
+    oklch(76.05% 0.024 258.37 / 0.07) 40%,
+    oklch(76.05% 0.024 258.37 / 0.07) 60%,
+    oklch(21.13% 0.039 282.53 / 0) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+[data-theme='turtlewolfe-light'] .cta-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    oklch(92.44% 0.013 75.36 / 0) 0%,
+    oklch(42.79% 0.03 257.68 / 0.05) 40%,
+    oklch(42.79% 0.03 257.68 / 0.05) 60%,
+    oklch(92.44% 0.013 75.36 / 0) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
 /* Avatar glow/shadow — uses base-content so it auto-adapts:
  * dark themes → light glow, light themes → dark shadow.
  * Works across all 35 DaisyUI themes. */

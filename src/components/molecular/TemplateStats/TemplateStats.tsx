@@ -58,7 +58,7 @@ export default function TemplateStats({
   return (
     <section
       aria-label="Template capabilities"
-      className={`border-base-300 bg-base-100 border-t${className ? ` ${className}` : ''}`}
+      className={`border-base-300/50 section-glow border-t${className ? ` ${className}` : ''}`}
     >
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
         {/*

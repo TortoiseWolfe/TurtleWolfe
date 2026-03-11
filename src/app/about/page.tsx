@@ -108,8 +108,8 @@ const CERTIFICATIONS = [
     title: 'Indeed Assessments',
     description:
       'Software Developer Skills (Proficient), Problem Solving (Expert)',
-    href: 'https://indeed.com',
-    date: 'Verified',
+    href: '',
+    date: 'Verified (Discontinued)',
   },
 ];
 
@@ -138,7 +138,7 @@ export default function AboutPage() {
       {/* Experience Timeline */}
       <section
         aria-label="Work experience"
-        className="bg-base-100 px-4 py-12 sm:px-6 lg:px-8"
+        className="section-glow px-4 py-12 sm:px-6 lg:px-8"
       >
         <div className="mx-auto max-w-6xl">
           <h2 className="text-base-content mb-8 text-center text-2xl font-bold sm:text-3xl">
@@ -184,21 +184,15 @@ export default function AboutPage() {
       {/* Certifications */}
       <section
         aria-label="Certifications"
-        className="bg-base-100 px-4 py-12 sm:px-6 lg:px-8"
+        className="section-glow px-4 py-12 sm:px-6 lg:px-8"
       >
         <div className="mx-auto max-w-6xl">
           <h2 className="text-base-content mb-8 text-center text-2xl font-bold sm:text-3xl">
             Certifications
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {CERTIFICATIONS.map((cert) => (
-              <a
-                key={cert.title}
-                href={cert.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="card bg-base-200 shadow-md transition-all hover:-translate-y-1 hover:shadow-lg"
-              >
+            {CERTIFICATIONS.map((cert) => {
+              const cardContent = (
                 <div className="card-body p-4">
                   <h3 className="card-title text-primary text-base">
                     {cert.title}
@@ -210,11 +204,29 @@ export default function AboutPage() {
                     <span className="badge badge-ghost badge-xs">
                       {cert.date}
                     </span>
-                    <span className="text-primary text-xs">View &rarr;</span>
+                    {cert.href && (
+                      <span className="text-primary text-xs">View &rarr;</span>
+                    )}
                   </div>
                 </div>
-              </a>
-            ))}
+              );
+
+              return cert.href ? (
+                <a
+                  key={cert.title}
+                  href={cert.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card bg-base-200 shadow-md transition-all hover:-translate-y-1 hover:shadow-lg"
+                >
+                  {cardContent}
+                </a>
+              ) : (
+                <div key={cert.title} className="card bg-base-200 shadow-md">
+                  {cardContent}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -243,8 +243,8 @@ const CERTIFICATIONS = [
     title: 'Indeed Assessments',
     description:
       'Software Developer Skills (Proficient), Problem Solving (Expert), Basic Computer Skills (Expert)',
-    date: 'Verified',
-    href: 'https://indeed.com',
+    date: 'Verified (Discontinued)',
+    href: '',
   },
 ] as const;
 
@@ -372,7 +372,7 @@ export default function Home() {
       <section
         id="projects"
         aria-label="Featured projects"
-        className="bg-base-100 px-4 py-12 sm:px-6 lg:px-8"
+        className="section-glow px-4 py-12 sm:px-6 lg:px-8"
       >
         <div className="mx-auto max-w-6xl">
           <h2 className="text-base-content mb-4 text-center text-2xl font-bold sm:text-3xl">
@@ -427,7 +427,7 @@ export default function Home() {
       {/* ── Services Preview ─────────────────────────────────────────── */}
       <section
         aria-label="Services overview"
-        className="bg-base-100 px-4 py-12 sm:px-6 lg:px-8"
+        className="section-glow px-4 py-12 sm:px-6 lg:px-8"
       >
         <div className="mx-auto max-w-6xl">
           <h2 className="text-base-content mb-4 text-center text-2xl font-bold sm:text-3xl">
@@ -491,14 +491,8 @@ export default function Home() {
             Certifications
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {CERTIFICATIONS.map((cert) => (
-              <a
-                key={cert.title}
-                href={cert.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="card bg-base-100 shadow-md transition-all hover:-translate-y-1 hover:shadow-lg"
-              >
+            {CERTIFICATIONS.map((cert) => {
+              const cardContent = (
                 <div className="card-body p-4">
                   <h3 className="card-title text-primary text-base">
                     {cert.title}
@@ -510,13 +504,31 @@ export default function Home() {
                     <span className="badge badge-ghost badge-xs">
                       {cert.date}
                     </span>
-                    <span className="text-primary text-xs">
-                      View Certificate &rarr;
-                    </span>
+                    {cert.href && (
+                      <span className="text-primary text-xs">
+                        View Certificate &rarr;
+                      </span>
+                    )}
                   </div>
                 </div>
-              </a>
-            ))}
+              );
+
+              return cert.href ? (
+                <a
+                  key={cert.title}
+                  href={cert.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card bg-base-100 shadow-md transition-all hover:-translate-y-1 hover:shadow-lg"
+                >
+                  {cardContent}
+                </a>
+              ) : (
+                <div key={cert.title} className="card bg-base-100 shadow-md">
+                  {cardContent}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -524,7 +536,7 @@ export default function Home() {
       {/* ── Community & Teaching ─────────────────────────────────────── */}
       <section
         aria-label="Community involvement"
-        className="bg-base-100 px-4 py-12 sm:px-6 lg:px-8"
+        className="section-glow px-4 py-12 sm:px-6 lg:px-8"
       >
         <div className="mx-auto max-w-6xl">
           <h2 className="text-base-content mb-8 text-center text-2xl font-bold sm:text-3xl">

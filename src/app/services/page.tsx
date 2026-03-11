@@ -152,7 +152,7 @@ export default function ServicesPage() {
       {/* How I Work */}
       <section
         aria-label="Process"
-        className="bg-base-100 px-4 py-12 sm:px-6 lg:px-8"
+        className="section-glow px-4 py-12 sm:px-6 lg:px-8"
       >
         <div className="mx-auto max-w-6xl">
           <h2 className="text-base-content mb-8 text-center text-2xl font-bold sm:text-3xl">

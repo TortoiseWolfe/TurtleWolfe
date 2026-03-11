@@ -2,13 +2,14 @@ import type { Metadata } from 'next';
 import { ContactForm } from '@/components/forms/ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | TurtleWolfe',
+  title: 'Contact | Jonathan Pohlner',
   description:
-    "Get in touch with the TurtleWolfe team. We'd love to hear from you!",
-  keywords: ['contact', 'support', 'help', 'feedback', 'TurtleWolfe'],
+    'Get in touch with Jonathan Pohlner for freelance projects, full-time opportunities, or technical consulting.',
+  keywords: ['contact', 'hire', 'freelance', 'developer', 'Jonathan Pohlner'],
   openGraph: {
-    title: 'Contact Us | TurtleWolfe',
-    description: 'Get in touch with the TurtleWolfe team',
+    title: 'Contact | Jonathan Pohlner',
+    description:
+      'Get in touch for freelance projects or full-time opportunities',
     type: 'website',
   },
 };
@@ -19,11 +20,11 @@ export default function ContactPage() {
       <div className="mx-auto max-w-4xl">
         <div className="mb-8 text-center">
           <h1 className="mb-4 !text-2xl font-bold sm:!text-4xl md:!text-5xl">
-            Get in Touch
+            Let&apos;s Talk
           </h1>
           <p className="text-base-content/85 text-base sm:text-lg md:text-xl">
-            Have a question, suggestion, or just want to say hello? We&apos;d
-            love to hear from you!
+            Have a project in mind, looking to hire, or just want to connect?
+            I&apos;d love to hear from you.
           </p>
         </div>
 
@@ -33,7 +34,7 @@ export default function ContactPage() {
           <div className="space-y-6">
             <div>
               <h2 className="mb-3 text-xl font-semibold sm:text-2xl">
-                Why Contact Us?
+                How I Can Help
               </h2>
               <ul className="text-base-content/80 space-y-2">
                 <li className="flex items-start">
@@ -48,7 +49,7 @@ export default function ContactPage() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  Report bugs or issues
+                  Build a web application for your business
                 </li>
                 <li className="flex items-start">
                   <svg
@@ -62,7 +63,7 @@ export default function ContactPage() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  Request new features
+                  Modernize a legacy codebase
                 </li>
                 <li className="flex items-start">
                   <svg
@@ -76,7 +77,7 @@ export default function ContactPage() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  Get help with implementation
+                  Technical consulting &amp; architecture review
                 </li>
                 <li className="flex items-start">
                   <svg
@@ -90,7 +91,7 @@ export default function ContactPage() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  Share your feedback
+                  Discuss a full-time opportunity
                 </li>
               </ul>
             </div>
@@ -100,8 +101,20 @@ export default function ContactPage() {
                 Response Time
               </h3>
               <p className="text-base-content/80 text-sm sm:text-base">
-                We typically respond within 24-48 hours during business days.
+                I typically respond within 24 hours.
               </p>
+
+              <div className="mt-4">
+                <h3 className="mb-2 text-lg font-semibold sm:text-xl">
+                  Email Directly
+                </h3>
+                <a
+                  href="mailto:JonPohlner@gmail.com"
+                  className="link link-primary"
+                >
+                  JonPohlner@gmail.com
+                </a>
+              </div>
             </div>
 
             <div>
@@ -154,9 +167,20 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="text-base-content/80 text-center text-xs sm:text-sm">
+        <div className="mt-6 text-center">
+          <a
+            href="https://tortoisewolfe.github.io/Resume/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline btn-sm min-h-11 min-w-11"
+          >
+            View My Resume
+          </a>
+        </div>
+
+        <div className="text-base-content/80 mt-6 text-center text-xs sm:text-sm">
           <p>
-            Your privacy is important to us. We&apos;ll never share your
+            Your privacy is important to me. I&apos;ll never share your
             information with third parties.
           </p>
         </div>

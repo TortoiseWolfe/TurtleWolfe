@@ -112,9 +112,10 @@ export function GlobalNav() {
 
   const navItems = [
     { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/services', label: 'Services' },
     { href: '/blog', label: 'Blog' },
-    { href: '/docs', label: 'Docs' },
-    { href: '/wireframes', label: 'Wireframes' },
+    { href: '/contact', label: 'Contact' },
   ];
 
   const themes = [

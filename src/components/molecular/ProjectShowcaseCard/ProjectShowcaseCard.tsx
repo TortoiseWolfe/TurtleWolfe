@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { detectedConfig } from '@/config/project-detected';
 
 export interface ProjectShowcaseCardProps {
   title: string;
@@ -37,7 +38,7 @@ export default function ProjectShowcaseCard({
       {image ? (
         <figure className="relative aspect-video w-full overflow-hidden">
           <Image
-            src={image.src}
+            src={`${detectedConfig.basePath}${image.src}`}
             alt={image.alt}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"

@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import CTABanner from '@/components/molecular/CTABanner';
+import { detectedConfig } from '@/config/project-detected';
 
 export interface CaseStudyImage {
   src: string;
@@ -43,7 +44,7 @@ export default function CaseStudyLayout({
       {project.heroImage && (
         <div className="relative h-64 w-full sm:h-80 md:h-96 lg:h-[28rem]">
           <Image
-            src={project.heroImage.src}
+            src={`${detectedConfig.basePath}${project.heroImage.src}`}
             alt={project.heroImage.alt}
             fill
             className="object-cover"
@@ -128,7 +129,7 @@ export default function CaseStudyLayout({
                   className="overflow-hidden rounded-lg shadow-md"
                 >
                   <Image
-                    src={img.src}
+                    src={`${detectedConfig.basePath}${img.src}`}
                     alt={img.alt}
                     width={600}
                     height={400}

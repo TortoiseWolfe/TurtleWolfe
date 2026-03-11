@@ -115,6 +115,20 @@ export default function ContactPage() {
                   JonPohlner@gmail.com
                 </a>
               </div>
+
+              <div className="mt-4">
+                <h3 className="mb-2 text-lg font-semibold sm:text-xl">
+                  Book a Call
+                </h3>
+                <a
+                  href="https://calendly.com/turtlewolfe/15min-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary btn-sm min-h-11 min-w-11"
+                >
+                  Schedule 15 min on Calendly
+                </a>
+              </div>
             </div>
 
             <div>

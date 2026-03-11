@@ -118,8 +118,12 @@ const OTHER_PROJECTS = [
     title: 'MoltBot / Automated Twitch',
     description:
       'AI-powered 24/7 Twitch channel using Remotion for programmatic video generation and MoltBot agent pipeline.',
+    image: {
+      src: '/portfolio/other/scripthammer-twitch.png',
+      alt: 'ScriptHammer automated Twitch channel showing AI-generated content',
+    },
     stack: ['Remotion', 'AI Agents', 'Twitch API'],
-    href: 'https://twitch.tv/turtlewolfe',
+    href: 'https://twitch.tv/ScriptHammer',
   },
   {
     title: 'Mercor AI Evaluation',
@@ -200,6 +204,24 @@ const SOCIAL_LINKS = [
       </svg>
     ),
   },
+  {
+    label: 'Twitter',
+    href: 'https://twitter.com/JonPohlner',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'ScriptHammer',
+    href: 'https://twitch.tv/ScriptHammer',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+        <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z" />
+      </svg>
+    ),
+  },
 ] as const;
 
 const CERTIFICATIONS = [
@@ -215,7 +237,7 @@ const CERTIFICATIONS = [
     description:
       'Node.js API with Express & MongoDB — REST, JWT auth, file uploads, geocoding',
     date: '2020',
-    href: 'https://www.udemy.com/course/nodejs-api-masterclass/',
+    href: 'https://www.udemy.com/certificate/UC-8033cc47-612f-4a7b-afc3-c7a8c9273686/',
   },
   {
     title: 'Indeed Assessments',
@@ -283,9 +305,11 @@ export default function Home() {
             >
               {[
                 'React',
+                'React Native',
                 'TypeScript',
                 'Next.js',
                 'Node.js',
+                'Three.js',
                 'C#',
                 'Python',
                 'Docker',
@@ -388,6 +412,7 @@ export default function Home() {
                 key={p.title}
                 title={p.title}
                 description={p.description}
+                image={'image' in p ? p.image : undefined}
                 stack={[...p.stack]}
                 href={p.href}
               />

@@ -46,14 +46,14 @@ export default function ServicesPage() {
                   />
                 </svg>
               }
-              title="Web Application Development"
-              description="Custom full-stack applications built with React, Next.js, and TypeScript. From small business sites to complex enterprise platforms."
+              title="Web & Mobile Development"
+              description="Custom full-stack applications built with React, Next.js, React Native, and TypeScript. From web apps to cross-platform mobile."
               features={[
-                'React & Next.js frontends',
+                'React & Next.js web apps',
+                'React Native cross-platform mobile',
                 'REST & real-time APIs',
                 'Database design & Supabase',
                 'Authentication & authorization',
-                'Responsive mobile-first design',
               ]}
               ctaLabel="Start a Project"
               ctaHref="/contact"

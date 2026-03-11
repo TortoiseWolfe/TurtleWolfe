@@ -55,8 +55,10 @@ const EXPERIENCE: TimelineEntry[] = [
 const SKILLS = {
   Frontend: [
     'React',
+    'React Native',
     'Next.js',
     'TypeScript',
+    'Three.js',
     'Tailwind CSS',
     'DaisyUI',
     'Storybook',
@@ -99,7 +101,7 @@ const CERTIFICATIONS = [
   {
     title: 'Udemy — Node.js API Masterclass',
     description: 'Express, MongoDB, REST, JWT auth, file uploads, geocoding',
-    href: 'https://www.udemy.com/course/nodejs-api-masterclass/',
+    href: 'https://www.udemy.com/certificate/UC-8033cc47-612f-4a7b-afc3-c7a8c9273686/',
     date: '2020',
   },
   {

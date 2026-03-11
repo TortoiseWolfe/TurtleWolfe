@@ -1,0 +1,43 @@
+import { test, expect } from '@playwright/test';
+import { dismissCookieBanner } from './utils/test-user-factory';
+
+test.describe('Mobile Dropdown Menu Screenshots', () => {
+  test('should capture dropdown menu on mobile', async ({ page }) => {
+    // Set mobile viewport (iPhone 12 size) - required for md:hidden elements to be visible
+    await page.setViewportSize({ width: 390, height: 844 });
+
+    // Navigate to the home page
+    await page.goto('/');
+    await dismissCookieBanner(page);
+
+    // Wait for page to load
+    await page.waitForLoadState('networkidle');
+
+    // Find the mobile hamburger menu (it's a label, not a button)
+    const menuLabel = page
+      .locator('.dropdown.dropdown-end.md\\:hidden label')
+      .first();
+
+    // Take screenshot before opening
+    await page.screenshot({
+      path: 'screenshots/mobile-dropdown-closed.png',
+      fullPage: false,
+    });
+
+    // Open the dropdown by clicking the label
+    await menuLabel.click();
+
+    // Wait for dropdown to be visible
+    await page.waitForTimeout(500); // Animation time
+
+    // Take screenshot with dropdown open
+    await page.screenshot({
+      path: 'screenshots/mobile-dropdown-open.png',
+      fullPage: false,
+    });
+
+    // Verify dropdown is visible
+    const dropdownMenu = page.locator('.dropdown-content.menu');
+    await expect(dropdownMenu).toBeVisible();
+  });
+});

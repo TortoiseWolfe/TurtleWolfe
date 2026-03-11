@@ -5,7 +5,7 @@ const path = require('path');
 
 const PUBLIC_DIR = path.join(process.cwd(), 'public');
 const BLOG_DATA_PATH = path.join(process.cwd(), 'src/lib/blog/blog-data.json');
-const SITE_URL = 'https://tortoisewolfe.github.io/TurtleWolfe';
+const SITE_URL = 'https://turtlewolfe.com';
 
 // Static pages in the application (public, indexable pages only)
 const staticPages = [

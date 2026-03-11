@@ -15,4 +15,4 @@ Disallow: /messages/
 Disallow: /conversations/
 Disallow: /payment-demo/
 
-Sitemap: https://tortoisewolfe.github.io/TurtleWolfe/sitemap.xml
+Sitemap: https://turtlewolfe.com/sitemap.xml

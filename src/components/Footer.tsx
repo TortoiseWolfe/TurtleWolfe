@@ -5,36 +5,11 @@ export function Footer() {
     <footer className="bg-base-300 mt-auto py-4 text-center sm:py-6">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-base-content/80 text-sm leading-relaxed">
-          Made by{' '}
-          <a
-            href="https://crudgames.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-hover link inline-block min-h-11 align-middle leading-11 font-medium"
-          >
-            CRUDgames.com
-          </a>{' '}
-          for{' '}
-          <a
-            href="https://geolarp.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-hover link inline-block min-h-11 align-middle leading-11 font-medium"
-          >
-            geoLARP.com
-          </a>
+          15+ years building accessible web applications with React, TypeScript,
+          and Next.js. 20+ years in graphic design.
         </p>
         <p className="text-base-content/80 mt-1 text-xs">
-          Built with{' '}
-          <a
-            href="https://github.com/TortoiseWolfe/TurtleWolfe"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-hover link"
-          >
-            TurtleWolfe
-          </a>{' '}
-          template
+          &copy; {new Date().getFullYear()} Jonathan Pohlner
         </p>
       </div>
     </footer>

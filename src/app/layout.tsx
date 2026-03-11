@@ -18,7 +18,7 @@ import {
   generateJsonLd,
   JsonLdScript,
 } from '@/utils/metadata';
-import PWAInstall from '@/components/PWAInstall';
+// import PWAInstall from '@/components/PWAInstall'; // PWA disabled — portfolio doesn't need install prompts
 import { CountdownBanner } from '@/components/atomic/CountdownBanner';
 // import { SetupBanner } from '@/components/SetupBanner'; // Supabase disabled — portfolio site
 
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     path: '/',
     tags: ['Next.js', 'React', 'TypeScript', 'PWA', 'DaisyUI', 'TailwindCSS'],
   }),
-  manifest: projectConfig.manifestPath,
+  // manifest: projectConfig.manifestPath, // PWA disabled — portfolio site
   icons: {
     icon: ['/favicon.ico', '/icon.svg'],
     apple: '/apple-touch-icon.png',
@@ -134,7 +134,7 @@ export default function RootLayout({
             <Footer />
             <CookieConsent />
             <ConsentModal />
-            <PWAInstall />
+            {/* <PWAInstall /> — PWA disabled for portfolio site */}
           </AccessibilityProvider>
         </ConsentProvider>
       </body>

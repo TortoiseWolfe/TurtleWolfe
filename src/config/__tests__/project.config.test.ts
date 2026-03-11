@@ -39,9 +39,7 @@ describe('Project Configuration', () => {
 
       expect(config.projectName).toBe('TurtleWolfe');
       expect(config.projectOwner).toBe('TortoiseWolfe');
-      expect(config.projectDescription).toContain(
-        'Opinionated Next.js template'
-      );
+      expect(config.projectDescription).toContain('Jonathan Pohlner');
       expect(config.basePath).toBe('');
       expect(config.deployUrl).toBe('http://localhost:3000');
     });
@@ -184,7 +182,7 @@ describe('Project Configuration', () => {
 
       expect(manifest.name).toContain('TurtleWolfe');
       expect(manifest.short_name).toBe('TurtleWolfe');
-      expect(manifest.description).toContain('Opinionated Next.js template');
+      expect(manifest.description).toContain('Jonathan Pohlner');
       expect(manifest.start_url).toBe('/');
       expect(manifest.display).toBe('standalone');
       expect(manifest.theme_color).toBe('#1a1a2e');

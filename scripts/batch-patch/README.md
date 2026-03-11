@@ -55,7 +55,7 @@ python fix-signature-003.py docs/design/wireframes/003-user-authentication/01-re
 **Correct format**:
 
 ```xml
-<text x="40" y="1060" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#374151">NNN:NN | Feature Name | ScriptHammer</text>
+<text x="40" y="1060" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#374151">NNN:NN | Feature Name | TurtleWolfe</text>
 ```
 
 ### G-044: Footer/Nav Rounded Corners

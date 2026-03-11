@@ -2,7 +2,7 @@
 
 **Feature ID**: 025
 **Category**: integrations
-**Source**: ScriptHammer/docs/specs/019-blog-social-features
+**Source**: TurtleWolfe/docs/specs/019-blog-social-features
 **Status**: Ready for SpecKit
 
 ## Description

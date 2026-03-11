@@ -4,7 +4,7 @@
 **Category**: core-features
 **Priority**: P0 (Constitutional Requirement)
 **Status**: Draft
-**Source**: Migrated from ScriptHammer docs/specs/003
+**Source**: Migrated from TurtleWolfe docs/specs/003
 
 ---
 

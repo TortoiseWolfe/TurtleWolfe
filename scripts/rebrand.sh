@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # =============================================================================
-# ScriptHammer Rebrand Script
+# TurtleWolfe Rebrand Script
 # =============================================================================
-# Automates rebranding of the ScriptHammer template to a new project identity.
+# Automates rebranding of the TurtleWolfe template to a new project identity.
 # Updates 200+ files including code, config, and documentation.
 #
 # Usage: ./scripts/rebrand.sh <PROJECT_NAME> <OWNER> "<DESCRIPTION>" [OPTIONS]
@@ -15,9 +15,9 @@
 # Options:
 #   --force               Skip all confirmation prompts
 #   --dry-run             Show what would change without modifying files
-#   --keep-cname          Do not delete public/CNAME file
+#   --keep-cname          Do not update public/CNAME file (keep existing domain)
 #   --preserve-ssh        Keep SSH format for git remote (if currently SSH)
-#   --preserve-attribution Keep ScriptHammer attribution link in Footer
+#   --preserve-attribution Keep TurtleWolfe attribution link in Footer
 #   --help                Show this help message
 #
 # Exit Codes:
@@ -61,8 +61,8 @@ PRESERVE_SSH=false
 PRESERVE_ATTRIBUTION=false
 
 # Original project name to search for
-ORIGINAL_NAME="ScriptHammer"
-ORIGINAL_NAME_LOWER="scripthammer"
+ORIGINAL_NAME="TurtleWolfe"
+ORIGINAL_NAME_LOWER="turtlewolfe"
 ORIGINAL_OWNER="TortoiseWolfe"
 
 # =============================================================================
@@ -151,7 +151,7 @@ check_uncommitted_changes() {
     fi
 }
 
-# Count ScriptHammer references to detect if already rebranded
+# Count TurtleWolfe references to detect if already rebranded
 count_references() {
     local count
     count=$(grep -r "$ORIGINAL_NAME" --include="*.ts" --include="*.tsx" --include="*.js" \
@@ -311,24 +311,24 @@ update_package_json() {
     fi
 }
 
-# Delete CNAME file
-delete_cname() {
+# Update CNAME file (replace turtlewolfe domain with new project domain)
+update_cname() {
     local cname_file="$REPO_ROOT/public/CNAME"
 
     if [ -f "$cname_file" ]; then
-        # Check if it's a custom domain (not scripthammer.com)
+        # Check if it's a custom domain (not turtlewolfe.com)
         local domain
         domain=$(cat "$cname_file" 2>/dev/null || echo "")
 
-        if [[ "$domain" == *"scripthammer"* ]] || [ -z "$domain" ]; then
+        if [[ "$domain" == *"turtlewolfe"* ]] || [ -z "$domain" ]; then
             if [ "$KEEP_CNAME" = true ]; then
-                log_info "Keeping CNAME file (--keep-cname flag set)"
+                log_info "Keeping CNAME file as-is (--keep-cname flag set)"
             else
                 if [ "$DRY_RUN" = true ]; then
-                    log_verbose "[DRY-RUN] Would delete public/CNAME"
+                    log_verbose "[DRY-RUN] Would update public/CNAME to ${DISPLAY_NAME}.com"
                 else
-                    rm "$cname_file"
-                    log_verbose "Deleted public/CNAME"
+                    echo "${DISPLAY_NAME}.com" > "$cname_file"
+                    log_verbose "Updated public/CNAME: ${domain} → ${DISPLAY_NAME}.com"
                 fi
             fi
         else
@@ -347,27 +347,27 @@ scaffold_themes() {
     fi
 
     # Replace theme names in @plugin "daisyui" block
-    if grep -q "scripthammer-dark" "$css_file" 2>/dev/null; then
+    if grep -q "turtlewolfe-dark" "$css_file" 2>/dev/null; then
         if [ "$DRY_RUN" = true ]; then
             log_verbose "[DRY-RUN] Would rename theme references in globals.css"
         else
-            sed "${SED_INPLACE[@]}" "s|scripthammer-dark|${SANITIZED_NAME}-dark|g" "$css_file"
-            sed "${SED_INPLACE[@]}" "s|scripthammer-light|${SANITIZED_NAME}-light|g" "$css_file"
-            sed "${SED_INPLACE[@]}" "s|ScriptHammer Dark Theme|${DISPLAY_NAME} Dark Theme|g" "$css_file"
-            sed "${SED_INPLACE[@]}" "s|ScriptHammer Light Theme|${DISPLAY_NAME} Light Theme|g" "$css_file"
-            log_verbose "Renamed theme blocks: scripthammer-* → ${SANITIZED_NAME}-*"
+            sed "${SED_INPLACE[@]}" "s|turtlewolfe-dark|${SANITIZED_NAME}-dark|g" "$css_file"
+            sed "${SED_INPLACE[@]}" "s|turtlewolfe-light|${SANITIZED_NAME}-light|g" "$css_file"
+            sed "${SED_INPLACE[@]}" "s|TurtleWolfe Dark Theme|${DISPLAY_NAME} Dark Theme|g" "$css_file"
+            sed "${SED_INPLACE[@]}" "s|TurtleWolfe Light Theme|${DISPLAY_NAME} Light Theme|g" "$css_file"
+            log_verbose "Renamed theme blocks: turtlewolfe-* → ${SANITIZED_NAME}-*"
         fi
         ((FILES_MODIFIED++)) || true
     fi
 
     # Update ThemeScript.tsx fallback theme names
     local theme_script="$REPO_ROOT/src/components/ThemeScript.tsx"
-    if [ -f "$theme_script" ] && grep -q "scripthammer-dark" "$theme_script" 2>/dev/null; then
+    if [ -f "$theme_script" ] && grep -q "turtlewolfe-dark" "$theme_script" 2>/dev/null; then
         if [ "$DRY_RUN" = true ]; then
             log_verbose "[DRY-RUN] Would update ThemeScript.tsx theme names"
         else
-            sed "${SED_INPLACE[@]}" "s|scripthammer-dark|${SANITIZED_NAME}-dark|g" "$theme_script"
-            sed "${SED_INPLACE[@]}" "s|scripthammer-light|${SANITIZED_NAME}-light|g" "$theme_script"
+            sed "${SED_INPLACE[@]}" "s|turtlewolfe-dark|${SANITIZED_NAME}-dark|g" "$theme_script"
+            sed "${SED_INPLACE[@]}" "s|turtlewolfe-light|${SANITIZED_NAME}-light|g" "$theme_script"
             log_verbose "Updated ThemeScript.tsx theme fallbacks"
         fi
         ((FILES_MODIFIED++)) || true
@@ -375,12 +375,12 @@ scaffold_themes() {
 
     # Update Storybook preview theme names
     local preview_file="$REPO_ROOT/.storybook/preview.tsx"
-    if [ -f "$preview_file" ] && grep -q "scripthammer-dark" "$preview_file" 2>/dev/null; then
+    if [ -f "$preview_file" ] && grep -q "turtlewolfe-dark" "$preview_file" 2>/dev/null; then
         if [ "$DRY_RUN" = true ]; then
             log_verbose "[DRY-RUN] Would update .storybook/preview.tsx theme names"
         else
-            sed "${SED_INPLACE[@]}" "s|scripthammer-dark|${SANITIZED_NAME}-dark|g" "$preview_file"
-            sed "${SED_INPLACE[@]}" "s|scripthammer-light|${SANITIZED_NAME}-light|g" "$preview_file"
+            sed "${SED_INPLACE[@]}" "s|turtlewolfe-dark|${SANITIZED_NAME}-dark|g" "$preview_file"
+            sed "${SED_INPLACE[@]}" "s|turtlewolfe-light|${SANITIZED_NAME}-light|g" "$preview_file"
             log_verbose "Updated Storybook preview theme names"
         fi
         ((FILES_MODIFIED++)) || true
@@ -414,6 +414,30 @@ update_git_remote() {
         else
             git remote set-url origin "$new_url"
             log_verbose "Updated git remote: $new_url"
+        fi
+    fi
+}
+
+# Update .env.example with new project name
+update_env_example() {
+    local env_file="$REPO_ROOT/.env.example"
+
+    if [ -f "$env_file" ]; then
+        if grep -q "$ORIGINAL_NAME_LOWER" "$env_file" 2>/dev/null || grep -q "$ORIGINAL_NAME" "$env_file" 2>/dev/null; then
+            if [ "$DRY_RUN" = true ]; then
+                log_verbose "[DRY-RUN] Would update .env.example references"
+            else
+                # Update header comment
+                sed "${SED_INPLACE[@]}" "s|$ORIGINAL_NAME Environment Variables|$DISPLAY_NAME Environment Variables|g" "$env_file"
+                # Update COMPOSE_PROJECT_NAME default
+                sed "${SED_INPLACE[@]}" "s|COMPOSE_PROJECT_NAME=$ORIGINAL_NAME_LOWER|COMPOSE_PROJECT_NAME=$SANITIZED_NAME|g" "$env_file"
+                # Update example commands in comments (docker compose -p, exec, etc.)
+                sed "${SED_INPLACE[@]}" "s|$ORIGINAL_NAME_LOWER-b|${SANITIZED_NAME}-b|g" "$env_file"
+                sed "${SED_INPLACE[@]}" "s|exec $ORIGINAL_NAME_LOWER |exec $SANITIZED_NAME |g" "$env_file"
+                sed "${SED_INPLACE[@]}" "s|port $ORIGINAL_NAME_LOWER |port $SANITIZED_NAME |g" "$env_file"
+                log_verbose "Updated .env.example references"
+            fi
+            ((FILES_MODIFIED++)) || true
         fi
     fi
 }
@@ -501,7 +525,7 @@ main() {
     # Header
     echo ""
     echo "========================================="
-    echo "  ScriptHammer Rebrand Script v${VERSION}"
+    echo "  TurtleWolfe Rebrand Script v${VERSION}"
     echo "========================================="
     echo ""
 
@@ -533,6 +557,7 @@ main() {
     echo ""
     echo "Renaming files..."
     rename_files "$ORIGINAL_NAME" "$DISPLAY_NAME"
+    rename_files "$ORIGINAL_NAME_LOWER" "$SANITIZED_NAME"
 
     echo ""
     echo "Updating docker-compose.yml..."
@@ -551,8 +576,12 @@ main() {
     update_git_remote
 
     echo ""
-    echo "Cleaning up..."
-    delete_cname
+    echo "Updating CNAME..."
+    update_cname
+
+    echo ""
+    echo "Updating .env.example..."
+    update_env_example
 
     # Summary
     END_TIME=$(date +%s)

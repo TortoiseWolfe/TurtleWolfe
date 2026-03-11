@@ -1,14 +1,14 @@
 #!/bin/bash
-# Task dispatcher for scripthammer terminals
+# Task dispatcher for turtlewolfe terminals
 # Usage: ./tmux-dispatch.sh [--vote|--tasks|--queue|--all]
 #
 # Dispatches work to running tmux terminals without manual intervention.
 # See AUTOMATION.md for patterns and edge case documentation.
 
-SESSION="scripthammer"
+SESSION="turtlewolfe"
 STATUS_FILE="docs/design/wireframes/.terminal-status.json"
 AUDIT_FILE="docs/interoffice/audits/2026-01-14-organizational-review.md"
-PROJECT_DIR="$HOME/repos/000_Mega_Plates/ScriptHammer"
+PROJECT_DIR="$HOME/repos/000_Mega_Plates/TurtleWolfe"
 PRECOMPUTE_SCRIPT="$PROJECT_DIR/scripts/dispatch-precompute.py"
 PRECOMPUTE_CACHE="/tmp/dispatch-precompute-$(date +%Y-%m-%d).json"
 USE_PRECOMPUTE=true
@@ -405,7 +405,7 @@ case "${1:-}" in
   *)
     echo "Usage: $0 [--vote|--tasks|--queue|--precomputed|--all|--status] [--no-precompute]"
     echo ""
-    echo "Dispatches work to running scripthammer tmux terminals."
+    echo "Dispatches work to running turtlewolfe tmux terminals."
     echo ""
     echo "Commands:"
     echo "  --vote        Dispatch RFC votes to council (7 terminals)"

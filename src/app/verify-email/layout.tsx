@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Verify Email - ScriptHammer',
-  description: 'Verify your email address for ScriptHammer',
+  title: 'Verify Email - TurtleWolfe',
+  description: 'Verify your email address for TurtleWolfe',
   robots: {
     index: false,
     follow: false,

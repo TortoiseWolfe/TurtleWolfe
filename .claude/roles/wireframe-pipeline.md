@@ -48,12 +48,12 @@ When reviewing screenshots, check for these issues that automated validation may
 ### SIGNATURE BLOCK (Critical)
 
 1. **LEFT-ALIGNED**: Must be `x="40"`, NOT centered (no `text-anchor="middle"`)
-2. **FORMAT**: `NNN:NN | Feature Name | ScriptHammer` (e.g., `022:01 | Web3Forms Integration | ScriptHammer`)
+2. **FORMAT**: `NNN:NN | Feature Name | TurtleWolfe` (e.g., `022:01 | Web3Forms Integration | TurtleWolfe`)
 3. **STYLING**: 18px bold, `fill="#374151"`
 
 ```xml
 <!-- CORRECT -->
-<text x="40" y="1060" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#374151">022:01 | Web3Forms Integration | ScriptHammer</text>
+<text x="40" y="1060" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#374151">022:01 | Web3Forms Integration | TurtleWolfe</text>
 
 <!-- WRONG - centered -->
 <text x="960" y="1060" text-anchor="middle" ...>
@@ -103,7 +103,7 @@ When reviewing screenshots, check for these issues that automated validation may
 **Signature**: Must be LEFT-ALIGNED at `x="40"`, NOT centered. No `text-anchor="middle"`.
 
 ```xml
-<text x="40" y="1060" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#374151">NNN:NN | Feature | ScriptHammer</text>
+<text x="40" y="1060" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#374151">NNN:NN | Feature | TurtleWolfe</text>
 ```
 
 ## Issue Classification

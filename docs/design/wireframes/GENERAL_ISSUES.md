@@ -7,7 +7,7 @@
 ## Recurring Mistakes
 
 | #     | Mistake Pattern                                                     | Correct Approach                                                                                                                   | Skill Reference                                           |
-| ----- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | -------------------------------------------- | ---------------- |
+| ----- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------ | ---------------- |
 | G-001 | Using `#ffffff` for panels/modals                                   | Use `#e8d4b8` (parchment) or `#dcc8a8` (secondary)                                                                                 | Light Theme Color Palette                                 |
 | G-002 | Placeholder icons (emoji, rectangles)                               | Copy EXACT `<path>` elements from include files                                                                                    | Include Files section                                     |
 | G-003 | Cramped layouts with wasted space elsewhere                         | Calculate space distribution BEFORE placing elements                                                                               | Vertical Space Planning                                   |
@@ -30,7 +30,7 @@
 | G-021 | Footer hidden behind modal overlay                                  | Place footer `<use>` AFTER modal content in SVG order (SVG paints in order)                                                        | SVG Paint Order                                           |
 | G-022 | Missing canvas background gradient                                  | Canvas MUST have `#c7ddf5` → `#b8d4f0` gradient, not solid parchment                                                               | Background Gradient                                       |
 | G-024 | Missing title block                                                 | MUST have centered title at y=28: "FEATURE - PAGE NAME"                                                                            | Title Block                                               |
-| G-025 | Missing signature block                                             | MUST have "NNN:NN \| Feature \| ScriptHammer" at x=40, y=1060, 18px bold, LEFT-ALIGNED                                             | Signature Block (validator: SIGNATURE-003, SIGNATURE-004) |
+| G-025 | Missing signature block                                             | MUST have "NNN:NN \| Feature \| TurtleWolfe" at x=40, y=1060, 18px bold, LEFT-ALIGNED                                              | Signature Block (validator: SIGNATURE-003, SIGNATURE-004) |
 | G-026 | No numbered callouts on mockups                                     | Red circles ①②③④ MUST appear ON mockup UI elements                                                                                 | v4 Callout System (validator: ANN-002, G-026)             |
 | G-030 | Annotation groups clustered instead of distributed                  | Use 4-column grid: x=20, 470, 920, 1370. One group per column.                                                                     | Annotation Column Distribution                            |
 | G-031 | Callout circle placed ON TOP of UI element                          | Place callout 10-20px ADJACENT to element, never covering it                                                                       | Callout Placement                                         |
@@ -45,7 +45,7 @@
 | G-040 | Unquoted or malformed XML attributes                                | All attributes must be properly quoted: `y="60"` not `y='60,'`                                                                     | XML Syntax Rules                                          |
 | G-041 | Wrong SVG height attribute                                          | Must be `height="1080"`, NOT `height="1920"`                                                                                       | SVG Header Rules                                          |
 | G-042 | Missing header/footer include references                            | Use `<use href="includes/header-desktop.svg#desktop-header"/>` etc.                                                                | Include References                                        |
-| G-043 | Wrong signature format                                              | Must be `NNN:NN                                                                                                                    | Feature Name                                              | ScriptHammer`, NOT `ScriptHammer v0.1 - ...` | Signature Format |
+| G-043 | Wrong signature format                                              | Must be `NNN:NN                                                                                                                    | Feature Name                                              | TurtleWolfe`, NOT `TurtleWolfe v0.1 - ...` | Signature Format |
 | G-044 | Footer/nav bar missing rounded corners                              | Footer and bottom nav containers must have `rx="4-8"`                                                                              | Footer/Nav Corner Standards                               |
 | G-045 | Mobile active state missing icon                                    | Active tab overlay must include white-filled icon path, not just text                                                              | Mobile Active State Template                              |
 | G-046 | Corner tab active state uses rect                                   | Home/Account active overlays must use `<path>` for rounded corners, not `<rect>`                                                   | Mobile Active State Template                              |
@@ -125,7 +125,7 @@ Before writing ANY SVG:
 </g>
 
 <!-- Signature (LEFT-ALIGNED at x=40, NOT centered) -->
-<text x="40" y="1060" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#374151">NNN:NN | Feature Name | ScriptHammer</text>
+<text x="40" y="1060" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#374151">NNN:NN | Feature Name | TurtleWolfe</text>
 </svg>
 ```
 
@@ -464,7 +464,7 @@ Check for collisions in the LAYOUT PLAN phase, not after generating SVG.
 | 2026-01-15 | G-040       | XML-004 seen in 022-web3forms-integration/01 and 022-web3forms-integration/02                                                                       |
 | 2026-01-15 | G-041       | SVG-003 (wrong height=1920) seen in 022-web3forms-integration/01 and 022-web3forms-integration/02                                                   |
 | 2026-01-15 | G-042       | HDR-001 (missing includes) seen in 022-web3forms-integration/01 and 022-web3forms-integration/02                                                    |
-| 2026-01-15 | G-043       | Wrong signature format (e.g., "ScriptHammer v0.1") seen across multiple features                                                                    |
+| 2026-01-15 | G-043       | Wrong signature format (e.g., "TurtleWolfe v0.1") seen across multiple features                                                                     |
 | 2026-01-15 | G-044       | Footer/nav missing rounded corners seen in 002, 003, 010, 013, 019                                                                                  |
 | 2026-01-15 | G-045       | Mobile active state missing icon seen in 003-user-authentication (all 3 SVGs)                                                                       |
 | 2026-01-15 | G-046       | Corner tab uses rect instead of path seen in 003-user-authentication (all 3 SVGs)                                                                   |
@@ -1147,7 +1147,7 @@ y=920  │┌──────────────────────�
 y=980  │└───────────────────────────────────────────────────────┘│
 y=1020 └─────────────────────────────────────────────────────────┘ Annotation Panel End
                               ↓ remaining space
-y=1060 NNN:NN | Feature Name | ScriptHammer
+y=1060 NNN:NN | Feature Name | TurtleWolfe
 ```
 
 ### SVG Implementation (Container Pattern)
@@ -1178,7 +1178,7 @@ y=1060 NNN:NN | Feature Name | ScriptHammer
 </g>
 
 <!-- Signature - LEFT-ALIGNED at x=40, below Key Concepts container -->
-<text x="40" y="1060" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#374151">004:01 | Mobile-First Design | ScriptHammer</text>
+<text x="40" y="1060" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#374151">004:01 | Mobile-First Design | TurtleWolfe</text>
 ```
 
 ### Additional Issues Found

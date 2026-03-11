@@ -19,9 +19,9 @@
 
 ### Other Issues
 
-| ID   | Issue                                                           | Code          | Classification |
-| ---- | --------------------------------------------------------------- | ------------- | -------------- |
-| X-01 | Signature format wrong: 'ScriptHammer v0.1 - Markers and Acc... | SIGNATURE-004 | REGENERATE     |
+| ID   | Issue                                                          | Code          | Classification |
+| ---- | -------------------------------------------------------------- | ------------- | -------------- |
+| X-01 | Signature format wrong: 'TurtleWolfe v0.1 - Markers and Acc... | SIGNATURE-004 | REGENERATE     |
 
 ### Annotation Issues
 

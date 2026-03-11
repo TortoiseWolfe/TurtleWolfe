@@ -81,8 +81,8 @@ jobs:
           curl -s http://localhost:3000 | grep -o '<title>[^<]*</title>' || echo "No title found"
           echo "=== Checking for progress badge ==="
           curl -s http://localhost:3000 | grep -o 'badge.*badge-success' || echo "No progress badge found"
-          echo "=== Checking for ScriptHammer text ==="
-          curl -s http://localhost:3000 | grep -o 'ScriptHammer' | head -5 || echo "No ScriptHammer text found"
+          echo "=== Checking for TurtleWolfe text ==="
+          curl -s http://localhost:3000 | grep -o 'TurtleWolfe' | head -5 || echo "No TurtleWolfe text found"
 
       # Run rate-limiting tests FIRST (clean IP quota)
       # These use project dependencies for ordering

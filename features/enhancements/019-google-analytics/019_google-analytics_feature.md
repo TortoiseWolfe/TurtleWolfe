@@ -2,7 +2,7 @@
 
 **Feature ID**: 019
 **Category**: enhancements
-**Source**: ScriptHammer/docs/specs/008-google-analytics
+**Source**: TurtleWolfe/docs/specs/008-google-analytics
 **Status**: Ready for SpecKit
 
 ## Description

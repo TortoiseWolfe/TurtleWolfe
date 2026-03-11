@@ -3,17 +3,18 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayeredScriptHammerLogo } from '@/components/atomic/SpinningLogo';
+import { LayeredTurtleWolfeLogo } from '@/components/atomic/SpinningLogo';
 import { AnimatedLogo } from '@/components/atomic/AnimatedLogo';
 import { ColorblindToggle } from '@/components/molecular/ColorblindToggle';
 import { FontSizeControl } from '@/components/navigation/FontSizeControl';
 import { detectedConfig } from '@/config/project-detected';
-import { useAuth } from '@/contexts/AuthContext';
-import { useUserProfile } from '@/hooks/useUserProfile';
-import AvatarDisplay from '@/components/atomic/AvatarDisplay';
-import { useUnreadCount } from '@/hooks/useUnreadCount';
-import { AdminAuthService } from '@/services/admin/admin-auth-service';
-import { createClient } from '@/lib/supabase/client';
+// Supabase auth disabled — portfolio site
+// import { useAuth } from '@/contexts/AuthContext';
+// import { useUserProfile } from '@/hooks/useUserProfile';
+// import AvatarDisplay from '@/components/atomic/AvatarDisplay';
+// import { useUnreadCount } from '@/hooks/useUnreadCount';
+// import { AdminAuthService } from '@/services/admin/admin-auth-service';
+// import { createClient } from '@/lib/supabase/client';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -22,25 +23,13 @@ interface BeforeInstallPromptEvent extends Event {
 
 export function GlobalNav() {
   const pathname = usePathname();
-  const { user, signOut } = useAuth();
-  const { profile } = useUserProfile();
-  const unreadCount = useUnreadCount();
+  // Supabase auth disabled — portfolio site
+  const user = null;
   const [theme, setTheme] = useState<string>('');
   const [deferredPrompt, setDeferredPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
   const [showInstallButton, setShowInstallButton] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(() => {
-    if (!user?.id) {
-      setIsAdmin(false);
-      return;
-    }
-    const supabase = createClient();
-    const service = new AdminAuthService(supabase);
-    service.checkIsAdmin(user.id).then(setIsAdmin);
-  }, [user?.id]);
 
   // Theme management — read existing theme, don't overwrite ThemeScript's work.
   // ThemeScript runs before hydration and sets data-theme from localStorage
@@ -49,7 +38,7 @@ export function GlobalNav() {
     const savedTheme =
       localStorage.getItem('theme') ||
       document.documentElement.getAttribute('data-theme') ||
-      'scripthammer-dark';
+      'turtlewolfe-dark';
     setTheme(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
 
@@ -129,8 +118,8 @@ export function GlobalNav() {
   ];
 
   const themes = [
-    'scripthammer-dark',
-    'scripthammer-light',
+    'turtlewolfe-dark',
+    'turtlewolfe-light',
     'light',
     'dark',
     'cupcake',
@@ -176,7 +165,7 @@ export function GlobalNav() {
               className="flex items-center gap-2 transition-opacity hover:opacity-80"
             >
               <div className="h-8 w-8">
-                <LayeredScriptHammerLogo
+                <LayeredTurtleWolfeLogo
                   size={32}
                   speed="slow"
                   className="drop-shadow-sm"
@@ -213,126 +202,7 @@ export function GlobalNav() {
           {/* Right Section: Auth, Theme & PWA - Mobile-first spacing (PRP-017 T025) */}
           {/* Use flex-shrink-0 to prevent items from shrinking, overflow-hidden to prevent horizontal scroll */}
           <div className="flex flex-shrink-0 items-center gap-0.5 sm:gap-1 md:gap-2">
-            {/* Messages Icon (authenticated users only) */}
-            {user && (
-              <Link
-                href="/messages"
-                className="btn btn-ghost btn-circle indicator min-h-11 min-w-11"
-                title="Messages"
-                aria-label="Messages"
-              >
-                {unreadCount > 0 && (
-                  <span className="indicator-item badge badge-primary badge-sm">
-                    {unreadCount}
-                  </span>
-                )}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                  />
-                </svg>
-              </Link>
-            )}
-
-            {/* Auth Buttons */}
-            {/* User account dropdown (logged in) or auth buttons (logged out) */}
-            {/* Auth buttons hidden on mobile - they're in the hamburger menu */}
-            {user ? (
-              <div className="dropdown dropdown-end">
-                <label
-                  tabIndex={0}
-                  className="btn btn-ghost btn-circle min-h-11 min-w-11"
-                  aria-label="User account menu"
-                >
-                  <AvatarDisplay
-                    avatarUrl={
-                      profile?.avatar_url ||
-                      (user.user_metadata?.avatar_url as string) ||
-                      null
-                    }
-                    displayName={profile?.display_name || user.email || 'User'}
-                    size="sm"
-                  />
-                </label>
-                <ul
-                  tabIndex={0}
-                  className="menu menu-sm dropdown-content bg-base-100 rounded-box -right-2 z-[1] mt-3 w-48 max-w-[calc(100vw-4rem)] p-2 shadow sm:w-52"
-                >
-                  <li className="menu-title">
-                    <span>{user.email}</span>
-                  </li>
-                  <li>
-                    <Link href="/profile">Profile</Link>
-                  </li>
-                  <li>
-                    <Link href="/account">Account Settings</Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/messages"
-                      className="flex items-center justify-between"
-                    >
-                      <span>Messages</span>
-                      {unreadCount > 0 && (
-                        <span className="badge badge-primary badge-sm">
-                          {unreadCount}
-                        </span>
-                      )}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/messages?tab=connections">Connections</Link>
-                  </li>
-                  {isAdmin && (
-                    <li>
-                      <Link href="/admin">Admin Dashboard</Link>
-                    </li>
-                  )}
-                  <li>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        // Close dropdown
-                        if (document.activeElement instanceof HTMLElement) {
-                          document.activeElement.blur();
-                        }
-                        // Sign out and redirect
-                        signOut().then(() => {
-                          window.location.href = '/';
-                        });
-                      }}
-                    >
-                      Sign Out
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            ) : (
-              <>
-                <Link
-                  href="/sign-in"
-                  className="btn btn-ghost btn-sm hidden min-h-11 min-w-11 md:inline-flex"
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/sign-up"
-                  className="btn btn-primary btn-sm hidden min-h-11 min-w-11 md:inline-flex"
-                >
-                  Sign Up
-                </Link>
-              </>
-            )}
+            {/* Auth UI disabled — no Supabase backend for portfolio site */}
 
             {/* Mobile Menu - 44px touch target */}
             <div className="dropdown dropdown-end md:hidden">
@@ -370,70 +240,7 @@ export function GlobalNav() {
                     </Link>
                   </li>
                 ))}
-                {user ? (
-                  <>
-                    <li className="menu-title mt-2">
-                      <span>Account</span>
-                    </li>
-                    <li>
-                      <Link href="/profile">Profile</Link>
-                    </li>
-                    <li>
-                      <Link href="/account">Settings</Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/messages"
-                        className="flex items-center justify-between"
-                      >
-                        <span>Messages</span>
-                        {unreadCount > 0 && (
-                          <span className="badge badge-primary badge-sm">
-                            {unreadCount}
-                          </span>
-                        )}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/messages?tab=connections">Connections</Link>
-                    </li>
-                    {isAdmin && (
-                      <li>
-                        <Link href="/admin">Admin Dashboard</Link>
-                      </li>
-                    )}
-                    <li>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          // Close dropdown
-                          if (document.activeElement instanceof HTMLElement) {
-                            document.activeElement.blur();
-                          }
-                          // Sign out and redirect
-                          signOut().then(() => {
-                            window.location.href = '/';
-                          });
-                        }}
-                      >
-                        Sign Out
-                      </button>
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li className="menu-title mt-2">
-                      <span>Account</span>
-                    </li>
-                    <li>
-                      <Link href="/sign-in">Sign In</Link>
-                    </li>
-                    <li>
-                      <Link href="/sign-up">Sign Up</Link>
-                    </li>
-                  </>
-                )}
+                {/* Auth menu items disabled — no Supabase backend for portfolio site */}
               </ul>
             </div>
 

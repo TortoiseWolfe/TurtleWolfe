@@ -5,16 +5,18 @@ import Image from 'next/image';
 import { SpinningLogo } from './SpinningLogo';
 import { detectedConfig } from '@/config/project-detected';
 
-export interface LayeredScriptHammerLogoProps {
+export interface LayeredTurtleWolfeLogoProps {
   className?: string;
   size?: number;
   speed?: 'slow' | 'normal' | 'fast' | number;
   pauseOnHover?: boolean;
 }
 
-export const LayeredScriptHammerLogo: React.FC<
-  LayeredScriptHammerLogoProps
-> = ({ className = '', speed = 'slow', pauseOnHover = true }) => {
+export const LayeredTurtleWolfeLogo: React.FC<LayeredTurtleWolfeLogoProps> = ({
+  className = '',
+  speed = 'slow',
+  pauseOnHover = true,
+}) => {
   return (
     <div
       className={`relative ${className}`}
@@ -52,11 +54,11 @@ export const LayeredScriptHammerLogo: React.FC<
         />
       </div>
 
-      {/* Layer 2: Rotating silver gear + "ScriptHammer.com" text (MIDDLE) */}
+      {/* Layer 2: Rotating silver gear + "TurtleWolfe.com" text (MIDDLE) */}
       <SpinningLogo speed={speed} pauseOnHover={pauseOnHover}>
         <Image
-          src={`${detectedConfig.basePath}/scripthammer-logo.svg`}
-          alt="ScriptHammer.com gear logo"
+          src={`${detectedConfig.basePath}/turtlewolfe-logo.svg`}
+          alt="TurtleWolfe.com gear logo"
           width={400}
           height={400}
           className="absolute inset-0 h-full w-full"
@@ -100,4 +102,4 @@ export const LayeredScriptHammerLogo: React.FC<
   );
 };
 
-LayeredScriptHammerLogo.displayName = 'LayeredScriptHammerLogo';
+LayeredTurtleWolfeLogo.displayName = 'LayeredTurtleWolfeLogo';

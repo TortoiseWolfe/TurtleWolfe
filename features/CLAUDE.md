@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Purpose
 
-This folder contains **46 feature specifications** (PRPs) for ScriptHammer, ready for the SpecKit workflow.
+This folder contains **46 feature specifications** (PRPs) for TurtleWolfe, ready for the SpecKit workflow.
 
 ## Folder Structure
 

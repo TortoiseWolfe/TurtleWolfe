@@ -2,7 +2,7 @@
 
 **Feature ID**: 024
 **Category**: integrations
-**Source**: ScriptHammer/docs/specs/015-payment-integration
+**Source**: TurtleWolfe/docs/specs/015-payment-integration
 **Status**: Ready for SpecKit
 
 ## Description

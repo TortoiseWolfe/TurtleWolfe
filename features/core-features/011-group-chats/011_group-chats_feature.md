@@ -4,7 +4,7 @@
 **Category**: core-features
 **Priority**: P2
 **Status**: Draft
-**Source**: Migrated from ScriptHammer specs/010
+**Source**: Migrated from TurtleWolfe specs/010
 
 ---
 

@@ -11,7 +11,7 @@ import { CookieConsent } from '@/components/privacy/CookieConsent';
 import { ConsentModal } from '@/components/privacy/ConsentModal';
 import GoogleAnalytics from '@/lib/analytics/GoogleAnalytics';
 import ErrorBoundary from '@/components/ErrorBoundary';
-import { AuthProvider } from '@/contexts/AuthContext';
+// import { AuthProvider } from '@/contexts/AuthContext'; // Supabase disabled — portfolio site
 import { projectConfig } from '@/config/project.config';
 import {
   generateMetadata,
@@ -20,7 +20,7 @@ import {
 } from '@/utils/metadata';
 import PWAInstall from '@/components/PWAInstall';
 import { CountdownBanner } from '@/components/atomic/CountdownBanner';
-import { SetupBanner } from '@/components/SetupBanner';
+// import { SetupBanner } from '@/components/SetupBanner'; // Supabase disabled — portfolio site
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
       "style-src 'self' 'unsafe-inline' https://unpkg.com",
       "img-src 'self' data: https: blob:",
       "font-src 'self' data:",
-      "connect-src 'self' https://www.googleapis.com https://*.google-analytics.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org https://*.supabase.co wss://*.supabase.co https://*.basemaps.cartocdn.com https://api.web3forms.com",
+      "connect-src 'self' https://www.googleapis.com https://*.google-analytics.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org https://*.basemaps.cartocdn.com https://api.web3forms.com",
       "frame-src 'self' https://www.google.com",
       "object-src 'none'",
       "base-uri 'self'",
@@ -121,22 +121,21 @@ export default function RootLayout({
         <ColorblindFilters />
         <ConsentProvider>
           <GoogleAnalytics />
-          <AuthProvider>
-            <AccessibilityProvider>
-              <GlobalNav />
-              <CountdownBanner />
-              <SetupBanner />
-              <ErrorBoundary level="page">
-                <div className="bg-base-200 min-h-0 flex-1 overflow-hidden pb-14">
-                  {children}
-                </div>
-              </ErrorBoundary>
-              <Footer />
-              <CookieConsent />
-              <ConsentModal />
-              <PWAInstall />
-            </AccessibilityProvider>
-          </AuthProvider>
+          {/* AuthProvider removed — no Supabase backend for portfolio site */}
+          <AccessibilityProvider>
+            <GlobalNav />
+            <CountdownBanner />
+            {/* SetupBanner removed — no Supabase backend for portfolio site */}
+            <ErrorBoundary level="page">
+              <div className="bg-base-200 min-h-0 flex-1 overflow-hidden pb-14">
+                {children}
+              </div>
+            </ErrorBoundary>
+            <Footer />
+            <CookieConsent />
+            <ConsentModal />
+            <PWAInstall />
+          </AccessibilityProvider>
         </ConsentProvider>
       </body>
     </html>

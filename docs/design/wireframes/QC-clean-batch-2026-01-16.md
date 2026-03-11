@@ -56,7 +56,7 @@
 
 All 12 valid wireframes have:
 
-- ✓ Correct signature format (NNN:NN | Feature | ScriptHammer)
+- ✓ Correct signature format (NNN:NN | Feature | TurtleWolfe)
 - ✓ Left-aligned signature at x=40
 - ✓ Desktop and mobile callouts present (1-4)
 - ✓ Proper canvas size (1920x1080)

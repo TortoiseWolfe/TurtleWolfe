@@ -41,7 +41,7 @@ type Story = StoryObj<typeof AnimatedLogo>;
 
 export const Default: Story = {
   args: {
-    text: 'ScriptHammer',
+    text: 'TurtleWolfe',
     size: 'xl',
     animationSpeed: 'normal',
   },
@@ -106,7 +106,7 @@ export const LongText: Story = {
 
 export const ThemeShowcase: Story = {
   args: {
-    text: 'ScriptHammer',
+    text: 'TurtleWolfe',
   },
   render: () => (
     <div className="flex flex-col gap-8">
@@ -114,19 +114,19 @@ export const ThemeShowcase: Story = {
         <p className="text-base-content/80 mb-2 text-sm">
           Uses text-primary — adapts to current theme
         </p>
-        <AnimatedLogo text="ScriptHammer" size="2xl" />
+        <AnimatedLogo text="TurtleWolfe" size="2xl" />
       </div>
       <div className="flex flex-col gap-4">
         <p className="text-base-content/80 text-sm">All sizes</p>
-        <AnimatedLogo text="ScriptHammer" size="sm" />
-        <AnimatedLogo text="ScriptHammer" size="md" />
-        <AnimatedLogo text="ScriptHammer" size="lg" />
-        <AnimatedLogo text="ScriptHammer" size="xl" />
+        <AnimatedLogo text="TurtleWolfe" size="sm" />
+        <AnimatedLogo text="TurtleWolfe" size="md" />
+        <AnimatedLogo text="TurtleWolfe" size="lg" />
+        <AnimatedLogo text="TurtleWolfe" size="xl" />
       </div>
       <div>
         <p className="text-base-content/80 mb-2 text-sm">On neutral surface</p>
         <div className="bg-neutral rounded-box inline-block p-6">
-          <AnimatedLogo text="ScriptHammer" size="xl" />
+          <AnimatedLogo text="TurtleWolfe" size="xl" />
         </div>
       </div>
     </div>

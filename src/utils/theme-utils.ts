@@ -3,7 +3,7 @@
  * Used by map tiles, Disqus, Calendly, Cal.com, and Leaflet CSS.
  */
 export const DARK_THEMES = [
-  'scripthammer-dark',
+  'turtlewolfe-dark',
   'dark',
   'synthwave',
   'halloween',

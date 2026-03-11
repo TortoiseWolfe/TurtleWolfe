@@ -2,7 +2,7 @@
 
 **Date:** 2026-01-13
 **Reviewer:** Claude Opus 4.5
-**Repository:** ScriptHammer (Planning Template)
+**Repository:** TurtleWolfe (Planning Template)
 
 ## Repository Context
 

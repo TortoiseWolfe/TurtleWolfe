@@ -233,7 +233,7 @@
     "G-037": "Change annotation text fill from #6b7280 to #374151",
     "key_concepts": "Move Key Concepts row from y=730 to y=940",
     "SIGNATURE-003": "Move signature x from 960 to 40, remove text-anchor=middle",
-    "SIGNATURE-004": "Fix format to 'NNN:NN | Feature Name | ScriptHammer'",
+    "SIGNATURE-004": "Fix format to 'NNN:NN | Feature Name | TurtleWolfe'",
     "G-044": "Add rx=8 to footer/nav corners"
   }
 }

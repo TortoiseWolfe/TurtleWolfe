@@ -1,16 +1,16 @@
-# ScriptHammer - Modern Next.js Template with PWA
+# TurtleWolfe - Modern Next.js Template with PWA
 
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/TortoiseWolfe/ScriptHammer)
-[![Use Template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge)](https://github.com/TortoiseWolfe/ScriptHammer/generate)
-[![Stars](https://img.shields.io/github/stars/TortoiseWolfe/ScriptHammer?style=social)](https://github.com/TortoiseWolfe/ScriptHammer)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/TortoiseWolfe/TurtleWolfe)
+[![Use Template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge)](https://github.com/TortoiseWolfe/TurtleWolfe/generate)
+[![Stars](https://img.shields.io/github/stars/TortoiseWolfe/TurtleWolfe?style=social)](https://github.com/TortoiseWolfe/TurtleWolfe)
 
 A comprehensive Next.js starter kit featuring 32 themes, PWA capabilities, component gallery, and extensive testing infrastructure.
 
 ## 🚀 Live Demos
 
-- **Main App**: [https://www.scripthammer.com/](https://www.scripthammer.com/)
-- **Storybook**: [https://www.scripthammer.com/storybook/](https://www.scripthammer.com/storybook/)
-- **Status Dashboard**: [https://www.scripthammer.com/status](https://www.scripthammer.com/status)
+- **Main App**: [https://www.turtlewolfe.com/](https://www.turtlewolfe.com/)
+- **Storybook**: [https://www.turtlewolfe.com/storybook/](https://www.turtlewolfe.com/storybook/)
+- **Status Dashboard**: [https://www.turtlewolfe.com/status](https://www.turtlewolfe.com/status)
 
 ## ✨ Key Features
 
@@ -67,9 +67,9 @@ docker compose up     # Start everything (first build takes 5-10 minutes)
 
 ```bash
 # Run commands inside container
-docker compose exec scripthammer pnpm run dev         # Dev server
-docker compose exec scripthammer pnpm test            # Run tests
-docker compose exec scripthammer pnpm run storybook   # Storybook
+docker compose exec turtlewolfe pnpm run dev         # Dev server
+docker compose exec turtlewolfe pnpm test            # Run tests
+docker compose exec turtlewolfe pnpm run storybook   # Storybook
 
 # Clean restart if needed
 docker compose down
@@ -155,7 +155,7 @@ Git pushes use **SSH authentication** - keeping you in control of what gets comm
 1. Go to **[GitHub Token Settings](https://github.com/settings/personal-access-tokens/new)** (fine-grained tokens)
 
 2. Configure the token:
-   - **Token name**: `ScriptHammer` or `Claude Code`
+   - **Token name**: `TurtleWolfe` or `Claude Code`
    - **Expiration**: 90 days recommended
    - **Repository access**: Select "Only select repositories" → choose your repository
 
@@ -195,13 +195,13 @@ ssh -T git@github.com
 
 ## 🍴 Forking This Template
 
-The quickest way to create your own project from ScriptHammer:
+The quickest way to create your own project from TurtleWolfe:
 
 ### 5-Minute Setup
 
 ```bash
 # 1. Fork and clone
-gh repo fork TortoiseWolfe/ScriptHammer --clone
+gh repo fork TortoiseWolfe/TurtleWolfe --clone
 cd YourProjectName
 
 # 2. Run the rebrand script (updates 200+ files automatically)
@@ -243,7 +243,7 @@ For detailed setup instructions, see [docs/FORKING.md](./docs/FORKING.md).
 
 ```bash
 # Add upstream and pull changes
-git remote add upstream https://github.com/TortoiseWolfe/ScriptHammer.git
+git remote add upstream https://github.com/TortoiseWolfe/TurtleWolfe.git
 git fetch upstream
 git merge upstream/main
 ```
@@ -402,15 +402,15 @@ See [docs/prp-docs/PRP-STATUS.md](./docs/prp-docs/PRP-STATUS.md) for detailed pr
 
 ## 🤝 Contributing
 
-1. Fork the repository (for contributing back to ScriptHammer)
+1. Fork the repository (for contributing back to TurtleWolfe)
 2. Create your feature branch (`git checkout -b feature/amazing`)
-3. Run tests in Docker (`docker compose exec scripthammer pnpm test`)
+3. Run tests in Docker (`docker compose exec turtlewolfe pnpm test`)
 4. Commit changes (`git commit -m 'Add feature'`)
 5. Push and open a PR
 
 ## Design System Redesign
 
-Custom ScriptHammer theme (dark default + light variant) built on the existing DaisyUI/Tailwind stack. Storybook upgrade to v10, hierarchy cleanup, then bottom-up component reskin. Includes theme template tooling for forks.
+Custom TurtleWolfe theme (dark default + light variant) built on the existing DaisyUI/Tailwind stack. Storybook upgrade to v10, hierarchy cleanup, then bottom-up component reskin. Includes theme template tooling for forks.
 
 **Design doc**: [docs/plans/2026-02-13-design-system-redesign.md](./docs/plans/2026-02-13-design-system-redesign.md)
 **Implementation plan**: [docs/plans/2026-02-13-design-system-implementation.md](./docs/plans/2026-02-13-design-system-implementation.md)
@@ -437,16 +437,16 @@ Read these files to pick up the design system redesign:
 1. CLAUDE.md - Project rules, Docker setup, component standards
 2. docs/plans/2026-02-13-design-system-redesign.md - Approved design (Phase 4 section)
 3. docs/plans/2026-02-13-design-system-implementation.md - Task-by-task plan
-4. src/app/globals.css - Custom theme definitions (scripthammer-dark, scripthammer-light)
+4. src/app/globals.css - Custom theme definitions (turtlewolfe-dark, turtlewolfe-light)
 
 Use superpowers:executing-plans to work through the implementation plan.
 Phases 0-6 complete. Next: final polish or new feature work.
 
 Key context:
-- Everything runs inside Docker: docker compose exec scripthammer <command>
+- Everything runs inside Docker: docker compose exec turtlewolfe <command>
 - pnpm, not npm
 - DaisyUI beta with Tailwind v4 CSS-first config (@plugin syntax)
-- ScriptHammer is a template, design must be bold but also easy to rebrand
+- TurtleWolfe is a template, design must be bold but also easy to rebrand
 - Brand colors: silver/steel (primary), warm amber (secondary), electric accent, charcoal base
 - Dark theme default, light variant available
 - Both themes pass WCAG AAA (7:1) contrast

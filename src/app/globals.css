@@ -14,8 +14,8 @@
 
 @plugin "daisyui" {
   themes:
-    scripthammer-dark --default,
-    scripthammer-light,
+    turtlewolfe-dark --default,
+    turtlewolfe-light,
     light,
     dark,
     cupcake,
@@ -50,9 +50,9 @@
     sunset;
 }
 
-/* ScriptHammer Dark Theme — VS Code dark meets metallic craftsmanship */
+/* TurtleWolfe Dark Theme — VS Code dark meets metallic craftsmanship */
 @plugin "daisyui/theme" {
-  name: 'scripthammer-dark';
+  name: 'turtlewolfe-dark';
   default: true;
   color-scheme: dark;
 
@@ -92,9 +92,9 @@
   --noise: 1;
 }
 
-/* ScriptHammer Light Theme — warm parchment with adjusted brand colors */
+/* TurtleWolfe Light Theme — warm parchment with adjusted brand colors */
 @plugin "daisyui/theme" {
-  name: 'scripthammer-light';
+  name: 'turtlewolfe-light';
   default: false;
   prefersdark: false;
   color-scheme: light;
@@ -135,25 +135,25 @@
   --noise: 1;
 }
 
-/* ScriptHammer visual polish — scoped to custom themes only.
+/* TurtleWolfe visual polish — scoped to custom themes only.
  * Stock DaisyUI themes keep their original look untouched. */
-[data-theme='scripthammer-dark'] .card,
-[data-theme='scripthammer-light'] .card {
+[data-theme='turtlewolfe-dark'] .card,
+[data-theme='turtlewolfe-light'] .card {
   box-shadow:
     0 4px 6px -1px rgb(0 0 0 / 0.25),
     0 10px 15px -3px rgb(0 0 0 / 0.2),
     0 20px 25px -5px rgb(0 0 0 / 0.15);
 }
 
-[data-theme='scripthammer-dark'] .btn,
-[data-theme='scripthammer-light'] .btn {
+[data-theme='turtlewolfe-dark'] .btn,
+[data-theme='turtlewolfe-light'] .btn {
   box-shadow:
     0 2px 4px 0 rgb(0 0 0 / 0.2),
     0 1px 2px -1px rgb(0 0 0 / 0.15);
 }
 
-[data-theme='scripthammer-dark'] .btn:hover,
-[data-theme='scripthammer-light'] .btn:hover {
+[data-theme='turtlewolfe-dark'] .btn:hover,
+[data-theme='turtlewolfe-light'] .btn:hover {
   box-shadow:
     0 4px 8px -1px rgb(0 0 0 / 0.3),
     0 2px 4px -2px rgb(0 0 0 / 0.2);
@@ -356,7 +356,7 @@ p:not([class*='text-']) {
 }
 
 /* Dark background for map container before tiles load */
-[data-theme='scripthammer-dark'] .leaflet-container,
+[data-theme='turtlewolfe-dark'] .leaflet-container,
 [data-theme='dark'] .leaflet-container,
 [data-theme='dracula'] .leaflet-container,
 [data-theme='synthwave'] .leaflet-container,
@@ -373,7 +373,7 @@ p:not([class*='text-']) {
 }
 
 /* Invert OSM tiles for dark mode — preserves color/detail unlike CartoDB dark_all */
-[data-theme='scripthammer-dark'] .leaflet-tile-pane,
+[data-theme='turtlewolfe-dark'] .leaflet-tile-pane,
 [data-theme='dark'] .leaflet-tile-pane,
 [data-theme='dracula'] .leaflet-tile-pane,
 [data-theme='synthwave'] .leaflet-tile-pane,
@@ -429,7 +429,7 @@ p:not([class*='text-']) {
 }
 
 /* Fix Leaflet controls for dark mode */
-[data-theme='scripthammer-dark'] .leaflet-control,
+[data-theme='turtlewolfe-dark'] .leaflet-control,
 [data-theme='dark'] .leaflet-control,
 [data-theme='dracula'] .leaflet-control,
 [data-theme='synthwave'] .leaflet-control,
@@ -450,7 +450,7 @@ p:not([class*='text-']) {
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-[data-theme='scripthammer-dark'] .leaflet-control a,
+[data-theme='turtlewolfe-dark'] .leaflet-control a,
 [data-theme='dark'] .leaflet-control a,
 [data-theme='dracula'] .leaflet-control a,
 [data-theme='synthwave'] .leaflet-control a,

@@ -2,7 +2,7 @@
 
 **Feature ID**: 034
 **Category**: testing
-**Source**: ScriptHammer README (SPEC-051)
+**Source**: TurtleWolfe README (SPEC-051)
 **Status**: Ready for SpecKit
 
 ## Description

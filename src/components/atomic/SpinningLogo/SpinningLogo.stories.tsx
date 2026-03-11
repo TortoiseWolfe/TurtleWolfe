@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { SpinningLogo } from './SpinningLogo';
-import { ScriptHammerLogo } from './ScriptHammerLogo';
-import { LayeredScriptHammerLogo } from './LayeredScriptHammerLogo';
+import { TurtleWolfeLogo } from './TurtleWolfeLogo';
+import { LayeredTurtleWolfeLogo } from './LayeredTurtleWolfeLogo';
 
 const meta = {
   title: 'Components/Atomic/SpinningLogo',
@@ -42,81 +42,81 @@ const ReactLogo = () => (
   </svg>
 );
 
-// Layered ScriptHammer Logo as the primary/default story
+// Layered TurtleWolfe Logo as the primary/default story
 export const Default: Story = {
   args: {
     children: null,
   },
   render: () => (
-    <LayeredScriptHammerLogo size={250} speed="slow" pauseOnHover={true} />
+    <LayeredTurtleWolfeLogo size={250} speed="slow" pauseOnHover={true} />
   ),
 };
 
-// Original simple ScriptHammer Logo
-export const SimpleScriptHammer: Story = {
+// Original simple TurtleWolfe Logo
+export const SimpleTurtleWolfe: Story = {
   args: {
-    children: <ScriptHammerLogo />,
+    children: <TurtleWolfeLogo />,
     size: 250,
     pauseOnHover: true,
   },
 };
 
-// Layered ScriptHammer Logo - the new composite logo
-export const LayeredScriptHammer: Story = {
+// Layered TurtleWolfe Logo - the new composite logo
+export const LayeredTurtleWolfe: Story = {
   args: {
     children: null,
   },
   render: () => (
-    <LayeredScriptHammerLogo size={250} speed="slow" pauseOnHover={true} />
+    <LayeredTurtleWolfeLogo size={250} speed="slow" pauseOnHover={true} />
   ),
 };
 
-export const LayeredScriptHammerLarge: Story = {
+export const LayeredTurtleWolfeLarge: Story = {
   args: {
     children: null,
   },
   render: () => (
-    <LayeredScriptHammerLogo size={350} speed="slow" pauseOnHover={true} />
+    <LayeredTurtleWolfeLogo size={350} speed="slow" pauseOnHover={true} />
   ),
 };
 
-export const ScriptHammerLarge: Story = {
+export const TurtleWolfeLarge: Story = {
   args: {
-    children: <ScriptHammerLogo />,
+    children: <TurtleWolfeLogo />,
     size: 350,
     pauseOnHover: true,
   },
 };
 
-export const ScriptHammerFast: Story = {
+export const TurtleWolfeFast: Story = {
   args: {
-    children: <ScriptHammerLogo />,
+    children: <TurtleWolfeLogo />,
     size: 250,
     speed: 'fast',
     pauseOnHover: true,
   },
 };
 
-export const ScriptHammerVerySlow: Story = {
+export const TurtleWolfeVerySlow: Story = {
   args: {
-    children: <ScriptHammerLogo />,
+    children: <TurtleWolfeLogo />,
     size: 250,
     speed: 60, // 60 second rotation - ultra smooth
     pauseOnHover: true,
   },
 };
 
-export const ScriptHammerStatic: Story = {
+export const TurtleWolfeStatic: Story = {
   args: {
-    children: <ScriptHammerLogo />,
+    children: <TurtleWolfeLogo />,
     size: 250,
     isSpinning: false,
   },
 };
 
-export const ScriptHammerCounterClockwise: Story = {
+export const TurtleWolfeCounterClockwise: Story = {
   args: {
-    children: <ScriptHammerLogo />,
+    children: <TurtleWolfeLogo />,
     size: 250,
     direction: 'counter-clockwise',
     pauseOnHover: true,
@@ -238,26 +238,26 @@ export const ThemeShowcase: Story = {
     <div className="flex flex-col gap-8">
       <div>
         <p className="text-base-content/80 mb-2 text-sm">
-          ScriptHammer logo — adapts to current theme via text-primary
+          TurtleWolfe logo — adapts to current theme via text-primary
         </p>
         <div className="flex items-center gap-8">
-          <LayeredScriptHammerLogo size={150} speed="slow" pauseOnHover />
-          <LayeredScriptHammerLogo size={100} speed="slow" pauseOnHover />
+          <LayeredTurtleWolfeLogo size={150} speed="slow" pauseOnHover />
+          <LayeredTurtleWolfeLogo size={100} speed="slow" pauseOnHover />
         </div>
       </div>
       <div className="flex flex-col gap-3">
         <p className="text-base-content/80 text-sm">On surfaces</p>
         <div className="bg-base-100 flex items-center gap-6 rounded-lg p-4">
           <span className="text-base-content/80 text-sm">base-100:</span>
-          <LayeredScriptHammerLogo size={80} speed="slow" pauseOnHover />
+          <LayeredTurtleWolfeLogo size={80} speed="slow" pauseOnHover />
         </div>
         <div className="bg-base-200 flex items-center gap-6 rounded-lg p-4">
           <span className="text-base-content/80 text-sm">base-200:</span>
-          <LayeredScriptHammerLogo size={80} speed="slow" pauseOnHover />
+          <LayeredTurtleWolfeLogo size={80} speed="slow" pauseOnHover />
         </div>
         <div className="bg-neutral flex items-center gap-6 rounded-lg p-4">
           <span className="text-neutral-content/80 text-sm">neutral:</span>
-          <LayeredScriptHammerLogo size={80} speed="slow" pauseOnHover />
+          <LayeredTurtleWolfeLogo size={80} speed="slow" pauseOnHover />
         </div>
       </div>
     </div>

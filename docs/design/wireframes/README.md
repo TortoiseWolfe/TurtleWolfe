@@ -1,6 +1,6 @@
-# ScriptHammer Wireframes
+# TurtleWolfe Wireframes
 
-SVG wireframes for ScriptHammer features with automated validation and issue tracking.
+SVG wireframes for TurtleWolfe features with automated validation and issue tracking.
 
 ## Quick Start
 

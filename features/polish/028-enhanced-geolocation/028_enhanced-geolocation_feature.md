@@ -2,7 +2,7 @@
 
 **Feature ID**: 028
 **Category**: polish
-**Source**: ScriptHammer/docs/specs/015-enhanced-geolocation
+**Source**: TurtleWolfe/docs/specs/015-enhanced-geolocation
 **Status**: Ready for SpecKit
 
 ## Description

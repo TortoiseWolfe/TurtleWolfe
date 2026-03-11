@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Authentication - ScriptHammer',
+  title: 'Authentication - TurtleWolfe',
   description: 'Processing authentication',
   robots: {
     index: false,

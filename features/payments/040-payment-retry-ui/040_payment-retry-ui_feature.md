@@ -2,7 +2,7 @@
 
 **Feature ID**: 040
 **Category**: payments
-**Source**: ScriptHammer README (SPEC-056)
+**Source**: TurtleWolfe README (SPEC-056)
 **Status**: Ready for SpecKit
 
 ## Description

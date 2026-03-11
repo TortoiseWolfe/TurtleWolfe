@@ -13,7 +13,7 @@
  *
  * Run from inside the Docker container:
  *   docker exec -e SKIP_WEBSERVER=1 -e BASE_URL=http://localhost:3000 \
- *     sh-feat-scripthammer-1 npx playwright test tests/e2e/admin/ --project=chromium
+ *     sh-feat-turtlewolfe-1 npx playwright test tests/e2e/admin/ --project=chromium
  */
 
 import { test, expect } from '@playwright/test';
@@ -23,7 +23,7 @@ const ADMIN_EMAIL = 'test@example.com';
 const ADMIN_PASSWORD = 'TestPassword123!';
 
 // Next.js basePath — all routes must be prefixed
-const BP = '/ScriptHammer';
+const BP = '/TurtleWolfe';
 
 // Inside the Docker container, the browser can't reach localhost:54321 (Supabase).
 // We proxy all browser requests to localhost:54321 → the Docker-network hostname.
@@ -38,7 +38,10 @@ test.describe('Admin Dashboard E2E', () => {
     // Intercept all browser requests to localhost:54321 and rewrite them
     // to the Docker-network hostname so Supabase calls work in the container.
     await page.route('**/localhost:54321/**', async (route) => {
-      const url = route.request().url().replace(SUPABASE_BROWSER_URL, SUPABASE_DOCKER_URL);
+      const url = route
+        .request()
+        .url()
+        .replace(SUPABASE_BROWSER_URL, SUPABASE_DOCKER_URL);
       const response = await route.fetch({ url });
       await route.fulfill({ response });
     });
@@ -52,7 +55,9 @@ test.describe('Admin Dashboard E2E', () => {
       password: ADMIN_PASSWORD,
     });
     if (error || !data.session) {
-      throw new Error(`Supabase sign-in failed: ${error?.message ?? 'no session'}`);
+      throw new Error(
+        `Supabase sign-in failed: ${error?.message ?? 'no session'}`
+      );
     }
 
     // Navigate to a page so we have a browsing context for localStorage
@@ -118,7 +123,9 @@ test.describe('Admin Dashboard E2E', () => {
       const overview = page.locator('[data-testid="admin-overview"]');
       await expect(overview).toBeVisible({ timeout: 15000 });
 
-      const charts = page.locator('svg polyline, svg path, [data-testid*="trend"], [data-testid*="spark"]');
+      const charts = page.locator(
+        'svg polyline, svg path, [data-testid*="trend"], [data-testid*="spark"]'
+      );
       await page.waitForTimeout(2000);
       const chartCount = await charts.count();
 
@@ -136,7 +143,9 @@ test.describe('Admin Dashboard E2E', () => {
       const overview = page.locator('[data-testid="admin-overview"]');
       await expect(overview).toBeVisible({ timeout: 15000 });
 
-      const dateFilter = page.locator('[data-testid*="range"], [data-testid*="date"]').first();
+      const dateFilter = page
+        .locator('[data-testid*="range"], [data-testid*="date"]')
+        .first();
       if (await dateFilter.isVisible({ timeout: 3000 }).catch(() => false)) {
         await expect(dateFilter).toBeVisible();
       }
@@ -149,7 +158,9 @@ test.describe('Admin Dashboard E2E', () => {
       await page.waitForLoadState('networkidle');
       await page.waitForTimeout(3000);
 
-      const statsSection = page.getByRole('heading', { name: /payment/i }).first();
+      const statsSection = page
+        .getByRole('heading', { name: /payment/i })
+        .first();
       await expect(statsSection).toBeVisible({ timeout: 10000 });
     });
 
@@ -159,7 +170,9 @@ test.describe('Admin Dashboard E2E', () => {
       await page.waitForTimeout(3000);
 
       const providerSection = page.getByText(/stripe|paypal/i).first();
-      if (await providerSection.isVisible({ timeout: 5000 }).catch(() => false)) {
+      if (
+        await providerSection.isVisible({ timeout: 5000 }).catch(() => false)
+      ) {
         await expect(providerSection).toBeVisible();
       }
     });
@@ -170,7 +183,9 @@ test.describe('Admin Dashboard E2E', () => {
       await page.waitForTimeout(3000);
 
       const trendSection = page.getByText(/trend|daily|chart/i).first();
-      const hasTrend = await trendSection.isVisible({ timeout: 3000 }).catch(() => false);
+      const hasTrend = await trendSection
+        .isVisible({ timeout: 3000 })
+        .catch(() => false);
 
       const svgElements = page.locator('svg');
       const svgCount = await svgElements.count();
@@ -184,12 +199,20 @@ test.describe('Admin Dashboard E2E', () => {
       await page.goto(`${BP}/admin/audit`);
       await page.waitForLoadState('networkidle');
 
-      const statsHeading = page.getByRole('heading', { name: /authentication statistics/i });
+      const statsHeading = page.getByRole('heading', {
+        name: /authentication statistics/i,
+      });
       await expect(statsHeading).toBeVisible({ timeout: 10000 });
 
-      await expect(page.locator('[data-testid="stat-logins-today"]')).toBeVisible();
-      await expect(page.locator('[data-testid="stat-failed-week"]')).toBeVisible();
-      await expect(page.locator('[data-testid="stat-rate-limited"]')).toBeVisible();
+      await expect(
+        page.locator('[data-testid="stat-logins-today"]')
+      ).toBeVisible();
+      await expect(
+        page.locator('[data-testid="stat-failed-week"]')
+      ).toBeVisible();
+      await expect(
+        page.locator('[data-testid="stat-rate-limited"]')
+      ).toBeVisible();
       await expect(page.locator('[data-testid="stat-signups"]')).toBeVisible();
     });
 
@@ -198,7 +221,9 @@ test.describe('Admin Dashboard E2E', () => {
       await page.waitForLoadState('networkidle');
       await page.waitForTimeout(3000);
 
-      const burstHeading = page.getByRole('heading', { name: /failed login bursts/i });
+      const burstHeading = page.getByRole('heading', {
+        name: /failed login bursts/i,
+      });
       if (await burstHeading.isVisible({ timeout: 5000 }).catch(() => false)) {
         await expect(page.locator('[data-testid="stat-bursts"]')).toBeVisible();
 
@@ -222,7 +247,9 @@ test.describe('Admin Dashboard E2E', () => {
       const burstCount = await burstCards.count();
 
       if (burstCount > 0) {
-        const toggleButton = page.locator('[data-testid="burst-toggle"]').first();
+        const toggleButton = page
+          .locator('[data-testid="burst-toggle"]')
+          .first();
         await toggleButton.click();
 
         const burstDetail = page.locator('[data-testid="burst-detail"]');
@@ -261,7 +288,9 @@ test.describe('Admin Dashboard E2E', () => {
         await filterSelect.selectOption('sign_in_failed');
         await page.waitForTimeout(1000);
 
-        const eventBadges = page.locator('[data-testid="audit-events-table"] .badge-outline');
+        const eventBadges = page.locator(
+          '[data-testid="audit-events-table"] .badge-outline'
+        );
         const badgeCount = await eventBadges.count();
         if (badgeCount > 0) {
           for (let i = 0; i < badgeCount; i++) {
@@ -278,10 +307,14 @@ test.describe('Admin Dashboard E2E', () => {
       const eventsTable = page.locator('[data-testid="audit-events-table"]');
       await expect(eventsTable).toBeVisible({ timeout: 10000 });
 
-      const timeHeader = eventsTable.locator('thead button').filter({ hasText: 'Time' });
+      const timeHeader = eventsTable
+        .locator('thead button')
+        .filter({ hasText: 'Time' });
       if (await timeHeader.isVisible().catch(() => false)) {
         await timeHeader.click();
-        const headerCell = eventsTable.locator('th').filter({ hasText: 'Time' });
+        const headerCell = eventsTable
+          .locator('th')
+          .filter({ hasText: 'Time' });
         await expect(headerCell).toHaveAttribute('aria-sort', 'ascending');
 
         await timeHeader.click();
@@ -289,13 +322,19 @@ test.describe('Admin Dashboard E2E', () => {
       }
     });
 
-    test('should display anomaly alerts when failed logins exist', async ({ page }) => {
+    test('should display anomaly alerts when failed logins exist', async ({
+      page,
+    }) => {
       await page.goto(`${BP}/admin/audit`);
       await page.waitForLoadState('networkidle');
       await page.waitForTimeout(3000);
 
-      const anomalyHeading = page.getByRole('heading', { name: /anomaly alerts/i });
-      if (await anomalyHeading.isVisible({ timeout: 3000 }).catch(() => false)) {
+      const anomalyHeading = page.getByRole('heading', {
+        name: /anomaly alerts/i,
+      });
+      if (
+        await anomalyHeading.isVisible({ timeout: 3000 }).catch(() => false)
+      ) {
         const anomalyCards = page.locator('.border-warning');
         const anomalyCount = await anomalyCards.count();
         expect(anomalyCount).toBeGreaterThan(0);
@@ -310,7 +349,9 @@ test.describe('Admin Dashboard E2E', () => {
       await page.waitForLoadState('networkidle');
       await page.waitForTimeout(3000);
 
-      await expect(page.getByText(/audit logs are retained/i)).toBeVisible({ timeout: 5000 });
+      await expect(page.getByText(/audit logs are retained/i)).toBeVisible({
+        timeout: 5000,
+      });
     });
   });
 
@@ -350,7 +391,11 @@ test.describe('Admin Dashboard E2E', () => {
       await page.waitForLoadState('networkidle');
       await page.waitForTimeout(3000);
 
-      const searchInput = page.locator('input[type="search"], input[placeholder*="search" i], input[placeholder*="filter" i]').first();
+      const searchInput = page
+        .locator(
+          'input[type="search"], input[placeholder*="search" i], input[placeholder*="filter" i]'
+        )
+        .first();
       if (await searchInput.isVisible({ timeout: 3000 }).catch(() => false)) {
         await searchInput.fill('alice');
         await page.waitForTimeout(1000);
@@ -383,7 +428,12 @@ test.describe('Admin Dashboard E2E', () => {
       await expect(heading).toBeVisible({ timeout: 10000 });
 
       const statCards = page.locator('[data-testid^="stat-"]');
-      if (await statCards.first().isVisible({ timeout: 5000 }).catch(() => false)) {
+      if (
+        await statCards
+          .first()
+          .isVisible({ timeout: 5000 })
+          .catch(() => false)
+      ) {
         const count = await statCards.count();
         expect(count).toBeGreaterThan(0);
       }
@@ -395,7 +445,9 @@ test.describe('Admin Dashboard E2E', () => {
       await page.waitForTimeout(3000);
 
       const topSendersHeading = page.getByText(/top senders/i);
-      if (await topSendersHeading.isVisible({ timeout: 5000 }).catch(() => false)) {
+      if (
+        await topSendersHeading.isVisible({ timeout: 5000 }).catch(() => false)
+      ) {
         const table = page.locator('table');
         const tableCount = await table.count();
         if (tableCount > 0) {
@@ -412,7 +464,9 @@ test.describe('Admin Dashboard E2E', () => {
       await page.waitForTimeout(3000);
 
       // Look for visible SVG charts (exclude hidden utility SVGs like icon sprites)
-      const visibleCharts = page.locator('svg:visible, canvas:visible, [data-testid*="trend"]:visible, [data-testid*="chart"]:visible');
+      const visibleCharts = page.locator(
+        'svg:visible, canvas:visible, [data-testid*="trend"]:visible, [data-testid*="chart"]:visible'
+      );
       const chartCount = await visibleCharts.count();
 
       // Messaging volume trends may or may not have chart data depending on seed data range.

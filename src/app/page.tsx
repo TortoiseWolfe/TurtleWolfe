@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { LayeredScriptHammerLogo } from '@/components/atomic/SpinningLogo';
+import { LayeredTurtleWolfeLogo } from '@/components/atomic/SpinningLogo';
 import { AnimatedLogo } from '@/components/atomic/AnimatedLogo';
 import TemplateStats, {
   type TemplateStat,
@@ -52,7 +52,7 @@ const DEMOS: readonly TemplateDemo[] = [
   { label: 'Contact', href: '/contact' },
 ];
 
-const STORYBOOK_URL = 'https://tortoisewolfe.github.io/ScriptHammer/storybook/';
+const STORYBOOK_URL = 'https://tortoisewolfe.github.io/TurtleWolfe/storybook/';
 
 const FEATURES = [
   {
@@ -113,7 +113,7 @@ export default function Home() {
           {/* Logo — responsive sizing, spins slowly, pauses on hover */}
           <div className="flex-shrink-0">
             <div className="h-48 w-48 sm:h-52 sm:w-52 md:h-56 md:w-56 lg:h-[350px] lg:w-[350px]">
-              <LayeredScriptHammerLogo speed="slow" pauseOnHover />
+              <LayeredTurtleWolfeLogo speed="slow" pauseOnHover />
             </div>
           </div>
 

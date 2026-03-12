@@ -14,7 +14,7 @@ import CTABanner from '@/components/molecular/CTABanner';
 
 const STATS: readonly TemplateStat[] = [
   {
-    value: '10+',
+    value: '15+',
     label: 'Years Experience',
     detail: 'Web development & design',
     href: '/about',
@@ -115,9 +115,9 @@ const OTHER_PROJECTS = [
     href: 'https://tortoisewolfe.github.io/The_House_that_Code_Built/',
   },
   {
-    title: 'MoltBot / Automated Twitch',
+    title: 'OpenClaw / Automated Twitch',
     description:
-      'AI-powered 24/7 Twitch channel using Remotion for programmatic video generation and MoltBot agent pipeline.',
+      'AI-powered 24/7 Twitch channel using Remotion for programmatic video generation and OpenClaw agent pipeline.',
     image: {
       src: '/portfolio/other/scripthammer-twitch.png',
       alt: 'ScriptHammer automated Twitch channel showing AI-generated content',
@@ -129,6 +129,10 @@ const OTHER_PROJECTS = [
     title: 'Mercor AI Evaluation',
     description:
       'A/B testing framework for evaluating AI coding assistants — Python validation tools, multi-track test orchestration, behavioral analysis.',
+    image: {
+      src: '/portfolio/other/mercor-ai.png',
+      alt: 'Mercor AI platform — Shape the future of AI',
+    },
     stack: ['Python', 'Docker', 'Bash', 'tmux'],
     href: 'https://github.com/TortoiseWolfe',
   },
@@ -293,7 +297,7 @@ export default function Home() {
             </p>
 
             <p className="text-base-content/80 mb-6 max-w-2xl text-lg leading-relaxed sm:text-xl">
-              10+ years building accessible web applications with React,
+              15+ years building accessible web applications with React,
               TypeScript, and Next.js. 20+ years in graphic design.
             </p>
 

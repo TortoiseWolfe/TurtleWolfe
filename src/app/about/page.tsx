@@ -6,7 +6,7 @@ import CTABanner from '@/components/molecular/CTABanner';
 export const metadata: Metadata = {
   title: 'About | Jonathan Pohlner',
   description:
-    'Full Stack Developer with 10+ years building accessible web applications and 20+ years in graphic design.',
+    'Full Stack Developer with 15+ years building accessible web applications and 20+ years in graphic design.',
 };
 
 const EXPERIENCE: TimelineEntry[] = [
@@ -127,7 +127,7 @@ export default function AboutPage() {
             About Me
           </h1>
           <p className="text-base-content/70 mx-auto max-w-2xl text-lg leading-relaxed">
-            Full Stack Developer with 10+ years building accessible web
+            Full Stack Developer with 15+ years building accessible web
             applications and 20+ years in graphic design. I specialize in React,
             TypeScript, and Next.js — turning complex problems into clean,
             maintainable solutions.

@@ -169,6 +169,17 @@ const OTHER_PROJECTS = [
     stack: ['Three.js', 'Unity', 'Design'],
     href: 'https://github.com/TortoiseWolfe/GrimGlow_planning',
   },
+  {
+    title: 'Spec Kit Wireframe Extension',
+    description:
+      'Visual feedback loop for Spec-Driven Development. Generates SVG wireframes from specs; on sign-off they become spec constraints honored by /plan, /tasks, and /implement. Submitted to the spec-kit community catalog.',
+    image: {
+      src: '/portfolio/other/spec-kit-extension-wireframe.svg',
+      alt: 'Spec Kit wireframe extension viewer showing a login page mockup with annotated callouts',
+    },
+    stack: ['Spec Kit', 'SVG', 'Python', 'HTML'],
+    href: 'https://tortoisewolfe.github.io/spec-kit-extension-wireframe/',
+  },
 ] as const;
 
 const SOCIAL_LINKS = [

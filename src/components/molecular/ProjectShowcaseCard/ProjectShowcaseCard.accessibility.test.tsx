@@ -11,6 +11,11 @@ describe('ProjectShowcaseCard Accessibility', () => {
     href: 'https://example.com',
   };
 
+  const SAMPLE_ART = `  ●─────┐
+  │     │
+  └─────●`;
+  const SAMPLE_DESC = 'Two route nodes connected by a path.';
+
   it('should have no accessibility violations with basic props', async () => {
     const { container } = render(<ProjectShowcaseCard {...defaultProps} />);
     const results = await axe(container);
@@ -62,5 +67,52 @@ describe('ProjectShowcaseCard Accessibility', () => {
       rules: { 'color-contrast': { enabled: true } },
     });
     expect(results).toHaveNoViolations();
+  });
+
+  // ── CRT variant — feature 047 a11y parity. ──
+  it('should have no violations in CRT variant with ASCII art', async () => {
+    const { container } = render(
+      <ProjectShowcaseCard
+        {...defaultProps}
+        variant="crt"
+        asciiArt={{ art: SAMPLE_ART, description: SAMPLE_DESC }}
+      />
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it('should have no violations in CRT variant with image fallback', async () => {
+    const { container } = render(
+      <ProjectShowcaseCard
+        {...defaultProps}
+        variant="crt"
+        image={{ src: '/test.jpg', alt: 'CRT-mode screenshot' }}
+      />
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it('should have no violations in CRT variant as internal link', async () => {
+    const { container } = render(
+      <ProjectShowcaseCard
+        {...defaultProps}
+        variant="crt"
+        href="/projects/test"
+        hasDetailPage
+        asciiArt={{ art: SAMPLE_ART, description: SAMPLE_DESC }}
+      />
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it('should keep proper aria-label on CRT-variant external link', () => {
+    const { container } = render(
+      <ProjectShowcaseCard {...defaultProps} variant="crt" />
+    );
+    const link = container.querySelector('a');
+    expect(link).toHaveAttribute('aria-label', 'My Project project');
   });
 });

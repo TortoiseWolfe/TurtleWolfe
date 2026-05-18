@@ -80,3 +80,7 @@ mobile-check.png
 # If afterEach fails they linger; never commit them (see fixtures/README.md).
 scripts/__tests__/fixtures/*
 !scripts/__tests__/fixtures/README.md
+
+# Wireframe extension's nested .git/ — extension repo, not part of TurtleWolfe history
+.specify/extensions/*/.git/
+.specify/extensions/*/.env

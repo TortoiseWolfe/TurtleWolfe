@@ -1,0 +1,1 @@
+../../.specify/extensions/wireframe/commands/prep.md

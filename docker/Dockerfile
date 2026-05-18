@@ -2,10 +2,14 @@
 FROM node:22-slim AS base
 
 # Install pnpm and configure store
+# Note: PNPM_HOME/bin must precede PNPM_HOME on PATH because pnpm@10+ refuses
+# `pnpm config set` if `$PNPM_HOME/bin` is not on PATH (fails with
+# "The configured global bin directory ... is not in PATH"). Pre-creating
+# the dirs avoids a chicken-and-egg failure on first run.
 RUN corepack enable && corepack prepare pnpm@latest --activate
 ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN pnpm config set store-dir /pnpm/store --global
+ENV PATH="$PNPM_HOME/bin:$PNPM_HOME:$PATH"
+RUN mkdir -p /pnpm/bin /pnpm/store && pnpm config set store-dir /pnpm/store --global
 
 # Install dependencies only when needed
 FROM base AS deps

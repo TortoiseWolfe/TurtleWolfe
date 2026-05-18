@@ -14,7 +14,8 @@
 
 @plugin "daisyui" {
   themes:
-    turtlewolfe-dark --default,
+    turtlewolfe-crt --default,
+    turtlewolfe-dark,
     turtlewolfe-light,
     light,
     dark,
@@ -50,10 +51,57 @@
     sunset;
 }
 
+/* TurtleWolfe CRT Theme — Nostromo MU/TH/UR 6000 phosphor terminal.
+ * Default theme in portfolio mode. Phosphor green primary on near-black deck.
+ * See features/enhancements/047-portfolio-visual-overhaul/spec.md §Resolved 3. */
+@plugin "daisyui/theme" {
+  name: 'turtlewolfe-crt';
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: oklch(
+    8.5% 0.015 150
+  ); /* #050907 near-black phosphor deck */
+  --color-base-200: oklch(11% 0.02 150); /* #0a1410 slight lift */
+  --color-base-300: oklch(14% 0.025 150); /* #0e1f17 card surface */
+  --color-base-content: oklch(85% 0.18 145); /* #4ade80 phosphor green */
+
+  --color-primary: oklch(85% 0.18 145); /* #4ade80 phosphor green */
+  --color-primary-content: oklch(8.5% 0.015 150); /* near-black */
+
+  --color-secondary: oklch(82% 0.16 80); /* #fbbf24 amber */
+  --color-secondary-content: oklch(15% 0.04 80); /* dark warm */
+
+  --color-accent: oklch(82% 0.16 80); /* #fbbf24 amber (matches secondary) */
+  --color-accent-content: oklch(15% 0.04 80);
+
+  --color-neutral: oklch(20% 0.025 30); /* #1a1612 warm dark (bezel tone) */
+  --color-neutral-content: oklch(85% 0.18 145); /* phosphor green text */
+
+  --color-info: oklch(85% 0.18 145); /* phosphor green for info */
+  --color-info-content: oklch(8.5% 0.015 150);
+  --color-success: oklch(85% 0.18 145); /* phosphor green for success */
+  --color-success-content: oklch(8.5% 0.015 150);
+  --color-warning: oklch(82% 0.16 80); /* amber for warnings */
+  --color-warning-content: oklch(15% 0.04 80);
+  --color-error: oklch(72% 0.18 25); /* #f87171 critical red */
+  --color-error-content: oklch(8.5% 0.015 150);
+
+  --radius-selector: 0.25rem; /* tighter than turtlewolfe-dark — CRT feel */
+  --radius-field: 0.125rem;
+  --radius-box: 0.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0; /* flat CRT — no drop shadows */
+  --noise: 1;
+}
+
 /* TurtleWolfe Dark Theme — VS Code dark meets metallic craftsmanship */
 @plugin "daisyui/theme" {
   name: 'turtlewolfe-dark';
-  default: true;
+  default: false;
   color-scheme: dark;
 
   --color-base-100: oklch(22.84% 0.038 282.93); /* #1a1a2e charcoal */
@@ -897,4 +945,129 @@ p:not([class*='text-']) {
 /* Storybook loading skeleton wrapper */
 .sb-preparing-docs.sb-wrapper {
   background-color: var(--color-base-100, inherit) !important;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════
+ * Feature 047 — Portfolio Visual Overhaul (Nostromo CRT)
+ * Font aliasing, reduced-motion gate, focus rings, CRT-specific keyframes.
+ * See features/enhancements/047-portfolio-visual-overhaul/spec.md
+ * ═════════════════════════════════════════════════════════════════════════ */
+
+/* Body font aliases to mono. The CRT aesthetic is intentionally mono-heavy;
+ * the single italic display serif (--font-display) is used only for the hero
+ * name and project card titles. See spec §FR-002 + §Resolved 2. */
+:root {
+  --font-body: var(--font-mono);
+}
+
+/* Global focus ring — uses the active theme's primary color so it adapts to
+ * every theme (phosphor green in CRT, dark slate in light, etc.). See spec
+ * §FR-011 + §Resolved 7. */
+:focus-visible {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* CRT keyframes (only animate when prefers-reduced-motion is NOT set). */
+@keyframes cursor-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scanline-drift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 8px;
+  }
+}
+
+@keyframes manifest-retype {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes screen-wipe {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* JS-gate cooperation classes — components add/remove these to opt in/out. */
+.cursor-blink {
+  animation: cursor-blink 1s steps(1, end) infinite;
+}
+
+.scanline-drift {
+  animation: scanline-drift 30s linear infinite;
+}
+
+.manifest-retype {
+  animation: manifest-retype 600ms steps(60, end) forwards;
+}
+
+.screen-wipe {
+  animation: screen-wipe 600ms ease-out forwards;
+}
+
+/* Magnetic hover offset for CRT-variant project cards (spec §FR-006).
+ * The +4px translate ONLY fires on devices that actually have a fine,
+ * hover-capable pointer — touch devices (coarse pointer, no hover) get a
+ * flat card. Reduced-motion users get the same, via the @media block below. */
+.crt-magnetic {
+  transition:
+    transform 200ms ease-out,
+    border-color 200ms ease-out,
+    box-shadow 200ms ease-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .crt-magnetic:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Defense-in-depth: CSS gate for prefers-reduced-motion. Kills all the named
+ * CRT animations universally, in case a JS gate misses one. The blanket
+ * `*, *::before, *::after` rule below also caps any third-party animations.
+ * See research.md §R6. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .cursor-blink,
+  .scanline-drift,
+  .manifest-retype,
+  .screen-wipe,
+  .boot-typing,
+  .magnetic-hover,
+  .crt-magnetic {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* And explicitly: no translate, even on hover-capable devices. */
+  .crt-magnetic:hover {
+    transform: none !important;
+  }
 }

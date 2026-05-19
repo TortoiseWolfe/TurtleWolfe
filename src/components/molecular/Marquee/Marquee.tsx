@@ -83,26 +83,32 @@ export default function Marquee({
 
   return (
     <div
-      className={`font-mono${className ? ` ${className}` : ''}`}
+      className={`font-mono text-sm${className ? ` ${className}` : ''}`}
       data-testid="manifest-block"
     >
       <div
         aria-hidden="true"
-        className="text-secondary"
+        className="text-secondary mb-2"
         data-testid="manifest-header"
       >
         {header}
       </div>
-      <ul className="m-0 list-none p-0">
+      {/* Inline-wrapping pill row per spec §UI Mockup. NOT a vertical list —
+          the manifest reads as a single "stack.run()" output line that wraps
+          across the column width. */}
+      <ul
+        className="m-0 flex list-none flex-wrap gap-x-3 gap-y-1 p-0"
+        aria-label="Technology stack"
+      >
         {items.map((item, idx) => (
           <li
             key={`${item}-${idx}`}
-            className="text-primary"
+            className="text-primary inline-flex items-baseline whitespace-nowrap"
             data-testid={`manifest-item-${idx}`}
           >
-            <span className="text-accent" aria-hidden="true">
+            <span className="text-accent mr-1" aria-hidden="true">
               [✓]
-            </span>{' '}
+            </span>
             <span
               className={
                 retypingIdx === idx

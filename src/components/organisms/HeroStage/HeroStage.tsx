@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BootSequence from '@/components/molecular/BootSequence';
 import Marquee from '@/components/molecular/Marquee';
 import CursorHalo from '@/components/atomic/CursorHalo';
@@ -63,14 +63,22 @@ const DEFAULT_SECONDARY_CTA: HeroStageCta = {
 /**
  * ASCII bezel frame for the brand mark. Decorative — rendered via `<pre
  * aria-hidden="true">` so screen readers ignore it; the `LayeredTurtleWolfeLogo`
- * inside carries its own descriptive image alt text.
+ * inside carries its own descriptive image alt text. Width is calibrated so the
+ * inner space fits a square logo at ~80% of the frame's height without the box
+ * lines overlapping the gear teeth.
  */
-const BRAND_FRAME_ASCII = `┌─────────────┐
-│  ╔═══════╗  │
-│  ║       ║  │
-│  ║       ║  │
-│  ╚═══════╝  │
-└─────────────┘`;
+const BRAND_FRAME_ASCII = `┌─────────────────────────┐
+│                         │
+│                         │
+│                         │
+│                         │
+│                         │
+│                         │
+│                         │
+│                         │
+│                         │
+│                         │
+└─────────────────────────┘`;
 
 /**
  * Format a `Date` as `YYYY.MM.DD HH:MM:SS` for the MU/TH/UR status bar.
@@ -123,11 +131,16 @@ export default function HeroStage({
   secondaryCta = DEFAULT_SECONDARY_CTA,
   manifestItems,
 }: HeroStageProps) {
-  // Page-load-frozen timestamp per spec §UI Mockup status bar. `useState`
-  // captures the Date once on mount; no `setInterval` ticks it, by design —
-  // a constantly-updating timestamp is distracting and signals "loading"
-  // when the page is actually idle.
-  const [statusTimestamp] = useState(() => formatStatusTimestamp(new Date()));
+  // Page-load-frozen timestamp per spec §UI Mockup status bar. Captured ONCE
+  // on client mount (not server-side) to avoid a hydration mismatch — the
+  // server's `Date` is in UTC and ms-later than the client's wall clock.
+  // SSR renders a placeholder; the timestamp pops in on hydration. By design,
+  // no `setInterval` ticks it — a constantly-updating timestamp is distracting
+  // and signals "loading" when the page is actually idle.
+  const [statusTimestamp, setStatusTimestamp] = useState('');
+  useEffect(() => {
+    setStatusTimestamp(formatStatusTimestamp(new Date()));
+  }, []);
 
   return (
     <section
@@ -160,12 +173,16 @@ export default function HeroStage({
       {/* Inner content container. `relative z-10` so it sits above the
           decorative overlays. */}
       <div className="relative z-10 mx-auto w-full max-w-6xl">
-        {/* Status bar — single mono line, page-load-frozen timestamp. */}
+        {/* Status bar — single mono line, page-load-frozen timestamp. The
+            timestamp slot is empty on SSR and filled by useEffect on mount;
+            a non-breaking space holds the row height so there's no layout
+            shift when the time pops in. */}
         <div
           data-testid="hero-status-bar"
           className="text-primary font-mono text-sm tracking-wider"
         >
-          MU/TH/UR 6000 :: PORT 3000 :: {statusTimestamp}
+          MU/TH/UR 6000 :: PORT 3000 ::{' '}
+          <span suppressHydrationWarning>{statusTimestamp || ' '}</span>
         </div>
 
         {/* Boot sequence sits immediately under the status bar so the typing
@@ -213,10 +230,10 @@ export default function HeroStage({
                 under responsive `hidden` toggles so we never duplicate the
                 animation state — only one is visible at a time. */}
             <div className="lg:hidden">
-              <BrandMarkFrame logoSizeClass="h-40 w-40 sm:h-48 sm:w-48" />
+              <BrandMarkFrame logoSizeClass="h-32 w-32 sm:h-40 sm:w-40" />
             </div>
 
-            {/* Manifest block — `> MANIFEST.LOAD()` + 12-item list. */}
+            {/* Manifest block — `> MANIFEST.LOAD()` + 12-item wrapping list. */}
             <div className="mt-2">
               <Marquee items={manifestItems} />
             </div>
@@ -253,7 +270,7 @@ export default function HeroStage({
 
           {/* RIGHT COLUMN — ASCII-framed brand mark, lg+ only. */}
           <div className="hidden lg:block">
-            <BrandMarkFrame logoSizeClass="h-72 w-72 xl:h-80 xl:w-80" />
+            <BrandMarkFrame logoSizeClass="h-56 w-56 xl:h-64 xl:w-64" />
           </div>
         </div>
       </div>
@@ -273,16 +290,18 @@ function BrandMarkFrame({ logoSizeClass }: { logoSizeClass: string }) {
       data-testid="hero-brand-frame"
       className="relative inline-flex items-center justify-center"
     >
+      {/* ASCII bezel — small enough that the gear inside dominates, not the
+          frame. Tracking-tight collapses character spacing so the box looks
+          like a CRT bezel, not a sparse outline. */}
       <pre
         aria-hidden="true"
-        className="text-primary font-mono text-2xl leading-tight whitespace-pre opacity-90 md:text-3xl lg:text-4xl"
+        className="text-primary font-mono text-xs leading-[1.1] tracking-tight whitespace-pre opacity-80 sm:text-sm md:text-base"
       >
         {BRAND_FRAME_ASCII}
       </pre>
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-0 flex items-center justify-center ${logoSizeClass}`}
-        style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}
+        className={`pointer-events-none absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center ${logoSizeClass}`}
       >
         <LayeredTurtleWolfeLogo speed="slow" pauseOnHover />
       </div>

@@ -14,9 +14,9 @@
 
 @plugin "daisyui" {
   themes:
-    turtlewolfe-crt --default,
-    turtlewolfe-dark,
+    turtlewolfe-dark --default,
     turtlewolfe-light,
+    turtlewolfe-crt,
     light,
     dark,
     cupcake,
@@ -52,12 +52,14 @@
 }
 
 /* TurtleWolfe CRT Theme — Nostromo MU/TH/UR 6000 phosphor terminal.
- * Default theme in portfolio mode. Phosphor green primary on near-black deck.
+ * Available in the theme switcher but NOT the portfolio-mode default
+ * (reverted to turtlewolfe-dark after PR #1 visual revert on 2026-05-19).
+ * Phosphor green primary on near-black deck.
  * See features/enhancements/047-portfolio-visual-overhaul/spec.md §Resolved 3. */
 @plugin "daisyui/theme" {
   name: 'turtlewolfe-crt';
-  default: true;
-  prefersdark: true;
+  default: false;
+  prefersdark: false;
   color-scheme: dark;
 
   --color-base-100: oklch(
@@ -101,7 +103,8 @@
 /* TurtleWolfe Dark Theme — VS Code dark meets metallic craftsmanship */
 @plugin "daisyui/theme" {
   name: 'turtlewolfe-dark';
-  default: false;
+  default: true;
+  prefersdark: true;
   color-scheme: dark;
 
   --color-base-100: oklch(22.84% 0.038 282.93); /* #1a1a2e charcoal */

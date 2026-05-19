@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Instrument_Serif, JetBrains_Mono } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import ThemeScript from '@/components/ThemeScript';
 import { GlobalNav } from '@/components/GlobalNav';
@@ -22,34 +22,35 @@ import {
 import { CountdownBanner } from '@/components/atomic/CountdownBanner';
 // import { SetupBanner } from '@/components/SetupBanner'; // Supabase disabled — portfolio site
 
-// Display face — the one serif on the page, used for the hero name and
-// project-card titles. The Nostromo CRT aesthetic is intentionally mono-heavy;
-// this italic serif carries enormous visual weight against the otherwise-uniform
-// monospace. See spec 047 §Resolved decision 1.
-const instrumentSerif = Instrument_Serif({
-  variable: '--font-display',
-  weight: '400',
-  style: 'italic',
+const geistSans = Geist({
+  variable: '--font-geist-sans',
   subsets: ['latin'],
   display: 'swap',
   preload: true,
-  fallback: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+  fallback: [
+    'system-ui',
+    '-apple-system',
+    'BlinkMacSystemFont',
+    '"Segoe UI"',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+  ],
 });
 
-// Mono face — used for status bar, manifest, CTAs, project card labels, ASCII
-// diagrams, and ALL body copy. `--font-body` is aliased to `--font-mono` in
-// globals.css :root. See spec 047 §Resolved decision 2.
-const jetbrainsMono = JetBrains_Mono({
-  variable: '--font-mono',
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
   subsets: ['latin'],
   display: 'swap',
   preload: true,
   fallback: [
     '"SF Mono"',
-    'Menlo',
     'Monaco',
-    'Consolas',
-    '"Courier New"',
+    '"Inconsolata"',
+    '"Fira Mono"',
+    '"Droid Sans Mono"',
+    '"Source Code Pro"',
     'monospace',
   ],
 });
@@ -60,7 +61,7 @@ export const viewport: Viewport = {
   maximumScale: 5,
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#f5f0eb' },
-    { media: '(prefers-color-scheme: dark)', color: '#050907' },
+    { media: '(prefers-color-scheme: dark)', color: '#1a1a2e' },
   ],
 };
 
@@ -112,7 +113,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${instrumentSerif.variable} ${jetbrainsMono.variable} flex min-h-screen flex-col antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col antialiased`}
         suppressHydrationWarning
       >
         <ThemeScript />

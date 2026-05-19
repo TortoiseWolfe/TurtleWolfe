@@ -46,6 +46,20 @@
           "status": "draft",
           "theme": "light",
           "svg_file": "06-nostromo-crt.svg"
+        },
+        {
+          "path": "047-portfolio-visual-overhaul/wireframes/07-nostromo-rev2.svg",
+          "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 07 \u2014 NOSTROMO REV 2 (6 EDITORIAL MOVES)",
+          "status": "draft",
+          "theme": "light",
+          "svg_file": "07-nostromo-rev2.svg"
+        },
+        {
+          "path": "047-portfolio-visual-overhaul/wireframes/08-nostromo-rev3.svg",
+          "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 08 \u2014 NOSTROMO REV 3 (GLASS + GLOW LAYERED ON V07)",
+          "status": "draft",
+          "theme": "light",
+          "svg_file": "08-nostromo-rev3.svg"
         }
       ]
     }
@@ -98,7 +112,23 @@
       "feature_label": "047 - Portfolio Visual Overhaul",
       "status": "draft",
       "theme": "light"
+    },
+    {
+      "path": "/specs/047-portfolio-visual-overhaul/wireframes/07-nostromo-rev2.svg",
+      "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 07 \u2014 NOSTROMO REV 2 (6 EDITORIAL MOVES)",
+      "feature": "047-portfolio-visual-overhaul",
+      "feature_label": "047 - Portfolio Visual Overhaul",
+      "status": "draft",
+      "theme": "light"
+    },
+    {
+      "path": "/specs/047-portfolio-visual-overhaul/wireframes/08-nostromo-rev3.svg",
+      "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 08 \u2014 NOSTROMO REV 3 (GLASS + GLOW LAYERED ON V07)",
+      "feature": "047-portfolio-visual-overhaul",
+      "feature_label": "047 - Portfolio Visual Overhaul",
+      "status": "draft",
+      "theme": "light"
     }
   ],
-  "total": 6
+  "total": 8
 }

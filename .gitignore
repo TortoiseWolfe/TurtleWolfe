@@ -84,3 +84,4 @@ scripts/__tests__/fixtures/*
 # Wireframe extension's nested .git/ — extension repo, not part of TurtleWolfe history
 .specify/extensions/*/.git/
 .specify/extensions/*/.env
+specs/047-portfolio-visual-overhaul

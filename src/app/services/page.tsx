@@ -14,10 +14,13 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="px-4 pt-12 pb-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl text-center">
-          <h1 className="text-base-content mb-4 text-3xl font-bold sm:text-4xl md:text-5xl">
+          <h1
+            className="font-display crt-halation-strong text-primary mb-4 text-5xl italic sm:text-6xl md:text-7xl"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
             What I Build
           </h1>
-          <p className="text-base-content/70 mx-auto max-w-2xl text-lg leading-relaxed">
+          <p className="text-base-content/70 crt-halation mx-auto max-w-2xl text-lg leading-relaxed">
             Full-stack solutions from concept to deployment. I specialize in
             modern web applications that are accessible, performant, and built
             to last.
@@ -155,7 +158,7 @@ export default function ServicesPage() {
         className="section-glow px-4 py-12 sm:px-6 lg:px-8"
       >
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-base-content mb-8 text-center text-2xl font-bold sm:text-3xl">
+          <h2 className="text-primary crt-halation mb-8 text-center font-mono text-2xl font-bold tracking-wider sm:text-3xl">
             How I Work
           </h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -185,7 +188,7 @@ export default function ServicesPage() {
                 <span className="text-primary font-mono text-4xl font-bold">
                   {phase.step}
                 </span>
-                <h3 className="text-base-content mt-2 text-lg font-semibold">
+                <h3 className="text-base-content crt-halation mt-2 text-lg font-semibold">
                   {phase.title}
                 </h3>
                 <p className="text-base-content/70 mt-1 text-sm">

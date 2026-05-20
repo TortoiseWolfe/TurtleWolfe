@@ -85,3 +85,6 @@ scripts/__tests__/fixtures/*
 .specify/extensions/*/.git/
 .specify/extensions/*/.env
 specs/047-portfolio-visual-overhaul
+
+# Session-2 scratch helpers (screenshot captures, Playwright one-shots)
+.tmp-*

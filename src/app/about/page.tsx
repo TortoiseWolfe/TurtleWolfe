@@ -123,10 +123,13 @@ export default function AboutPage() {
           <div className="bg-base-300 mx-auto mb-6 flex h-32 w-32 items-center justify-center rounded-full sm:h-40 sm:w-40">
             <span className="text-base-content/30 text-5xl font-bold">JP</span>
           </div>
-          <h1 className="text-base-content mb-4 text-3xl font-bold sm:text-4xl md:text-5xl">
+          <h1
+            className="font-display crt-halation-strong text-primary mb-4 text-5xl italic sm:text-6xl md:text-7xl"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
             About Me
           </h1>
-          <p className="text-base-content/70 mx-auto max-w-2xl text-lg leading-relaxed">
+          <p className="text-base-content/80 crt-halation mx-auto max-w-2xl font-mono text-base leading-relaxed sm:text-lg">
             Full Stack Developer with 15+ years building accessible web
             applications and 20+ years in graphic design. I specialize in React,
             TypeScript, and Next.js — turning complex problems into clean,
@@ -141,7 +144,7 @@ export default function AboutPage() {
         className="section-glow px-4 py-12 sm:px-6 lg:px-8"
       >
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-base-content mb-8 text-center text-2xl font-bold sm:text-3xl">
+          <h2 className="text-primary crt-halation mb-8 text-center font-mono text-2xl font-bold tracking-wider sm:text-3xl">
             Experience
           </h2>
           <ExperienceTimeline entries={EXPERIENCE} />
@@ -154,12 +157,15 @@ export default function AboutPage() {
         className="px-4 py-12 sm:px-6 lg:px-8"
       >
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-base-content mb-8 text-center text-2xl font-bold sm:text-3xl">
+          <h2 className="text-primary crt-halation mb-8 text-center font-mono text-2xl font-bold tracking-wider sm:text-3xl">
             Skills
           </h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {Object.entries(SKILLS).map(([category, skills]) => (
-              <div key={category} className="card bg-base-100 shadow-md">
+              <div
+                key={category}
+                className="card crt-glass bg-base-100 shadow-md"
+              >
                 <div className="card-body">
                   <h3 className="card-title text-primary text-base">
                     {category}
@@ -187,7 +193,7 @@ export default function AboutPage() {
         className="section-glow px-4 py-12 sm:px-6 lg:px-8"
       >
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-base-content mb-8 text-center text-2xl font-bold sm:text-3xl">
+          <h2 className="text-primary crt-halation mb-8 text-center font-mono text-2xl font-bold tracking-wider sm:text-3xl">
             Certifications
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -217,12 +223,15 @@ export default function AboutPage() {
                   href={cert.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="card bg-base-200 shadow-md transition-all hover:-translate-y-1 hover:shadow-lg"
+                  className="card crt-glass bg-base-200 shadow-md transition-all hover:-translate-y-1 hover:shadow-lg"
                 >
                   {cardContent}
                 </a>
               ) : (
-                <div key={cert.title} className="card bg-base-200 shadow-md">
+                <div
+                  key={cert.title}
+                  className="card crt-glass bg-base-200 shadow-md"
+                >
                   {cardContent}
                 </div>
               );
@@ -234,11 +243,11 @@ export default function AboutPage() {
       {/* Community */}
       <section aria-label="Community" className="px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-base-content mb-8 text-center text-2xl font-bold sm:text-3xl">
+          <h2 className="text-primary crt-halation mb-8 text-center font-mono text-2xl font-bold tracking-wider sm:text-3xl">
             Community
           </h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <div className="card bg-base-100 shadow-md">
+            <div className="card crt-glass bg-base-100 shadow-md">
               <div className="card-body items-center text-center">
                 <h3 className="card-title text-base">Dangerous Minds</h3>
                 <p className="text-base-content/70 text-sm">
@@ -246,7 +255,7 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="card bg-base-100 shadow-md">
+            <div className="card crt-glass bg-base-100 shadow-md">
               <div className="card-body items-center text-center">
                 <h3 className="card-title text-base">
                   FreeCodeCamp Chattanooga
@@ -260,7 +269,7 @@ export default function AboutPage() {
               href="https://tortoisewolfe.github.io/The_House_that_Code_Built/"
               target="_blank"
               rel="noopener noreferrer"
-              className="card bg-base-100 shadow-md transition-all hover:-translate-y-1 hover:shadow-lg"
+              className="card crt-glass bg-base-100 shadow-md transition-all hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="card-body items-center text-center">
                 <h3 className="card-title text-primary text-base">

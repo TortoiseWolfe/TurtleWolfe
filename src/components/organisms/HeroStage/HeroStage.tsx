@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import BootSequence from '@/components/molecular/BootSequence';
 import Marquee from '@/components/molecular/Marquee';
 import CursorHalo from '@/components/atomic/CursorHalo';
 import GrainOverlay from '@/components/atomic/GrainOverlay';
@@ -9,45 +8,35 @@ import ScanlineOverlay from '@/components/atomic/ScanlineOverlay';
 import { LayeredTurtleWolfeLogo } from '@/components/atomic/SpinningLogo';
 
 export interface HeroStageHeadline {
-  /** Brighter, larger "designer" half of the tagline. */
+  /** Italic-serif "Graphic Designer" half. */
   design: string;
-  /** Dimmer, smaller "developer" half of the tagline. */
+  /** Mono caps ":: FULL-STACK DEVELOPER" half. */
   developer: string;
 }
 
 export interface HeroStageCta {
-  /** Visible label text. */
   label: string;
-  /** Anchor href. */
   href: string;
-  /** When true, renders with `target="_blank" rel="noopener noreferrer"`. */
   external?: boolean;
 }
 
 export interface HeroStageProps {
-  /** Extra classes applied to the outer `<section>` wrapper. */
   className?: string;
-  /** Display name rendered in the italic serif. Default: 'Jonathan Pohlner'. */
   name?: string;
-  /** Two-part tagline. Default matches the FR-001 designer-weighted copy. */
   headline?: HeroStageHeadline;
-  /** Single-line credentials body rendered in mono under the tagline. */
   credentials?: string;
-  /** Primary CTA (terminal-command button). Defaults to `> ./contact.sh`. */
   primaryCta?: HeroStageCta;
-  /** Secondary CTA (outline terminal-command button). Defaults to the external resume. */
   secondaryCta?: HeroStageCta;
-  /** Manifest items passed straight to the `<Marquee>` molecular. */
   manifestItems?: readonly string[];
 }
 
 const DEFAULT_HEADLINE: HeroStageHeadline = {
-  design: 'GRAPHIC DESIGNER',
+  design: 'Graphic Designer',
   developer: ':: FULL-STACK DEVELOPER',
 };
 
 const DEFAULT_CREDENTIALS =
-  '20+ yrs design  ·  15+ yrs code  ·  accessible  ·  offline-first  ·  36 themes';
+  '20+ yrs design · 15+ yrs code · accessible · offline-first · 36 themes';
 
 const DEFAULT_PRIMARY_CTA: HeroStageCta = {
   label: '> ./contact.sh',
@@ -61,66 +50,119 @@ const DEFAULT_SECONDARY_CTA: HeroStageCta = {
 };
 
 /**
- * ASCII bezel frame for the brand mark. Decorative — rendered via `<pre
- * aria-hidden="true">` so screen readers ignore it; the `LayeredTurtleWolfeLogo`
- * inside carries its own descriptive image alt text. Width is calibrated so the
- * inner space fits a square logo at ~80% of the frame's height without the box
- * lines overlapping the gear teeth.
+ * 9 depth orbs distributed across the deck at three opacity tiers.
+ * Front (brighter, larger) / mid / back. Each orb gently drifts via the
+ * `.crt-orb` animation. See V08 wireframe + issues file §11.
  */
-const BRAND_FRAME_ASCII = `┌─────────────────────────┐
-│                         │
-│                         │
-│                         │
-│                         │
-│                         │
-│                         │
-│                         │
-│                         │
-│                         │
-│                         │
-└─────────────────────────┘`;
+const DEPTH_ORBS = [
+  {
+    top: '14%',
+    left: '12%',
+    size: 5,
+    color: 'var(--color-base-content)',
+    opacity: 0.55,
+    dx: 6,
+    dy: -4,
+    duration: 18,
+  },
+  {
+    top: '24%',
+    left: '22%',
+    size: 3,
+    color: 'var(--color-base-content)',
+    opacity: 0.3,
+    dx: -4,
+    dy: 6,
+    duration: 22,
+  },
+  {
+    top: '10%',
+    left: '58%',
+    size: 4,
+    color: 'var(--color-accent)',
+    opacity: 0.45,
+    dx: 5,
+    dy: -3,
+    duration: 16,
+  },
+  {
+    top: '20%',
+    left: '72%',
+    size: 3,
+    color: 'var(--color-accent)',
+    opacity: 0.25,
+    dx: -3,
+    dy: 5,
+    duration: 20,
+  },
+  {
+    top: '68%',
+    left: '78%',
+    size: 4,
+    color: 'var(--color-secondary)',
+    opacity: 0.4,
+    dx: 4,
+    dy: 6,
+    duration: 24,
+  },
+  {
+    top: '52%',
+    left: '8%',
+    size: 3,
+    color: 'var(--color-accent)',
+    opacity: 0.35,
+    dx: -5,
+    dy: -4,
+    duration: 19,
+  },
+  {
+    top: '78%',
+    left: '46%',
+    size: 3,
+    color: 'var(--color-primary)',
+    opacity: 0.45,
+    dx: 6,
+    dy: 4,
+    duration: 21,
+  },
+  {
+    top: '30%',
+    left: '88%',
+    size: 2,
+    color: 'var(--color-base-content)',
+    opacity: 0.25,
+    dx: -4,
+    dy: 4,
+    duration: 23,
+  },
+  {
+    top: '88%',
+    left: '30%',
+    size: 3,
+    color: 'var(--color-primary)',
+    opacity: 0.4,
+    dx: 5,
+    dy: -5,
+    duration: 17,
+  },
+];
 
 /**
- * Format a `Date` as `YYYY.MM.DD HH:MM:SS` for the MU/TH/UR status bar.
- * Zero-padded so the bar width is stable.
- */
-function formatStatusTimestamp(date: Date): string {
-  const pad = (value: number) => String(value).padStart(2, '0');
-  const year = date.getFullYear();
-  const month = pad(date.getMonth() + 1);
-  const day = pad(date.getDate());
-  const hours = pad(date.getHours());
-  const minutes = pad(date.getMinutes());
-  const seconds = pad(date.getSeconds());
-  return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
-}
-
-/**
- * Compose the Nostromo CRT hero per the signed-off wireframe
- * `wireframes/06-nostromo-crt.svg`. Assembles the existing
- * `LayeredTurtleWolfeLogo` brand mark with the eight new atomic + molecular
- * pieces (`ScanlineOverlay`, `GrainOverlay`, `CursorHalo`, `BlinkingCursor`,
- * `BootSequence`, `Marquee`, plus this organism's status bar and CTAs) into
- * the first viewport of the home page.
+ * Compose the Nostromo CRT hero per the V08 signed-off wireframe
+ * `wireframes/08-nostromo-rev3.svg` + binding spec at
+ * `docs/design/wireframes/047-portfolio-visual-overhaul/08-nostromo-rev3.issues.md`.
  *
- * Layout strategy:
- * - Desktop (lg+): two-column grid — text stack on the left, ASCII-framed
- *   brand mark on the right.
- * - Mobile: single column stacked top-to-bottom; brand mark slips in between
- *   the body copy and the manifest block at a smaller size.
+ * Adds six editorial moves + six atmospheric layers on top of V06:
  *
- * Skip-link contract: the `<section>` carries `id="main-content"` and the
- * skip link is the first focusable element inside it, matching the existing
- * `src/app/page.tsx` pattern so the global a11y affordance survives.
+ *   Editorial (V07):  vertical edge marker, project monitor in right column,
+ *                     red WARN/REC accent, off-axis display name,
+ *                     italic-serif designer half, diagonal section divider
+ *   Atmospheric (V08): phosphor halation glow, single off-center aurora bloom,
+ *                     glass treatment on monitor + CTAs, depth orbs,
+ *                     strong CRT vignette, glowing rule lines
  *
- * Color contract: no hardcoded colors — every fill / text / border resolves
- * via a DaisyUI theme token (`text-primary`, `text-secondary`,
- * `text-base-content`, `btn-primary`, `btn-outline btn-secondary`,
- * `bg-base-100`). The Nostromo phosphor palette only shows up because
- * `turtlewolfe-crt` is the active theme; switching themes recolors the
- * whole composition automatically (FR-010).
- *
- * @see features/enhancements/047-portfolio-visual-overhaul/spec.md §UI Mockup
+ * Color contract: no hardcoded values — every fill / text / border resolves
+ * via DaisyUI theme tokens. Switching themes recolors the entire composition.
  */
 export default function HeroStage({
   className = '',
@@ -131,28 +173,23 @@ export default function HeroStage({
   secondaryCta = DEFAULT_SECONDARY_CTA,
   manifestItems,
 }: HeroStageProps) {
-  // Page-load-frozen timestamp per spec §UI Mockup status bar. Captured ONCE
-  // on client mount (not server-side) to avoid a hydration mismatch — the
-  // server's `Date` is in UTC and ms-later than the client's wall clock.
-  // SSR renders a placeholder; the timestamp pops in on hydration. By design,
-  // no `setInterval` ticks it — a constantly-updating timestamp is distracting
-  // and signals "loading" when the page is actually idle.
-  const [statusTimestamp, setStatusTimestamp] = useState('');
+  // No live timestamp — replaced with the static "Q3 2026" availability
+  // signal. Hook left here so future variants can re-enable a real-time
+  // status line without restructuring.
+  const [statusTimestamp] = useState('Q3 2026');
   useEffect(() => {
-    setStatusTimestamp(formatStatusTimestamp(new Date()));
+    // intentionally no-op for now
   }, []);
 
   return (
     <section
       id="main-content"
       aria-labelledby="hero-heading"
-      className={`bg-base-100 relative w-full overflow-hidden px-4 py-16 sm:px-6 lg:py-24${
+      className={`crt-hero crt-vignette bg-base-100 relative w-full overflow-hidden px-4 py-12 sm:px-6 lg:py-20${
         className ? ` ${className}` : ''
       }`}
     >
-      {/* Skip link — first focusable element in the section so keyboard users
-          can jump past the decorative overlays straight to the content.
-          Mirrors the pattern at src/app/page.tsx:270-275. */}
+      {/* Skip link */}
       <a
         href="#main-content"
         className="btn btn-sm btn-primary sr-only min-h-11 min-w-11 focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50"
@@ -160,104 +197,185 @@ export default function HeroStage({
         Skip to main content
       </a>
 
-      {/* Atmospheric overlays — full-bleed, decorative. Scanlines first (drift
-          background), grain on top (subtle noise multiply). Both are
-          `pointer-events-none` and `aria-hidden`. */}
+      {/* LAYER B — single off-center aurora bloom (cyan/green upper-left,
+          subtle amber lower-right). NOT three racing stripes. */}
+      <div className="crt-aurora-bloom" aria-hidden="true" />
+
+      {/* LAYER D — depth orbs at three opacity tiers, gentle drift. */}
+      {DEPTH_ORBS.map((orb, idx) => (
+        <span
+          key={idx}
+          aria-hidden="true"
+          className="crt-orb"
+          style={{
+            top: orb.top,
+            left: orb.left,
+            width: orb.size,
+            height: orb.size,
+            backgroundColor: orb.color,
+            opacity: orb.opacity,
+            ['--orb-dx' as string]: `${orb.dx}px`,
+            ['--orb-dy' as string]: `${orb.dy}px`,
+            ['--orb-duration' as string]: `${orb.duration}s`,
+            boxShadow: `0 0 ${orb.size * 3}px ${orb.color}`,
+          }}
+        />
+      ))}
+
+      {/* Scanlines + grain (layered phosphor texture). */}
       <ScanlineOverlay />
       <GrainOverlay />
 
-      {/* Cursor halo only renders client-side on fine pointers + no
-          reduced-motion. Self-gated, returns `null` when ineligible. */}
+      {/* Cursor halo — fine-pointer only, reduced-motion-safe. */}
       <CursorHalo />
 
-      {/* Inner content container. `relative z-10` so it sits above the
-          decorative overlays. */}
+      {/* Vertical edge marker — real bio line. Editorial chrome that ALSO
+          carries information. */}
+      <div
+        className="text-primary pointer-events-none absolute top-1/2 right-4 z-10 hidden -translate-y-1/2 rotate-180 font-mono text-xs tracking-[0.5em] opacity-40 md:block"
+        style={{ writingMode: 'vertical-rl' }}
+      >
+        SCROLL FOR SELECTED WORK / CASE STUDIES / SERVICES
+      </div>
+
+      {/* Inner content container. */}
       <div className="relative z-10 mx-auto w-full max-w-6xl">
-        {/* Status bar — single mono line, page-load-frozen timestamp. The
-            timestamp slot is empty on SSR and filled by useEffect on mount;
-            a non-breaking space holds the row height so there's no layout
-            shift when the time pops in. */}
-        <div
-          data-testid="hero-status-bar"
-          className="text-primary font-mono text-sm tracking-wider"
-        >
-          MU/TH/UR 6000 :: PORT 3000 ::{' '}
-          <span suppressHydrationWarning>{statusTimestamp || ' '}</span>
+        {/* Status row — replaces fictional MU/TH/UR with actual availability +
+            location info. Real client signal, same visual rhythm. */}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <div
+            data-testid="hero-status-bar"
+            className="crt-halation text-primary font-mono text-xs tracking-wider sm:text-sm"
+          >
+            STATUS :: OPEN TO ENGAGEMENTS ::{' '}
+            <span suppressHydrationWarning>{statusTimestamp || 'Q3 2026'}</span>
+          </div>
+
+          {/* Available-for chromatic accent. Tells hiring managers what
+              services Jonathan offers, in a single glance. */}
+          <div className="flex items-center gap-2" data-testid="hero-warn">
+            <span
+              className="crt-halation-error text-error inline-flex items-center gap-2 border border-dashed px-2 py-1 font-mono text-[10px] font-bold tracking-[0.2em] sm:text-xs"
+              style={{ borderColor: 'var(--color-error)' }}
+            >
+              ◆ AVAILABLE FOR HIRE
+            </span>
+            <span className="relative inline-flex items-center gap-1">
+              <span
+                aria-hidden="true"
+                className="bg-error absolute inline-block h-3 w-3 animate-ping rounded-full opacity-50"
+              />
+              <span className="bg-error crt-halation-error relative inline-block h-2 w-2 rounded-full" />
+              <span className="text-error crt-halation-error font-mono text-[10px] tracking-widest">
+                LIVE
+              </span>
+            </span>
+          </div>
         </div>
 
-        {/* Boot sequence sits immediately under the status bar so the typing
-            animation reads as a single "terminal output" group. */}
-        <div className="mt-4">
-          <BootSequence />
+        {/* Services list — replaces decorative boot sequence with actual
+            client offerings. Same visual block (terminal output), real info. */}
+        <div
+          className="crt-halation text-primary mt-3 font-mono text-sm leading-relaxed opacity-90"
+          data-testid="hero-services"
+        >
+          <div>
+            <span className="opacity-60">&gt;</span> available for:
+          </div>
+          <div className="pl-4">
+            <span className="opacity-60">·</span> design systems &amp; component
+            libraries
+          </div>
+          <div className="pl-4">
+            <span className="opacity-60">·</span> full-stack web applications
+            (React, Next.js, TypeScript)
+          </div>
+          <div className="pl-4">
+            <span className="opacity-60">·</span> accessibility audits &amp;
+            WCAG remediation
+          </div>
+          <div className="pl-4">
+            <span className="opacity-60">·</span> technical writing &amp;
+            documentation
+          </div>
         </div>
 
         {/* Two-column layout from lg+; single-column stack on mobile. */}
-        <div className="mt-8 grid grid-cols-1 gap-10 lg:mt-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16">
-          {/* LEFT COLUMN — name, tagline, body, manifest, CTAs. */}
-          <div className="flex flex-col gap-6">
-            {/* Hero name — the single italic-serif element on the page
-                (spec §Resolved 1). Carries the entire "designer" visual
-                weight against the otherwise-uniform mono. */}
+        <div className="mt-6 grid grid-cols-1 gap-8 lg:mt-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-12">
+          {/* LEFT COLUMN — name, tagline, manifest, CTAs. */}
+          <div className="flex flex-col gap-5">
+            {/* Display name (move 4: pushed off-axis on lg+ so it crosses
+                column gutter). LAYER A halation-strong for "phosphor burn". */}
             <h1
               id="hero-heading"
-              className="font-display text-primary text-6xl leading-tight italic md:text-7xl lg:text-8xl"
+              className="font-display crt-halation-strong text-primary text-5xl leading-[0.95] italic sm:text-6xl md:text-7xl lg:translate-x-8 lg:text-8xl"
               style={{ fontFamily: 'var(--font-display)' }}
             >
               {name}
             </h1>
 
-            {/* Tagline — designer half brighter & ~2x; developer half dimmer.
-                FR-001 designer-weighting requirement. */}
-            <p data-testid="hero-tagline" className="font-mono">
-              <span className="text-primary text-2xl font-bold tracking-widest md:text-3xl">
+            {/* LAYER F — glowing rule under the name (cyan + amber stack). */}
+            <div className="crt-rule mt-1 w-3/4 max-w-md" aria-hidden="true" />
+
+            {/* Tagline — designer half in italic SERIF (move 5),
+                developer half in mono caps. */}
+            <p data-testid="hero-tagline" className="leading-tight">
+              <span
+                className="font-display crt-halation text-primary block text-3xl italic sm:text-4xl md:text-5xl"
+                style={{ fontFamily: 'var(--font-display)' }}
+              >
                 {headline.design}
               </span>
-              <span className="text-secondary ml-4 text-base tracking-widest opacity-70 md:text-lg">
+              <span className="crt-halation-amber text-secondary mt-1 block font-mono text-xs tracking-[0.3em] opacity-80 sm:text-sm">
                 {headline.developer}
               </span>
             </p>
 
-            {/* Credentials body — small mono, dimmed. */}
+            {/* Credentials body */}
             <p
               data-testid="hero-credentials"
-              className="text-base-content/70 font-mono text-sm md:text-base"
+              className="text-base-content/65 font-mono text-xs sm:text-sm"
             >
               {credentials}
             </p>
 
-            {/* Brand mark — shown here on MOBILE only. On lg+ it moves to the
-                right column. The same component is mounted in both spots
-                under responsive `hidden` toggles so we never duplicate the
-                animation state — only one is visible at a time. */}
+            {/* Mobile-only: project monitor sits inline. lg+ shows it in
+                right column. */}
             <div className="lg:hidden">
-              <BrandMarkFrame logoSizeClass="h-32 w-32 sm:h-40 sm:w-40" />
+              <ProjectMonitor compact />
             </div>
 
-            {/* Manifest block — `> MANIFEST.LOAD()` + 12-item wrapping list. */}
-            <div className="mt-2">
+            {/* Manifest */}
+            <div className="mt-1">
               <Marquee items={manifestItems} />
             </div>
 
-            {/* CTAs — terminal-command buttons. Both meet the 44px touch
-                target via `min-h-11 min-w-11` (FR-013). */}
+            {/* CTAs with glass treatment. */}
             <div
               data-testid="hero-ctas"
-              className="mt-4 flex flex-col gap-3 sm:flex-row sm:gap-4"
+              className="mt-2 flex flex-col gap-3 sm:flex-row sm:gap-4"
             >
+              {/* Primary — filled phosphor + glass top + outer halation. */}
               <a
                 href={primaryCta.href}
                 data-testid="hero-primary-cta"
-                className="btn btn-primary min-h-11 min-w-11 font-mono normal-case"
+                className="btn btn-primary crt-glass relative min-h-11 min-w-11 font-mono normal-case"
+                style={{
+                  boxShadow:
+                    '0 0 24px color-mix(in oklch, var(--color-primary) 45%, transparent), 0 0 8px color-mix(in oklch, var(--color-primary) 60%, transparent)',
+                }}
                 {...(primaryCta.external
                   ? { target: '_blank', rel: 'noopener noreferrer' }
                   : {})}
               >
                 {primaryCta.label}
               </a>
+
+              {/* Secondary — dashed amber outline + frosted glass interior + halation text. */}
               <a
                 href={secondaryCta.href}
                 data-testid="hero-secondary-cta"
-                className="btn btn-outline btn-secondary min-h-11 min-w-11 font-mono normal-case"
+                className="btn btn-outline btn-secondary crt-glass crt-glass-fill crt-halation-amber min-h-11 min-w-11 font-mono normal-case"
                 style={{ borderStyle: 'dashed' }}
                 {...(secondaryCta.external
                   ? { target: '_blank', rel: 'noopener noreferrer' }
@@ -266,12 +384,48 @@ export default function HeroStage({
                 {secondaryCta.label}
               </a>
             </div>
+
+            {/* Small corner brand mark — real bio in the subtitle, not
+                fictional version numbers. */}
+            <div className="mt-4 flex items-center gap-3">
+              <BrandMarkBadge />
+              <div className="font-mono text-xs">
+                <span
+                  className="font-display crt-halation text-primary italic"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  Jonathan Pohlner
+                </span>
+                <span className="text-base-content/55 ml-2">
+                  · Chattanooga, TN · remote-friendly
+                </span>
+              </div>
+            </div>
           </div>
 
-          {/* RIGHT COLUMN — ASCII-framed brand mark, lg+ only. */}
+          {/* RIGHT COLUMN — project monitor (replaces standalone brand mark). */}
           <div className="hidden lg:block">
-            <BrandMarkFrame logoSizeClass="h-56 w-56 xl:h-64 xl:w-64" />
+            <ProjectMonitor />
           </div>
+        </div>
+      </div>
+
+      {/* LAYER F + move 6 — diagonal section divider at hero bottom. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-0 bottom-2 left-0 z-10 mx-auto max-w-6xl px-4 sm:px-6"
+      >
+        <div
+          className="bg-primary h-px w-full opacity-40"
+          style={{
+            transform: 'skewY(-0.4deg)',
+            boxShadow:
+              '0 0 12px var(--color-primary), 0 0 24px color-mix(in oklch, var(--color-primary) 50%, transparent)',
+          }}
+        />
+        <div className="text-primary crt-halation mt-2 font-mono text-[10px] tracking-[0.2em] opacity-65 sm:text-xs">
+          ━━ SECTION_01 · FEATURED_WORK
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ↓
         </div>
       </div>
     </section>
@@ -279,32 +433,158 @@ export default function HeroStage({
 }
 
 /**
- * ASCII box frame that surrounds the spinning brand mark. Rendered as
- * `<pre aria-hidden="true">` (decorative) with the `LayeredTurtleWolfeLogo`
- * absolutely positioned inside it. The logo's existing alt text on its
- * underlying images carries the meaning for assistive tech.
+ * Small corner brand mark with phosphor halo bloom. Replaces the V06
+ * "logo in a column" placement; this is a finishing-touch byline next to
+ * the CTAs, not a column-anchoring hero element.
  */
-function BrandMarkFrame({ logoSizeClass }: { logoSizeClass: string }) {
+function BrandMarkBadge() {
   return (
     <div
       data-testid="hero-brand-frame"
-      className="relative inline-flex items-center justify-center"
+      className="relative inline-flex h-11 w-11 items-center justify-center"
+      style={{
+        filter:
+          'drop-shadow(0 0 12px color-mix(in oklch, var(--color-primary) 50%, transparent))',
+      }}
     >
-      {/* ASCII bezel — small enough that the gear inside dominates, not the
-          frame. Tracking-tight collapses character spacing so the box looks
-          like a CRT bezel, not a sparse outline. */}
-      <pre
-        aria-hidden="true"
-        className="text-primary font-mono text-xs leading-[1.1] tracking-tight whitespace-pre opacity-80 sm:text-sm md:text-base"
-      >
-        {BRAND_FRAME_ASCII}
-      </pre>
-      <div
-        aria-hidden="true"
-        className={`pointer-events-none absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center ${logoSizeClass}`}
-      >
-        <LayeredTurtleWolfeLogo speed="slow" pauseOnHover />
-      </div>
+      <LayeredTurtleWolfeLogo speed="slow" pauseOnHover />
     </div>
+  );
+}
+
+/**
+ * Project monitor for the hero's right column (or stacked inline on mobile
+ * when `compact`). Renders a CRT-bezel framed mini-preview of SpokeToWork:
+ * label strip, mini route map, status strip. Implementation honors V08
+ * issues file §5.
+ */
+function ProjectMonitor({ compact = false }: { compact?: boolean }) {
+  return (
+    <a
+      href="/projects/spoketo-work"
+      data-testid="hero-project-monitor"
+      className={`crt-glass crt-shimmer group border-base-300/50 bg-base-200 relative block overflow-hidden rounded-md border transition-transform hover:-translate-y-1 ${
+        compact ? 'max-w-full' : ''
+      }`}
+      style={{
+        boxShadow:
+          '0 0 32px color-mix(in oklch, var(--color-primary) 25%, transparent), 0 0 8px color-mix(in oklch, var(--color-primary) 40%, transparent), inset 0 0 0 1px color-mix(in oklch, var(--color-primary) 12%, transparent)',
+      }}
+    >
+      {/* Top label strip (amber) */}
+      <div className="bg-secondary text-secondary-content relative flex items-center justify-between px-3 py-1.5 font-mono text-[10px] font-bold tracking-[0.15em] sm:text-xs">
+        <span>CH.01 · SPOKETO.WORK · MAP_VIEW.PNG</span>
+        <span className="opacity-70">▸ ◆</span>
+      </div>
+
+      {/* Mini map screen */}
+      <div
+        className="bg-base-300 relative aspect-video"
+        style={{
+          backgroundImage:
+            'linear-gradient(var(--color-primary) 1px, transparent 1px), linear-gradient(90deg, var(--color-primary) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+          backgroundPosition: '0 0',
+        }}
+      >
+        {/* Aurora bloom inside the screen */}
+        <div
+          className="absolute inset-0 opacity-50"
+          style={{
+            background:
+              'radial-gradient(ellipse 60% 70% at 30% 30%, color-mix(in oklch, var(--color-primary) 20%, transparent) 0%, transparent 70%)',
+          }}
+        />
+
+        {/* Inline SVG route */}
+        <svg
+          viewBox="0 0 400 200"
+          className="absolute inset-0 h-full w-full"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M 30 170 L 90 110 L 160 130 L 240 70 L 320 100 L 380 50"
+            stroke="var(--color-primary)"
+            strokeWidth="3"
+            fill="none"
+            strokeLinecap="round"
+            opacity="0.6"
+            style={{
+              filter:
+                'drop-shadow(0 0 8px var(--color-primary)) drop-shadow(0 0 16px color-mix(in oklch, var(--color-primary) 60%, transparent))',
+            }}
+          />
+          <path
+            d="M 30 170 L 90 110 L 160 130 L 240 70 L 320 100 L 380 50"
+            stroke="var(--color-primary)"
+            strokeWidth="1"
+            fill="none"
+            opacity="0.4"
+            strokeDasharray="3 3"
+          />
+          {/* Nodes */}
+          {[
+            { cx: 30, cy: 170, r: 4, color: 'var(--color-primary)' },
+            { cx: 90, cy: 110, r: 3, color: 'var(--color-primary)' },
+            { cx: 160, cy: 130, r: 3, color: 'var(--color-primary)' },
+            { cx: 240, cy: 70, r: 3, color: 'var(--color-secondary)' },
+            { cx: 320, cy: 100, r: 3, color: 'var(--color-primary)' },
+            { cx: 380, cy: 50, r: 5, color: 'var(--color-error)' },
+          ].map((node, i) => (
+            <circle
+              key={i}
+              {...node}
+              fill={node.color}
+              style={{ filter: `drop-shadow(0 0 6px ${node.color})` }}
+            />
+          ))}
+          <text
+            x="370"
+            y="40"
+            textAnchor="end"
+            fontFamily="var(--font-mono)"
+            fontSize="10"
+            fontWeight="700"
+            fill="var(--color-error)"
+            style={{ filter: 'drop-shadow(0 0 6px var(--color-error))' }}
+          >
+            ◆ JOB
+          </text>
+        </svg>
+
+        {/* Scanline overlay scoped to the monitor screen */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(transparent 0px, transparent 2px, color-mix(in oklch, var(--color-primary) 8%, transparent) 2px, color-mix(in oklch, var(--color-primary) 8%, transparent) 3px)',
+            backgroundSize: '100% 4px',
+          }}
+        />
+
+        {/* Inner CRT vignette */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 80% 80% at 50% 50%, transparent 50%, rgba(0,0,0,0.4) 90%, rgba(0,0,0,0.7) 100%)',
+          }}
+        />
+      </div>
+
+      {/* Bottom status strip */}
+      <div className="bg-base-300/60 text-primary border-base-300/60 flex items-center justify-between border-t px-3 py-1.5 font-mono text-[10px] sm:text-xs">
+        <span className="opacity-90">▸ ROUTE 14.2KM · 47MIN · ENCRYPTED</span>
+        <span className="text-secondary opacity-80">SIG: -67dB</span>
+      </div>
+
+      {/* Caption */}
+      <div className="bg-base-100 text-primary border-base-300/40 border-t px-3 py-1 text-center font-mono text-[10px] opacity-70">
+        CASE_STUDY/01
+      </div>
+    </a>
   );
 }

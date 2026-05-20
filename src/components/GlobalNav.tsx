@@ -119,6 +119,7 @@ export function GlobalNav() {
   ];
 
   const themes = [
+    'turtlewolfe-crt',
     'turtlewolfe-dark',
     'turtlewolfe-light',
     'light',

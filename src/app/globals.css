@@ -14,9 +14,9 @@
 
 @plugin "daisyui" {
   themes:
-    turtlewolfe-dark --default,
+    turtlewolfe-crt --default,
+    turtlewolfe-dark,
     turtlewolfe-light,
-    turtlewolfe-crt,
     light,
     dark,
     cupcake,
@@ -52,14 +52,12 @@
 }
 
 /* TurtleWolfe CRT Theme — Nostromo MU/TH/UR 6000 phosphor terminal.
- * Available in the theme switcher but NOT the portfolio-mode default
- * (reverted to turtlewolfe-dark after PR #1 visual revert on 2026-05-19).
- * Phosphor green primary on near-black deck.
+ * Default theme in portfolio mode. Phosphor green primary on near-black deck.
  * See features/enhancements/047-portfolio-visual-overhaul/spec.md §Resolved 3. */
 @plugin "daisyui/theme" {
   name: 'turtlewolfe-crt';
-  default: false;
-  prefersdark: false;
+  default: true;
+  prefersdark: true;
   color-scheme: dark;
 
   --color-base-100: oklch(
@@ -103,8 +101,7 @@
 /* TurtleWolfe Dark Theme — VS Code dark meets metallic craftsmanship */
 @plugin "daisyui/theme" {
   name: 'turtlewolfe-dark';
-  default: true;
-  prefersdark: true;
+  default: false;
   color-scheme: dark;
 
   --color-base-100: oklch(22.84% 0.038 282.93); /* #1a1a2e charcoal */
@@ -1073,4 +1070,478 @@ p:not([class*='text-']) {
   .crt-magnetic:hover {
     transform: none !important;
   }
+
+  /* V08 — kill atmospheric motion too. The glow + glass effects stay visible
+   * (they're static), but the drifting layers freeze. */
+  .crt-aurora-bloom,
+  .crt-shimmer,
+  .crt-orb {
+    animation: none !important;
+  }
 }
+
+/* ═════════════════════════════════════════════════════════════════════════
+ * V08 — Nostromo Rev 3 atmospheric primitives.
+ * Six layers from docs/design/wireframes/047-.../08-nostromo-rev3.issues.md:
+ * phosphor halation, aurora bloom, glass treatment, depth orbs, CRT
+ * curvature vignette, glowing rule lines. All scoped to the .crt-hero
+ * wrapper so they don't leak into other pages / themes.
+ * ═════════════════════════════════════════════════════════════════════════ */
+
+/* Layer A: phosphor halation. Applied via text-shadow so it works on any
+ * element without an SVG filter. Two strength levels. */
+.crt-halation {
+  text-shadow:
+    0 0 8px var(--color-primary),
+    0 0 16px color-mix(in oklch, var(--color-primary) 35%, transparent);
+}
+
+.crt-halation-strong {
+  text-shadow:
+    0 0 12px var(--color-primary),
+    0 0 28px color-mix(in oklch, var(--color-primary) 55%, transparent),
+    0 0 48px color-mix(in oklch, var(--color-primary) 25%, transparent);
+}
+
+.crt-halation-amber {
+  text-shadow:
+    0 0 8px var(--color-secondary),
+    0 0 16px color-mix(in oklch, var(--color-secondary) 35%, transparent);
+}
+
+.crt-halation-error {
+  text-shadow:
+    0 0 8px var(--color-error),
+    0 0 18px color-mix(in oklch, var(--color-error) 40%, transparent);
+}
+
+/* Layer B: aurora bloom. Single off-center cyan/green radial bloom upper-left
+ * plus a subtle purple lower-right. Position fixed inside the hero wrapper. */
+.crt-aurora-bloom {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 55% 65% at 22% 28%,
+      color-mix(in oklch, var(--color-primary) 18%, transparent) 0%,
+      color-mix(in oklch, var(--color-primary) 8%, transparent) 40%,
+      transparent 80%
+    ),
+    radial-gradient(
+      ellipse 40% 50% at 78% 85%,
+      color-mix(in oklch, var(--color-secondary) 14%, transparent) 0%,
+      transparent 70%
+    );
+  animation: crt-aurora-drift 24s ease-in-out infinite alternate;
+}
+
+@keyframes crt-aurora-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(8px, -12px) scale(1.04);
+  }
+}
+
+/* Layer C: glass top-edge highlight. Apply as ::before on any rectangular
+ * element to get the "light from above" effect. */
+.crt-glass {
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.06) 30%,
+    rgba(255, 255, 255, 0.01) 100%
+  );
+  pointer-events: none;
+}
+
+.crt-glass-strong::before {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(255, 255, 255, 0.14) 6%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+}
+
+/* Glass frosted fill (inner) — subtle green/cyan tint. */
+.crt-glass-fill {
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--color-primary) 6%, transparent) 0%,
+    color-mix(in oklch, var(--color-accent) 2%, transparent) 100%
+  );
+}
+
+/* Shimmer band drifting across glass surfaces. */
+.crt-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  pointer-events: none;
+  animation: crt-shimmer-drift 6s ease-in-out infinite;
+}
+
+@keyframes crt-shimmer-drift {
+  0%,
+  30% {
+    background-position: 100% 0;
+  }
+  70%,
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* Layer D: depth orbs. Floating particles at three opacity layers. Each orb
+ * is a `.crt-orb` div placed at absolute positions; this class drives the
+ * gentle drift animation. */
+.crt-orb {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: crt-orb-drift var(--orb-duration, 18s) ease-in-out infinite
+    alternate;
+}
+
+@keyframes crt-orb-drift {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(var(--orb-dx, 6px), var(--orb-dy, -4px));
+  }
+}
+
+/* Layer E: CRT curvature vignette. Strong inner-glow inverted (corners dark,
+ * center bright). Apply as ::after pseudo on the hero deck. */
+.crt-vignette {
+  position: relative;
+}
+
+.crt-vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 75% 78% at 50% 50%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.45) 85%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+}
+
+/* Layer F: glowing rule lines. Cyan + amber stack under headings. */
+.crt-rule {
+  position: relative;
+  height: 3px;
+  background: var(--color-primary);
+  box-shadow:
+    0 0 8px var(--color-primary),
+    0 0 16px color-mix(in oklch, var(--color-primary) 60%, transparent);
+}
+
+.crt-rule::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  height: 1px;
+  width: 60%;
+  background: var(--color-secondary);
+  opacity: 0.7;
+  box-shadow: 0 0 6px var(--color-secondary);
+}
+
+/* The .crt-hero wrapper sets up positioning context for all the above. */
+.crt-hero {
+  position: relative;
+  isolation: isolate;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+ * Site-wide atmosphere (SiteAtmosphere component). Only renders when
+ * turtlewolfe-crt is the active theme — gated by [data-theme=...] selectors.
+ * On any other theme, all four layers are display:none.
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+.crt-atmosphere {
+  display: none;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-theme='turtlewolfe-crt'] .crt-atmosphere {
+  display: block;
+}
+
+.crt-atmosphere-bloom,
+.crt-atmosphere-scanlines,
+.crt-atmosphere-grain,
+.crt-atmosphere-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.crt-atmosphere-bloom {
+  background:
+    radial-gradient(
+      ellipse 55% 60% at 15% 18%,
+      color-mix(in oklch, var(--color-primary) 12%, transparent) 0%,
+      color-mix(in oklch, var(--color-primary) 5%, transparent) 40%,
+      transparent 75%
+    ),
+    radial-gradient(
+      ellipse 45% 50% at 85% 90%,
+      color-mix(in oklch, var(--color-secondary) 10%, transparent) 0%,
+      transparent 65%
+    );
+  animation: crt-aurora-drift 30s ease-in-out infinite alternate;
+}
+
+.crt-atmosphere-scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    color-mix(in oklch, var(--color-primary) 6%, transparent) 0,
+    color-mix(in oklch, var(--color-primary) 6%, transparent) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  background-size: 100% 8px;
+  animation: scanline-drift 60s linear infinite;
+}
+
+.crt-atmosphere-grain {
+  /* Disabled — the SVG noise reads as static "snow" on dark backgrounds
+   * because multiply doesn't darken pure black. Kept the DOM element so
+   * future tweaks (lower opacity, different blend mode, or replace with
+   * a noise PNG) can re-enable without re-wiring the component. */
+  display: none;
+}
+
+.crt-atmosphere-vignette {
+  background: radial-gradient(
+    ellipse 80% 85% at 50% 50%,
+    transparent 55%,
+    rgba(0, 0, 0, 0.35) 88%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+/* Reduced motion suppresses the site-wide bloom + scanline drift. The grain
+ * and vignette stay (static effects, no motion to suppress). */
+@media (prefers-reduced-motion: reduce) {
+  .crt-atmosphere-bloom,
+  .crt-atmosphere-scanlines {
+    animation: none !important;
+  }
+}
+
+/* ═════════════════════════════════════════════════════════════════════════
+ * Inner-page CRT promotion — DEAD CSS, kept as commentary for context.
+ *
+ * Attempted to auto-apply CRT halation/glass/glow to every inner page via
+ * `[data-theme='turtlewolfe-crt'] h1 { ... }` style rules. Tailwind 4 +
+ * DaisyUI silently strips raw `[data-theme=...]` selectors from the compiled
+ * output (DaisyUI's plugin processes them differently than ordinary CSS).
+ *
+ * Path forward: inner pages add `font-display crt-halation-strong text-primary`
+ * directly to their <h1>, `crt-halation` to <h2>/<h3>, `crt-glass` to .card,
+ * etc. The .crt-* utility classes defined above DO survive compilation; only
+ * the theme-scoped global rules below did not.
+ *
+ * Leaving the rules in place as documentation; they're inert.
+ * ═════════════════════════════════════════════════════════════════════════ */
+
+/* H1 — italic Instrument Serif with strong phosphor halation. */
+[data-theme='turtlewolfe-crt'] h1:not(.crt-halation-strong):not(.font-display) {
+  font-family: var(--font-display) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em;
+  text-shadow:
+    0 0 12px var(--color-primary),
+    0 0 28px color-mix(in oklch, var(--color-primary) 55%, transparent),
+    0 0 48px color-mix(in oklch, var(--color-primary) 25%, transparent);
+}
+
+/* H2 & H3 — keep sans-bold weight (clear hierarchy below h1) but pick up
+ * the lighter halation so they phosphor-glow like the home hero's
+ * supporting text. */
+[data-theme='turtlewolfe-crt'] h2:not(.crt-halation):not(.crt-halation-strong),
+[data-theme='turtlewolfe-crt'] h3:not(.crt-halation):not(.crt-halation-strong) {
+  text-shadow:
+    0 0 8px var(--color-primary),
+    0 0 16px color-mix(in oklch, var(--color-primary) 35%, transparent);
+}
+
+/* Body text — very subtle halation so paragraphs don't feel paper-flat
+ * against the phosphor deck. Smaller blur radius than headings. */
+[data-theme='turtlewolfe-crt'] p,
+[data-theme='turtlewolfe-crt'] li,
+[data-theme='turtlewolfe-crt'] td,
+[data-theme='turtlewolfe-crt'] dd {
+  text-shadow: 0 0 4px
+    color-mix(in oklch, var(--color-base-content) 30%, transparent);
+}
+
+/* CARDS — full glass treatment. Top-edge highlight via ::before, outer
+ * halation bloom via box-shadow, faint frosted interior. Reads as
+ * CRT-monitor-on-CRT-monitor depth on every page that uses .card. */
+[data-theme='turtlewolfe-crt'] .card {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--color-primary) 4%, var(--color-base-200)) 0%,
+    color-mix(in oklch, var(--color-accent) 2%, var(--color-base-200)) 100%
+  );
+  box-shadow:
+    /* outer halation bloom */
+    0 0 32px color-mix(in oklch, var(--color-primary) 18%, transparent),
+    /* sharper inner-ring */ 0 0 8px
+      color-mix(in oklch, var(--color-primary) 30%, transparent),
+    /* hairline phosphor edge */ inset 0 0 0 1px
+      color-mix(in oklch, var(--color-primary) 12%, transparent);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+[data-theme='turtlewolfe-crt'] .card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0.04) 30%,
+    rgba(255, 255, 255, 0.01) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Card content sits above the ::before glass highlight. */
+[data-theme='turtlewolfe-crt'] .card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* BUTTONS — primary gets a strong outer phosphor bloom + top-edge glass.
+ * Outlined buttons get a frosted interior + lighter halation. */
+[data-theme='turtlewolfe-crt'] .btn-primary {
+  position: relative;
+  box-shadow:
+    0 0 24px color-mix(in oklch, var(--color-primary) 45%, transparent),
+    0 0 8px color-mix(in oklch, var(--color-primary) 60%, transparent);
+}
+
+[data-theme='turtlewolfe-crt'] .btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.32) 0%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+[data-theme='turtlewolfe-crt'] .btn-outline,
+[data-theme='turtlewolfe-crt'] .btn-ghost {
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--color-primary) 6%, transparent) 0%,
+    color-mix(in oklch, var(--color-accent) 2%, transparent) 100%
+  );
+  text-shadow: 0 0 8px color-mix(in oklch, currentColor 40%, transparent);
+}
+
+/* HR — gets the same cyan+amber double-rule glow used in the hero. */
+[data-theme='turtlewolfe-crt'] hr {
+  border: none;
+  height: 3px;
+  background: var(--color-primary);
+  box-shadow:
+    0 0 8px var(--color-primary),
+    0 0 16px color-mix(in oklch, var(--color-primary) 60%, transparent);
+  position: relative;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+[data-theme='turtlewolfe-crt'] hr::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  height: 1px;
+  width: 60%;
+  background: var(--color-secondary);
+  opacity: 0.7;
+  box-shadow: 0 0 6px var(--color-secondary);
+}
+
+/* SECTION-GLOW (existing class used on every inner page) — upgrade from
+ * the soft gradient fade to a top-edge phosphor rule + dimmed transition
+ * so section boundaries glow under CRT. */
+[data-theme='turtlewolfe-crt'] .section-glow {
+  position: relative;
+}
+
+[data-theme='turtlewolfe-crt'] .section-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-primary);
+  opacity: 0.35;
+  box-shadow:
+    0 0 12px color-mix(in oklch, var(--color-primary) 50%, transparent),
+    0 0 24px color-mix(in oklch, var(--color-primary) 25%, transparent);
+  pointer-events: none;
+}
+
+/* Badges — picks up phosphor glow + subtle halation so the stack pills
+ * etc. don't read as flat amber/cyan chips. */
+[data-theme='turtlewolfe-crt'] .badge {
+  text-shadow: 0 0 6px color-mix(in oklch, currentColor 45%, transparent);
+}
+
+/* end of inert theme-scoped block (see commentary at top) */

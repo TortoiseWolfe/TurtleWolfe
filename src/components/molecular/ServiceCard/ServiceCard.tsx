@@ -27,7 +27,7 @@ export default function ServiceCard({
 }: ServiceCardProps) {
   return (
     <article
-      className={`card bg-base-100 shadow-md transition-all hover:-translate-y-1 hover:shadow-lg${className ? ` ${className}` : ''}`}
+      className={`card crt-glass bg-base-100 shadow-md transition-all hover:-translate-y-1 hover:shadow-lg${className ? ` ${className}` : ''}`}
     >
       <div className="card-body">
         <div className="text-primary mb-2 text-3xl">{icon}</div>

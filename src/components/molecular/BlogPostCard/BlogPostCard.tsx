@@ -56,7 +56,7 @@ export default function BlogPostCard({
 
   return (
     <article
-      className={`blog-post-card card bg-base-100 shadow-sm hover:shadow-md transition-shadow${className ? ` ${className}` : ''}`}
+      className={`blog-post-card card crt-glass bg-base-100 shadow-sm hover:shadow-md transition-shadow${className ? ` ${className}` : ''}`}
       onClick={onClick}
     >
       {featuredImageSrc && (

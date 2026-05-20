@@ -30,7 +30,7 @@ export interface MarqueeProps {
   items?: readonly string[];
   /** Re-type cadence in ms. Defaults to 12000 (12 seconds). */
   intervalMs?: number;
-  /** Decorative header line. Defaults to `> MANIFEST.LOAD()`. */
+  /** Header label. Defaults to `> tech stack`. */
   header?: string;
 }
 
@@ -56,7 +56,7 @@ export default function Marquee({
   className = '',
   items = DEFAULT_MANIFEST_ITEMS,
   intervalMs = 12000,
-  header = '> MANIFEST.LOAD()',
+  header = '> tech stack',
 }: MarqueeProps) {
   const reducedMotion = useReducedMotion();
   const [retypingIdx, setRetypingIdx] = useState<number | null>(null);

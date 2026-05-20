@@ -22,10 +22,13 @@ describe('HeroStage accessibility', () => {
     expect(section).not.toBeNull();
   });
 
-  it('uses aria-hidden on the decorative ASCII brand frame', () => {
+  it('keeps decorative overlay layers out of the accessibility tree', () => {
+    // V08 removed the ASCII brand-frame <pre> in favor of a clean
+    // BrandMarkBadge. The decorative overlays (aurora bloom, depth orbs,
+    // section divider, vertical edge marker) still carry aria-hidden.
     const { container } = render(<HeroStage />);
-    const pre = container.querySelector('pre');
-    expect(pre).not.toBeNull();
-    expect(pre).toHaveAttribute('aria-hidden', 'true');
+    const auroraBloom = container.querySelector('.crt-aurora-bloom');
+    expect(auroraBloom).not.toBeNull();
+    expect(auroraBloom).toHaveAttribute('aria-hidden', 'true');
   });
 });

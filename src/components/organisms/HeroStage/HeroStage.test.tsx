@@ -5,7 +5,12 @@ import HeroStage from './HeroStage';
 describe('HeroStage', () => {
   it('renders the default display name', () => {
     render(<HeroStage />);
-    expect(screen.getByText('Jonathan Pohlner')).toBeInTheDocument();
+    // V08: the name renders in the h1 plus a "Jonathan Pohlner ·
+    // Chattanooga, TN" byline near the BrandMarkBadge. Use heading role to
+    // target the h1 specifically — getByText errors on multiple matches.
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Jonathan Pohlner' })
+    ).toBeInTheDocument();
   });
 
   it('renders a skip link with href="#main-content" and sr-only class', () => {
@@ -45,30 +50,41 @@ describe('HeroStage', () => {
 
   it('overrides the default name via the `name` prop', () => {
     render(<HeroStage name="Test User" />);
-    expect(screen.getByText('Test User')).toBeInTheDocument();
-    expect(screen.queryByText('Jonathan Pohlner')).not.toBeInTheDocument();
+    // V08 only swaps the h1; the BrandMarkBadge byline is hard-coded to
+    // "Jonathan Pohlner · Chattanooga, TN" since it's a literal credit, not
+    // the same data as the hero display name. Assert against the h1 only.
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Test User' })
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('heading', { level: 1, name: 'Jonathan Pohlner' })
+    ).not.toBeInTheDocument();
   });
 
-  it('renders the MU/TH/UR status bar with PORT 3000', () => {
+  it('renders the status row with OPEN TO ENGAGEMENTS availability signal', () => {
+    // V08 replaced the fictional MU/TH/UR 6000 :: PORT 3000 :: <timestamp>
+    // line with real client signal: "STATUS :: OPEN TO ENGAGEMENTS :: Q3 2026".
+    // The change is intentional — see HeroStage.tsx §"Status row" comment.
     render(<HeroStage />);
     const statusBar = screen.getByTestId('hero-status-bar');
-    expect(statusBar.textContent).toContain('MU/TH/UR 6000');
-    expect(statusBar.textContent).toContain('PORT 3000');
+    expect(statusBar.textContent).toContain('OPEN TO ENGAGEMENTS');
   });
 
-  it('renders a page-load-frozen status timestamp in YYYY.MM.DD HH:MM:SS form', () => {
+  it('renders the availability availability cycle (Q3 2026) instead of a live timestamp', () => {
+    // V08 dropped the live YYYY.MM.DD HH:MM:SS timestamp in favor of a
+    // static "Q3 2026" availability signal. Hook scaffolding is kept in
+    // HeroStage so a future variant can re-enable a real-time status line.
     render(<HeroStage />);
     const statusBar = screen.getByTestId('hero-status-bar');
-    // Match YYYY.MM.DD HH:MM:SS (zero-padded).
-    expect(statusBar.textContent).toMatch(
-      /\d{4}\.\d{2}\.\d{2} \d{2}:\d{2}:\d{2}/
-    );
+    expect(statusBar.textContent).toContain('Q3 2026');
   });
 
   it('renders both halves of the designer-weighted tagline', () => {
+    // V08 promoted the designer half from mono caps to italic serif. The
+    // text is now title-case "Graphic Designer" (was "GRAPHIC DESIGNER").
     render(<HeroStage />);
     const tagline = screen.getByTestId('hero-tagline');
-    expect(within(tagline).getByText('GRAPHIC DESIGNER')).toBeInTheDocument();
+    expect(within(tagline).getByText('Graphic Designer')).toBeInTheDocument();
     expect(
       within(tagline).getByText(/FULL-STACK DEVELOPER/)
     ).toBeInTheDocument();
@@ -77,11 +93,11 @@ describe('HeroStage', () => {
   it('accepts a custom headline override', () => {
     render(
       <HeroStage
-        headline={{ design: 'ART DIRECTOR', developer: ':: ENGINEER' }}
+        headline={{ design: 'Art Director', developer: ':: ENGINEER' }}
       />
     );
     const tagline = screen.getByTestId('hero-tagline');
-    expect(within(tagline).getByText('ART DIRECTOR')).toBeInTheDocument();
+    expect(within(tagline).getByText('Art Director')).toBeInTheDocument();
     expect(within(tagline).getByText(/ENGINEER/)).toBeInTheDocument();
   });
 
@@ -90,12 +106,12 @@ describe('HeroStage', () => {
     expect(screen.getByTestId('hero-credentials')).toBeInTheDocument();
   });
 
-  it('renders the ASCII brand-mark frame on both responsive slots', () => {
+  it('renders the brand-mark badge with the spinning logo inside', () => {
+    // V08 simplified the brand mark to a single inline BrandMarkBadge near
+    // the byline (no more ASCII frame, no responsive twin mounts).
     render(<HeroStage />);
-    // The component mounts the frame in two slots (mobile + desktop) with
-    // responsive `hidden` toggles — both should be present in the DOM.
-    const frames = screen.getAllByTestId('hero-brand-frame');
-    expect(frames.length).toBeGreaterThanOrEqual(1);
+    const frame = screen.getByTestId('hero-brand-frame');
+    expect(frame).toBeInTheDocument();
   });
 
   it('gives CTAs the 44px touch-target classes (FR-013)', () => {

@@ -35,7 +35,7 @@ describe('Marquee (manifest block)', () => {
 
   it('renders the header text', () => {
     render(<Marquee />);
-    expect(screen.getByText('> MANIFEST.LOAD()')).toBeInTheDocument();
+    expect(screen.getByText('> tech stack')).toBeInTheDocument();
   });
 
   it('accepts a custom header', () => {
@@ -131,6 +131,6 @@ describe('Marquee (manifest block)', () => {
 
   it('handles an empty items array without errors', () => {
     expect(() => render(<Marquee items={[]} />)).not.toThrow();
-    expect(screen.getByText('> MANIFEST.LOAD()')).toBeInTheDocument();
+    expect(screen.getByText('> tech stack')).toBeInTheDocument();
   });
 });

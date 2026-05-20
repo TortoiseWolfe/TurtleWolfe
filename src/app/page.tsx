@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import { LayeredTurtleWolfeLogo } from '@/components/atomic/SpinningLogo';
-import { AnimatedLogo } from '@/components/atomic/AnimatedLogo';
 import TemplateStats, {
   type TemplateStat,
   type TemplateDemo,
 } from '@/components/molecular/TemplateStats';
 import ProjectShowcaseCard from '@/components/molecular/ProjectShowcaseCard';
 import CTABanner from '@/components/molecular/CTABanner';
+import HeroStage from '@/components/organisms/HeroStage';
 
 // ── Portfolio landing — audience is potential employers and collaborators.
 //     Visual hierarchy: spinning logo + animated name draw the eye,
@@ -266,120 +265,29 @@ const CERTIFICATIONS = [
 export default function Home() {
   return (
     <main className="bg-base-200 flex min-h-full flex-col">
-      {/* Skip link — load-bearing a11y, do not remove (PRP-017 T036). */}
-      <a
-        href="#main-content"
-        className="btn btn-sm btn-primary sr-only min-h-11 min-w-11 focus:not-sr-only focus:absolute focus:top-4 focus:left-4"
-      >
-        Skip to main content
-      </a>
+      {/* Hero — Nostromo CRT composition. Skip link and id="main-content" live
+       * inside HeroStage; do not duplicate them here. */}
+      <HeroStage />
 
-      {/* ── Hero ─────────────────────────────────────────────────────── */}
+      {/* Social links strip — sits just under the hero so the icons are still
+       * reachable without being lost in the manifest block. */}
       <section
-        id="main-content"
-        aria-labelledby="hero-heading"
-        className="mx-auto w-full max-w-6xl flex-1 px-4 py-16 sm:px-6 lg:px-8 lg:py-24"
+        aria-label="Social profiles"
+        className="bg-base-100 border-base-300/40 border-b px-4 py-4 sm:px-6 lg:px-8"
       >
-        <div className="flex flex-col items-center gap-8 lg:flex-row lg:gap-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <div className="h-48 w-48 sm:h-52 sm:w-52 md:h-56 md:w-56 lg:h-[350px] lg:w-[350px]">
-              <LayeredTurtleWolfeLogo speed="slow" pauseOnHover />
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="text-center lg:text-left">
-            <h1 id="hero-heading" className="mb-2 sm:mb-4">
-              <AnimatedLogo
-                text="Jonathan Pohlner"
-                className="!text-2xl font-bold sm:!text-3xl md:!text-5xl lg:!text-6xl"
-                animationSpeed="normal"
-              />
-            </h1>
-
-            <p className="text-primary mb-2 text-lg font-semibold sm:text-xl">
-              Full Stack Developer
-            </p>
-
-            <p className="text-base-content/60 mb-4 text-base italic sm:text-lg">
-              Putting the &lsquo;Service&rsquo; in &ldquo;Software as a
-              Service&rdquo;
-            </p>
-
-            <p className="text-base-content/80 mb-6 max-w-2xl text-lg leading-relaxed sm:text-xl">
-              15+ years building accessible web applications with React,
-              TypeScript, and Next.js. 20+ years in graphic design.
-            </p>
-
-            {/* Tech stack badges */}
-            <div
-              className="mb-6 flex flex-wrap justify-center gap-2 lg:justify-start"
-              role="list"
-              aria-label="Technology stack"
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-3 lg:justify-start">
+          {SOCIAL_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost btn-circle min-h-11 min-w-11"
+              aria-label={link.label}
             >
-              {[
-                'React',
-                'React Native',
-                'TypeScript',
-                'Next.js',
-                'Node.js',
-                'Three.js',
-                'C#',
-                'Python',
-                'Docker',
-                'AWS',
-                'Linux',
-                'MongoDB',
-                'Supabase',
-                'Tailwind',
-              ].map((tech) => (
-                <span
-                  key={tech}
-                  role="listitem"
-                  className="badge badge-outline badge-sm sm:badge-md"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            {/* Social links */}
-            <div className="mb-8 flex justify-center gap-3 lg:justify-start">
-              {SOCIAL_LINKS.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-ghost btn-circle min-h-11 min-w-11"
-                  aria-label={link.label}
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
-
-            <nav
-              aria-label="Primary actions"
-              className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start"
-            >
-              <Link
-                href="/contact"
-                className="btn btn-primary btn-lg min-h-11 min-w-11"
-              >
-                Get in Touch
-              </Link>
-              <a
-                href="https://tortoisewolfe.github.io/Resume/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-outline btn-lg min-h-11 min-w-11"
-              >
-                View My Resume
-              </a>
-            </nav>
-          </div>
+              {link.icon}
+            </a>
+          ))}
         </div>
       </section>
 

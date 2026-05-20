@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.0",
+  "features": [
+    {
+      "id": "047-portfolio-visual-overhaul",
+      "label": "047 - Portfolio Visual Overhaul",
+      "wireframes": [
+        {
+          "path": "047-portfolio-visual-overhaul/wireframes/01-editorial-brutalism.svg",
+          "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 01 \u2014 EDITORIAL BRUTALISM",
+          "status": "draft",
+          "theme": "light",
+          "svg_file": "01-editorial-brutalism.svg"
+        },
+        {
+          "path": "047-portfolio-visual-overhaul/wireframes/02-cinematic-aurora.svg",
+          "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 02 \u2014 CINEMATIC DARK + AURORA",
+          "status": "draft",
+          "theme": "light",
+          "svg_file": "02-cinematic-aurora.svg"
+        },
+        {
+          "path": "047-portfolio-visual-overhaul/wireframes/03-retro-futurist-print.svg",
+          "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 03 \u2014 RETRO-FUTURIST PRINT",
+          "status": "draft",
+          "theme": "light",
+          "svg_file": "03-retro-futurist-print.svg"
+        },
+        {
+          "path": "047-portfolio-visual-overhaul/wireframes/04-andor-terminal.svg",
+          "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 04 \u2014 ANDOR TERMINAL",
+          "status": "draft",
+          "theme": "light",
+          "svg_file": "04-andor-terminal.svg"
+        },
+        {
+          "path": "047-portfolio-visual-overhaul/wireframes/05-nasa-mission-graphic.svg",
+          "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 05 \u2014 70S NASA MISSION GRAPHIC",
+          "status": "draft",
+          "theme": "light",
+          "svg_file": "05-nasa-mission-graphic.svg"
+        },
+        {
+          "path": "047-portfolio-visual-overhaul/wireframes/06-nostromo-crt.svg",
+          "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 06 \u2014 NOSTROMO CRT",
+          "status": "draft",
+          "theme": "light",
+          "svg_file": "06-nostromo-crt.svg"
+        },
+        {
+          "path": "047-portfolio-visual-overhaul/wireframes/07-nostromo-rev2.svg",
+          "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 07 \u2014 NOSTROMO REV 2 (6 EDITORIAL MOVES)",
+          "status": "draft",
+          "theme": "light",
+          "svg_file": "07-nostromo-rev2.svg"
+        },
+        {
+          "path": "047-portfolio-visual-overhaul/wireframes/08-nostromo-rev3.svg",
+          "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 08 \u2014 NOSTROMO REV 3 (GLASS + GLOW LAYERED ON V07)",
+          "status": "draft",
+          "theme": "light",
+          "svg_file": "08-nostromo-rev3.svg"
+        }
+      ]
+    }
+  ],
+  "wireframes": [
+    {
+      "path": "/specs/047-portfolio-visual-overhaul/wireframes/01-editorial-brutalism.svg",
+      "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 01 \u2014 EDITORIAL BRUTALISM",
+      "feature": "047-portfolio-visual-overhaul",
+      "feature_label": "047 - Portfolio Visual Overhaul",
+      "status": "draft",
+      "theme": "light"
+    },
+    {
+      "path": "/specs/047-portfolio-visual-overhaul/wireframes/02-cinematic-aurora.svg",
+      "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 02 \u2014 CINEMATIC DARK + AURORA",
+      "feature": "047-portfolio-visual-overhaul",
+      "feature_label": "047 - Portfolio Visual Overhaul",
+      "status": "draft",
+      "theme": "light"
+    },
+    {
+      "path": "/specs/047-portfolio-visual-overhaul/wireframes/03-retro-futurist-print.svg",
+      "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 03 \u2014 RETRO-FUTURIST PRINT",
+      "feature": "047-portfolio-visual-overhaul",
+      "feature_label": "047 - Portfolio Visual Overhaul",
+      "status": "draft",
+      "theme": "light"
+    },
+    {
+      "path": "/specs/047-portfolio-visual-overhaul/wireframes/04-andor-terminal.svg",
+      "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 04 \u2014 ANDOR TERMINAL",
+      "feature": "047-portfolio-visual-overhaul",
+      "feature_label": "047 - Portfolio Visual Overhaul",
+      "status": "draft",
+      "theme": "light"
+    },
+    {
+      "path": "/specs/047-portfolio-visual-overhaul/wireframes/05-nasa-mission-graphic.svg",
+      "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 05 \u2014 70S NASA MISSION GRAPHIC",
+      "feature": "047-portfolio-visual-overhaul",
+      "feature_label": "047 - Portfolio Visual Overhaul",
+      "status": "draft",
+      "theme": "light"
+    },
+    {
+      "path": "/specs/047-portfolio-visual-overhaul/wireframes/06-nostromo-crt.svg",
+      "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 06 \u2014 NOSTROMO CRT",
+      "feature": "047-portfolio-visual-overhaul",
+      "feature_label": "047 - Portfolio Visual Overhaul",
+      "status": "draft",
+      "theme": "light"
+    },
+    {
+      "path": "/specs/047-portfolio-visual-overhaul/wireframes/07-nostromo-rev2.svg",
+      "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 07 \u2014 NOSTROMO REV 2 (6 EDITORIAL MOVES)",
+      "feature": "047-portfolio-visual-overhaul",
+      "feature_label": "047 - Portfolio Visual Overhaul",
+      "status": "draft",
+      "theme": "light"
+    },
+    {
+      "path": "/specs/047-portfolio-visual-overhaul/wireframes/08-nostromo-rev3.svg",
+      "title": "PORTFOLIO VISUAL OVERHAUL \u2014 VARIANT 08 \u2014 NOSTROMO REV 3 (GLASS + GLOW LAYERED ON V07)",
+      "feature": "047-portfolio-visual-overhaul",
+      "feature_label": "047 - Portfolio Visual Overhaul",
+      "status": "draft",
+      "theme": "light"
+    }
+  ],
+  "total": 8
+}

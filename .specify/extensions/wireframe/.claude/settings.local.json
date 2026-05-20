@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp /home/TurtleWolfe/repos/Claude_Commandz/global/.claude/commands/extension-status.md /home/TurtleWolfe/.claude/commands/extension-status.md)",
+      "Read(//home/TurtleWolfe/.claude/commands/**)"
+    ]
+  }
+}

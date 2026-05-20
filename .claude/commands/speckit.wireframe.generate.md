@@ -1,0 +1,1 @@
+../../.specify/extensions/wireframe/commands/generate.md

@@ -2,11 +2,15 @@ export default function ThemeScript() {
   const themeScript = `
     (function() {
       function getSystemTheme() {
-        // Check if user prefers dark mode
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'turtlewolfe-dark';
-        }
-        return 'turtlewolfe-light';
+        // Portfolio mode: turtlewolfe-crt is the default for first-time
+        // visitors regardless of OS color-scheme preference. The CRT theme
+        // is the portfolio's signature; users on light-mode operating
+        // systems still see the phosphor green hero on first visit. Users
+        // who explicitly prefer a light theme can select turtlewolfe-light
+        // (or any of the other 35 themes) via the theme switcher — their
+        // choice persists in localStorage and overrides this default.
+        // See features/enhancements/047-portfolio-visual-overhaul/spec.md §Resolved 3.
+        return 'turtlewolfe-crt';
       }
 
       function applyTheme(theme) {
@@ -15,13 +19,14 @@ export default function ThemeScript() {
             // First check if user has manually selected a theme
             theme = localStorage.getItem('theme');
 
-            // If no saved theme, use system preference
+            // If no saved theme, use system preference (CRT for dark,
+            // turtlewolfe-light for light per feature 047).
             if (!theme) {
               theme = getSystemTheme();
             }
           } catch (e) {
-            // Fallback if localStorage is not available
-            theme = getSystemTheme();
+            // Fallback if localStorage is not available — default to CRT.
+            theme = 'turtlewolfe-crt';
           }
         }
 

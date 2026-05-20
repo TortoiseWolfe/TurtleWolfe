@@ -8,10 +8,13 @@ export default function ThemesPage() {
     <main className="bg-base-100 min-h-screen">
       <div className="container mx-auto px-4 py-6 sm:py-8 md:py-12">
         <div className="mb-8 text-center">
-          <h1 className="mb-4 !text-2xl font-bold sm:!text-4xl md:!text-5xl">
+          <h1
+            className="font-display crt-halation-strong text-primary mb-4 text-5xl italic sm:text-6xl md:text-7xl"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
             TurtleWolfe Theme Playground
           </h1>
-          <p className="text-base-content/85 text-base sm:text-lg md:text-xl">
+          <p className="text-base-content/85 crt-halation text-base sm:text-lg md:text-xl">
             Explore 34 themes including custom TurtleWolfe variants
           </p>
         </div>
@@ -25,9 +28,9 @@ export default function ThemesPage() {
         {/* Simplified theme preview using our Text component */}
         <div className="grid gap-8 md:grid-cols-2">
           {/* Text Component Showcase */}
-          <div className="card bg-base-200 shadow-xl">
+          <div className="card crt-glass bg-base-200 shadow-xl">
             <div className="card-body">
-              <Text variant="h3" className="mb-4">
+              <Text variant="h3" className="crt-halation mb-4">
                 Typography
               </Text>
               <div className="space-y-2">
@@ -45,9 +48,9 @@ export default function ThemesPage() {
           </div>
 
           {/* Color Showcase */}
-          <div className="card bg-base-100 shadow-xl">
+          <div className="card crt-glass bg-base-100 shadow-xl">
             <div className="card-body">
-              <Text variant="h3" className="mb-4">
+              <Text variant="h3" className="crt-halation mb-4">
                 Theme Colors
               </Text>
               <div className="space-y-2">

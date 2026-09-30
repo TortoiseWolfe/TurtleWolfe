@@ -11,7 +11,7 @@
     "ram": {"id": "fx-ram", "category": "ram", "ram_type": "DDR5", "modules": 2, "module_gb": 32, "speed_mts": 5600},
     "psu": {"id": "fx-psu", "category": "psu", "psu_w": 1000, "form_factor": "ATX", "atx_version": "3.1",
             "connectors": {"pcie_8pin": 4, "12v_2x6": 1, "eps_8pin": 2}, "dimensions_mm": {"l": 160, "w": 150, "h": 86}},
-    "case": {"id": "fx-case", "category": "case", "mb_form_factors": ["ATX", "mATX"], "max_gpu_len_mm": 360, "max_cooler_h_mm": 170,
+    "case": {"id": "fx-case", "category": "case", "dimensions_mm": {"l": 450, "w": 210, "h": 470}, "mb_form_factors": ["ATX", "mATX"], "max_gpu_len_mm": 360, "max_cooler_h_mm": 170,
              "psu_form_factors": ["ATX"], "max_psu_len_mm": 200, "expansion_slots": 7},
     "cooler": {"id": "fx-cooler", "category": "cooler", "height_mm": 155, "sockets": ["LGA1700", "AM5"], "tdp_rating_w": 250}
   }

@@ -86,6 +86,22 @@ def cmd_publish(a):
     return 0
 
 
+def cmd_export(a):
+    from geometry import export, layout
+    root = Path(a.root)
+    build = load.load_json(root / "builds" / a.slug / "build.json")
+    parts = {c: p for c, p in load.resolve_build(build, load.load_parts(root)).items() if p}
+    mesh = export.build_mesh(layout.layout(parts))
+    if not export.within_budget(mesh):
+        print("mesh over budget", file=sys.stderr)
+        return 1
+    dest = root / "output" / a.slug
+    dest.mkdir(parents=True, exist_ok=True)
+    obj, _ = export.export_obj(mesh, str(dest / "build.obj"))
+    print(f"wrote {obj} ({mesh.triangle_count} triangles)")
+    return 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="partsbin")
     ap.add_argument("--root", default=str(load.ROOT))
@@ -101,5 +117,8 @@ def main(argv=None):
     p = sub.add_parser("publish", help="write published/<slug>/ without the planted fault")
     p.add_argument("slug")
     p.set_defaults(fn=cmd_publish)
+    e = sub.add_parser("export", help="write output/<slug>/build.obj + .mtl for the render")
+    e.add_argument("slug")
+    e.set_defaults(fn=cmd_export)
     a = ap.parse_args(argv)
     return a.fn(a)

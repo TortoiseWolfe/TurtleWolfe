@@ -1,0 +1,29 @@
+{
+  "id": "nvidia-rtx-3090-fe",
+  "category": "gpu",
+  "manufacturer": "NVIDIA",
+  "model": "GeForce RTX 3090 Founders Edition (used market)",
+  "status": "candidate",
+  "confidence": "confirmed",
+  "dimensions_mm": {
+    "l": 313,
+    "w": 138,
+    "h": "TODO"
+  },
+  "source_urls": [
+    "https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3090-3090ti/"
+  ],
+  "last_verified": "2026-09-30",
+  "vram_gb": 24,
+  "tgp_w": 350,
+  "required_system_power_w": 750,
+  "slot_width": 3,
+  "power_inputs": {
+    "pcie_8pin": 2
+  },
+  "pcie_gen": 4,
+  "notes": "Card has a 12-pin socket; the included adapter takes 2 \u00d7 8-pin.",
+  "todo": [
+    "dimensions_mm.h"
+  ]
+}

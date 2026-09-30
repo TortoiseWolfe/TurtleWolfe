@@ -1,0 +1,28 @@
+{
+  "id": "corsair-rm1000x-cp-9020271",
+  "category": "psu",
+  "manufacturer": "Corsair",
+  "model": "RM1000x (CP-9020271)",
+  "status": "candidate",
+  "confidence": "confirmed",
+  "dimensions_mm": {
+    "l": 160,
+    "w": 150,
+    "h": 86
+  },
+  "source_urls": [
+    "https://www.corsair.com/us/en/p/psu/cp-9020271-na/rmx-series-rm1000x-fully-modular-low-noise-atx-power-supply-cp-9020271-na"
+  ],
+  "last_verified": "2026-09-30",
+  "sku": "CP-9020271",
+  "psu_w": 1000,
+  "form_factor": "ATX",
+  "atx_version": "3.1",
+  "connectors": {
+    "12v_2x6": 1,
+    "pcie_8pin": 4,
+    "eps_8pin": 2
+  },
+  "weight_kg": 3.0,
+  "todo": []
+}

@@ -1,0 +1,16 @@
+# Code is bind-mounted so every run tests the live tree, not a stale image.
+services:
+  test:
+    build: { context: ., target: test }
+    init: true
+    volumes: ["./:/app"]
+  check:
+    build: { context: ., target: base }
+    init: true
+    volumes: ["./:/app"]
+    entrypoint: ["python3", "-m", "partsbin"]
+  blender:
+    build: { context: ., target: blender }
+    profiles: [blender]
+    init: true
+    volumes: ["./:/app"]

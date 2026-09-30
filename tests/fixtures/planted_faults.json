@@ -1,0 +1,15 @@
+[
+  {"rule": "socket", "patch": {"parts": {"cooler": {"sockets": ["AM5"]}}}},
+  {"rule": "ram_type", "patch": {"parts": {"ram": {"ram_type": "DDR4"}}}},
+  {"rule": "ram_slots", "patch": {"parts": {"ram": {"modules": 6}}}},
+  {"rule": "mb_form_factor", "patch": {"parts": {"case": {"mb_form_factors": ["mATX"]}}}},
+  {"rule": "psu_vendor_rule", "patch": {"parts": {"gpu": {"required_system_power_w": 1100}}}},
+  {"rule": "psu_headroom", "patch": {"requirements": {"psu_headroom_factor": 1.6}}},
+  {"rule": "gpu_power_inputs", "patch": {"parts": {"gpu": {"power_inputs": {"pcie_8pin": 5}}}}},
+  {"rule": "gpu_length", "patch": {"parts": {"gpu": {"dimensions_mm": {"l": 400}}}}},
+  {"rule": "gpu_slot_width", "patch": {"parts": {"case": {"expansion_slots": 3}}}},
+  {"rule": "cooler_height", "patch": {"parts": {"cooler": {"height_mm": 180}}}},
+  {"rule": "psu_fit", "patch": {"parts": {"case": {"max_psu_len_mm": 150}}}},
+  {"rule": "pcie", "patch": {"parts": {"motherboard": {"pcie_x16_slots": []}}}},
+  {"rule": "usable_vram", "patch": {"parts": {"gpu": {"vram_gb": 16}}}}
+]

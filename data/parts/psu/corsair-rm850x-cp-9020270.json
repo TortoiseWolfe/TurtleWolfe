@@ -1,0 +1,27 @@
+{
+  "id": "corsair-rm850x-cp-9020270",
+  "category": "psu",
+  "manufacturer": "Corsair",
+  "model": "RM850x (CP-9020270)",
+  "status": "candidate",
+  "confidence": "confirmed",
+  "dimensions_mm": {
+    "l": 160,
+    "w": 150,
+    "h": 86
+  },
+  "source_urls": [
+    "https://www.corsair.com/us/en/p/psu/cp-9020270-na/rmx-series-rm850x-fully-modular-low-noise-atx-power-supply-cp-9020270-na"
+  ],
+  "last_verified": "2026-09-30",
+  "sku": "CP-9020270",
+  "psu_w": 850,
+  "form_factor": "ATX",
+  "atx_version": "3.1",
+  "connectors": {
+    "12v_2x6": 1,
+    "pcie_8pin": 3,
+    "eps_8pin": 2
+  },
+  "todo": []
+}

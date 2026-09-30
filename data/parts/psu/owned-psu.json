@@ -1,0 +1,31 @@
+{
+  "id": "owned-psu",
+  "category": "psu",
+  "manufacturer": "TODO",
+  "model": "TODO",
+  "status": "owned",
+  "confidence": "inferred",
+  "dimensions_mm": {
+    "l": "TODO",
+    "w": "TODO",
+    "h": "TODO"
+  },
+  "source_urls": [],
+  "last_verified": "2026-09-30",
+  "psu_w": "TODO",
+  "form_factor": "TODO",
+  "atx_version": "TODO",
+  "connectors": "TODO",
+  "notes": "Owned part not yet recorded. Fill from the label, the manual or Get-CimInstance; see README.",
+  "todo": [
+    "manufacturer",
+    "model",
+    "dimensions_mm.l",
+    "dimensions_mm.w",
+    "dimensions_mm.h",
+    "psu_w",
+    "form_factor",
+    "atx_version",
+    "connectors"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "owned-ram",
+  "category": "ram",
+  "manufacturer": "TODO",
+  "model": "TODO",
+  "status": "owned",
+  "confidence": "inferred",
+  "dimensions_mm": {
+    "l": "TODO",
+    "w": "TODO",
+    "h": "TODO"
+  },
+  "source_urls": [],
+  "last_verified": "2026-09-30",
+  "ram_type": "TODO",
+  "modules": "TODO",
+  "module_gb": "TODO",
+  "speed_mts": "TODO",
+  "notes": "Owned part not yet recorded. Fill from the label, the manual or Get-CimInstance; see README.",
+  "todo": [
+    "manufacturer",
+    "model",
+    "dimensions_mm.l",
+    "dimensions_mm.w",
+    "dimensions_mm.h",
+    "ram_type",
+    "modules",
+    "module_gb",
+    "speed_mts"
+  ]
+}

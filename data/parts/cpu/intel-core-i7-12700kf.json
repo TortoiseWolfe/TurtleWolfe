@@ -1,0 +1,31 @@
+{
+  "id": "intel-core-i7-12700kf",
+  "category": "cpu",
+  "manufacturer": "Intel",
+  "model": "Core i7-12700KF",
+  "status": "owned",
+  "confidence": "confirmed",
+  "dimensions_mm": {
+    "l": 45.0,
+    "w": 37.5,
+    "h": "TODO"
+  },
+  "source_urls": [
+    "https://www.intel.com/content/www/us/en/products/sku/134595/intel-core-i712700kf-processor-25m-cache-up-to-5-00-ghz/specifications.html"
+  ],
+  "last_verified": "2026-09-30",
+  "socket": "LGA1700",
+  "ram_types": [
+    "DDR5",
+    "DDR4"
+  ],
+  "max_ram_gb": 128,
+  "base_power_w": 125,
+  "max_turbo_power_w": 190,
+  "igpu": false,
+  "pcie_gen": 5,
+  "notes": "Owned (lscpu). KF = no integrated graphics, so the GPU always drives the display.",
+  "todo": [
+    "dimensions_mm.h"
+  ]
+}

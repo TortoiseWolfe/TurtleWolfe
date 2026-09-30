@@ -1,0 +1,413 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "part.schema.json",
+  "title": "Parts-bin record",
+  "description": "Any unsourced value is the string \"TODO\" and is listed in todo[]. No price fields.",
+  "type": "object",
+  "properties": {
+    "category": {
+      "enum": [
+        "cpu",
+        "gpu",
+        "motherboard",
+        "ram",
+        "psu",
+        "case",
+        "cooler"
+      ]
+    },
+    "status": {
+      "enum": [
+        "owned",
+        "candidate"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "confirmed",
+        "inferred"
+      ]
+    },
+    "source_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "todo": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dimensions_mm": {
+      "description": "{l, w, h} in millimetres, or TODO"
+    }
+  },
+  "required": [
+    "category"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "cpu"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "id",
+          "category",
+          "manufacturer",
+          "model",
+          "status",
+          "confidence",
+          "dimensions_mm",
+          "source_urls",
+          "last_verified",
+          "todo",
+          "socket",
+          "ram_types",
+          "max_ram_gb",
+          "base_power_w",
+          "max_turbo_power_w",
+          "igpu",
+          "pcie_gen"
+        ],
+        "propertyNames": {
+          "enum": [
+            "id",
+            "category",
+            "manufacturer",
+            "model",
+            "status",
+            "confidence",
+            "dimensions_mm",
+            "source_urls",
+            "last_verified",
+            "todo",
+            "sku",
+            "weight_kg",
+            "asin",
+            "notes",
+            "socket",
+            "ram_types",
+            "max_ram_gb",
+            "base_power_w",
+            "max_turbo_power_w",
+            "igpu",
+            "pcie_gen"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "gpu"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "id",
+          "category",
+          "manufacturer",
+          "model",
+          "status",
+          "confidence",
+          "dimensions_mm",
+          "source_urls",
+          "last_verified",
+          "todo",
+          "vram_gb",
+          "tgp_w",
+          "required_system_power_w",
+          "slot_width",
+          "power_inputs",
+          "pcie_gen"
+        ],
+        "propertyNames": {
+          "enum": [
+            "id",
+            "category",
+            "manufacturer",
+            "model",
+            "status",
+            "confidence",
+            "dimensions_mm",
+            "source_urls",
+            "last_verified",
+            "todo",
+            "sku",
+            "weight_kg",
+            "asin",
+            "notes",
+            "vram_gb",
+            "tgp_w",
+            "required_system_power_w",
+            "slot_width",
+            "power_inputs",
+            "pcie_gen"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "motherboard"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "id",
+          "category",
+          "manufacturer",
+          "model",
+          "status",
+          "confidence",
+          "dimensions_mm",
+          "source_urls",
+          "last_verified",
+          "todo",
+          "socket",
+          "form_factor",
+          "ram_type",
+          "dimm_slots",
+          "max_ram_gb",
+          "pcie_x16_slots"
+        ],
+        "propertyNames": {
+          "enum": [
+            "id",
+            "category",
+            "manufacturer",
+            "model",
+            "status",
+            "confidence",
+            "dimensions_mm",
+            "source_urls",
+            "last_verified",
+            "todo",
+            "sku",
+            "weight_kg",
+            "asin",
+            "notes",
+            "socket",
+            "form_factor",
+            "ram_type",
+            "dimm_slots",
+            "max_ram_gb",
+            "pcie_x16_slots"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "ram"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "id",
+          "category",
+          "manufacturer",
+          "model",
+          "status",
+          "confidence",
+          "dimensions_mm",
+          "source_urls",
+          "last_verified",
+          "todo",
+          "ram_type",
+          "modules",
+          "module_gb",
+          "speed_mts"
+        ],
+        "propertyNames": {
+          "enum": [
+            "id",
+            "category",
+            "manufacturer",
+            "model",
+            "status",
+            "confidence",
+            "dimensions_mm",
+            "source_urls",
+            "last_verified",
+            "todo",
+            "sku",
+            "weight_kg",
+            "asin",
+            "notes",
+            "ram_type",
+            "modules",
+            "module_gb",
+            "speed_mts"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "psu"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "id",
+          "category",
+          "manufacturer",
+          "model",
+          "status",
+          "confidence",
+          "dimensions_mm",
+          "source_urls",
+          "last_verified",
+          "todo",
+          "psu_w",
+          "form_factor",
+          "atx_version",
+          "connectors"
+        ],
+        "propertyNames": {
+          "enum": [
+            "id",
+            "category",
+            "manufacturer",
+            "model",
+            "status",
+            "confidence",
+            "dimensions_mm",
+            "source_urls",
+            "last_verified",
+            "todo",
+            "sku",
+            "weight_kg",
+            "asin",
+            "notes",
+            "psu_w",
+            "form_factor",
+            "atx_version",
+            "connectors"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "case"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "id",
+          "category",
+          "manufacturer",
+          "model",
+          "status",
+          "confidence",
+          "dimensions_mm",
+          "source_urls",
+          "last_verified",
+          "todo",
+          "mb_form_factors",
+          "max_gpu_len_mm",
+          "max_cooler_h_mm",
+          "psu_form_factors",
+          "max_psu_len_mm",
+          "expansion_slots"
+        ],
+        "propertyNames": {
+          "enum": [
+            "id",
+            "category",
+            "manufacturer",
+            "model",
+            "status",
+            "confidence",
+            "dimensions_mm",
+            "source_urls",
+            "last_verified",
+            "todo",
+            "sku",
+            "weight_kg",
+            "asin",
+            "notes",
+            "mb_form_factors",
+            "max_gpu_len_mm",
+            "max_cooler_h_mm",
+            "psu_form_factors",
+            "max_psu_len_mm",
+            "expansion_slots",
+            "max_gpu_len_note",
+            "mount_points"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "cooler"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "id",
+          "category",
+          "manufacturer",
+          "model",
+          "status",
+          "confidence",
+          "dimensions_mm",
+          "source_urls",
+          "last_verified",
+          "todo",
+          "height_mm",
+          "sockets",
+          "tdp_rating_w"
+        ],
+        "propertyNames": {
+          "enum": [
+            "id",
+            "category",
+            "manufacturer",
+            "model",
+            "status",
+            "confidence",
+            "dimensions_mm",
+            "source_urls",
+            "last_verified",
+            "todo",
+            "sku",
+            "weight_kg",
+            "asin",
+            "notes",
+            "height_mm",
+            "sockets",
+            "tdp_rating_w"
+          ]
+        }
+      }
+    }
+  ]
+}

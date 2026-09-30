@@ -1,0 +1,27 @@
+{
+  "id": "msi-rtx-3070-ti-gaming-x-trio-8g",
+  "category": "gpu",
+  "manufacturer": "MSI",
+  "model": "GeForce RTX 3070 Ti Gaming X Trio 8G",
+  "status": "owned",
+  "confidence": "inferred",
+  "dimensions_mm": {
+    "l": 323,
+    "w": 140,
+    "h": 56
+  },
+  "source_urls": [
+    "https://www.msi.com/Graphics-Card/GeForce-RTX-3070-Ti-GAMING-X-TRIO-8G/Specification"
+  ],
+  "last_verified": "2026-09-30",
+  "vram_gb": 8,
+  "tgp_w": 310,
+  "required_system_power_w": 750,
+  "slot_width": 3,
+  "power_inputs": {
+    "pcie_8pin": 2
+  },
+  "pcie_gen": 4,
+  "notes": "Owned. Model inferred from nvidia-smi subsystem 1462:5052 (MSI) and the 310 W power limit; confirm from the card's label. slot_width 3 derived from the 56 mm thickness (20.32 mm per slot).",
+  "todo": []
+}

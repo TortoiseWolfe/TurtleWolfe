@@ -1,8 +1,8 @@
 """Golden test for episode 1's build as seeded: the only hard verdict is the VRAM FAIL, and every
-other row is NOT VERIFIABLE because of an owned part nobody has recorded yet, or a policy number."""
+NOT VERIFIABLE row is pinned to the exact TODO behind it: the case, cooler and PSU (their labels
+are still unread) or a policy number. Fill one in and this test must change with it."""
 
 import json
-import re
 import shutil
 import tempfile
 import unittest
@@ -27,14 +27,42 @@ class WorkbenchBuild(unittest.TestCase):
         self.assertIn("23389 MiB", row["measured"])
         self.assertEqual(self.verdict, compat.FAIL)
 
-    def test_unknowns_come_only_from_owned_stubs_or_policy(self):
-        owned = {c for c, pid in self.build["parts"].items() if pid.startswith("owned-")}
+    # rule id -> the first TODO that rule trips over. Motherboard, RAM and CPU are recorded now, so
+    # none of them appear; what is left is the owned case, cooler and PSU stubs plus one policy number.
+    EXPECTED_UNKNOWNS = {
+        "socket": "cooler.sockets is TODO",
+        "mb_form_factor": "case.mb_form_factors is TODO",
+        "psu_vendor_rule": "psu.psu_w is TODO",
+        "psu_headroom": "requirements.platform_baseline_w or psu_headroom_factor is TODO",
+        "gpu_power_inputs": "psu.connectors is TODO",
+        "gpu_length": "case.max_gpu_len_mm is TODO",
+        "gpu_slot_width": "case.expansion_slots is TODO",
+        "cooler_height": "cooler.height_mm is TODO",
+        "psu_fit": "psu.form_factor is TODO",
+    }
+
+    def test_unknowns_are_exactly_the_unrecorded_case_cooler_psu_and_policy(self):
+        unknown = {r["id"]: r["note"] for r in self.rows if r["verdict"] == compat.NOT_VERIFIABLE}
+        self.assertEqual(unknown, self.EXPECTED_UNKNOWNS)
+
+    def test_recorded_parts_are_not_the_reason_for_any_unknown(self):
         for r in self.rows:
-            if r["verdict"] != compat.NOT_VERIFIABLE:
-                continue
-            with self.subTest(rule=r["id"]):
-                cat = re.match(r"(\w+)\.", r["note"]).group(1)
-                self.assertTrue(cat in owned or cat == "requirements", r["note"])
+            if r["verdict"] == compat.NOT_VERIFIABLE:
+                with self.subTest(rule=r["id"]):
+                    self.assertFalse(r["note"].startswith(("cpu.", "motherboard.", "ram.", "gpu.")), r["note"])
+
+    def test_two_ram_kits_fill_all_four_slots(self):
+        self.assertEqual(self.build["quantities"], {"ram": 2})
+        row = [r for r in self.rows if r["id"] == "ram_slots"][0]
+        self.assertEqual(row["verdict"], compat.PASS)
+        self.assertEqual(row["measured"], "4 × 16 GB = 64 GB")
+        self.assertEqual(row["note"], "2 kits × 2 modules")
+
+    def test_memory_type_and_board_slot_are_checked_not_unknown(self):
+        verdicts = {r["id"]: r for r in self.rows}
+        self.assertEqual(verdicts["ram_type"]["verdict"], compat.PASS)
+        self.assertEqual(verdicts["pcie"]["verdict"], compat.PASS)
+        self.assertIn("Gen4", verdicts["pcie"]["note"])           # 3090 is Gen4, the CPU slot is Gen5
 
 
 class Publish(unittest.TestCase):

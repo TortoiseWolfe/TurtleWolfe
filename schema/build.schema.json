@@ -24,6 +24,19 @@
         ]
       }
     },
+    "quantities": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "ram"
+        ]
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "description": "How many of a part the build holds, e.g. {\"ram\": 2} for two kits"
+    },
     "requirements": {
       "type": "object",
       "required": [

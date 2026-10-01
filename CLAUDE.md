@@ -16,7 +16,7 @@ deterministic compatibility checker, and a boxes-and-clearances virtual build re
 ## Layout
 - `schema/`: JSON Schemas (documentation + editor validation). Python mirrors the required sets; a drift test keeps them equal.
 - `data/parts/<category>/<id>.json`: one part per file.
-- `builds/<slug>/build.json`: parts, requirements and the episode's planted fault.
+- `builds/<slug>/build.json`: parts, requirements and the episode's planted fault. `quantities` (RAM only) says how many of a part the build holds, e.g. `{"ram": 2}` for two kits; the part file stays one kit.
 - `src/partsbin/`: `load`, `schema`, `compat` (rules), `claims`, `cli`.
 - `published/<slug>/`: what turtlewolfe.com reads. It is generated; don't hand-edit.
 - `episodes/`: run sheets.

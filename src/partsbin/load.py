@@ -23,5 +23,12 @@ def load_parts(root=ROOT):
 
 
 def resolve_build(build, parts):
-    """Map each category in the build to its part record (None when the id is unknown)."""
-    return {cat: parts.get(pid) for cat, pid in build.get("parts", {}).items()}
+    """Map each category in the build to its part record (None when the id is unknown).
+    A category the build holds more than once (build["quantities"], e.g. two RAM kits) gets a
+    copy of its record with "quantity" set; part files never carry one."""
+    qty = build.get("quantities", {})
+    out = {}
+    for cat, pid in build.get("parts", {}).items():
+        rec = parts.get(pid)
+        out[cat] = {**rec, "quantity": qty[cat]} if rec is not None and cat in qty else rec
+    return out

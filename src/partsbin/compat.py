@@ -49,12 +49,15 @@ def ram_type(p, r):
 
 
 def ram_slots(p, r):
-    modules, each = _get(p, "ram", "modules"), _get(p, "ram", "module_gb")
+    kit_modules, each = _get(p, "ram", "modules"), _get(p, "ram", "module_gb")
+    kits = p["ram"].get("quantity", 1)          # set from build["quantities"] by load.resolve_build
+    modules = kit_modules * kits
     slots, mb_max, cpu_max = _get(p, "motherboard", "dimm_slots"), _get(p, "motherboard", "max_ram_gb"), _get(p, "cpu", "max_ram_gb")
     limit = min(mb_max, cpu_max)
     return _row("ram_slots", "Modules fit the slots and the capacity limit",
                 f"≤{slots} modules, ≤{limit} GB", f"{modules} × {each} GB = {modules * each} GB",
-                modules <= slots and modules * each <= limit)
+                modules <= slots and modules * each <= limit,
+                note=f"{kits} kits × {kit_modules} modules" if kits > 1 else "")
 
 
 def mb_form_factor(p, r):

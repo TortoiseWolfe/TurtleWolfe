@@ -1,0 +1,34 @@
+{
+  "id": "corsair-carbide-175r-rgb",
+  "category": "case",
+  "manufacturer": "Corsair",
+  "model": "Carbide Series 175R RGB (CC-9011171-WW)",
+  "status": "owned",
+  "confidence": "inferred",
+  "dimensions_mm": {
+    "l": 418,
+    "w": 210,
+    "h": 450
+  },
+  "source_urls": [
+    "https://www.corsair.com/us/en/p/pc-cases/cc-9011171-ww/carbide-series-175r-rgb-tempered-glass-mid-tower-atx-gaming-case-black-cc-9011171-ww",
+    "https://assets.corsair.com/image/upload/corsairmedia/sys_master/productcontent/WW_CARBIDE_SERIES_175R_RGB_QSG_revAC.pdf"
+  ],
+  "last_verified": "2026-10-01",
+  "sku": "CC-9011171-WW",
+  "mb_form_factors": [
+    "ATX",
+    "Micro-ATX",
+    "Mini-ITX"
+  ],
+  "max_gpu_len_mm": 330,
+  "max_gpu_len_note": "Corsair's figure; it does not say whether it assumes the HDD cage moved or no front fan or radiator in the way.",
+  "max_cooler_h_mm": 160,
+  "psu_form_factors": [
+    "ATX"
+  ],
+  "max_psu_len_mm": 180,
+  "expansion_slots": 7,
+  "notes": "Owned. The model comes from the builder's April 2022 parts quote. On that same quote the RAM line was swapped at build time (Corsair Vengeance is installed, the quote said G.Skill), so this part stays inferred until its label is read. The quote's name, Carbide 175, can only be this case among Corsair's current listings: corsair.com lists the 175R only as the 175R RGB (CC-9011171-WW, tempered glass, one 120 mm RGB fan), and the quick-start guide is titled 175R RGB; neighbouring SKUs are other models (CC-9011075-WW is the 100R, CC-9011170-WW the 678C). A search of corsair.com found no non-RGB 175R, but that is an absence of results, not a statement from Corsair. Corsair's product page gives: mini-ITX / microATX / ATX boards, max GPU length 330 mm, max CPU cooler height 160 mm, ATX PSU up to 180 mm, 7 expansion slots, 418 mm L (depth) x 210 mm W x 450 mm H. The quick-start guide's case specification repeats the 418 x 210 x 450 mm size and the 330 / 160 / 180 mm limits. Corsair spells the board sizes MicroATX and ITX; they are written Micro-ATX and Mini-ITX here to match the board records. Corsair's page lists a 7 kg weight (a retailer lists 13.45 lb, about 6.1 kg); weight_kg is left out because neither is clearly the bare case. The quick-start guide has a movable HDD cage section but no stated GPU-length condition. No mount_points are recorded (not needed by the checker).",
+  "todo": []
+}

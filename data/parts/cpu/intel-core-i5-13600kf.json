@@ -1,0 +1,32 @@
+{
+  "id": "intel-core-i5-13600kf",
+  "category": "cpu",
+  "manufacturer": "Intel",
+  "model": "Core i5-13600KF",
+  "status": "owned",
+  "confidence": "confirmed",
+  "dimensions_mm": {
+    "l": 45.0,
+    "w": 37.5,
+    "h": "TODO"
+  },
+  "source_urls": [
+    "https://www.intel.com/content/www/us/en/products/sku/230494/intel-core-i513600kf-processor-24m-cache-up-to-5-10-ghz/specifications.html",
+    "https://www.intel.com/content/www/us/en/processors/processor-numbers.html"
+  ],
+  "last_verified": "2026-10-01",
+  "socket": "LGA1700",
+  "ram_types": [
+    "DDR5",
+    "DDR4"
+  ],
+  "max_ram_gb": 192,
+  "base_power_w": 125,
+  "max_turbo_power_w": 181,
+  "igpu": false,
+  "pcie_gen": 5,
+  "notes": "Second tower (owned). Read from a hardware-monitor screenshot, 2023. Intel's spec page: sockets supported FCLGA1700 (written LGA1700 to match the other records), max memory 192 GB, up to DDR5 5600 MT/s and up to DDR4 3200 MT/s, processor base power 125 W, maximum turbo power 181 W, PCI Express revision 5.0 and 4.0 (pcie_gen records the highest), package 45.0 x 37.5 mm. igpu is false: Intel's page lists no processor graphics for this part, and Intel's processor-number guide defines the F suffix as 'requires discrete graphics'. dimensions_mm.h is not on the spec page.",
+  "todo": [
+    "dimensions_mm.h"
+  ]
+}

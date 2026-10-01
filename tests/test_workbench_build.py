@@ -1,6 +1,8 @@
 """Golden test for episode 1's build as seeded: the only hard verdict is the VRAM FAIL, and every
-NOT VERIFIABLE row is pinned to the exact TODO behind it: the case, cooler and PSU (their labels
-are still unread) or a policy number. Fill one in and this test must change with it."""
+NOT VERIFIABLE row is pinned to the exact TODO behind it, which is now only a policy number. The
+case, cooler and PSU come from the builder's parts quote (confidence "inferred": their labels are
+still unread), so every fit row below is decided against those models. Fill one in or confirm a
+label and this test must change with it."""
 
 import json
 import shutil
@@ -27,23 +29,38 @@ class WorkbenchBuild(unittest.TestCase):
         self.assertIn("23389 MiB", row["measured"])
         self.assertEqual(self.verdict, compat.FAIL)
 
-    # rule id -> the first TODO that rule trips over. Motherboard, RAM and CPU are recorded now, so
-    # none of them appear; what is left is the owned case, cooler and PSU stubs plus one policy number.
+    # rule id -> the first TODO that rule trips over. Every part is recorded now, so the only
+    # unknown left is the policy number behind the PSU headroom rule.
     EXPECTED_UNKNOWNS = {
-        "socket": "cooler.sockets is TODO",
-        "mb_form_factor": "case.mb_form_factors is TODO",
-        "psu_vendor_rule": "psu.psu_w is TODO",
         "psu_headroom": "requirements.platform_baseline_w or psu_headroom_factor is TODO",
-        "gpu_power_inputs": "psu.connectors is TODO",
-        "gpu_length": "case.max_gpu_len_mm is TODO",
-        "gpu_slot_width": "case.expansion_slots is TODO",
-        "cooler_height": "cooler.height_mm is TODO",
-        "psu_fit": "psu.form_factor is TODO",
     }
 
-    def test_unknowns_are_exactly_the_unrecorded_case_cooler_psu_and_policy(self):
+    def test_the_only_unknown_left_is_the_policy_number(self):
         unknown = {r["id"]: r["note"] for r in self.rows if r["verdict"] == compat.NOT_VERIFIABLE}
         self.assertEqual(unknown, self.EXPECTED_UNKNOWNS)
+
+    # The owned case, cooler and PSU against the used 3090: all of them fit, so VRAM is the whole story.
+    EXPECTED_FITS = {
+        "socket": compat.PASS,
+        "mb_form_factor": compat.PASS,
+        "psu_vendor_rule": compat.PASS,
+        "gpu_power_inputs": compat.PASS,
+        "gpu_length": compat.PASS,
+        "gpu_slot_width": compat.PASS,
+        "cooler_height": compat.PASS,
+        "psu_fit": compat.PASS,
+    }
+
+    def test_the_owned_case_cooler_and_psu_take_the_3090(self):
+        got = {r["id"]: r["verdict"] for r in self.rows if r["id"] in self.EXPECTED_FITS}
+        self.assertEqual(got, self.EXPECTED_FITS)
+
+    def test_the_tightest_fits_are_measured_against_the_recorded_models(self):
+        rows = {r["id"]: r for r in self.rows}
+        self.assertIn("313", rows["gpu_length"]["measured"])
+        self.assertIn("330", rows["gpu_length"]["required"])
+        self.assertIn("148", rows["cooler_height"]["measured"])
+        self.assertIn("160", rows["cooler_height"]["required"])
 
     def test_recorded_parts_are_not_the_reason_for_any_unknown(self):
         for r in self.rows:

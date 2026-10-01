@@ -1,0 +1,32 @@
+{
+  "id": "evga-850-bq",
+  "category": "psu",
+  "manufacturer": "EVGA",
+  "model": "850 BQ (110-BQ-0850-V1)",
+  "status": "owned",
+  "confidence": "inferred",
+  "dimensions_mm": {
+    "l": 165,
+    "w": 150,
+    "h": 86
+  },
+  "source_urls": [
+    "https://www.evga.com/support/manuals/files/110-BQ-0850-0750-0650.pdf",
+    "https://web.archive.org/web/20240416163611/https://www.evga.com/products/product.aspx?pn=110-BQ-0850-V1",
+    "https://pcpartpicker.com/product/kGL7YJ/evga-850-bq-850-w-80-bronze-certified-semi-modular-atx-power-supply-110-bq-0850-v1"
+  ],
+  "last_verified": "2026-10-01",
+  "sku": "110-BQ-0850-V1",
+  "psu_w": 850,
+  "form_factor": "ATX",
+  "atx_version": "TODO",
+  "connectors": {
+    "12v_2x6": 0,
+    "pcie_8pin": 3,
+    "eps_8pin": 2
+  },
+  "notes": "Owned. The model comes from the builder's April 2022 parts quote. On that same quote the RAM line was swapped at build time (Corsair Vengeance is installed, the quote said G.Skill), so this part stays inferred until its label is read. Part number 110-BQ-0850-V1 is the P/N on EVGA's own product page for the 850 BQ (80+ Bronze, semi-modular, 5-year warranty); EVGA's page says to read the part-number suffix for warranty terms, while PCPartPicker lists V1, V2 and V3 under the same model, so the suffix on the label is worth reading too. Output 850 W, +12V 70 A (840 W), from EVGA's BQ quick guide (rev 202201), spec table. Connectors from EVGA's product-page spec (archived copy): EPS 2 x 8-pin (4+4), PCIe 3 x 8-pin (6+2) plus 3 x 6-pin, 24-pin ATX 1x; the quick guide's cable table agrees (three PCIe cables, each a 6-pin plus a 6+2-pin end). pcie_8pin counts only the 6+2 ends; eps_8pin counts the 4+4 ends. 12v_2x6 is 0 because EVGA lists no 12V-2x6 / 12VHPWR connector; the key is written out as 0 to say so, though the checker treats a missing key the same. Size: 165 mm L x 150 mm W x 86 mm H in the quick guide; EVGA's product page says 85 mm H and the same L and W, so the larger height is kept (the checker only reads l). form_factor: neither EVGA document prints a form-factor word, so the word ATX rests on PCPartPicker's Type: ATX, on EVGA's 150 x 86 mm footprint and on its 20+4-pin ATX cabling; no manufacturer line was found, hence the extra non-manufacturer source URL. PCPartPicker also lists a 140 mm length, which contradicts EVGA's 165 mm and is not used. atx_version: EVGA does not state which ATX12V/EPS12V version it meets in the quick guide or the product page, and no manufacturer source was found, so it stays TODO (no checker rule reads it).",
+  "todo": [
+    "atx_version"
+  ]
+}

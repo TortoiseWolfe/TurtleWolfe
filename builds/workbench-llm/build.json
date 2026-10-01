@@ -5,9 +5,9 @@
     "cpu": "intel-core-i7-12700kf",
     "motherboard": "msi-pro-z690-a-ddr4",
     "ram": "corsair-vengeance-lpx-cmk32gx4m2d3600c18",
-    "case": "owned-case",
-    "cooler": "owned-cooler",
-    "psu": "owned-psu",
+    "case": "corsair-carbide-175r-rgb",
+    "cooler": "vetroo-v5",
+    "psu": "evga-850-bq",
     "gpu": "nvidia-rtx-3090-fe"
   },
   "quantities": {"ram": 2},

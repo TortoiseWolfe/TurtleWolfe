@@ -1,0 +1,41 @@
+{
+  "id": "asus-prime-z790m-plus",
+  "category": "motherboard",
+  "manufacturer": "ASUS",
+  "model": "PRIME Z790M-PLUS",
+  "status": "owned",
+  "confidence": "confirmed",
+  "dimensions_mm": {
+    "l": 244,
+    "w": 244,
+    "h": "TODO"
+  },
+  "source_urls": [
+    "https://www.asus.com/motherboards-components/motherboards/prime/prime-z790m-plus/techspec/",
+    "https://dlcdnets.asus.com/pub/ASUS/mb/LGA1700/PRIME_Z790M-PLUS/E21314_PRIME_Z790M-PLUS_UM_WEB.pdf",
+    "https://www.asus.com/motherboards-components/motherboards/prime/prime-z790m-plus-d4/techspec/",
+    "https://www.bitsavers.org/pdf/intel/ATX/ATX_Specification_2.01_199702.PDF"
+  ],
+  "last_verified": "2026-10-01",
+  "socket": "LGA1700",
+  "form_factor": "Micro-ATX",
+  "ram_type": "DDR5",
+  "dimm_slots": 4,
+  "max_ram_gb": 192,
+  "pcie_x16_slots": [
+    {
+      "gen": 5,
+      "electrical_lanes": 16,
+      "slot_index": 0
+    },
+    {
+      "gen": 4,
+      "electrical_lanes": 4,
+      "slot_index": 3
+    }
+  ],
+  "notes": "Second tower (owned). Read from a hardware-monitor screenshot, 2023. DDR5 or D4: ASUS sells two boards, PRIME Z790M-PLUS (DDR5) and PRIME Z790M-PLUS D4 (DDR4); the undecorated name is the DDR5 one, and its manual (E21314) covers DDR5 slots only, while the D4 page lists DDR4. The machine reads 32 GB at 4800 MT/s: 4800 is the DDR5 base speed on ASUS's DDR5 list, and Intel's spec for the 13600KF stops at DDR4-3200, so a plain DDR4 board would not run 4800. If the screenshot's board name ended in D4 this record is the wrong board. Chipset Intel Z790 (the schema has no chipset field). form_factor is ASUS's mATX, written Micro-ATX; the outline is 9.6 x 9.6 in (24.4 x 24.4 cm), so l and w are 244 and no source gives a height. max_ram_gb is ASUS's current spec page (4 x DIMM, max 192 GB, DDR5 4800 up to 7200 OC); the first-edition manual (November 2022) says 128 GB, and the D4 board's page says 128 GB. Expansion slots per the spec page and manual: 1 x PCIe 5.0 x16 (CPU), 1 x PCIe 4.0 x16 running at x4 (Z790), 2 x PCIe 4.0 x1; pcie_x16_slots lists the two x16-size slots, as the MSI record lists its x16-size slots, and omits the two x1 slots. slot_index is the 0-based bracket position from the top of an ATX-style case, derived, not printed: in the manual's slot diagram (p.1-7, page 17 of the PDF) PCIEX16(G4) sits 20.7 mm above the board's bottom edge, the lowest-slot height (0.79 in) that the MSI record takes from ATX 2.01 Fig. 3 (measured here from the rendered diagram, so good to about a millimetre), and PCIEX16(G5) is 60.5 mm (three 20.32 mm pitches) above it with the two x1 slots in between at the pitches. A 9.6 in board is 2.4 in shorter than a 12 in ATX board, so its lowest slot lands three brackets up from ATX's seventh, at index 3, and PCIEX16(G5) at index 0; PCIEX16(G5) is measured 162.8 mm (6.41 in) from the board's top edge in the same diagram, which is the first bracket position of an ATX board (12 in - 0.79 in - 6 x 0.8 in = 6.41 in), so the two routes agree. The ATX bracket positions are from ATX 2.01; that a microATX board sits top-aligned on the ATX hole pattern is the usual mounting and not stated in a source here.",
+  "todo": [
+    "dimensions_mm.h"
+  ]
+}

@@ -39,6 +39,16 @@ class Schema(unittest.TestCase):
                "todo": [], "ram_type": "TODO", "modules": "TODO", "module_gb": "TODO", "speed_mts": "TODO"}
         self.assertTrue(any("must match todo[]" in p for p in schema.validate_part(rec)))
 
+    def test_quantity_lives_in_the_build_not_the_part_file(self):
+        rec = {"id": "x", "category": "ram", "quantity": 2}
+        self.assertTrue(any("unexpected field quantity" in p for p in schema.validate_part(rec)))
+        parts = {"ram-x": {"id": "ram-x", "category": "ram"}}
+        build = {"parts": {"ram": "ram-x", "cpu": "missing"}, "quantities": {"ram": 2}}
+        resolved = load.resolve_build(build, parts)
+        self.assertEqual(resolved["ram"]["quantity"], 2)
+        self.assertIsNone(resolved["cpu"])
+        self.assertNotIn("quantity", parts["ram-x"])         # a copy; the bin's record is untouched
+
     def test_price_field_is_refused(self):
         rec = {"id": "x", "category": "ram", "price_usd": 1}
         self.assertTrue(any("unknown" in p or "price" in p for p in schema.validate_part(rec)))

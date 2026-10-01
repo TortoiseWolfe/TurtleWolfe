@@ -29,6 +29,9 @@ CATEGORY_OPTIONAL = {"case": ("max_gpu_len_note", "mount_points")}
 PRICE_FIELD = re.compile(r"price|msrp|cost", re.I)
 
 BUILD_REQUIRED = ("slug", "title", "parts", "requirements")
+# A build may hold more than one of the same part record; only RAM kits are counted so far
+# (the ram_slots rule). The count lives in the build, never in the part file.
+QUANTITY_CATEGORIES = ("ram",)
 REQUIREMENTS_REQUIRED = ("min_usable_vram_gb", "display_reservation_mib", "psu_headroom_factor",
                          "platform_baseline_w")
 CLAIMS_REQUIRED = ("model", "recorded_at", "prompt_sha256", "claims")
@@ -123,6 +126,9 @@ def build_json_schema():
         "required": list(BUILD_REQUIRED),
         "properties": {
             "parts": {"type": "object", "propertyNames": {"enum": list(CATEGORIES)}},
+            "quantities": {"type": "object", "propertyNames": {"enum": list(QUANTITY_CATEGORIES)},
+                           "additionalProperties": {"type": "integer", "minimum": 1},
+                           "description": "How many of a part the build holds, e.g. {\"ram\": 2} for two kits"},
             "requirements": {"type": "object", "required": list(REQUIREMENTS_REQUIRED)},
             "planted_fault": _any("{rule_id, description}; stripped from published/"),
         },

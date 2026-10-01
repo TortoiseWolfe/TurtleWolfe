@@ -66,6 +66,27 @@ class Boundaries(unittest.TestCase):
         self.assertEqual(verdicts(b)["gpu_power_inputs"], compat.FAIL)
 
 
+class Quantities(unittest.TestCase):
+    def ram_row(self, patch):
+        b = merge(good(), patch)
+        return [r for r in compat.run(b["parts"], b["requirements"]) if r["id"] == "ram_slots"][0]
+
+    def test_two_kits_count_every_module(self):
+        row = self.ram_row({"parts": {"ram": {"modules": 2, "module_gb": 16, "quantity": 2}}})
+        self.assertEqual(row["verdict"], compat.PASS)
+        self.assertEqual(row["measured"], "4 × 16 GB = 64 GB")
+        self.assertEqual(row["note"], "2 kits × 2 modules")
+
+    def test_kits_past_the_slot_count_fail(self):
+        row = self.ram_row({"parts": {"ram": {"modules": 2, "module_gb": 16, "quantity": 3}}})   # 6 modules, 4 slots
+        self.assertEqual(row["verdict"], compat.FAIL)
+
+    def test_no_quantity_means_one_kit(self):
+        row = self.ram_row({})
+        self.assertEqual(row["measured"], "2 × 32 GB = 64 GB")
+        self.assertEqual(row["note"], "")
+
+
 class NotVerifiable(unittest.TestCase):
     def test_todo_value_never_passes(self):
         b = merge(good(), {"parts": {"gpu": {"dimensions_mm": {"l": "TODO"}}}})

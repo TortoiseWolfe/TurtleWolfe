@@ -1,0 +1,25 @@
+{
+  "id": "corsair-vengeance-lpx-cmk32gx4m2d3600c18",
+  "category": "ram",
+  "manufacturer": "Corsair",
+  "model": "Vengeance LPX 32GB (2 x 16GB) DDR4-3600 C18 (CMK32GX4M2D3600C18)",
+  "status": "owned",
+  "confidence": "confirmed",
+  "dimensions_mm": {
+    "l": 135,
+    "w": 6.64,
+    "h": 33.53
+  },
+  "source_urls": [
+    "https://www.corsair.com/us/en/p/memory/cmk32gx4m2d3600c18/vengeancea-lpx-32gb-2-x-16gb-ddr4-dram-3600mhz-c18-memory-kit-black-cmk32gx4m2d3600c18",
+    "https://www.corsair.com/us/en/explorer/diy-builder/memory/ddr4-memory-module-dimensions/"
+  ],
+  "last_verified": "2026-09-30",
+  "sku": "CMK32GX4M2D3600C18",
+  "ram_type": "DDR4",
+  "modules": 2,
+  "module_gb": 16,
+  "speed_mts": 3600,
+  "notes": "Owned. This record is ONE kit (2 modules). This PC carries two identical kits, 4 x 16 GiB in all four slots, read from SMBIOS on 2026-09-30 (part number CMK32GX4M2D3600C18); the build says so with quantities.ram = 2. dimensions_mm is per module, from Corsair's DDR4 module dimensions table (VENGEANCE LPX, CMK). Corsair lists 3600 MT/s as the tested speed, CL18 at 1.35 V with XMP 2.0; the SPD default is 2133 MT/s CL15 at 1.2 V.",
+  "todo": []
+}

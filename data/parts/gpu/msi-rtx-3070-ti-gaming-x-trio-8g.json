@@ -11,7 +11,11 @@
     "h": 56
   },
   "source_urls": [
-    "https://www.msi.com/Graphics-Card/GeForce-RTX-3070-Ti-GAMING-X-TRIO-8G/Specification"
+    "https://www.msi.com/Graphics-Card/GeForce-RTX-3070-Ti-GAMING-X-TRIO-8G/Specification",
+    "https://storage-asset.msi.com/datasheet/vga/global/GeForce-RTX-3070-Ti-GAMING-X-TRIO-8G.pdf",
+    "https://storage-asset.msi.com/datasheet/vga/global/GeForce-RTX-3070-Ti-GAMING-TRIO-8G.pdf",
+    "https://storage-asset.msi.com/datasheet/vga/global/GeForce-RTX-3070-Ti-SUPRIM-X-8G.pdf",
+    "https://storage-asset.msi.com/datasheet/vga/global/GeForce-RTX-3070-Ti-VENTUS-3X-8G-OC.pdf"
   ],
   "last_verified": "2026-09-30",
   "vram_gb": 8,
@@ -22,6 +26,6 @@
     "pcie_8pin": 2
   },
   "pcie_gen": 4,
-  "notes": "Owned. Model inferred from nvidia-smi subsystem 1462:5052 (MSI) and the 310 W power limit; confirm from the card's label. slot_width 3 derived from the 56 mm thickness (20.32 mm per slot).",
+  "notes": "Owned, MSI, but the variant is NOT confirmed. nvidia-smi on this PC, 2026-09-30: sub system id 0x50521462 (MSI), VBIOS 94.04.65.00.2a, default power limit 310 W (max 330 W), 8192 MiB. The PCI ID database (pci.ids 2026.10.01) has no subsystem entries at all under 10de:2482, so it cannot name the card. MSI's datasheets narrow it: 310 W is listed for the Gaming X Trio, the Gaming Trio and the SUPRIM X, but 290 W for the VENTUS 3X, so a 310 W default rules the VENTUS out. The Gaming X Trio and Gaming Trio share the figures used here (323 x 140 x 56 mm, 750 W, 2 x 8-pin, Gen 4); the SUPRIM X would not (335 x 140 x 61 mm, 850 W). Confirm from the card's backplate or box before this goes on air. slot_width 3 derived from the 56 mm thickness (20.32 mm per slot).",
   "todo": []
 }

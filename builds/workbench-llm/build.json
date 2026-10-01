@@ -3,13 +3,14 @@
   "title": "The workbench that can run its own coding model",
   "parts": {
     "cpu": "intel-core-i7-12700kf",
-    "motherboard": "owned-motherboard",
-    "ram": "owned-ram",
+    "motherboard": "msi-pro-z690-a-ddr4",
+    "ram": "corsair-vengeance-lpx-cmk32gx4m2d3600c18",
     "case": "owned-case",
     "cooler": "owned-cooler",
     "psu": "owned-psu",
     "gpu": "nvidia-rtx-3090-fe"
   },
+  "quantities": {"ram": 2},
   "requirements": {
     "min_usable_vram_gb": 23,
     "min_usable_vram_source": "https://ollama.com/library/glm-4.7-flash/tags (~23 GB VRAM at 64000-token context; Ollama asks for >=64k for coding agents)",

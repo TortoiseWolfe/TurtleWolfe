@@ -69,16 +69,17 @@ Discord events, and any user-token (OAuth) flow. Only an app access token is use
      Compute it with WebCrypto (`crypto.subtle`) and compare in constant time.
    - Missing header or bad signature → 403. A timestamp more than 10 minutes from now
      (either direction) → 403.
-2. Deduplicate: if KV `msg:<id>` exists, return 204 and do nothing. Otherwise put it with a
-   24 h TTL.
-3. By message type:
-   - `webhook_callback_verification`: return 200 with the raw `challenge` string as the
-     body and `Content-Type: text/plain`.
+2. `webhook_callback_verification` is answered first, before any dedupe: return 200 with the
+   raw `challenge` string as the body and `Content-Type: text/plain`. A retried challenge with
+   the same id must still get the challenge back. (Changed after review, 2026-10-02.)
+3. Deduplicate everything else: if KV `msg:<id>` exists, return 204 and do nothing. Otherwise
+   put it with a 24 h TTL.
+4. By message type:
    - `revocation`: post an ops alert naming the subscription type, the broadcaster and
      `subscription.status`, then return 204.
    - `notification` with subscription type `stream.online`: handle as below, return 204.
    - Anything else: 204.
-4. Respond fast. Twitch times out after a few seconds, so the Discord post should run in
+5. Respond fast. Twitch times out after a few seconds, so the Discord post should run in
    `ctx.waitUntil`. In tests, await it.
 
 ### Go-live handling (`stream.online` notification)
@@ -88,7 +89,8 @@ Discord events, and any user-token (OAuth) flow. Only an app access token is use
 - Cooldown: if KV `announced:<login>` exists, skip; a quick reconnect must not re-announce.
   Otherwise put it with a 30 min TTL.
 - Get the title from `GET https://api.twitch.tv/helix/channels?broadcaster_id=<event.broadcaster_user_id>`
-  (field `title`). If that call fails, post anyway with the title "(title unavailable)".
+  (field `title`). If that call fails, or the title comes back empty, post anyway with the title
+  "(title unavailable)".
 - A stream is a rerun when the title starts with `[Rerun]` (case-insensitive, after trimming)
   or `event.type === "rerun"`.
 - Message (`buildAnnouncement`):
@@ -114,7 +116,7 @@ Discord events, and any user-token (OAuth) flow. Only an app access token is use
 
 - App token: `POST https://id.twitch.tv/oauth2/token` with form fields `client_id`,
   `client_secret`, `grant_type=client_credentials`. Cache it in KV `token:app` with a TTL of
-  `expires_in - 300` seconds.
+  `expires_in - 300` seconds, with a floor of 60 s (KV's minimum TTL).
 - `helix(path, query)`: GET with headers `Client-Id` and `Authorization: Bearer <token>`.
   On a 401, clear the cached token, fetch a new one and retry once.
 - `userId(login)`: `GET /helix/users?login=<login>` → `data[0].id`. Cache in KV `uid:<login>`
@@ -169,7 +171,9 @@ Each run does these, in order, each one isolated so that one failing doesn't sto
 
 ## Engineering rules
 
-- TypeScript strict. Runtime: Cloudflare Workers, with no Node-only APIs in `src/`.
+- TypeScript strict. Runtime: Cloudflare Workers, with no Node-only APIs in `src/`. Enforced
+  by typechecking `src/` with Workers types only (`tsconfig.json`), and tests separately
+  (`tsconfig.test.json`, which adds Node and Vitest types).
 - **Dependency injection for testability:**
   - every module takes a `deps` object `{ fetch, now, kv, waitUntil? }` instead of
     touching globals;
@@ -235,7 +239,8 @@ docker compose -p afa-stream-alerts-check run --rm dev sh -c "npm ci && npm run 
 1. Register a Twitch app at https://dev.twitch.tv/console (needs two-factor sign-in). That
    gives the client ID and secret.
 2. Create two Discord webhooks: one for #announcements, one for a private ops channel.
-3. Create the KV namespace, set the secrets with `scripts/set-secrets.sh` (it reads each
-   value silently, never as a command argument), then `npm run deploy`, all inside the dev
-   container.
+3. Create the KV namespace. Run `scripts/set-secrets.sh` from the repo root on the host: it
+   reads each value silently and pipes it into `wrangler secret put` inside the dev
+   container, never as a command argument. Then
+   `docker compose run --rm dev npm run deploy`.
 4. Point an UptimeRobot keyword monitor at `/health`.

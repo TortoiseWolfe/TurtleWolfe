@@ -58,4 +58,8 @@ describe('verifyEventSub', () => {
     expect(await verifyEventSub(SECRET, hdrs({ 'Twitch-Eventsub-Message-Signature': 'sha1=' + good }), BODY, NOW)).toBe(false);
     expect(await verifyEventSub(SECRET, hdrs({ 'Twitch-Eventsub-Message-Signature': good }), BODY, NOW)).toBe(false);
   });
+  it('accepts Twitch\'s real nanosecond timestamp format', async () => {
+    const ts = '2026-10-03T21:59:12.634234626Z';
+    expect(await verifyEventSub(SECRET, resigned(ts), BODY, NOW)).toBe(true);
+  });
 });

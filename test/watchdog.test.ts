@@ -65,9 +65,23 @@ describe('watchdog: schedule', () => {
     expect(ops(f)).toHaveLength(0);
   });
 
+  // Window is inclusive at both ends: 5 <= age <= 20 minutes.
+  it.each([
+    ['exactly 5 min ago', NOW - min(5)],
+    ['exactly 20 min ago', NOW - min(20)],
+  ])('segment %s (boundary, inclusive): alerts', async (_n, start) => {
+    const { f, deps } = setup(sched, {
+      [`GET ${SCHED_URL}`]: schedule([seg({ start_time: iso(start) })]),
+      [`GET ${STREAMS}`]: offline,
+    });
+    await runWatchdogs(deps, ENV, [sched]);
+    expect(ops(f)).toHaveLength(1);
+  });
+
   it.each([
     ['future', NOW + min(30)],
-    ['too recent (3 min ago)', NOW - min(3)],
+    ['too recent (4 min ago)', NOW - min(4)],
+    ['too old (21 min ago)', NOW - min(21)],
     ['too old (25 min ago)', NOW - min(25)],
   ])('segment %s: no alert', async (_n, start) => {
     const { f, deps } = setup(sched, {

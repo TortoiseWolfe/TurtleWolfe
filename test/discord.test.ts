@@ -38,6 +38,17 @@ describe('postDiscord', () => {
     expect(deps.sleeps).toEqual([5000]);
   });
 
+  it('429 with no retry_after and no Retry-After header: one retry after the default 1 s wait', async () => {
+    const f = fakeFetch({
+      [`POST ${ANNOUNCE_URL}`]: [new Response('', { status: 429 }), new Response(null, { status: 204 })],
+    });
+    const deps = makeDeps(f);
+    const r = await postDiscord(deps, ANNOUNCE_URL, payload);
+    expect(deps.sleeps).toEqual([1000]);
+    expect(f.calls).toHaveLength(2);
+    expect(r.ok).toBe(true);
+  });
+
   it('retries only once on repeated 429', async () => {
     const f = fakeFetch({ [`POST ${ANNOUNCE_URL}`]: json({ retry_after: 1 }, 429) });
     const r = await postDiscord(makeDeps(f), ANNOUNCE_URL, payload);

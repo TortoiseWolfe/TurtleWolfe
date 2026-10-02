@@ -26,7 +26,10 @@ async function retryAfterSeconds(res: Response): Promise<number> {
   } catch {
     /* fall through to the header */
   }
-  if (!Number.isFinite(secs)) secs = Number(res.headers.get('Retry-After'));
+  if (!Number.isFinite(secs)) {
+    const h = res.headers.get('Retry-After');
+    secs = h === null || h.trim() === '' ? NaN : Number(h); // Number(null) would be 0
+  }
   if (!Number.isFinite(secs) || secs < 0) secs = 1;
   return Math.min(secs, MAX_WAIT_S);
 }

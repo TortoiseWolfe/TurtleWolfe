@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import worker, { handleRequest, runScheduled } from '../src/index';
 import { ENV, NOW, OPS_URL, TOKEN_URL, fakeFetch, fakeKV, json, makeDeps, tokenReply } from './helpers';
 
@@ -79,5 +79,40 @@ describe('runScheduled', () => {
 
   it('a config error is not swallowed', async () => {
     await expect(runScheduled(makeDeps(fakeFetch(), fakeKV()), { ...env, BROADCASTERS: '[{"login":""}]' })).rejects.toThrow(/login/);
+  });
+});
+
+describe('default export scheduled()', () => {
+  afterEach(() => vi.unstubAllGlobals());
+  const ctx = { waitUntil() {}, passThroughException() {} } as unknown as ExecutionContext;
+  const evt = {} as ScheduledController;
+  const cfg = JSON.stringify([
+    { login: 'turtlewolfe', announce: true, mention: 'none', watchdog: 'none' },
+    { login: 'scripthammer', announce: false, mention: 'none', watchdog: 'always_on' },
+  ]);
+
+  it('if something escapes, sends one ops alert and rethrows so Cloudflare records the failure', async () => {
+    const seen: string[] = [];
+    vi.stubGlobal('fetch', async (url: string) => {
+      seen.push(url);
+      return new Response(null, { status: 204 });
+    });
+    const bad = { ...ENV, BROADCASTERS: '[{"login":""}]', STATE: fakeKV() };
+    await expect(worker.scheduled(evt, bad, ctx)).rejects.toThrow(/login/);
+    expect(seen).toEqual([OPS_URL]);
+  });
+
+  it('is awaited: the returned promise settles only after the run finished', async () => {
+    vi.stubGlobal('fetch', async (url: string) => {
+      if (url === TOKEN_URL) return tokenReply();
+      if (url.includes('/eventsub/subscriptions')) {
+        return json({ data: [{ id: 'a', status: 'enabled', condition: { broadcaster_user_id: '42' }, transport: { callback: 'https://worker.test/eventsub' } }] });
+      }
+      if (url.includes('/streams')) return json({ data: [{ id: 's' }] });
+      return new Response(null, { status: 204 });
+    });
+    const kv = fakeKV({ 'uid:turtlewolfe': '42', 'uid:scripthammer': '42' });
+    await worker.scheduled(evt, { ...ENV, BROADCASTERS: cfg, STATE: kv }, ctx);
+    expect(kv.store.has('cron:last')).toBe(true);
   });
 });

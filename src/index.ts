@@ -46,7 +46,18 @@ export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     return handleRequest(request, realDeps(env, ctx), env);
   },
-  async scheduled(_event: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
-    ctx.waitUntil(runScheduled(realDeps(env), env));
+  async scheduled(_event: ScheduledController, env: Env, _ctx: ExecutionContext): Promise<void> {
+    // Awaited inside the handler so a failure shows up in the Cron dashboard.
+    const deps = realDeps(env);
+    try {
+      await runScheduled(deps, env);
+    } catch (e) {
+      try {
+        await postOps(deps, env, `scheduled run crashed: ${e instanceof Error ? e.message : 'unknown error'}`);
+      } catch {
+        /* the alert is best effort */
+      }
+      throw e;
+    }
   },
 };

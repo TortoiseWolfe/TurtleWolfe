@@ -65,15 +65,36 @@ describe('handleEventSub', () => {
     expect((await handleEventSub(r, makeDeps(fakeFetch()), ENV, BCS)).status).toBe(403);
   });
 
-  it('a duplicate message id returns 204 and posts nothing a second time', async () => {
+  it('dedupe alone: the same revocation id twice gives one ops post and one msg: write', async () => {
     const f = fakeFetch(routes());
     const kv = fakeKV();
     const deps = makeDeps(f, kv);
-    const first = await handleEventSub(req('notification', online, { id: 'dup-1' }), deps, ENV, BCS);
-    const second = await handleEventSub(req('notification', online, { id: 'dup-1' }), deps, ENV, BCS);
+    const body = { subscription: { type: 'stream.online', status: 'user_removed', condition: { broadcaster_user_id: '42' } } };
+    const first = await handleEventSub(req('revocation', body, { id: 'dup-r' }), deps, ENV, BCS);
+    const second = await handleEventSub(req('revocation', body, { id: 'dup-r' }), deps, ENV, BCS);
     expect([first.status, second.status]).toEqual([204, 204]);
+    expect(f.calls.filter((c) => c.url === OPS_URL)).toHaveLength(1);
+    expect(kv.puts.filter((p) => p.key === 'msg:dup-r')).toEqual([{ key: 'msg:dup-r', value: '1', ttl: 86400 }]);
+  });
+
+  it('a duplicate stream.online id posts once even with the cooldown cleared between calls', async () => {
+    const f = fakeFetch(routes());
+    const kv = fakeKV();
+    const deps = makeDeps(f, kv);
+    await handleEventSub(req('notification', online, { id: 'dup-1' }), deps, ENV, BCS);
+    await kv.delete('announced:turtlewolfe');
+    const second = await handleEventSub(req('notification', online, { id: 'dup-1' }), deps, ENV, BCS);
+    expect(second.status).toBe(204);
     expect(f.calls.filter((c) => c.url === ANNOUNCE_URL)).toHaveLength(1);
-    expect(kv.puts).toContainEqual({ key: 'msg:dup-1', value: '1', ttl: 86400 });
+  });
+
+  it('a retried verification with the same id still gets the challenge back', async () => {
+    const f = fakeFetch();
+    const deps = makeDeps(f);
+    const r1 = await handleEventSub(req('webhook_callback_verification', { challenge: 'abc' }, { id: 'v-1' }), deps, ENV, BCS);
+    const r2 = await handleEventSub(req('webhook_callback_verification', { challenge: 'abc' }, { id: 'v-1' }), deps, ENV, BCS);
+    expect([r1.status, r2.status]).toEqual([200, 200]);
+    expect([await r1.text(), await r2.text()]).toEqual(['abc', 'abc']);
   });
 
   it('a revocation posts exactly one ops alert naming type, broadcaster and status', async () => {

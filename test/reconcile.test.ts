@@ -53,6 +53,13 @@ describe('reconcile', () => {
     ]);
   });
 
+  it('enabled alongside a failed sub: no writes at all and no ops post', async () => {
+    const { f, deps } = setup([sub('ok', 'enabled'), sub('bad1', 'notification_failures_exceeded')]);
+    await reconcile(deps, ENV, BCS);
+    expect(writes(f)).toHaveLength(0);
+    expect(opsMsgs(f)).toHaveLength(0);
+  });
+
   it('failed with several broken subs deletes them all', async () => {
     const { f, deps } = setup([sub('bad1', 'authorization_revoked'), sub('bad2', 'webhook_callback_verification_failed')]);
     await reconcile(deps, ENV, BCS);

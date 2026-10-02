@@ -29,11 +29,6 @@ export async function handleEventSub(
     return new Response('forbidden', { status: 403 });
   }
 
-  const id = request.headers.get('Twitch-Eventsub-Message-Id')!;
-  const dedupeKey = `msg:${id}`;
-  if (await deps.kv.get(dedupeKey)) return noContent();
-  await deps.kv.put(dedupeKey, '1', { expirationTtl: DEDUPE_TTL_SECONDS });
-
   let body: EventSubBody;
   try {
     body = JSON.parse(raw) as EventSubBody;
@@ -42,12 +37,18 @@ export async function handleEventSub(
   }
 
   const type = request.headers.get('Twitch-Eventsub-Message-Type');
+  // Verification bypasses dedupe on purpose: Twitch retries a challenge with the same id and needs the answer again.
   if (type === 'webhook_callback_verification') {
     return new Response(String(body.challenge ?? ''), {
       status: 200,
       headers: { 'content-type': 'text/plain' },
     });
   }
+
+  const id = request.headers.get('Twitch-Eventsub-Message-Id')!;
+  const dedupeKey = `msg:${id}`;
+  if (await deps.kv.get(dedupeKey)) return noContent();
+  await deps.kv.put(dedupeKey, '1', { expirationTtl: DEDUPE_TTL_SECONDS });
 
   let work: Promise<unknown> | undefined;
   if (type === 'revocation') {

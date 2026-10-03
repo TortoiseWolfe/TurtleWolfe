@@ -17,7 +17,7 @@ The ScriptHammer channel carries reruns and raids TurtleWolfe at go-live.
 | Tue 10/6 | 6 PM | **CWBI 002: Can my $200 AI plan run a kitchen?** | can-we-build-it (run sheet `002-ai-kitchen.md`, and the demo repo too) | One AI allowance, one head chef, a line of cheap cooks: the tests and a blind reviewer decide what's actually cooked, and one fault is planted. |
 | Wed 10/7 | 7 PM | Drupal I: Install, Recipes and Branding (1 of 3) | gig-city-drupal | A Drupal CMS v2 site running in Docker from a clean clone, before the hour is out. |
 | Fri 10/9 | 6 PM | RunIt wedding debrief | runit | Saturday's wedding was the first real beta: what guests did, what broke, and fixing the top issue live. |
-| Sat 10/10 | 2 PM | Wireframe Wars | spec-kit-extension-wireframe | Chat votes between generated mockups; the winner becomes a spec rule the build has to honour. |
+| Sat 10/10 | 2 PM | The second tower gets OpenClaw 2 | (no repo: the second tower's install) | Upgrading the co-host bot's machine live: what carries over, what breaks, and the bot back in chat by the end. |
 
 ## Week 2: Oct 13 – 18
 
@@ -35,7 +35,7 @@ The ScriptHammer channel carries reruns and raids TurtleWolfe at go-live.
 | Tue 10/20 | 6 PM | **CWBI 004: Can a phone replace the tape measure?** | ScanDo | LiDAR-scan the stream room, the AI predicts the error, and a tape measure on camera decides. |
 | Wed 10/21 | 7 PM | Drupal I: Install, Recipes and Branding (3 of 3) | gig-city-drupal | Components and branding: make the deliberately plain build look like yours. |
 | Fri 10/23 | 6 PM | RescueDogs: ship the pilot | RescueDogs | Build the missing piece a first shelter needs to go live, with apply → status → tracker run end to end. |
-| Sat 10/24 | 2 PM | Wireframe Wars or a chat pick | spec-kit-extension-wireframe | A spare slot: rerun the most-voted format of the month. |
+| Sat 10/24 | 2 PM | Wireframe Wars | spec-kit-extension-wireframe | Chat votes between generated mockups; the winner becomes a spec rule the build has to honour. |
 
 ## Week 4: Oct 27 – Nov 1
 
@@ -49,7 +49,8 @@ The ScriptHammer channel carries reruns and raids TurtleWolfe at go-live.
 ## Open before a slot is booked
 
 - **10/6:** the kitchen works on can-we-build-it itself, since it's on NX-01 and its Docker test suite is already green. OBS_24_7 lives on the second tower, which is still on an older OpenClaw, so it waits for 10/27. The run sheet's "Before you go live" list still applies.
-- **10/27:** needs OBS_24_7's newest code from the second tower, after that machine's OpenClaw upgrade.
+- **10/10:** OpenClaw 2 is the real upgrade on the second tower; an OBS update is one click and isn't content. On NX-01 the OpenClaw gateway's systemd wiped WSL interop and broke Docker, so mask its systemd-binfmt on the second tower before any Docker work there. Still open: how its screen gets on stream (an RDP window on NX-01 is simplest). If Jonathan does the upgrade off-air this weekend, Wireframe Wars goes back to 10/10.
+- **10/27:** needs OBS_24_7's newest code from the second tower. It runs in Docker, so it comes after the 10/10 upgrade and the binfmt check.
 - **10/9:** needs the wedding's GitHub issues filed first. If the beta didn't happen, swap in Rebrand race #1.
 - **10/20:** ScanDo was last pushed in April on Expo SDK 53. Check a device build before booking the slot (EAS builds are rationed). Fallback: swap it with 10/27.
 - **Wednesdays:** these follow modules 10 and 11 of the curriculum below, which track the co-op blog's 11-part *How We Built It* series (Prefaces, then Parts 0–4). If the existing Wednesday show is already past install, start at Drupal II and link the old VODs as prior viewing. Only gig-city-drupal (the public, sanitised extract) goes on screen, never the co-op's own repo or a member's site.

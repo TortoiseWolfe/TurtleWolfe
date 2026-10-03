@@ -7,10 +7,10 @@ crons = ["*/10 * * * *"]
 
 [[kv_namespaces]]
 binding = "STATE"
-id = "REPLACE_AT_DEPLOY"
+id = "33ac6d26f2f140e8bd8cea4f1ee70300"
 
 [vars]
-PUBLIC_URL = "https://afa-stream-alerts.REPLACE_AT_DEPLOY.workers.dev"
+PUBLIC_URL = "https://afa-stream-alerts.jonpohlner.workers.dev"
 ALWAYS_ON_GRACE_MIN = "15"
 BROADCASTERS = '''
 [

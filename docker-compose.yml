@@ -12,6 +12,8 @@ services:
       WRANGLER_SEND_METRICS: "false"
     volumes:
       - .:/app
+      # Wrangler's Cloudflare sign-in (OAuth) lives here between runs. Gitignored, mode 700.
+      - ./.wrangler-home:/tmp/.config
   # Twitch channel tools (tools/twitch-schedule). Reads TWITCH_* from the gitignored .env.
   #   docker compose run --rm twitch channel info
   twitch:

@@ -1,0 +1,20 @@
+# Who watches the watcher: if the Worker's own cron stops, /health turns 503 after 30 min,
+# and this scheduled check fails. GitHub emails the owner on a failed scheduled run.
+# Kept here, not in the co-op's UptimeRobot account, so personal and client monitoring stay apart.
+name: health
+on:
+  schedule:
+    - cron: "17 */3 * * *"   # every 3 hours, off the hour
+  workflow_dispatch:
+permissions: {}
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: GET /health must be 200
+        run: |
+          code=$(curl -s -o body.json -w '%{http_code}' -A 'afa-stream-alerts-health/1.0' --max-time 20 \
+            https://afa-stream-alerts.jonpohlner.workers.dev/health)
+          echo "HTTP $code: $(cat body.json)"
+          test "$code" = "200"

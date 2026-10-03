@@ -15,3 +15,10 @@ watchdogs that ping a private ops channel. The spec is `specs/001-go-live-alerts
   `src/index.ts` touches real globals.
 - No Node-only APIs in `src/`; it runs on the Workers runtime. `node:crypto` is allowed in tests only.
 - Never log webhook URLs, tokens or the EventSub secret.
+
+## Twitch channel tools
+
+`tools/twitch-schedule/` changes the TurtleWolfe channel's schedule and title. It moved here from the
+Eduity and Chattanooga-Digital repos on 2026-10-02. Run it through `docker compose run --rm twitch ...`.
+Keys live in the gitignored `.env`. Tokens come only from `twitch auth device`, never from a third-party site.
+Hatch edits the live schedule now, so never `sync_schedule.py --apply` an out-of-date `schedule.md`.

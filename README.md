@@ -11,5 +11,8 @@ small Cloudflare Worker that runs with every home PC switched off.
   Worker checks its subscription daily, repairs it, and says so.
 - **Health:** `GET /health` answers 503 if the Worker's cron has stopped, for UptimeRobot.
 
+Also here: [`tools/twitch-schedule/`](tools/twitch-schedule/), command-line tools for the
+TurtleWolfe channel's schedule and title.
+
 Spec: [`specs/001-go-live-alerts/spec.md`](specs/001-go-live-alerts/spec.md).
 Development is Docker-only; see `CLAUDE.md`.

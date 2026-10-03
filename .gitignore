@@ -6,3 +6,5 @@ node_modules/
 coverage/
 .env
 .env.*
+__pycache__/
+*.pyc

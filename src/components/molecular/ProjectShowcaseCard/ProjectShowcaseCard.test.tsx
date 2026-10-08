@@ -55,6 +55,20 @@ describe('ProjectShowcaseCard', () => {
     expect(link).not.toHaveAttribute('target');
   });
 
+  it('renders a non-link block when no href is given', () => {
+    const { href: _href, ...noHref } = defaultProps;
+    render(<ProjectShowcaseCard {...noHref} />);
+    expect(screen.queryByRole('link')).not.toBeInTheDocument();
+    expect(screen.getByText('My Project')).toBeInTheDocument();
+  });
+
+  it('renders a non-link block in CRT variant when no href is given', () => {
+    const { href: _href, ...noHref } = defaultProps;
+    render(<ProjectShowcaseCard {...noHref} variant="crt" />);
+    expect(screen.queryByRole('link')).not.toBeInTheDocument();
+    expect(screen.getByText('My Project')).toBeInTheDocument();
+  });
+
   it('renders the image when provided', () => {
     render(
       <ProjectShowcaseCard

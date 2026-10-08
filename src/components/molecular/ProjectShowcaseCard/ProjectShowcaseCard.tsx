@@ -12,7 +12,12 @@ export interface ProjectShowcaseCardProps {
     alt: string;
   };
   stack: string[];
-  href: string;
+  /**
+   * Destination for the card. When omitted (work with no public page, e.g.
+   * TestFlight-only apps) the card renders as a plain, non-interactive block
+   * instead of a link.
+   */
+  href?: string;
   hasDetailPage?: boolean;
   className?: string;
   /**
@@ -50,7 +55,8 @@ export interface ProjectShowcaseCardProps {
  * ProjectShowcaseCard — large image-driven card for the project grid.
  *
  * When `hasDetailPage` is true, renders as a Next.js Link to an internal
- * case-study page. Otherwise, renders as an external anchor.
+ * case-study page. Otherwise, renders as an external anchor. With no `href`
+ * it renders as a non-link block.
  *
  * Two visual variants:
  * - `'default'` (unchanged): DaisyUI card with image, ghost badges, sans title.
@@ -112,6 +118,14 @@ export default function ProjectShowcaseCard({
     );
 
     const defaultCardClasses = `card bg-base-100 shadow-md group transition-all hover:-translate-y-1 hover:shadow-lg focus-within:ring-primary focus-within:ring-2 overflow-hidden${className ? ` ${className}` : ''}`;
+
+    if (!href) {
+      return (
+        <div className={defaultCardClasses} aria-label={`${title} project`}>
+          {defaultContent}
+        </div>
+      );
+    }
 
     if (hasDetailPage) {
       return (
@@ -260,6 +274,14 @@ export default function ProjectShowcaseCard({
       </div>
     </>
   );
+
+  if (!href) {
+    return (
+      <div className={crtCardClasses} aria-label={`${title} project`}>
+        {crtContent}
+      </div>
+    );
+  }
 
   if (hasDetailPage) {
     return (

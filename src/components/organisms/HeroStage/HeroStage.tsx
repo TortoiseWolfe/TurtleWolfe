@@ -173,10 +173,10 @@ export default function HeroStage({
   secondaryCta = DEFAULT_SECONDARY_CTA,
   manifestItems,
 }: HeroStageProps) {
-  // No live timestamp — replaced with the static "Q3 2026" availability
+  // No live timestamp — replaced with the static "Q4 2026" availability
   // signal. Hook left here so future variants can re-enable a real-time
   // status line without restructuring.
-  const [statusTimestamp] = useState('Q3 2026');
+  const [statusTimestamp] = useState('Q4 2026');
   useEffect(() => {
     // intentionally no-op for now
   }, []);
@@ -248,7 +248,7 @@ export default function HeroStage({
             className="crt-halation text-primary font-mono text-xs tracking-wider sm:text-sm"
           >
             STATUS :: OPEN TO ENGAGEMENTS ::{' '}
-            <span suppressHydrationWarning>{statusTimestamp || 'Q3 2026'}</span>
+            <span suppressHydrationWarning>{statusTimestamp || 'Q4 2026'}</span>
           </div>
 
           {/* Available-for chromatic accent. Tells hiring managers what

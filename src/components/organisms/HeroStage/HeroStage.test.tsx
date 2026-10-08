@@ -63,20 +63,20 @@ describe('HeroStage', () => {
 
   it('renders the status row with OPEN TO ENGAGEMENTS availability signal', () => {
     // V08 replaced the fictional MU/TH/UR 6000 :: PORT 3000 :: <timestamp>
-    // line with real client signal: "STATUS :: OPEN TO ENGAGEMENTS :: Q3 2026".
+    // line with real client signal: "STATUS :: OPEN TO ENGAGEMENTS :: Q4 2026".
     // The change is intentional — see HeroStage.tsx §"Status row" comment.
     render(<HeroStage />);
     const statusBar = screen.getByTestId('hero-status-bar');
     expect(statusBar.textContent).toContain('OPEN TO ENGAGEMENTS');
   });
 
-  it('renders the availability availability cycle (Q3 2026) instead of a live timestamp', () => {
+  it('renders the availability availability cycle (Q4 2026) instead of a live timestamp', () => {
     // V08 dropped the live YYYY.MM.DD HH:MM:SS timestamp in favor of a
-    // static "Q3 2026" availability signal. Hook scaffolding is kept in
+    // static "Q4 2026" availability signal. Hook scaffolding is kept in
     // HeroStage so a future variant can re-enable a real-time status line.
     render(<HeroStage />);
     const statusBar = screen.getByTestId('hero-status-bar');
-    expect(statusBar.textContent).toContain('Q3 2026');
+    expect(statusBar.textContent).toContain('Q4 2026');
   });
 
   it('renders both halves of the designer-weighted tagline', () => {

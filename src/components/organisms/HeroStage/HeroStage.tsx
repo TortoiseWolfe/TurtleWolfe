@@ -424,7 +424,7 @@ export default function HeroStage({
           }}
         />
         <div className="text-primary crt-halation mt-2 font-mono text-[10px] tracking-[0.2em] opacity-65 sm:text-xs">
-          ━━ SECTION_01 · FEATURED_WORK
+          ━━ SECTION_00 · NOW_SHIPPING
           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ↓
         </div>
       </div>

@@ -144,7 +144,7 @@ const NOW_SHIPPING_APPS: readonly NowShippingItem[] = [
   {
     title: 'RunIt',
     description:
-      'Event companion app: guests join with a code, no account needed. In TestFlight beta; first wedding on Oct 3.',
+      'Event companion app: guests join with a code, no account needed. In TestFlight beta; its first wedding was Oct 3.',
     image: { src: '/portfolio/apps/runit.png', alt: 'RunIt app icon' },
     stack: ['Expo', 'React Native'],
     href: 'https://runit-app.pages.dev',

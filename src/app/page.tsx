@@ -108,7 +108,7 @@ const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
   {
     title: 'Harmonic Egg App',
     description:
-      'Took over a client\u2019s sound-therapy app in August 2026: moved it onto her own AWS by the deadline, and now maintain and extend it.',
+      'Stepped in as lead developer on a client\u2019s sound-therapy app in August 2026: moved it onto her own AWS by her deadline, and now maintain and extend it.',
     image: {
       src: '/portfolio/harmonic-egg/home.png',
       alt: 'Harmonic Egg app landing page: Restorative Sound Experiences',

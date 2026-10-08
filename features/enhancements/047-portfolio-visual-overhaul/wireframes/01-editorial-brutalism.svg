@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c7ddf5"/>
+      <stop offset="100%" stop-color="#b8d4f0"/>
+    </linearGradient>
+    <pattern id="paperGrain" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" fill="#e8d4b8"/>
+      <circle cx="1" cy="1" r="0.4" fill="#b8a080" opacity="0.25"/>
+      <circle cx="4" cy="3" r="0.3" fill="#8b7355" opacity="0.18"/>
+      <circle cx="2" cy="5" r="0.35" fill="#b8a080" opacity="0.2"/>
+    </pattern>
+    <pattern id="halftone" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="1.5" fill="#1f2937" opacity="0.35"/>
+    </pattern>
+    <pattern id="mobilePaperGrain" x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse">
+      <rect width="5" height="5" fill="#e8d4b8"/>
+      <circle cx="1" cy="1" r="0.3" fill="#b8a080" opacity="0.25"/>
+      <circle cx="3" cy="3" r="0.25" fill="#8b7355" opacity="0.18"/>
+    </pattern>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+
+  <!-- TITLE -->
+  <text x="960" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#4b5563" letter-spacing="2">PORTFOLIO VISUAL OVERHAUL — VARIANT 01 — EDITORIAL BRUTALISM</text>
+  <text x="40" y="52" fill="#8b5cf6" font-family="system-ui, sans-serif" font-size="18" font-weight="bold">DESKTOP (16:9)</text>
+  <text x="1500" y="52" fill="#d946ef" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">MOBILE</text>
+
+  <!-- ============================== DESKTOP 1280x720 ============================== -->
+  <g id="desktop" transform="translate(40, 60)">
+    <rect width="1280" height="720" rx="0" fill="url(#paperGrain)" stroke="#1f2937" stroke-width="3"/>
+
+    <!-- Top chrome: thick black bar like a magazine masthead -->
+    <rect x="0" y="0" width="1280" height="56" fill="#1f2937"/>
+    <text x="24" y="38" font-family="Georgia, serif" font-size="22" font-weight="900" fill="#e8d4b8" letter-spacing="3">POHLNER ◆ ISSUE Nº 047</text>
+    <text x="900" y="38" font-family="Georgia, serif" font-size="14" font-style="italic" fill="#dcc8a8">PORTFOLIO / DESIGN / CODE</text>
+    <line x1="1080" y1="20" x2="1080" y2="36" stroke="#e8d4b8" stroke-width="1"/>
+    <text x="1100" y="33" font-family="system-ui, sans-serif" font-size="11" fill="#e8d4b8">THEMES ▾</text>
+    <text x="1170" y="33" font-family="system-ui, sans-serif" font-size="11" fill="#e8d4b8">A+ A-</text>
+    <text x="1220" y="33" font-family="system-ui, sans-serif" font-size="11" fill="#e8d4b8">MENU</text>
+
+    <!-- HERO with diagonal cut and halftone block -->
+    <g transform="translate(0, 56)">
+      <!-- Diagonal black slash (broken grid) -->
+      <polygon points="0,0 1280,0 1280,40 0,80" fill="#1f2937"/>
+
+      <!-- Display headline (oversized serif, broken across columns) -->
+      <text x="40" y="170" font-family="Georgia, serif" font-size="84" font-weight="900" fill="#1f2937" letter-spacing="-2">JONATHAN</text>
+      <text x="40" y="244" font-family="Georgia, serif" font-size="84" font-weight="900" fill="#1f2937" letter-spacing="-2" font-style="italic">Pohlner.</text>
+
+      <!-- Halftone block to the right (decorative) -->
+      <rect x="900" y="80" width="340" height="180" fill="url(#halftone)"/>
+      <!-- Hand-drawn ink mark overlay on halftone -->
+      <path d="M 920 110 Q 980 100 1020 130 T 1140 120 L 1180 145" stroke="#dc2626" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M 940 230 L 1100 200" stroke="#dc2626" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+      <!-- Callout 1 — design-first tagline -->
+      <g class="callout" transform="translate(440, 280)">
+        <circle r="16" fill="#dc2626"/>
+        <text y="6" fill="#fff" font-size="16" font-weight="bold" text-anchor="middle">1</text>
+      </g>
+      <text x="40" y="290" font-family="Georgia, serif" font-size="36" fill="#1f2937" font-style="italic">Graphic Designer</text>
+      <text x="380" y="290" font-family="system-ui, sans-serif" font-size="20" fill="#4b5563" letter-spacing="2">· FULL-STACK DEVELOPER</text>
+      <line x1="40" y1="305" x2="380" y2="305" stroke="#dc2626" stroke-width="3"/>
+
+      <!-- Body / metadata row -->
+      <text x="40" y="340" font-family="Georgia, serif" font-size="14" fill="#4b5563">20+ yrs design · 15+ yrs code · accessible · offline-first · 35 themes</text>
+
+      <!-- Tech-stack MARQUEE (full-bleed band) -->
+      <g class="callout" transform="translate(40, 380)">
+        <circle r="16" fill="#dc2626"/>
+        <text y="6" fill="#fff" font-size="16" font-weight="bold" text-anchor="middle">2</text>
+      </g>
+      <rect x="0" y="390" width="1280" height="42" fill="#1f2937"/>
+      <text x="20" y="418" font-family="Georgia, serif" font-size="18" font-weight="900" fill="#e8d4b8" letter-spacing="3">REACT · NEXT · TS · NODE · THREE.JS · C# · PYTHON · DOCKER · AWS · LINUX · SUPABASE · TAILWIND · REACT · NEXT · TS ▸▸▸</text>
+
+      <!-- CTA row -->
+      <g class="callout" transform="translate(220, 478)">
+        <circle r="16" fill="#dc2626"/>
+        <text y="6" fill="#fff" font-size="16" font-weight="bold" text-anchor="middle">3</text>
+      </g>
+      <rect x="40" y="460" width="200" height="48" fill="#1f2937"/>
+      <text x="140" y="490" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="900" fill="#e8d4b8" letter-spacing="2">GET IN TOUCH →</text>
+      <rect x="260" y="460" width="200" height="48" fill="none" stroke="#1f2937" stroke-width="3"/>
+      <text x="360" y="490" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="900" fill="#1f2937" letter-spacing="2">VIEW RESUME</text>
+
+      <!-- Decorative spinning-gear placeholder (kept from existing brand) -->
+      <circle cx="1140" cy="430" r="60" fill="none" stroke="#1f2937" stroke-width="4"/>
+      <circle cx="1140" cy="430" r="44" fill="none" stroke="#1f2937" stroke-width="2"/>
+      <circle cx="1140" cy="430" r="6" fill="#dc2626"/>
+      <text x="1140" y="520" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-style="italic" fill="#4b5563">(existing mark — kept)</text>
+    </g>
+
+    <!-- Featured Projects (magazine-numbered cards) -->
+    <g transform="translate(0, 600)">
+      <text x="40" y="0" font-family="Georgia, serif" font-size="20" font-weight="900" fill="#1f2937" letter-spacing="2">FEATURED WORK ─────────────────────────────────────────</text>
+
+      <g class="callout" transform="translate(120, 50)">
+        <circle r="16" fill="#dc2626"/>
+        <text y="6" fill="#fff" font-size="16" font-weight="bold" text-anchor="middle">4</text>
+      </g>
+
+      <!-- Card 01 -->
+      <g transform="translate(40, 20)">
+        <rect width="380" height="92" fill="#dcc8a8" stroke="#1f2937" stroke-width="2"/>
+        <text x="14" y="22" font-family="Georgia, serif" font-size="11" font-weight="900" fill="#dc2626" letter-spacing="3">№ 01 · CASE STUDY</text>
+        <text x="14" y="50" font-family="Georgia, serif" font-size="22" font-weight="900" fill="#1f2937" font-style="italic">SpokeToWork</text>
+        <text x="14" y="72" font-family="system-ui, sans-serif" font-size="11" fill="#4b5563">Bicycle-job-hunting PWA · MapLibre · ECDH</text>
+        <text x="14" y="86" font-family="system-ui, sans-serif" font-size="10" fill="#1f2937" letter-spacing="2">NEXT · MAPLIBRE · SUPABASE</text>
+      </g>
+      <!-- Card 02 -->
+      <g transform="translate(440, 20)">
+        <rect width="380" height="92" fill="#dcc8a8" stroke="#1f2937" stroke-width="2"/>
+        <text x="14" y="22" font-family="Georgia, serif" font-size="11" font-weight="900" fill="#dc2626" letter-spacing="3">№ 02 · CASE STUDY</text>
+        <text x="14" y="50" font-family="Georgia, serif" font-size="22" font-weight="900" fill="#1f2937" font-style="italic">ScriptHammer</text>
+        <text x="14" y="72" font-family="system-ui, sans-serif" font-size="11" fill="#4b5563">Production Next.js template · 32 DaisyUI themes</text>
+        <text x="14" y="86" font-family="system-ui, sans-serif" font-size="10" fill="#1f2937" letter-spacing="2">NEXT 15 · DAISYUI · DOCKER</text>
+      </g>
+      <!-- Card 03 -->
+      <g transform="translate(840, 20)">
+        <rect width="380" height="92" fill="#dcc8a8" stroke="#1f2937" stroke-width="2"/>
+        <text x="14" y="22" font-family="Georgia, serif" font-size="11" font-weight="900" fill="#dc2626" letter-spacing="3">№ 03 · CASE STUDY</text>
+        <text x="14" y="50" font-family="Georgia, serif" font-size="22" font-weight="900" fill="#1f2937" font-style="italic">Revit Plugins</text>
+        <text x="14" y="72" font-family="system-ui, sans-serif" font-size="11" fill="#4b5563">C# automation for architects · WinForms</text>
+        <text x="14" y="86" font-family="system-ui, sans-serif" font-size="10" fill="#1f2937" letter-spacing="2">C# · REVIT API · .NET</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ============================== MOBILE 360x720 ============================== -->
+  <g id="mobile" transform="translate(1360, 60)">
+    <rect width="360" height="720" rx="24" fill="url(#mobilePaperGrain)" stroke="#1f2937" stroke-width="3"/>
+    <!-- masthead -->
+    <rect x="0" y="0" width="360" height="78" rx="24" fill="#1f2937"/>
+    <rect x="0" y="54" width="360" height="24" fill="#1f2937"/>
+    <text x="20" y="52" font-family="Georgia, serif" font-size="13" font-weight="900" fill="#e8d4b8" letter-spacing="2">POHLNER ◆ Nº 047</text>
+    <text x="320" y="52" text-anchor="end" font-family="system-ui, sans-serif" font-size="11" fill="#e8d4b8">☰</text>
+
+    <!-- Diagonal slash -->
+    <polygon points="0,78 360,78 360,98 0,118" fill="#1f2937"/>
+
+    <!-- Display name -->
+    <text x="20" y="190" font-family="Georgia, serif" font-size="38" font-weight="900" fill="#1f2937" letter-spacing="-1">JONATHAN</text>
+    <text x="20" y="232" font-family="Georgia, serif" font-size="38" font-weight="900" fill="#1f2937" font-style="italic" letter-spacing="-1">Pohlner.</text>
+
+    <!-- Halftone mini block -->
+    <rect x="240" y="140" width="100" height="80" fill="url(#halftone)"/>
+    <path d="M 250 160 Q 280 152 305 170" stroke="#dc2626" stroke-width="2" fill="none"/>
+
+    <!-- Tagline -->
+    <text x="20" y="275" font-family="Georgia, serif" font-size="18" fill="#1f2937" font-style="italic">Graphic Designer</text>
+    <text x="20" y="295" font-family="system-ui, sans-serif" font-size="11" fill="#4b5563" letter-spacing="2">· FULL-STACK DEVELOPER</text>
+    <line x1="20" y1="305" x2="200" y2="305" stroke="#dc2626" stroke-width="2"/>
+
+    <!-- Marquee band -->
+    <rect x="0" y="330" width="360" height="32" fill="#1f2937"/>
+    <text x="14" y="352" font-family="Georgia, serif" font-size="12" font-weight="900" fill="#e8d4b8" letter-spacing="2">REACT · NEXT · TS · DOCKER · C# · THREE ▸▸</text>
+
+    <!-- CTA stack -->
+    <rect x="20" y="385" width="320" height="48" fill="#1f2937"/>
+    <text x="180" y="416" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="900" fill="#e8d4b8" letter-spacing="2">GET IN TOUCH →</text>
+    <rect x="20" y="445" width="320" height="48" fill="none" stroke="#1f2937" stroke-width="3"/>
+    <text x="180" y="476" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="900" fill="#1f2937" letter-spacing="2">VIEW RESUME</text>
+
+    <!-- Single project teaser -->
+    <text x="20" y="525" font-family="Georgia, serif" font-size="11" font-weight="900" fill="#1f2937" letter-spacing="2">FEATURED ─────────────────</text>
+    <rect x="20" y="540" width="320" height="98" fill="#dcc8a8" stroke="#1f2937" stroke-width="2"/>
+    <text x="34" y="562" font-family="Georgia, serif" font-size="10" font-weight="900" fill="#dc2626" letter-spacing="3">№ 01 · CASE STUDY</text>
+    <text x="34" y="590" font-family="Georgia, serif" font-size="20" font-weight="900" fill="#1f2937" font-style="italic">SpokeToWork</text>
+    <text x="34" y="610" font-family="system-ui, sans-serif" font-size="10" fill="#4b5563">Bicycle-job-hunting PWA</text>
+    <text x="34" y="628" font-family="system-ui, sans-serif" font-size="9" fill="#1f2937" letter-spacing="2">NEXT · MAPLIBRE · SUPABASE</text>
+
+    <!-- Bottom nav -->
+    <rect x="0" y="664" width="360" height="56" rx="24" fill="#1f2937"/>
+    <text x="180" y="700" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#e8d4b8" letter-spacing="2">WORK · ABOUT · CONTACT · BLOG</text>
+  </g>
+
+  <!-- ============================== ANNOTATION PANEL ============================== -->
+  <g id="annotations" transform="translate(40, 800)">
+    <rect width="1840" height="220" rx="0" fill="#e8d4b8" stroke="#1f2937" stroke-width="2"/>
+
+    <!-- Header strip -->
+    <rect x="0" y="0" width="1840" height="32" fill="#1f2937"/>
+    <text x="16" y="22" font-family="Georgia, serif" font-size="14" font-weight="900" fill="#e8d4b8" letter-spacing="3">VARIANT 01 — EDITORIAL BRUTALISM — ANNOTATION KEY</text>
+
+    <!-- Column 1: callout 1 (US-001) -->
+    <g transform="translate(20, 52)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">1</text>
+      <text x="36" y="18" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#1f2937">Designer-First Tagline</text>
+      <text x="36" y="36" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Italic display serif sells the design half; sans</text>
+      <text x="36" y="50" font-family="system-ui, sans-serif" font-size="11" fill="#374151">small-caps balances it. Red rule underlines.</text>
+      <!-- pills -->
+      <rect x="36" y="62" width="56" height="20" rx="10" fill="#0891b2"/>
+      <text x="64" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-001</text>
+      <rect x="98" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="126" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-001</text>
+      <rect x="160" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="188" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-002</text>
+      <rect x="222" y="62" width="56" height="20" rx="10" fill="#ea580c"/>
+      <text x="250" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">SC-001</text>
+    </g>
+
+    <!-- Column 2: callout 2 (US-001 / motion) -->
+    <g transform="translate(330, 52)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">2</text>
+      <text x="36" y="18" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#1f2937">Tech-Stack Marquee</text>
+      <text x="36" y="36" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Continuous ticker replaces badge grid. Halts</text>
+      <text x="36" y="50" font-family="system-ui, sans-serif" font-size="11" fill="#374151">when prefers-reduced-motion is set.</text>
+      <rect x="36" y="62" width="56" height="20" rx="10" fill="#0891b2"/>
+      <text x="64" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-001</text>
+      <rect x="98" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="126" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-008</text>
+      <rect x="160" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="188" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-009</text>
+      <rect x="222" y="62" width="56" height="20" rx="10" fill="#ea580c"/>
+      <text x="250" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">SC-007</text>
+    </g>
+
+    <!-- Column 3: callout 3 (CTA + accessibility) -->
+    <g transform="translate(640, 52)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">3</text>
+      <text x="36" y="18" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#1f2937">CTA + Touch Targets</text>
+      <text x="36" y="36" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Black-bar CTAs, 48px tall (≥44 spec). High</text>
+      <text x="36" y="50" font-family="system-ui, sans-serif" font-size="11" fill="#374151">contrast in every theme via tokens.</text>
+      <rect x="36" y="62" width="56" height="20" rx="10" fill="#0891b2"/>
+      <text x="64" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-003</text>
+      <rect x="98" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="126" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-010</text>
+      <rect x="160" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="188" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-011</text>
+      <rect x="222" y="62" width="56" height="20" rx="10" fill="#ea580c"/>
+      <text x="250" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">SC-005</text>
+    </g>
+
+    <!-- Column 4: callout 4 (project cards) -->
+    <g transform="translate(950, 52)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">4</text>
+      <text x="36" y="18" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#1f2937">Editorial-Numbered Cards</text>
+      <text x="36" y="36" font-family="system-ui, sans-serif" font-size="11" fill="#374151">"№ 01 · CASE STUDY" — magazine numbering.</text>
+      <text x="36" y="50" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Scroll-stagger reveal; magnetic hover offset.</text>
+      <rect x="36" y="62" width="56" height="20" rx="10" fill="#0891b2"/>
+      <text x="64" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-002</text>
+      <rect x="98" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="126" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-005</text>
+      <rect x="160" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="188" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-006</text>
+      <rect x="222" y="62" width="56" height="20" rx="10" fill="#ea580c"/>
+      <text x="250" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">SC-006</text>
+    </g>
+
+    <!-- Aesthetic ID strip — under all callouts -->
+    <g transform="translate(20, 152)">
+      <text x="0" y="18" font-family="Georgia, serif" font-size="13" font-weight="900" fill="#1f2937" letter-spacing="2">AESTHETIC VOCABULARY:</text>
+      <text x="0" y="36" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Georgia/Fraunces display serif · paper grain + halftone block · red rule + ink scribbles · diagonal black bar (broken</text>
+      <text x="0" y="50" font-family="system-ui, sans-serif" font-size="11" fill="#374151">grid) · magazine-numbered cards · CTA black bars · full-bleed marquee. Reads: senior editorial designer who codes.</text>
+    </g>
+    <g transform="translate(1260, 152)">
+      <text x="0" y="18" font-family="Georgia, serif" font-size="13" font-weight="900" fill="#1f2937" letter-spacing="2">RELATED USER STORIES</text>
+      <rect x="0" y="28" width="80" height="20" rx="10" fill="#0891b2"/>
+      <text x="40" y="42" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-001 P1</text>
+      <rect x="88" y="28" width="80" height="20" rx="10" fill="#0891b2"/>
+      <text x="128" y="42" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-002 P1</text>
+      <rect x="176" y="28" width="80" height="20" rx="10" fill="#0891b2"/>
+      <text x="216" y="42" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-003 P2</text>
+      <rect x="264" y="28" width="80" height="20" rx="10" fill="#0891b2"/>
+      <text x="304" y="42" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-004 P1</text>
+      <text x="0" y="70" font-family="system-ui, sans-serif" font-size="10" fill="#4b5563" font-style="italic">Sign-off lands in spec.md § UI Mockup.</text>
+    </g>
+  </g>
+
+  <!-- SIGNATURE -->
+  <text x="40" y="1060" fill="#374151" font-family="Georgia, serif" font-size="18" font-weight="bold">047:01 | Portfolio Visual Overhaul — Editorial Brutalism | SpecKit</text>
+</svg>

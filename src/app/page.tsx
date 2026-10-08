@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import { LayeredTurtleWolfeLogo } from '@/components/atomic/SpinningLogo';
-import { AnimatedLogo } from '@/components/atomic/AnimatedLogo';
 import TemplateStats, {
   type TemplateStat,
   type TemplateDemo,
 } from '@/components/molecular/TemplateStats';
 import ProjectShowcaseCard from '@/components/molecular/ProjectShowcaseCard';
 import CTABanner from '@/components/molecular/CTABanner';
+import HeroStage from '@/components/organisms/HeroStage';
 
 // ── Portfolio landing — audience is potential employers and collaborators.
 //     Visual hierarchy: spinning logo + animated name draw the eye,
@@ -49,6 +48,146 @@ const DEMOS: readonly TemplateDemo[] = [
     label: 'Storybook',
     href: 'https://tortoisewolfe.github.io/TurtleWolfe/storybook/',
     external: true,
+  },
+];
+
+interface NowShippingItem {
+  title: string;
+  description: string;
+  image: { src: string; alt: string };
+  stack: string[];
+  href?: string;
+}
+
+// 2026 work, newest-relevant first: live sites, then the iOS apps.
+const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
+  {
+    title: 'Raised Paws',
+    description:
+      'Pet-adoption tracker so no adopter gets ghosted: one application, a shelter pipeline and a live status page for applicants. Built on ScriptHammer.',
+    image: {
+      src: '/portfolio/raised-paws/home.png',
+      alt: 'Raised Paws home page: Track your pet adoption applications, with a woman, a dog and a cat in a park',
+    },
+    stack: ['Next.js', 'Supabase', 'ScriptHammer'],
+    href: 'https://raisedpaws.com',
+  },
+  {
+    title: 'Chattanooga in 3D',
+    description:
+      'Open-source 3D atlas of downtown Chattanooga in the browser: 13,877 buildings from OpenStreetMap and USGS lidar.',
+    image: {
+      src: '/portfolio/chatt-3d/home.png',
+      alt: 'Three-dimensional map of downtown Chattanooga buildings coloured by type',
+    },
+    stack: ['Three.js', 'OpenStreetMap', 'USGS 3DEP'],
+    href: 'https://scripthammer.com/chatt/',
+  },
+  {
+    title: 'Chattanooga.Digital',
+    description:
+      'A community tech co-op\u2019s site on Drupal CMS v2, plus an 11-part \u201CHow We Built It\u201D series anyone can follow.',
+    image: {
+      src: '/portfolio/chattanooga-digital/home.png',
+      alt: 'Chattanooga.Digital home page: Own your apps. Own your data. Own what you do!',
+    },
+    stack: ['Drupal 11', 'Docker', 'Portainer'],
+    href: 'https://chattanooga.digital',
+  },
+  {
+    title: 'Eduity',
+    description:
+      'A consulting firm\u2019s site rebuilt on Drupal CMS v2 and deployed in containers through Portainer.',
+    image: {
+      src: '/portfolio/eduity/home.png',
+      alt: 'Eduity home page: Welcome to Eduity, smart planning for talent and technology',
+    },
+    stack: ['Drupal 11', 'Docker', 'Portainer'],
+    href: 'https://eduity.net',
+  },
+  {
+    title: 'Harmonic Egg App',
+    description:
+      'Took over a client\u2019s sound-therapy app in August 2026: moved it onto her own AWS by the deadline, and now maintain and extend it.',
+    image: {
+      src: '/portfolio/harmonic-egg/home.png',
+      alt: 'Harmonic Egg app landing page: Restorative Sound Experiences',
+    },
+    stack: ['Expo', 'Express', 'AWS'],
+    href: 'https://app.harmonicegg.com',
+  },
+  {
+    title: 'geoLARP',
+    description:
+      'Geo-located live-action role-playing: the web platform, plus an iOS companion app.',
+    image: {
+      src: '/portfolio/geolarp/home.png',
+      alt: 'geoLARP.com coming-soon page with a gold dodecahedron emblem',
+    },
+    stack: ['Next.js', 'Supabase', 'Expo'],
+    href: 'https://geolarp.com',
+  },
+  {
+    title: 'AI Workflow',
+    description:
+      'A Day-1 curriculum for AI-assisted development, and the \u201CAI kitchen\u201D behind this work: a head-chef model plans, cheaper line cooks build, and tests do the tasting.',
+    image: {
+      src: '/portfolio/ai-workflow/home.png',
+      alt: 'AI_Workflow curriculum home page: TSD AI Workflow',
+    },
+    stack: ['Claude Code', 'SpecKit', 'Docker'],
+    href: 'https://tortoisewolfe.github.io/AI_Workflow/',
+  },
+];
+
+const NOW_SHIPPING_APPS: readonly NowShippingItem[] = [
+  {
+    title: 'RunIt',
+    description:
+      'Event companion app: guests join with a code, no account needed. In TestFlight beta; its first wedding was Oct 3.',
+    image: { src: '/portfolio/apps/runit.png', alt: 'RunIt app icon' },
+    stack: ['Expo', 'React Native'],
+    href: 'https://runit-app.pages.dev',
+  },
+  {
+    title: 'PlumbPics',
+    description:
+      'A guided photo walk round a building on iPhone, with the model set over the AR camera, that comes back as a measured model.',
+    image: { src: '/portfolio/apps/plumbpics.png', alt: 'PlumbPics app icon' },
+    stack: ['Expo', 'ARKit', 'Swift'],
+  },
+  {
+    title: 'MothLight',
+    description:
+      'Scale stealth: you\u2019re four inches tall, among Titans that commit.',
+    image: { src: '/portfolio/apps/mothlight.png', alt: 'MothLight app icon' },
+    stack: ['Expo', 'three.js'],
+  },
+  {
+    title: 'HogBall',
+    description: 'A ball game where the ball is the antagonist.',
+    image: { src: '/portfolio/apps/hogball.png', alt: 'HogBall app icon' },
+    stack: ['Expo', 'three.js'],
+  },
+  {
+    title: 'geoLARP for iOS',
+    description:
+      'The shared adventure book and the game\u2019s rules engine, on a phone.',
+    image: {
+      src: '/portfolio/apps/geolarp-ios.png',
+      alt: 'geoLARP for iOS app icon',
+    },
+    stack: ['Expo', 'Supabase'],
+  },
+  {
+    title: 'ScriptHammer for iOS',
+    description:
+      'A reading app you can actually tune: type size, line spacing, contrast and colour-vision correction. The template the other apps fork from.',
+    image: {
+      src: '/portfolio/apps/scripthammer-ios.png',
+      alt: 'ScriptHammer for iOS app icon',
+    },
+    stack: ['Expo', 'React Native'],
   },
 ];
 
@@ -266,119 +405,77 @@ const CERTIFICATIONS = [
 export default function Home() {
   return (
     <main className="bg-base-200 flex min-h-full flex-col">
-      {/* Skip link — load-bearing a11y, do not remove (PRP-017 T036). */}
-      <a
-        href="#main-content"
-        className="btn btn-sm btn-primary sr-only min-h-11 min-w-11 focus:not-sr-only focus:absolute focus:top-4 focus:left-4"
-      >
-        Skip to main content
-      </a>
+      {/* Hero — Nostromo CRT composition. Skip link and id="main-content" live
+       * inside HeroStage; do not duplicate them here. */}
+      <HeroStage />
 
-      {/* ── Hero ─────────────────────────────────────────────────────── */}
+      {/* Social links strip — sits just under the hero so the icons are still
+       * reachable without being lost in the manifest block. */}
       <section
-        id="main-content"
-        aria-labelledby="hero-heading"
-        className="mx-auto w-full max-w-6xl flex-1 px-4 py-16 sm:px-6 lg:px-8 lg:py-24"
+        aria-label="Social profiles"
+        className="bg-base-100 border-base-300/40 border-b px-4 py-4 sm:px-6 lg:px-8"
       >
-        <div className="flex flex-col items-center gap-8 lg:flex-row lg:gap-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <div className="h-48 w-48 sm:h-52 sm:w-52 md:h-56 md:w-56 lg:h-[350px] lg:w-[350px]">
-              <LayeredTurtleWolfeLogo speed="slow" pauseOnHover />
-            </div>
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-3 lg:justify-start">
+          {SOCIAL_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost btn-circle min-h-11 min-w-11"
+              aria-label={link.label}
+            >
+              {link.icon}
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* ── 2026: Now Shipping ─────────────────────────────────────── */}
+      <section
+        id="now-shipping"
+        aria-label="2026: Now shipping"
+        className="px-4 py-12 sm:px-6 lg:px-8"
+      >
+        <div className="mx-auto max-w-6xl">
+          <div className="text-primary crt-halation mb-4 font-mono text-[10px] tracking-[0.2em] opacity-65 sm:text-xs">
+            ━━ SECTION_00 · 2026 — NOW_SHIPPING
+            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           </div>
-
-          {/* Content */}
-          <div className="text-center lg:text-left">
-            <h1 id="hero-heading" className="mb-2 sm:mb-4">
-              <AnimatedLogo
-                text="Jonathan Pohlner"
-                className="!text-2xl font-bold sm:!text-3xl md:!text-5xl lg:!text-6xl"
-                animationSpeed="normal"
+          <h2 className="text-base-content mb-4 text-center text-2xl font-bold sm:text-3xl">
+            2026: Now Shipping
+          </h2>
+          <p className="text-base-content/60 mb-8 text-center text-lg">
+            This year&apos;s sites, client work and apps
+          </p>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {NOW_SHIPPING_WEB.map((p) => (
+              <ProjectShowcaseCard
+                key={p.title}
+                title={p.title}
+                description={p.description}
+                image={p.image}
+                stack={p.stack}
+                href={p.href}
+                hasDetailPage={false}
               />
-            </h1>
-
-            <p className="text-primary mb-2 text-lg font-semibold sm:text-xl">
-              Full Stack Developer
-            </p>
-
-            <p className="text-base-content/60 mb-4 text-base italic sm:text-lg">
-              Putting the &lsquo;Service&rsquo; in &ldquo;Software as a
-              Service&rdquo;
-            </p>
-
-            <p className="text-base-content/80 mb-6 max-w-2xl text-lg leading-relaxed sm:text-xl">
-              15+ years building accessible web applications with React,
-              TypeScript, and Next.js. 20+ years in graphic design.
-            </p>
-
-            {/* Tech stack badges */}
-            <div
-              className="mb-6 flex flex-wrap justify-center gap-2 lg:justify-start"
-              role="list"
-              aria-label="Technology stack"
-            >
-              {[
-                'React',
-                'React Native',
-                'TypeScript',
-                'Next.js',
-                'Node.js',
-                'Three.js',
-                'C#',
-                'Python',
-                'Docker',
-                'AWS',
-                'Linux',
-                'MongoDB',
-                'Supabase',
-                'Tailwind',
-              ].map((tech) => (
-                <span
-                  key={tech}
-                  role="listitem"
-                  className="badge badge-outline badge-sm sm:badge-md"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            {/* Social links */}
-            <div className="mb-8 flex justify-center gap-3 lg:justify-start">
-              {SOCIAL_LINKS.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-ghost btn-circle min-h-11 min-w-11"
-                  aria-label={link.label}
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
-
-            <nav
-              aria-label="Primary actions"
-              className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start"
-            >
-              <Link
-                href="/contact"
-                className="btn btn-primary btn-lg min-h-11 min-w-11"
-              >
-                Get in Touch
-              </Link>
-              <a
-                href="https://tortoisewolfe.github.io/Resume/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-outline btn-lg min-h-11 min-w-11"
-              >
-                View My Resume
-              </a>
-            </nav>
+            ))}
+          </div>
+          <div className="text-primary crt-halation mt-10 mb-4 font-mono text-[10px] tracking-[0.2em] opacity-65 sm:text-xs">
+            ── IOS_APPS ──────────────────────────────────────────
+          </div>
+          <div className="grid grid-cols-1 gap-4 min-[500px]:grid-cols-2 lg:grid-cols-3">
+            {NOW_SHIPPING_APPS.map((p) => (
+              <ProjectShowcaseCard
+                key={p.title}
+                title={p.title}
+                description={p.description}
+                image={p.image}
+                stack={p.stack}
+                href={p.href}
+                hasDetailPage={false}
+              />
+            ))}
           </div>
         </div>
       </section>

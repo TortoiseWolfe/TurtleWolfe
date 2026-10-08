@@ -19,10 +19,13 @@ export default function ContactPage() {
     <main className="container mx-auto min-h-screen px-4 py-6 sm:py-8 md:py-12">
       <div className="mx-auto max-w-4xl">
         <div className="mb-8 text-center">
-          <h1 className="mb-4 !text-2xl font-bold sm:!text-4xl md:!text-5xl">
+          <h1
+            className="font-display crt-halation-strong text-primary mb-4 text-5xl italic sm:text-6xl md:text-7xl"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
             Let&apos;s Talk
           </h1>
-          <p className="text-base-content/85 text-base sm:text-lg md:text-xl">
+          <p className="text-base-content/85 crt-halation text-base sm:text-lg md:text-xl">
             Have a project in mind, looking to hire, or just want to connect?
             I&apos;d love to hear from you.
           </p>
@@ -33,7 +36,7 @@ export default function ContactPage() {
         <div className="mb-8 grid gap-8 md:grid-cols-2">
           <div className="space-y-6">
             <div>
-              <h2 className="mb-3 text-xl font-semibold sm:text-2xl">
+              <h2 className="text-primary crt-halation mb-3 font-mono text-xl font-bold tracking-wider sm:text-2xl">
                 How I Can Help
               </h2>
               <ul className="text-base-content/80 space-y-2">
@@ -97,7 +100,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h3 className="mb-2 text-lg font-semibold sm:text-xl">
+              <h3 className="crt-halation mb-2 text-lg font-semibold sm:text-xl">
                 Response Time
               </h3>
               <p className="text-base-content/80 text-sm sm:text-base">
@@ -105,7 +108,7 @@ export default function ContactPage() {
               </p>
 
               <div className="mt-4">
-                <h3 className="mb-2 text-lg font-semibold sm:text-xl">
+                <h3 className="crt-halation mb-2 text-lg font-semibold sm:text-xl">
                   Email Directly
                 </h3>
                 <a
@@ -117,7 +120,7 @@ export default function ContactPage() {
               </div>
 
               <div className="mt-4">
-                <h3 className="mb-2 text-lg font-semibold sm:text-xl">
+                <h3 className="crt-halation mb-2 text-lg font-semibold sm:text-xl">
                   Book a Call
                 </h3>
                 <a
@@ -132,7 +135,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h3 className="mb-2 text-lg font-semibold sm:text-xl">
+              <h3 className="crt-halation mb-2 text-lg font-semibold sm:text-xl">
                 Other Ways to Connect
               </h3>
               <div className="space-y-2">
@@ -174,7 +177,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="card bg-base-200">
+          <div className="card crt-glass bg-base-200">
             <div className="card-body">
               <ContactForm />
             </div>

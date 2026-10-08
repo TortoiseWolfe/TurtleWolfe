@@ -12,7 +12,6 @@ jobs:
     name: E2E Tests
     runs-on: ubuntu-latest
     timeout-minutes: 60
-    continue-on-error: true # Allow CI to pass even if E2E tests fail
 
     strategy:
       fail-fast: false
@@ -26,28 +25,56 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set repository name
-        id: repo
-        run: echo "name=${GITHUB_REPOSITORY##*/}" >> $GITHUB_OUTPUT
+      # Portfolio-mode detection. TurtleWolfe ships with Supabase disabled
+      # (CLAUDE.md "Pending Configuration"); when no Supabase URL is configured
+      # in repo vars, the entire E2E suite (auth, messaging, payment, admin —
+      # all Supabase-dependent) is skipped. If Supabase is ever re-enabled by
+      # setting NEXT_PUBLIC_SUPABASE_URL as a repo variable, this gate
+      # auto-opens and the full suite runs.
+      - name: Check portfolio mode
+        id: portfolio-check
+        env:
+          SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
+        run: |
+          if [ -z "$SUPABASE_URL" ]; then
+            echo "skipped=true" >> "$GITHUB_OUTPUT"
+            {
+              echo "## E2E suite skipped (portfolio mode)"
+              echo ""
+              echo "No NEXT_PUBLIC_SUPABASE_URL configured in repo variables, indicating portfolio mode (Supabase disabled per CLAUDE.md)."
+              echo ""
+              echo "The inherited E2E suite under tests/e2e/{auth,messaging,payment,admin,security}/ requires Supabase + test-user credentials and cannot run without them."
+              echo ""
+              echo "To enable: set repo variables NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY, and repo secrets SUPABASE_SERVICE_ROLE_KEY, TEST_USER_PRIMARY_EMAIL, TEST_USER_PRIMARY_PASSWORD."
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "skipped=false" >> "$GITHUB_OUTPUT"
+            echo "Supabase configured — running full E2E suite."
+          fi
 
       - name: Install pnpm
+        if: steps.portfolio-check.outputs.skipped != 'true'
         uses: pnpm/action-setup@v4
         with:
           version: 10.16.1
 
       - name: Setup Node.js
+        if: steps.portfolio-check.outputs.skipped != 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
           cache: 'pnpm'
 
       - name: Install dependencies
+        if: steps.portfolio-check.outputs.skipped != 'true'
         run: pnpm install --frozen-lockfile
 
       - name: Install Playwright browsers
+        if: steps.portfolio-check.outputs.skipped != 'true'
         run: pnpm exec playwright install --with-deps ${{ matrix.browser }}
 
       - name: Build application
+        if: steps.portfolio-check.outputs.skipped != 'true'
         run: pnpm build
         env:
           # Don't use GitHub base path for E2E tests - build for local testing
@@ -60,6 +87,7 @@ jobs:
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
 
       - name: Debug - Check build output
+        if: steps.portfolio-check.outputs.skipped != 'true'
         run: |
           echo "=== Build output structure ==="
           ls -la out/
@@ -67,6 +95,7 @@ jobs:
           head -20 out/index.html
 
       - name: Start server
+        if: steps.portfolio-check.outputs.skipped != 'true'
         run: |
           # Serve static files from out directory at root (no SPA mode for Next.js static export)
           npx serve out -l 3000 &
@@ -76,6 +105,7 @@ jobs:
           CI: true
 
       - name: Debug - Check served content
+        if: steps.portfolio-check.outputs.skipped != 'true'
         run: |
           echo "=== Checking homepage ==="
           curl -s http://localhost:3000 | grep -o '<title>[^<]*</title>' || echo "No title found"
@@ -87,6 +117,7 @@ jobs:
       # Run rate-limiting tests FIRST (clean IP quota)
       # These use project dependencies for ordering
       - name: Run rate-limiting tests (ordered)
+        if: steps.portfolio-check.outputs.skipped != 'true'
         run: pnpm test:e2e --project=rate-limiting --project=brute-force --project=signup --reporter=list --trace=on-first-retry
         env:
           CI: true
@@ -107,6 +138,7 @@ jobs:
 
       # Then run remaining tests in parallel (rate-limiting tests excluded via testIgnore)
       - name: Run E2E tests - ${{ matrix.browser }}
+        if: steps.portfolio-check.outputs.skipped != 'true'
         run: pnpm test:e2e --project=${{ matrix.browser }} --reporter=list --trace=on-first-retry
         env:
           CI: true

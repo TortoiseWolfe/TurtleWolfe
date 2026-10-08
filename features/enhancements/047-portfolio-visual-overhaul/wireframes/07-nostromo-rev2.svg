@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c7ddf5"/>
+      <stop offset="100%" stop-color="#b8d4f0"/>
+    </linearGradient>
+    <linearGradient id="phosphorDeck" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#050907"/>
+      <stop offset="55%" stop-color="#070d0a"/>
+      <stop offset="100%" stop-color="#0a1410"/>
+    </linearGradient>
+    <pattern id="scanlinePhosphor" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="1" fill="#4ade80" opacity="0.08"/>
+      <rect y="1" width="4" height="3" fill="transparent"/>
+    </pattern>
+    <pattern id="grainPhosphor" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse">
+      <rect width="3" height="3" fill="transparent"/>
+      <circle cx="0.7" cy="0.7" r="0.25" fill="#4ade80" opacity="0.06"/>
+      <circle cx="2.1" cy="2.1" r="0.2" fill="#4ade80" opacity="0.04"/>
+    </pattern>
+    <radialGradient id="crtVignette" cx="50%" cy="50%" r="75%">
+      <stop offset="60%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.55"/>
+    </radialGradient>
+    <pattern id="projThumbMap" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="#0a1410"/>
+      <path d="M 0 20 L 40 20 M 20 0 L 20 40" stroke="#4ade80" stroke-width="0.4" opacity="0.18" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <text x="960" y="28" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#4b5563" letter-spacing="2">PORTFOLIO VISUAL OVERHAUL — VARIANT 07 — NOSTROMO REV 2 (6 EDITORIAL MOVES)</text>
+  <text x="40" y="52" fill="#8b5cf6" font-family="system-ui, sans-serif" font-size="18" font-weight="bold">DESKTOP (16:9)</text>
+  <text x="1500" y="52" fill="#d946ef" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">MOBILE</text>
+
+  <!-- ============================== DESKTOP 1280x720 ============================== -->
+  <g id="desktop" transform="translate(40, 60)">
+    <rect width="1280" height="720" rx="8" fill="#e8d4b8" stroke="#b8a080"/>
+    <g transform="translate(20, 20)">
+      <clipPath id="innerClip"><rect width="1240" height="680" rx="6"/></clipPath>
+      <g clip-path="url(#innerClip)">
+        <!-- Phosphor deck + scanlines + grain + CRT vignette -->
+        <rect width="1240" height="680" fill="url(#phosphorDeck)"/>
+        <rect width="1240" height="680" fill="url(#scanlinePhosphor)"/>
+        <rect width="1240" height="680" fill="url(#grainPhosphor)"/>
+        <rect width="1240" height="680" fill="url(#crtVignette)"/>
+
+        <!-- ===== Move 1: Editorial corner marker — vertical text right edge ===== -->
+        <g class="callout" transform="translate(1170, 60)">
+          <circle r="14" fill="#dc2626"/>
+          <text y="5" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">1</text>
+        </g>
+        <g transform="translate(1208, 360)">
+          <!-- Rotated 90° clockwise so it reads bottom-to-top up the edge -->
+          <g transform="rotate(-90)">
+            <text font-family="Courier, monospace" font-size="14" letter-spacing="6" fill="#4ade80" opacity="0.35">
+              № 047  /  2026.05  /  CRT.HERO.REV2
+            </text>
+          </g>
+        </g>
+        <!-- decorative tick marks under it -->
+        <g transform="translate(1208, 100)" stroke="#4ade80" stroke-width="1" opacity="0.35">
+          <line x1="0" y1="0" x2="14" y2="0"/>
+          <line x1="0" y1="40" x2="14" y2="40"/>
+          <line x1="0" y1="80" x2="8" y2="80"/>
+          <line x1="0" y1="600" x2="8" y2="600"/>
+          <line x1="0" y1="640" x2="14" y2="640"/>
+        </g>
+
+        <!-- ===== Status bar — kept from V06 ===== -->
+        <text x="60" y="50" font-family="Courier, monospace" font-size="14" letter-spacing="2" fill="#4ade80">MU/TH/UR 6000 :: PORT 3000 :: 2026.05.19 12:35:58</text>
+
+        <!-- ===== Move 3: Chromatic accent — red blinking indicator + magenta WARN label ===== -->
+        <g class="callout" transform="translate(700, 76)">
+          <circle r="14" fill="#dc2626"/>
+          <text y="5" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">3</text>
+        </g>
+        <!-- magenta WARN label, top-right of status bar region -->
+        <g transform="translate(750, 36)">
+          <rect width="194" height="22" rx="2" fill="none" stroke="#f87171" stroke-width="1.5" stroke-dasharray="3 2"/>
+          <text x="12" y="16" font-family="Courier, monospace" font-size="12" font-weight="700" fill="#f87171" letter-spacing="3">! WARN: AVAILABLE Q3 2026</text>
+        </g>
+        <!-- pulsing red indicator dot -->
+        <circle cx="958" cy="47" r="5" fill="#f87171"/>
+        <circle cx="958" cy="47" r="9" fill="none" stroke="#f87171" stroke-width="1" opacity="0.6"/>
+        <text x="970" y="52" font-family="Courier, monospace" font-size="11" fill="#f87171" opacity="0.85">REC</text>
+
+        <!-- ===== Boot sequence — kept ===== -->
+        <g transform="translate(60, 80)" font-family="Courier, monospace" font-size="14" fill="#4ade80">
+          <text y="20">&gt; initiating uplink...</text>
+          <text y="40">&gt; authenticated.</text>
+          <text y="60">&gt; rendering portfolio...</text>
+          <text y="80">&gt; done.</text>
+          <text y="100">&gt;<tspan dx="4" font-weight="700">█</tspan></text>
+        </g>
+
+        <!-- ===== Move 4: Display name set off-axis — pushed RIGHT 10% into right column ===== -->
+        <g class="callout" transform="translate(620, 200)">
+          <circle r="14" fill="#dc2626"/>
+          <text y="5" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">4</text>
+        </g>
+        <!-- Name shifted right; cuts across the column gutter, breaks the grid -->
+        <text x="200" y="260" font-family="serif" font-size="84" font-style="italic" fill="#4ade80" letter-spacing="-1">Jonathan</text>
+        <text x="380" y="330" font-family="serif" font-size="84" font-style="italic" fill="#4ade80" letter-spacing="-1">Pohlner</text>
+        <!-- subtle drop shadow tail to emphasize the off-axis placement -->
+        <text x="201" y="261" font-family="serif" font-size="84" font-style="italic" fill="#22d3ee" letter-spacing="-1" opacity="0.18">Jonathan</text>
+        <text x="381" y="331" font-family="serif" font-size="84" font-style="italic" fill="#22d3ee" letter-spacing="-1" opacity="0.18">Pohlner</text>
+
+        <!-- ===== Move 5: Tagline — design half in italic serif, dev half in mono ===== -->
+        <g class="callout" transform="translate(580, 380)">
+          <circle r="14" fill="#dc2626"/>
+          <text y="5" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">5</text>
+        </g>
+        <text x="60" y="400" font-family="serif" font-size="42" font-style="italic" fill="#4ade80">Graphic Designer</text>
+        <text x="60" y="430" font-family="Courier, monospace" font-size="14" letter-spacing="3" fill="#fbbf24" opacity="0.75">:: FULL-STACK DEVELOPER</text>
+        <text x="60" y="460" font-family="Courier, monospace" font-size="12" letter-spacing="1" fill="#4ade80" opacity="0.6">20+ yrs design · 15+ yrs code · accessible · offline-first · 36 themes</text>
+
+        <!-- ===== Move 2: Project monitor in right column (replaces standalone brand mark) ===== -->
+        <g class="callout" transform="translate(840, 130)">
+          <circle r="14" fill="#dc2626"/>
+          <text y="5" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">2</text>
+        </g>
+        <g transform="translate(720, 150)">
+          <!-- bezel -->
+          <rect x="-12" y="-12" width="424" height="280" rx="6" fill="#1a1612"/>
+          <rect x="-6" y="-6" width="412" height="268" rx="4" fill="#0a1410"/>
+          <!-- top label strip -->
+          <rect x="0" y="0" width="400" height="22" fill="#fbbf24" opacity="0.85"/>
+          <text x="10" y="16" font-family="Courier, monospace" font-size="11" font-weight="700" fill="#0a1410" letter-spacing="2">CH.01 · SPOKETO.WORK · MAP_VIEW.PNG</text>
+          <!-- "screen" content - mini map -->
+          <rect x="0" y="22" width="400" height="200" fill="url(#projThumbMap)"/>
+          <!-- map route -->
+          <path d="M 30 180 L 90 120 L 160 140 L 240 80 L 320 110 L 380 60" stroke="#4ade80" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M 30 180 L 90 120 L 160 140 L 240 80 L 320 110 L 380 60" stroke="#22d3ee" stroke-width="0.8" fill="none" opacity="0.6" stroke-dasharray="2 2"/>
+          <!-- nodes -->
+          <circle cx="30" cy="180" r="5" fill="#4ade80"/>
+          <circle cx="90" cy="120" r="3" fill="#4ade80"/>
+          <circle cx="160" cy="140" r="3" fill="#4ade80"/>
+          <circle cx="240" cy="80" r="3" fill="#fbbf24"/>
+          <circle cx="320" cy="110" r="3" fill="#4ade80"/>
+          <circle cx="380" cy="60" r="6" fill="#f87171"/>
+          <text x="386" y="56" font-family="Courier, monospace" font-size="9" fill="#f87171">◆ JOB</text>
+          <!-- screen scanlines overlaid (subtle) -->
+          <rect x="0" y="22" width="400" height="200" fill="url(#scanlinePhosphor)" opacity="0.8"/>
+          <!-- bottom status strip -->
+          <rect x="0" y="222" width="400" height="22" fill="#0e1f17" stroke="#4ade80" stroke-opacity="0.4"/>
+          <text x="10" y="237" font-family="Courier, monospace" font-size="10" fill="#4ade80" opacity="0.85">▸ ROUTE 14.2KM · 47MIN · ENCRYPTED</text>
+          <text x="270" y="237" font-family="Courier, monospace" font-size="10" fill="#fbbf24" opacity="0.85">SIG: -67dB</text>
+          <!-- small "monitor stand" tag -->
+          <text x="170" y="263" font-family="Courier, monospace" font-size="9" fill="#4ade80" opacity="0.6">CASE_STUDY/01</text>
+        </g>
+
+        <!-- ===== Brand mark shrunk + corner-anchored (replaces former column hero) ===== -->
+        <g transform="translate(60, 510)" opacity="0.95">
+          <circle r="34" fill="#4ade80" opacity="0.08"/>
+          <circle r="28" fill="none" stroke="url(#bg)" stroke-width="2.5" stroke-opacity="0.9"/>
+          <circle r="22" fill="none" stroke="#fbbf24" stroke-width="1.2" opacity="0.85"/>
+          <g stroke="#4ade80" stroke-width="1.5" opacity="0.7">
+            <line x1="0" y1="-28" x2="0" y2="-34"/>
+            <line x1="20" y1="-20" x2="24" y2="-24"/>
+            <line x1="28" y1="0" x2="34" y2="0"/>
+            <line x1="20" y1="20" x2="24" y2="24"/>
+            <line x1="0" y1="28" x2="0" y2="34"/>
+            <line x1="-20" y1="20" x2="-24" y2="24"/>
+            <line x1="-28" y1="0" x2="-34" y2="0"/>
+            <line x1="-20" y1="-20" x2="-24" y2="-24"/>
+          </g>
+          <circle r="6" fill="#4ade80"/>
+        </g>
+        <text x="105" y="516" font-family="serif" font-size="16" font-style="italic" fill="#4ade80">turtlewolfe</text>
+        <text x="105" y="532" font-family="Courier, monospace" font-size="10" fill="#4ade80" opacity="0.6">v15.20.247 · uplink stable</text>
+
+        <!-- ===== Manifest block — horizontal pill row ===== -->
+        <text x="60" y="560" font-family="Courier, monospace" font-size="13" fill="#fbbf24">&gt; MANIFEST.LOAD()</text>
+        <g transform="translate(60, 575)" font-family="Courier, monospace" font-size="12" fill="#4ade80">
+          <text y="14">[<tspan fill="#fbbf24">✓</tspan>] REACT &#160;[<tspan fill="#fbbf24">✓</tspan>] NEXT &#160;[<tspan fill="#fbbf24">✓</tspan>] TS &#160;[<tspan fill="#fbbf24">✓</tspan>] NODE &#160;[<tspan fill="#fbbf24">✓</tspan>] THREE &#160;[<tspan fill="#fbbf24">✓</tspan>] C#</text>
+          <text y="32">[<tspan fill="#fbbf24">✓</tspan>] PYTHON &#160;[<tspan fill="#fbbf24">✓</tspan>] DOCKER &#160;[<tspan fill="#fbbf24">✓</tspan>] AWS &#160;[<tspan fill="#fbbf24">✓</tspan>] LINUX &#160;[<tspan fill="#fbbf24">✓</tspan>] SUPABASE &#160;[<tspan fill="#fbbf24">✓</tspan>] TAILWIND</text>
+        </g>
+
+        <!-- ===== CTAs ===== -->
+        <g transform="translate(60, 630)">
+          <rect width="170" height="34" rx="3" fill="#4ade80"/>
+          <text x="14" y="22" font-family="Courier, monospace" font-size="14" font-weight="700" fill="#050907">&gt; ./contact.sh</text>
+          <rect x="184" width="180" height="34" rx="3" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="198" y="22" font-family="Courier, monospace" font-size="14" font-weight="700" fill="#fbbf24">&gt; ./resume.pdf</text>
+        </g>
+
+        <!-- ===== Move 6: Section divider — diagonal scanline gap to the cards below ===== -->
+        <g class="callout" transform="translate(620, 685)">
+          <circle r="14" fill="#dc2626"/>
+          <text y="5" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">6</text>
+        </g>
+        <!-- Diagonal stripe -->
+        <polygon points="0,670 1240,665 1240,675 0,680" fill="#4ade80" opacity="0.25"/>
+        <text x="60" y="697" font-family="Courier, monospace" font-size="11" fill="#4ade80" opacity="0.65">━━ SECTION_01 · FEATURED_WORK ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ↓</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ============================== MOBILE 360x720 ============================== -->
+  <g id="mobile" transform="translate(1360, 60)">
+    <rect width="360" height="720" rx="24" fill="#e8d4b8" stroke="#b8a080"/>
+    <g transform="translate(8, 8)">
+      <clipPath id="innerClipMobile"><rect width="344" height="704" rx="20"/></clipPath>
+      <g clip-path="url(#innerClipMobile)">
+        <rect width="344" height="704" fill="url(#phosphorDeck)"/>
+        <rect width="344" height="704" fill="url(#scanlinePhosphor)"/>
+        <rect width="344" height="704" fill="url(#grainPhosphor)"/>
+        <rect width="344" height="704" fill="url(#crtVignette)"/>
+
+        <!-- vertical edge marker (move 1) -->
+        <g transform="translate(326, 360)">
+          <g transform="rotate(-90)">
+            <text font-family="Courier, monospace" font-size="9" letter-spacing="3" fill="#4ade80" opacity="0.35">№ 047 / 2026.05</text>
+          </g>
+        </g>
+
+        <!-- status + WARN (move 3) -->
+        <text x="14" y="22" font-family="Courier, monospace" font-size="9" fill="#4ade80">MU/TH/UR 6000</text>
+        <rect x="190" y="12" width="116" height="14" rx="2" fill="none" stroke="#f87171" stroke-width="1" stroke-dasharray="2 1.5"/>
+        <text x="194" y="22" font-family="Courier, monospace" font-size="8" fill="#f87171" letter-spacing="1">! AVAIL Q3 2026</text>
+        <circle cx="313" cy="19" r="3" fill="#f87171"/>
+
+        <!-- boot sequence -->
+        <g transform="translate(14, 40)" font-family="Courier, monospace" font-size="9" fill="#4ade80">
+          <text y="12">&gt; initiating uplink...</text>
+          <text y="26">&gt; authenticated.</text>
+          <text y="40">&gt; rendering portfolio...</text>
+          <text y="54">&gt; done.</text>
+          <text y="68">&gt;<tspan dx="2">█</tspan></text>
+        </g>
+
+        <!-- display name (move 4: off-axis nudge — flush right edge) -->
+        <text x="40" y="160" font-family="serif" font-size="36" font-style="italic" fill="#4ade80">Jonathan</text>
+        <text x="80" y="194" font-family="serif" font-size="36" font-style="italic" fill="#4ade80">Pohlner</text>
+
+        <!-- tagline (move 5: italic-serif designer, mono dev) -->
+        <text x="14" y="232" font-family="serif" font-size="22" font-style="italic" fill="#4ade80">Graphic Designer</text>
+        <text x="14" y="252" font-family="Courier, monospace" font-size="9" letter-spacing="2" fill="#fbbf24" opacity="0.75">:: FULL-STACK DEVELOPER</text>
+        <text x="14" y="268" font-family="Courier, monospace" font-size="8" fill="#4ade80" opacity="0.6">20+ yrs design · 15+ yrs code</text>
+
+        <!-- project monitor (move 2) - smaller -->
+        <g transform="translate(14, 288)">
+          <rect x="-3" y="-3" width="322" height="148" rx="4" fill="#1a1612"/>
+          <rect width="316" height="142" fill="#0a1410"/>
+          <rect width="316" height="16" fill="#fbbf24" opacity="0.85"/>
+          <text x="6" y="12" font-family="Courier, monospace" font-size="8" font-weight="700" fill="#0a1410" letter-spacing="1">CH.01 · SPOKETO.WORK</text>
+          <rect y="16" width="316" height="106" fill="url(#projThumbMap)"/>
+          <path d="M 16 96 L 70 60 L 130 70 L 200 36 L 260 50 L 300 24" stroke="#4ade80" stroke-width="2" fill="none"/>
+          <circle cx="16" cy="96" r="3" fill="#4ade80"/>
+          <circle cx="300" cy="24" r="4" fill="#f87171"/>
+          <rect y="16" width="316" height="106" fill="url(#scanlinePhosphor)" opacity="0.8"/>
+          <rect y="122" width="316" height="18" fill="#0e1f17" stroke="#4ade80" stroke-opacity="0.4"/>
+          <text x="6" y="135" font-family="Courier, monospace" font-size="8" fill="#4ade80">▸ ROUTE 14.2KM · 47MIN</text>
+        </g>
+
+        <!-- brand mark mini, corner anchored -->
+        <g transform="translate(310, 460)" opacity="0.85">
+          <circle r="18" fill="#4ade80" opacity="0.1"/>
+          <circle r="14" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0.8"/>
+          <circle r="3" fill="#4ade80"/>
+        </g>
+
+        <!-- manifest -->
+        <text x="14" y="466" font-family="Courier, monospace" font-size="9" fill="#fbbf24">&gt; MANIFEST.LOAD()</text>
+        <g transform="translate(14, 478)" font-family="Courier, monospace" font-size="9" fill="#4ade80">
+          <text y="14">[<tspan fill="#fbbf24">✓</tspan>] REACT [<tspan fill="#fbbf24">✓</tspan>] NEXT [<tspan fill="#fbbf24">✓</tspan>] TS</text>
+          <text y="28">[<tspan fill="#fbbf24">✓</tspan>] NODE [<tspan fill="#fbbf24">✓</tspan>] THREE [<tspan fill="#fbbf24">✓</tspan>] C#</text>
+          <text y="42">[<tspan fill="#fbbf24">✓</tspan>] DOCKER [<tspan fill="#fbbf24">✓</tspan>] AWS [<tspan fill="#fbbf24">✓</tspan>] LINUX</text>
+        </g>
+
+        <!-- CTAs -->
+        <g transform="translate(14, 548)">
+          <rect width="316" height="32" rx="2" fill="#4ade80"/>
+          <text x="14" y="21" font-family="Courier, monospace" font-size="13" font-weight="700" fill="#050907">&gt; ./contact.sh</text>
+          <rect y="40" width="316" height="32" rx="2" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="14" y="61" font-family="Courier, monospace" font-size="13" font-weight="700" fill="#fbbf24">&gt; ./resume.pdf</text>
+        </g>
+
+        <!-- section divider (move 6) -->
+        <polygon points="0,650 344,646 344,654 0,658" fill="#4ade80" opacity="0.25"/>
+        <text x="14" y="678" font-family="Courier, monospace" font-size="8" fill="#4ade80" opacity="0.6">━━ SECTION_01 · WORK ━━ ↓</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ============================== ANNOTATION PANEL ============================== -->
+  <g id="annotations" transform="translate(40, 800)">
+    <rect width="1840" height="220" rx="8" fill="#dcc8a8" stroke="#b8a080"/>
+    <rect x="0" y="0" width="1840" height="32" rx="8" fill="#050907"/>
+    <text x="16" y="22" font-family="Courier, monospace" font-size="14" font-weight="bold" fill="#4ade80" letter-spacing="3">VARIANT 07 — NOSTROMO REV 2 — SIX EDITORIAL MOVES OVER V06</text>
+
+    <!-- Row 1: callouts 1-3 -->
+    <g transform="translate(20, 48)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">1</text>
+      <text x="36" y="16" font-family="serif" font-size="13" font-weight="bold" fill="#1f2937">Editorial Corner Marker (vertical)</text>
+      <text x="36" y="32" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Rotated mono text up the right edge:</text>
+      <text x="36" y="46" font-family="Courier, monospace" font-size="11" fill="#374151">"№ 047 / 2026.05 / CRT.HERO.REV2"</text>
+      <text x="36" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#374151">at 35% opacity + tick marks. Breaks the grid.</text>
+      <rect x="36" y="68" width="50" height="18" rx="9" fill="#0891b2"/>
+      <text x="61" y="81" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">US-001</text>
+      <rect x="90" y="68" width="50" height="18" rx="9" fill="#2563eb"/>
+      <text x="115" y="81" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">FR-001</text>
+    </g>
+
+    <g transform="translate(330, 48)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">2</text>
+      <text x="36" y="16" font-family="serif" font-size="13" font-weight="bold" fill="#1f2937">Project Monitor in Hero Right Column</text>
+      <text x="36" y="32" font-family="system-ui, sans-serif" font-size="11" fill="#374151">SpokeToWork mini map renders inside a CRT</text>
+      <text x="36" y="46" font-family="system-ui, sans-serif" font-size="11" fill="#374151">bezel: route polyline, nodes, ROUTE 14.2KM</text>
+      <text x="36" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#374151">status. Brand mark moves small + corner-anchored.</text>
+      <rect x="36" y="68" width="50" height="18" rx="9" fill="#0891b2"/>
+      <text x="61" y="81" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">US-001</text>
+      <rect x="90" y="68" width="50" height="18" rx="9" fill="#2563eb"/>
+      <text x="115" y="81" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">FR-005</text>
+      <rect x="144" y="68" width="50" height="18" rx="9" fill="#ea580c"/>
+      <text x="169" y="81" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">SC-001</text>
+    </g>
+
+    <g transform="translate(660, 48)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">3</text>
+      <text x="36" y="16" font-family="serif" font-size="13" font-weight="bold" fill="#1f2937">Chromatic Accent: Red WARN</text>
+      <text x="36" y="32" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Magenta WARN label ("AVAILABLE Q3 2026")</text>
+      <text x="36" y="46" font-family="system-ui, sans-serif" font-size="11" fill="#374151">+ pulsing red REC indicator. Breaks the</text>
+      <text x="36" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#374151">green monotone. Doubles as availability hint.</text>
+      <rect x="36" y="68" width="50" height="18" rx="9" fill="#0891b2"/>
+      <text x="61" y="81" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">US-001</text>
+    </g>
+
+    <g transform="translate(990, 48)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">4</text>
+      <text x="36" y="16" font-family="serif" font-size="13" font-weight="bold" fill="#1f2937">Display Name Off-Axis</text>
+      <text x="36" y="32" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Name shifted +200/+380 right, breaks the</text>
+      <text x="36" y="46" font-family="system-ui, sans-serif" font-size="11" fill="#374151">left-column grid + crosses into the right.</text>
+      <text x="36" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Subtle cyan dropshadow tail for depth.</text>
+      <rect x="36" y="68" width="50" height="18" rx="9" fill="#0891b2"/>
+      <text x="61" y="81" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">US-001</text>
+      <rect x="90" y="68" width="50" height="18" rx="9" fill="#2563eb"/>
+      <text x="115" y="81" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">FR-002</text>
+    </g>
+
+    <g transform="translate(1320, 48)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">5</text>
+      <text x="36" y="16" font-family="serif" font-size="13" font-weight="bold" fill="#1f2937">Italic-Serif Designer Tagline</text>
+      <text x="36" y="32" font-family="system-ui, sans-serif" font-size="11" fill="#374151">"Graphic Designer" now in italic Instrument</text>
+      <text x="36" y="46" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Serif at 42px (was mono caps). Developer</text>
+      <text x="36" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#374151">half stays mono, dimmer. Visually designer.</text>
+      <rect x="36" y="68" width="50" height="18" rx="9" fill="#0891b2"/>
+      <text x="61" y="81" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">US-001</text>
+      <rect x="90" y="68" width="50" height="18" rx="9" fill="#2563eb"/>
+      <text x="115" y="81" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">FR-001</text>
+    </g>
+
+    <g transform="translate(1640, 48)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">6</text>
+      <text x="36" y="16" font-family="serif" font-size="13" font-weight="bold" fill="#1f2937">Section Divider</text>
+      <text x="36" y="32" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Diagonal phosphor stripe + mono SECTION_01</text>
+      <text x="36" y="46" font-family="system-ui, sans-serif" font-size="11" fill="#374151">label points at Featured Work below. Closes</text>
+      <text x="36" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#374151">the hero, opens the scroll narrative.</text>
+      <rect x="36" y="68" width="50" height="18" rx="9" fill="#0891b2"/>
+      <text x="61" y="81" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">US-002</text>
+      <rect x="90" y="68" width="50" height="18" rx="9" fill="#2563eb"/>
+      <text x="115" y="81" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">FR-005</text>
+    </g>
+
+    <!-- Bottom row: aesthetic vocab + change list -->
+    <g transform="translate(20, 152)">
+      <text x="0" y="14" font-family="serif" font-size="13" font-weight="bold" fill="#1f2937" letter-spacing="2">REV 2 SUMMARY:</text>
+      <text x="0" y="32" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Same Nostromo CRT aesthetic (phosphor green, near-black deck, scanlines, grain, italic-serif display, mono everything else).</text>
+      <text x="0" y="46" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Six editorial moves break the "stacked column developer portfolio" feeling: corner marker (1), project monitor (2), red</text>
+      <text x="0" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#374151">WARN + REC indicator (3), off-axis name (4), italic-serif designer tagline half (5), diagonal section divider (6).</text>
+      <text x="0" y="76" font-family="system-ui, sans-serif" font-size="11" fill="#4b5563" font-style="italic">Reads: working terminal w/ design weight. Less cosplay, more editorial. Brand mark de-emphasized; project work in the hero.</text>
+    </g>
+
+    <g transform="translate(1320, 152)">
+      <text x="0" y="14" font-family="serif" font-size="13" font-weight="bold" fill="#1f2937" letter-spacing="2">DELTA vs V06:</text>
+      <text x="0" y="30" font-family="Courier, monospace" font-size="10" fill="#0891b2">+ corner marker (mono ↑)</text>
+      <text x="0" y="44" font-family="Courier, monospace" font-size="10" fill="#0891b2">+ project monitor (right col)</text>
+      <text x="0" y="58" font-family="Courier, monospace" font-size="10" fill="#0891b2">+ WARN label + REC dot (red)</text>
+      <text x="0" y="72" font-family="Courier, monospace" font-size="10" fill="#0891b2">+ section divider (diagonal)</text>
+      <text x="0" y="86" font-family="Courier, monospace" font-size="10" fill="#dc2626">~ name shifted off-axis</text>
+      <text x="220" y="30" font-family="Courier, monospace" font-size="10" fill="#dc2626">~ tagline → italic serif</text>
+      <text x="220" y="44" font-family="Courier, monospace" font-size="10" fill="#ea580c">- brand mark in column</text>
+      <text x="220" y="58" font-family="Courier, monospace" font-size="10" fill="#ea580c">- (replaced by small corner)</text>
+    </g>
+  </g>
+
+  <text x="40" y="1060" fill="#374151" font-family="serif" font-size="18" font-weight="bold" font-style="italic">047:07 | Portfolio Visual Overhaul — Nostromo Rev 2 (6 editorial moves) | SpecKit</text>
+</svg>

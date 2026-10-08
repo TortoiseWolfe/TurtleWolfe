@@ -1,0 +1,1 @@
+../../.specify/extensions/wireframe/commands/screenshots.md

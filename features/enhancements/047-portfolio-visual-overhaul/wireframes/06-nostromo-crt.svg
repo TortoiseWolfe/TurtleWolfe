@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c7ddf5"/>
+      <stop offset="100%" stop-color="#b8d4f0"/>
+    </linearGradient>
+    <radialGradient id="crtVignette" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#050907" stop-opacity="0"/>
+      <stop offset="70%" stop-color="#000000" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.95"/>
+    </radialGradient>
+    <radialGradient id="crtVignetteMobile" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#050907" stop-opacity="0"/>
+      <stop offset="75%" stop-color="#000000" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.95"/>
+    </radialGradient>
+    <pattern id="scanlines" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#4ade80" opacity="0.05"/>
+      <rect y="2" width="4" height="2" fill="transparent"/>
+    </pattern>
+    <pattern id="scanlinesMobile" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse">
+      <rect width="3" height="1.5" fill="#4ade80" opacity="0.06"/>
+      <rect y="1.5" width="3" height="1.5" fill="transparent"/>
+    </pattern>
+    <pattern id="crtDust" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <circle cx="14" cy="22" r="0.6" fill="#4ade80" opacity="0.08"/>
+      <circle cx="56" cy="48" r="0.5" fill="#4ade80" opacity="0.06"/>
+      <circle cx="32" cy="68" r="0.4" fill="#fbbf24" opacity="0.05"/>
+      <circle cx="68" cy="12" r="0.5" fill="#4ade80" opacity="0.07"/>
+    </pattern>
+    <pattern id="bezelTexture" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" fill="#e8d4b8"/>
+      <circle cx="2" cy="2" r="0.3" fill="#8b7355" opacity="0.2"/>
+      <circle cx="4" cy="5" r="0.25" fill="#b8a080" opacity="0.18"/>
+    </pattern>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+
+  <text x="960" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#4b5563" letter-spacing="2">PORTFOLIO VISUAL OVERHAUL — VARIANT 06 — NOSTROMO CRT</text>
+  <text x="40" y="52" fill="#8b5cf6" font-family="system-ui, sans-serif" font-size="18" font-weight="bold">DESKTOP (16:9)</text>
+  <text x="1500" y="52" fill="#d946ef" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">MOBILE</text>
+
+  <!-- ============================== DESKTOP 1280x720 ============================== -->
+  <g id="desktop" transform="translate(40, 60)">
+    <!-- Parchment desk surround acting as the CRT bezel -->
+    <rect width="1280" height="720" rx="0" fill="url(#bezelTexture)" stroke="#1f2937" stroke-width="2"/>
+
+    <!-- Inner bezel frame (chunky CRT) -->
+    <rect x="20" y="20" width="1240" height="680" rx="14" fill="#3a3128" stroke="#1f2937" stroke-width="1.5"/>
+    <rect x="28" y="28" width="1224" height="664" rx="10" fill="#1a1612" stroke="#000" stroke-width="1"/>
+
+    <!-- Bezel screws (corners) -->
+    <circle cx="36" cy="36" r="3" fill="#2b231b" stroke="#1f2937" stroke-width="0.5"/>
+    <circle cx="1244" cy="36" r="3" fill="#2b231b" stroke="#1f2937" stroke-width="0.5"/>
+    <circle cx="36" cy="684" r="3" fill="#2b231b" stroke="#1f2937" stroke-width="0.5"/>
+    <circle cx="1244" cy="684" r="3" fill="#2b231b" stroke="#1f2937" stroke-width="0.5"/>
+
+    <!-- Power LED on bezel -->
+    <circle cx="1244" cy="700" r="3" fill="#4ade80" opacity="0.9"/>
+    <text x="1228" y="704" font-family="Courier, monospace" font-size="9" fill="#7a6d5c" text-anchor="end">PWR</text>
+
+    <!-- Inner CRT screen area -->
+    <g transform="translate(36, 36)">
+      <clipPath id="screenClip"><rect width="1208" height="648" rx="6"/></clipPath>
+      <g clip-path="url(#screenClip)">
+        <!-- Phosphor deck -->
+        <rect width="1208" height="648" fill="#050907"/>
+        <!-- Subtle horizontal phosphor bands -->
+        <rect width="1208" height="648" fill="url(#scanlines)"/>
+        <!-- Dust/smudge -->
+        <rect width="1208" height="648" fill="url(#crtDust)"/>
+
+        <!-- Top status bar -->
+        <rect x="0" y="0" width="1208" height="26" fill="#0a1410"/>
+        <line x1="0" y1="26" x2="1208" y2="26" stroke="#4ade80" stroke-width="0.5" opacity="0.4"/>
+        <text x="14" y="18" font-family="Courier, monospace" font-size="12" fill="#4ade80" letter-spacing="1">MU/TH/UR 6000  ::  PORT 3000  ::  2026.05.15  21:14:08</text>
+        <text x="1194" y="18" font-family="Courier, monospace" font-size="12" fill="#fbbf24" text-anchor="end" letter-spacing="1">SYS:OK  PWR:NOM  COMMS:ON</text>
+
+        <!-- Boot trace lines -->
+        <text x="14" y="52" font-family="Courier, monospace" font-size="11" fill="#4ade80" opacity="0.55">&gt; AUTH.OK   USER=POHLNER.J   TERMINAL=A.04</text>
+        <text x="14" y="68" font-family="Courier, monospace" font-size="11" fill="#4ade80" opacity="0.45">&gt; LOAD ./PORTFOLIO.EXE ............. [DONE]</text>
+
+        <!-- DISPLAY NAME (humanizing serif — Nostromo decal) -->
+        <!-- Faint phosphor bloom duplicate -->
+        <text x="42" y="170" font-family="Georgia, serif" font-size="76" font-style="italic" fill="#4ade80" opacity="0.18">Jonathan Pohlner</text>
+        <text x="40" y="168" font-family="Georgia, serif" font-size="76" font-style="italic" fill="#4ade80" letter-spacing="0">Jonathan Pohlner</text>
+        <!-- Slight off-register accent underscore -->
+        <line x1="40" y1="180" x2="640" y2="180" stroke="#4ade80" stroke-width="1" opacity="0.6"/>
+        <line x1="42" y1="183" x2="640" y2="183" stroke="#4ade80" stroke-width="0.5" opacity="0.25"/>
+
+        <!-- Callout 1 — display name + bloom -->
+        <g class="callout" transform="translate(670, 150)">
+          <circle r="16" fill="#dc2626"/>
+          <text y="6" fill="#fff" font-size="16" font-weight="bold" text-anchor="middle">1</text>
+        </g>
+
+        <!-- Tagline as mono caps -->
+        <text x="40" y="218" font-family="Courier, monospace" font-size="20" font-weight="700" fill="#4ade80" letter-spacing="3">GRAPHIC DESIGNER</text>
+        <text x="346" y="218" font-family="Courier, monospace" font-size="20" font-weight="400" fill="#4ade80" opacity="0.55" letter-spacing="3">::  FULL-STACK DEVELOPER</text>
+        <text x="40" y="240" font-family="Courier, monospace" font-size="11" fill="#4ade80" opacity="0.5" letter-spacing="2">// 20+ YRS DESIGN  ::  15+ YRS CODE  ::  35 THEMES  ::  WCAG AA</text>
+
+        <!-- Callout 2 — designer-weighted tagline -->
+        <g class="callout" transform="translate(290, 200)">
+          <circle r="16" fill="#dc2626"/>
+          <text y="6" fill="#fff" font-size="16" font-weight="bold" text-anchor="middle">2</text>
+        </g>
+
+        <!-- MANIFEST / cargo-stack list -->
+        <text x="40" y="278" font-family="Courier, monospace" font-size="12" fill="#fbbf24" letter-spacing="1">&gt; MANIFEST.LOAD()</text>
+        <text x="40" y="298" font-family="Courier, monospace" font-size="13" fill="#4ade80" letter-spacing="1">[</text>
+        <text x="56" y="298" font-family="Courier, monospace" font-size="13" fill="#fbbf24">✓</text>
+        <text x="72" y="298" font-family="Courier, monospace" font-size="13" fill="#4ade80" letter-spacing="1">] REACT      [</text>
+        <text x="216" y="298" font-family="Courier, monospace" font-size="13" fill="#fbbf24">✓</text>
+        <text x="232" y="298" font-family="Courier, monospace" font-size="13" fill="#4ade80" letter-spacing="1">] NEXT       [</text>
+        <text x="376" y="298" font-family="Courier, monospace" font-size="13" fill="#fbbf24">✓</text>
+        <text x="392" y="298" font-family="Courier, monospace" font-size="13" fill="#4ade80" letter-spacing="1">] TS         [</text>
+        <text x="536" y="298" font-family="Courier, monospace" font-size="13" fill="#fbbf24">✓</text>
+        <text x="552" y="298" font-family="Courier, monospace" font-size="13" fill="#4ade80" letter-spacing="1">] NODE</text>
+
+        <text x="40" y="318" font-family="Courier, monospace" font-size="13" fill="#4ade80" letter-spacing="1">[</text>
+        <text x="56" y="318" font-family="Courier, monospace" font-size="13" fill="#fbbf24">✓</text>
+        <text x="72" y="318" font-family="Courier, monospace" font-size="13" fill="#4ade80" letter-spacing="1">] THREE.JS   [</text>
+        <text x="216" y="318" font-family="Courier, monospace" font-size="13" fill="#fbbf24">✓</text>
+        <text x="232" y="318" font-family="Courier, monospace" font-size="13" fill="#4ade80" letter-spacing="1">] C#         [</text>
+        <text x="376" y="318" font-family="Courier, monospace" font-size="13" fill="#fbbf24">✓</text>
+        <text x="392" y="318" font-family="Courier, monospace" font-size="13" fill="#4ade80" letter-spacing="1">] PYTHON     [</text>
+        <text x="536" y="318" font-family="Courier, monospace" font-size="13" fill="#fbbf24">✓</text>
+        <text x="552" y="318" font-family="Courier, monospace" font-size="13" fill="#4ade80" letter-spacing="1">] DOCKER</text>
+
+        <text x="40" y="338" font-family="Courier, monospace" font-size="13" fill="#4ade80" letter-spacing="1">[</text>
+        <text x="56" y="338" font-family="Courier, monospace" font-size="13" fill="#fbbf24">✓</text>
+        <text x="72" y="338" font-family="Courier, monospace" font-size="13" fill="#4ade80" letter-spacing="1">] AWS        [</text>
+        <text x="216" y="338" font-family="Courier, monospace" font-size="13" fill="#fbbf24">✓</text>
+        <text x="232" y="338" font-family="Courier, monospace" font-size="13" fill="#4ade80" letter-spacing="1">] LINUX      [</text>
+        <text x="376" y="338" font-family="Courier, monospace" font-size="13" fill="#fbbf24">✓</text>
+        <text x="392" y="338" font-family="Courier, monospace" font-size="13" fill="#4ade80" letter-spacing="1">] SUPABASE   [</text>
+        <text x="536" y="338" font-family="Courier, monospace" font-size="13" fill="#fbbf24">✓</text>
+        <text x="552" y="338" font-family="Courier, monospace" font-size="13" fill="#4ade80" letter-spacing="1">] TAILWIND</text>
+
+        <text x="40" y="356" font-family="Courier, monospace" font-size="11" fill="#4ade80" opacity="0.45" letter-spacing="1">&gt; 12 OF 12 PACKAGES VERIFIED  ::  CHECKSUM 0xA47B</text>
+
+        <!-- Callout 3 — manifest stack -->
+        <g class="callout" transform="translate(680, 318)">
+          <circle r="16" fill="#dc2626"/>
+          <text y="6" fill="#fff" font-size="16" font-weight="bold" text-anchor="middle">3</text>
+        </g>
+
+        <!-- CTA buttons as shell commands -->
+        <rect x="40" y="380" width="220" height="44" fill="#4ade80"/>
+        <text x="56" y="408" font-family="Courier, monospace" font-size="14" font-weight="700" fill="#050907" letter-spacing="1">&gt; ./contact.sh</text>
+        <text x="248" y="408" font-family="Courier, monospace" font-size="14" font-weight="700" fill="#050907">█</text>
+
+        <rect x="280" y="380" width="220" height="44" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4 3"/>
+        <text x="296" y="408" font-family="Courier, monospace" font-size="14" font-weight="700" fill="#fbbf24" letter-spacing="1">&gt; ./resume.pdf</text>
+
+        <!-- Callout 4 — CTAs -->
+        <g class="callout" transform="translate(520, 402)">
+          <circle r="16" fill="#dc2626"/>
+          <text y="6" fill="#fff" font-size="16" font-weight="bold" text-anchor="middle">4</text>
+        </g>
+
+        <!-- BRAND MARK in ASCII box frame (top right) -->
+        <g transform="translate(820, 70)">
+          <text x="0" y="0" font-family="Courier, monospace" font-size="11" fill="#4ade80" letter-spacing="0">┌─────────────────── BRAND.MARK ────────────────────┐</text>
+          <text x="0" y="16" font-family="Courier, monospace" font-size="11" fill="#4ade80">│                                                   │</text>
+          <text x="0" y="32" font-family="Courier, monospace" font-size="11" fill="#4ade80">│              ╔═══════════╗                        │</text>
+          <text x="0" y="48" font-family="Courier, monospace" font-size="11" fill="#4ade80">│              ║   ◢█◣     ║   TURTLEWOLFE          │</text>
+          <text x="0" y="64" font-family="Courier, monospace" font-size="11" fill="#4ade80">│              ║  █▓▓▓█    ║   ─────────            │</text>
+          <text x="0" y="80" font-family="Courier, monospace" font-size="11" fill="#4ade80">│              ║   ◥█◤     ║   v15.20.247           │</text>
+          <text x="0" y="96" font-family="Courier, monospace" font-size="11" fill="#4ade80">│              ╚═══════════╝                        │</text>
+          <text x="0" y="112" font-family="Courier, monospace" font-size="11" fill="#4ade80">│                                                   │</text>
+          <text x="0" y="128" font-family="Courier, monospace" font-size="11" fill="#4ade80">│   STATUS: ACTIVE   ::   ASCII GLYPH MARK         │</text>
+          <text x="0" y="144" font-family="Courier, monospace" font-size="11" fill="#4ade80">│                                                   │</text>
+          <text x="0" y="160" font-family="Courier, monospace" font-size="11" fill="#4ade80">└───────────────────────────────────────────────────┘</text>
+          <!-- Phosphor pulse dot -->
+          <circle cx="20" cy="76" r="2" fill="#fbbf24" opacity="0.85"/>
+        </g>
+
+        <!-- Callout 5 — brand mark + ASCII frame -->
+        <g class="callout" transform="translate(1140, 100)">
+          <circle r="16" fill="#dc2626"/>
+          <text y="6" fill="#fff" font-size="16" font-weight="bold" text-anchor="middle">5</text>
+        </g>
+
+        <!-- FEATURED PROJECTS section header -->
+        <text x="40" y="464" font-family="Courier, monospace" font-size="12" fill="#fbbf24" letter-spacing="2">&gt; CARGO/FEATURED.LIST()</text>
+        <line x1="270" y1="460" x2="1168" y2="460" stroke="#4ade80" stroke-width="0.5" opacity="0.4"/>
+
+        <!-- Callout 6 — featured projects (cards) -->
+        <g class="callout" transform="translate(150, 460)">
+          <circle r="16" fill="#dc2626"/>
+          <text y="6" fill="#fff" font-size="16" font-weight="bold" text-anchor="middle">6</text>
+        </g>
+
+        <!-- CARD 01 — SpokeToWork (ASCII map with route nodes) -->
+        <g transform="translate(40, 478)">
+          <rect width="370" height="140" fill="#0a1410" stroke="#4ade80" stroke-width="1"/>
+          <rect width="370" height="18" fill="#0e1f17"/>
+          <text x="8" y="13" font-family="Courier, monospace" font-size="10" fill="#4ade80" letter-spacing="1">[ 01 ] SPOKETOWORK.EXE</text>
+          <text x="362" y="13" font-family="Courier, monospace" font-size="10" fill="#fbbf24" text-anchor="end">PWA</text>
+          <!-- ASCII route map -->
+          <text x="8" y="36" font-family="Courier, monospace" font-size="10" fill="#4ade80">  ●─────┐</text>
+          <text x="8" y="48" font-family="Courier, monospace" font-size="10" fill="#4ade80">  │     │     ●───┐</text>
+          <text x="8" y="60" font-family="Courier, monospace" font-size="10" fill="#4ade80">  │     └──●──┤   │</text>
+          <text x="8" y="72" font-family="Courier, monospace" font-size="10" fill="#4ade80">  ●─┐         │   ●</text>
+          <text x="8" y="84" font-family="Courier, monospace" font-size="10" fill="#4ade80">    └────●────┘</text>
+          <text x="8" y="96" font-family="Courier, monospace" font-size="10" fill="#4ade80">                  ◆ DEST</text>
+          <!-- Description -->
+          <text x="8" y="116" font-family="Courier, monospace" font-size="10" fill="#4ade80" opacity="0.8">// BICYCLE ROUTE OPTIMIZER</text>
+          <text x="8" y="130" font-family="Courier, monospace" font-size="9" fill="#fbbf24" letter-spacing="1">NEXT · MAPLIBRE · ECDH · SUPABASE</text>
+        </g>
+
+        <!-- CARD 02 — ScriptHammer (ASCII swatch grid) -->
+        <g transform="translate(420, 478)">
+          <rect width="370" height="140" fill="#0a1410" stroke="#4ade80" stroke-width="1"/>
+          <rect width="370" height="18" fill="#0e1f17"/>
+          <text x="8" y="13" font-family="Courier, monospace" font-size="10" fill="#4ade80" letter-spacing="1">[ 02 ] SCRIPTHAMMER.PKG</text>
+          <text x="362" y="13" font-family="Courier, monospace" font-size="10" fill="#fbbf24" text-anchor="end">TEMPLATE</text>
+          <!-- ASCII swatch grid (themes) -->
+          <text x="8" y="36" font-family="Courier, monospace" font-size="11" fill="#4ade80">▓▓▓▒▒▒░░░ ▓▓▓▒▒▒░░░ ▓▓▓▒▒▒░░░</text>
+          <text x="8" y="50" font-family="Courier, monospace" font-size="11" fill="#fbbf24">▓▓▓▒▒▒░░░ ▓▓▓▒▒▒░░░ ▓▓▓▒▒▒░░░</text>
+          <text x="8" y="64" font-family="Courier, monospace" font-size="11" fill="#4ade80">▓▓▓▒▒▒░░░ ▓▓▓▒▒▒░░░ ▓▓▓▒▒▒░░░</text>
+          <text x="8" y="78" font-family="Courier, monospace" font-size="11" fill="#f87171">▓▓▓▒▒▒░░░ ▓▓▓▒▒▒░░░ ▓▓▓▒▒▒░░░</text>
+          <text x="8" y="92" font-family="Courier, monospace" font-size="11" fill="#4ade80">▓▓▓▒▒▒░░░ ▓▓▓▒▒▒░░░ ▓▓▓▒▒▒░░░</text>
+          <text x="8" y="116" font-family="Courier, monospace" font-size="10" fill="#4ade80" opacity="0.8">// 32 THEMES + COMPONENT LIB</text>
+          <text x="8" y="130" font-family="Courier, monospace" font-size="9" fill="#fbbf24" letter-spacing="1">NEXT 15 · DAISYUI · DOCKER</text>
+        </g>
+
+        <!-- CARD 03 — Revit Plugins (ASCII floorplan) -->
+        <g transform="translate(800, 478)">
+          <rect width="368" height="140" fill="#0a1410" stroke="#4ade80" stroke-width="1"/>
+          <rect width="368" height="18" fill="#0e1f17"/>
+          <text x="8" y="13" font-family="Courier, monospace" font-size="10" fill="#4ade80" letter-spacing="1">[ 03 ] REVIT.PLUGIN</text>
+          <text x="360" y="13" font-family="Courier, monospace" font-size="10" fill="#fbbf24" text-anchor="end">CAD</text>
+          <!-- ASCII floorplan -->
+          <text x="8" y="34" font-family="Courier, monospace" font-size="10" fill="#4ade80">  ┌─────────┬───────────┐</text>
+          <text x="8" y="46" font-family="Courier, monospace" font-size="10" fill="#4ade80">  │ KITCHEN │  LIVING   │</text>
+          <text x="8" y="58" font-family="Courier, monospace" font-size="10" fill="#4ade80">  │   12'   │    18'    │</text>
+          <text x="8" y="70" font-family="Courier, monospace" font-size="10" fill="#4ade80">  ├────┬────┴───────────┤</text>
+          <text x="8" y="82" font-family="Courier, monospace" font-size="10" fill="#4ade80">  │ WC │     BEDROOM    │</text>
+          <text x="8" y="94" font-family="Courier, monospace" font-size="10" fill="#4ade80">  └────┴────────────────┘</text>
+          <text x="8" y="116" font-family="Courier, monospace" font-size="10" fill="#4ade80" opacity="0.8">// ADA STAIR + GEOMETRY GEN</text>
+          <text x="8" y="130" font-family="Courier, monospace" font-size="9" fill="#fbbf24" letter-spacing="1">C# · REVIT API · .NET · RUBY</text>
+        </g>
+
+        <!-- Bottom prompt with blinking cursor -->
+        <text x="14" y="640" font-family="Courier, monospace" font-size="12" fill="#4ade80" letter-spacing="2">&gt; PRESS ANY KEY</text>
+        <rect x="160" y="630" width="9" height="14" fill="#4ade80"/>
+        <text x="1194" y="640" font-family="Courier, monospace" font-size="11" fill="#4ade80" opacity="0.55" text-anchor="end" letter-spacing="2">END.OF.LINE</text>
+
+        <!-- Callout 7 — terminal cursor / press any key -->
+        <g class="callout" transform="translate(220, 636)">
+          <circle r="16" fill="#dc2626"/>
+          <text y="6" fill="#fff" font-size="16" font-weight="bold" text-anchor="middle">7</text>
+        </g>
+
+        <!-- Off-register text smudge (single character displaced — atmosphere) -->
+        <text x="1140" y="218" font-family="Courier, monospace" font-size="10" fill="#f87171" opacity="0.6" letter-spacing="1">⚠ DEW</text>
+        <text x="1140" y="232" font-family="Courier, monospace" font-size="9" fill="#fbbf24" opacity="0.45">  PT-9</text>
+
+        <!-- Vignette on top -->
+        <rect width="1208" height="648" fill="url(#crtVignette)" pointer-events="none"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- ============================== MOBILE 360x720 ============================== -->
+  <g id="mobile" transform="translate(1360, 60)">
+    <!-- Parchment surround -->
+    <rect width="360" height="720" rx="24" fill="url(#bezelTexture)" stroke="#1f2937" stroke-width="2"/>
+
+    <!-- Inner CRT bezel -->
+    <rect x="10" y="10" width="340" height="700" rx="18" fill="#3a3128" stroke="#1f2937" stroke-width="1"/>
+    <rect x="16" y="16" width="328" height="688" rx="14" fill="#1a1612" stroke="#000" stroke-width="0.5"/>
+
+    <!-- Bezel screws -->
+    <circle cx="22" cy="22" r="2" fill="#2b231b"/>
+    <circle cx="338" cy="22" r="2" fill="#2b231b"/>
+    <circle cx="22" cy="698" r="2" fill="#2b231b"/>
+    <circle cx="338" cy="698" r="2" fill="#2b231b"/>
+
+    <!-- Power LED -->
+    <circle cx="180" cy="700" r="2.5" fill="#4ade80" opacity="0.9"/>
+
+    <g transform="translate(22, 22)">
+      <clipPath id="screenClipMobile"><rect width="316" height="676" rx="10"/></clipPath>
+      <g clip-path="url(#screenClipMobile)">
+        <rect width="316" height="676" fill="#050907"/>
+        <rect width="316" height="676" fill="url(#scanlinesMobile)"/>
+        <rect width="316" height="676" fill="url(#crtDust)"/>
+
+        <!-- Top status bar -->
+        <rect x="0" y="0" width="316" height="22" fill="#0a1410"/>
+        <line x1="0" y1="22" x2="316" y2="22" stroke="#4ade80" stroke-width="0.5" opacity="0.4"/>
+        <text x="8" y="15" font-family="Courier, monospace" font-size="9" fill="#4ade80" letter-spacing="0.5">MU/TH/UR ::21:14:08</text>
+        <text x="308" y="15" font-family="Courier, monospace" font-size="9" fill="#fbbf24" text-anchor="end">SYS:OK</text>
+
+        <!-- Boot trace -->
+        <text x="8" y="40" font-family="Courier, monospace" font-size="9" fill="#4ade80" opacity="0.5">&gt; AUTH.OK USER=POHLNER.J</text>
+
+        <!-- Display name (smaller serif) -->
+        <text x="10" y="92" font-family="Georgia, serif" font-size="32" font-style="italic" fill="#4ade80" opacity="0.18">Jonathan</text>
+        <text x="9" y="91" font-family="Georgia, serif" font-size="32" font-style="italic" fill="#4ade80">Jonathan</text>
+        <text x="10" y="124" font-family="Georgia, serif" font-size="32" font-style="italic" fill="#4ade80" opacity="0.18">Pohlner</text>
+        <text x="9" y="123" font-family="Georgia, serif" font-size="32" font-style="italic" fill="#4ade80">Pohlner</text>
+        <line x1="9" y1="132" x2="220" y2="132" stroke="#4ade80" stroke-width="1" opacity="0.6"/>
+
+        <!-- Tagline -->
+        <text x="9" y="158" font-family="Courier, monospace" font-size="13" font-weight="700" fill="#4ade80" letter-spacing="1.5">GRAPHIC DESIGNER</text>
+        <text x="9" y="176" font-family="Courier, monospace" font-size="11" fill="#4ade80" opacity="0.6" letter-spacing="1.5">:: FULL-STACK DEVELOPER</text>
+
+        <!-- Manifest list (compact) -->
+        <text x="9" y="212" font-family="Courier, monospace" font-size="11" fill="#fbbf24" letter-spacing="1">&gt; MANIFEST.LOAD()</text>
+        <text x="9" y="230" font-family="Courier, monospace" font-size="11" fill="#4ade80">[</text>
+        <text x="17" y="230" font-family="Courier, monospace" font-size="11" fill="#fbbf24">✓</text>
+        <text x="25" y="230" font-family="Courier, monospace" font-size="11" fill="#4ade80">] REACT  [</text>
+        <text x="125" y="230" font-family="Courier, monospace" font-size="11" fill="#fbbf24">✓</text>
+        <text x="133" y="230" font-family="Courier, monospace" font-size="11" fill="#4ade80">] NEXT</text>
+        <text x="9" y="246" font-family="Courier, monospace" font-size="11" fill="#4ade80">[</text>
+        <text x="17" y="246" font-family="Courier, monospace" font-size="11" fill="#fbbf24">✓</text>
+        <text x="25" y="246" font-family="Courier, monospace" font-size="11" fill="#4ade80">] TS     [</text>
+        <text x="125" y="246" font-family="Courier, monospace" font-size="11" fill="#fbbf24">✓</text>
+        <text x="133" y="246" font-family="Courier, monospace" font-size="11" fill="#4ade80">] NODE</text>
+        <text x="9" y="262" font-family="Courier, monospace" font-size="11" fill="#4ade80">[</text>
+        <text x="17" y="262" font-family="Courier, monospace" font-size="11" fill="#fbbf24">✓</text>
+        <text x="25" y="262" font-family="Courier, monospace" font-size="11" fill="#4ade80">] DOCKER [</text>
+        <text x="125" y="262" font-family="Courier, monospace" font-size="11" fill="#fbbf24">✓</text>
+        <text x="133" y="262" font-family="Courier, monospace" font-size="11" fill="#4ade80">] C#</text>
+
+        <!-- CTAs -->
+        <rect x="9" y="282" width="298" height="44" fill="#4ade80"/>
+        <text x="22" y="310" font-family="Courier, monospace" font-size="13" font-weight="700" fill="#050907" letter-spacing="1">&gt; ./contact.sh</text>
+        <text x="298" y="310" font-family="Courier, monospace" font-size="13" font-weight="700" fill="#050907" text-anchor="end">█</text>
+
+        <rect x="9" y="334" width="298" height="44" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4 3"/>
+        <text x="22" y="362" font-family="Courier, monospace" font-size="13" font-weight="700" fill="#fbbf24" letter-spacing="1">&gt; ./resume.pdf</text>
+
+        <!-- Featured / single project card with ASCII map -->
+        <text x="9" y="402" font-family="Courier, monospace" font-size="11" fill="#fbbf24" letter-spacing="1">&gt; CARGO/FEATURED.LIST()</text>
+
+        <g transform="translate(9, 412)">
+          <rect width="298" height="142" fill="#0a1410" stroke="#4ade80" stroke-width="1"/>
+          <rect width="298" height="18" fill="#0e1f17"/>
+          <text x="8" y="13" font-family="Courier, monospace" font-size="10" fill="#4ade80">[ 01 ] SPOKETOWORK.EXE</text>
+          <text x="290" y="13" font-family="Courier, monospace" font-size="10" fill="#fbbf24" text-anchor="end">PWA</text>
+          <text x="8" y="34" font-family="Courier, monospace" font-size="10" fill="#4ade80">  ●─────┐</text>
+          <text x="8" y="46" font-family="Courier, monospace" font-size="10" fill="#4ade80">  │     │     ●───┐</text>
+          <text x="8" y="58" font-family="Courier, monospace" font-size="10" fill="#4ade80">  │     └──●──┤   │</text>
+          <text x="8" y="70" font-family="Courier, monospace" font-size="10" fill="#4ade80">  ●─┐         │   ●</text>
+          <text x="8" y="82" font-family="Courier, monospace" font-size="10" fill="#4ade80">    └────●────┘ ◆ DEST</text>
+          <text x="8" y="106" font-family="Courier, monospace" font-size="10" fill="#4ade80" opacity="0.8">// BICYCLE ROUTE OPTIMIZER</text>
+          <text x="8" y="124" font-family="Courier, monospace" font-size="9" fill="#fbbf24">NEXT · MAPLIBRE · ECDH</text>
+        </g>
+
+        <!-- Brand mark mini ASCII -->
+        <g transform="translate(9, 568)">
+          <text x="0" y="0" font-family="Courier, monospace" font-size="9" fill="#4ade80">┌──── BRAND.MARK ─────┐</text>
+          <text x="0" y="12" font-family="Courier, monospace" font-size="9" fill="#4ade80">│   ◢█◣  TURTLEWOLFE  │</text>
+          <text x="0" y="24" font-family="Courier, monospace" font-size="9" fill="#4ade80">│  █▓▓▓█  v15.20.247  │</text>
+          <text x="0" y="36" font-family="Courier, monospace" font-size="9" fill="#4ade80">│   ◥█◤  STATUS:OK    │</text>
+          <text x="0" y="48" font-family="Courier, monospace" font-size="9" fill="#4ade80">└─────────────────────┘</text>
+        </g>
+
+        <!-- Press any key prompt -->
+        <text x="9" y="652" font-family="Courier, monospace" font-size="10" fill="#4ade80" letter-spacing="1.5">&gt; PRESS ANY KEY</text>
+        <rect x="120" y="643" width="6" height="11" fill="#4ade80"/>
+
+        <text x="307" y="652" font-family="Courier, monospace" font-size="9" fill="#4ade80" opacity="0.5" text-anchor="end">END.OF.LINE</text>
+
+        <!-- Vignette overlay -->
+        <rect width="316" height="676" fill="url(#crtVignetteMobile)" pointer-events="none"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- ============================== ANNOTATION PANEL ============================== -->
+  <g id="annotations" transform="translate(40, 800)">
+    <rect width="1840" height="220" rx="0" fill="#e8d4b8" stroke="#1f2937" stroke-width="2"/>
+
+    <rect x="0" y="0" width="1840" height="32" fill="#050907"/>
+    <text x="16" y="22" font-family="Courier, monospace" font-size="14" font-weight="700" fill="#4ade80" letter-spacing="3">VARIANT 06 — NOSTROMO CRT — ANNOTATION KEY</text>
+    <text x="1824" y="22" font-family="Courier, monospace" font-size="12" font-weight="700" fill="#fbbf24" text-anchor="end" letter-spacing="2">MU/TH/UR 6000  ::  v15.20.247</text>
+
+    <!-- Callout 1 -->
+    <g transform="translate(20, 52)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">1</text>
+      <text x="36" y="18" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#1f2937" font-style="italic">Serif Display + Phosphor Bloom</text>
+      <text x="36" y="36" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Italic serif name (humanizing) over green phosphor</text>
+      <text x="36" y="50" font-family="system-ui, sans-serif" font-size="12" fill="#374151">deck. Same trick as the actual Nostromo decal.</text>
+      <rect x="36" y="62" width="56" height="20" rx="10" fill="#0891b2"/>
+      <text x="64" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-001</text>
+      <rect x="98" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="126" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-002</text>
+      <rect x="160" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="188" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-003</text>
+      <rect x="222" y="62" width="56" height="20" rx="10" fill="#ea580c"/>
+      <text x="250" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">SC-001</text>
+    </g>
+
+    <!-- Callout 2 -->
+    <g transform="translate(310, 52)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">2</text>
+      <text x="36" y="18" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#1f2937" font-style="italic">Designer-Weighted Tagline</text>
+      <text x="36" y="36" font-family="system-ui, sans-serif" font-size="12" fill="#374151">"GRAPHIC DESIGNER" full bright phosphor. Developer</text>
+      <text x="36" y="50" font-family="system-ui, sans-serif" font-size="12" fill="#374151">half at 55% opacity — sells the design half first.</text>
+      <rect x="36" y="62" width="56" height="20" rx="10" fill="#0891b2"/>
+      <text x="64" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-001</text>
+      <rect x="98" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="126" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-001</text>
+      <rect x="160" y="62" width="56" height="20" rx="10" fill="#ea580c"/>
+      <text x="188" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">SC-001</text>
+    </g>
+
+    <!-- Callout 3 -->
+    <g transform="translate(600, 52)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">3</text>
+      <text x="36" y="18" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#1f2937" font-style="italic">Stack as Cargo Manifest</text>
+      <text x="36" y="36" font-family="system-ui, sans-serif" font-size="12" fill="#374151">MANIFEST.LOAD() with [✓] checkmarks replaces the</text>
+      <text x="36" y="50" font-family="system-ui, sans-serif" font-size="12" fill="#374151">marquee. Static — respects prefers-reduced-motion.</text>
+      <rect x="36" y="62" width="56" height="20" rx="10" fill="#0891b2"/>
+      <text x="64" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-002</text>
+      <rect x="98" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="126" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-008</text>
+      <rect x="160" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="188" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-009</text>
+      <rect x="222" y="62" width="56" height="20" rx="10" fill="#ea580c"/>
+      <text x="250" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">SC-007</text>
+    </g>
+
+    <!-- Callout 4 -->
+    <g transform="translate(890, 52)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">4</text>
+      <text x="36" y="18" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#1f2937" font-style="italic">CTAs as Shell Commands</text>
+      <text x="36" y="36" font-family="system-ui, sans-serif" font-size="12" fill="#374151">&gt; ./contact.sh (filled green) + dashed amber ghost</text>
+      <text x="36" y="50" font-family="system-ui, sans-serif" font-size="12" fill="#374151">&gt; ./resume.pdf. 44px touch targets.</text>
+      <rect x="36" y="62" width="56" height="20" rx="10" fill="#0891b2"/>
+      <text x="64" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-003</text>
+      <rect x="98" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="126" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-011</text>
+      <rect x="160" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="188" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-012</text>
+      <rect x="222" y="62" width="56" height="20" rx="10" fill="#ea580c"/>
+      <text x="250" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">SC-005</text>
+    </g>
+
+    <!-- Callout 5 -->
+    <g transform="translate(1180, 52)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">5</text>
+      <text x="36" y="18" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#1f2937" font-style="italic">ASCII Brand Frame</text>
+      <text x="36" y="36" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Existing brand mark redrawn as box-drawing ASCII.</text>
+      <text x="36" y="50" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Keeps existing logos, recomposed as terminal panel.</text>
+      <rect x="36" y="62" width="56" height="20" rx="10" fill="#0891b2"/>
+      <text x="64" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-004</text>
+      <rect x="98" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="126" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-013</text>
+      <rect x="160" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="188" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-014</text>
+    </g>
+
+    <!-- Callout 6 -->
+    <g transform="translate(1470, 52)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">6</text>
+      <text x="36" y="18" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#1f2937" font-style="italic">ASCII Project Diagrams</text>
+      <text x="36" y="36" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Each card carries an ASCII diagram (route map,</text>
+      <text x="36" y="50" font-family="system-ui, sans-serif" font-size="12" fill="#374151">swatch grid, floorplan). Stagger reveal on scroll.</text>
+      <rect x="36" y="62" width="56" height="20" rx="10" fill="#0891b2"/>
+      <text x="64" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-002</text>
+      <rect x="98" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="126" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-005</text>
+      <rect x="160" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="188" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-006</text>
+      <rect x="222" y="62" width="56" height="20" rx="10" fill="#ea580c"/>
+      <text x="250" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">SC-006</text>
+    </g>
+
+    <!-- Callout 7 — bottom row -->
+    <g transform="translate(20, 142)">
+      <circle cx="14" cy="14" r="13" fill="#dc2626"/>
+      <text x="14" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">7</text>
+      <text x="36" y="18" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#1f2937" font-style="italic">Blinking Cursor + Scanlines</text>
+      <text x="36" y="36" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Block cursor only animating element. Scanlines static.</text>
+      <text x="36" y="50" font-family="system-ui, sans-serif" font-size="12" fill="#374151">prefers-reduced-motion stops cursor — composition holds.</text>
+      <rect x="36" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="64" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-004</text>
+      <rect x="98" y="62" width="56" height="20" rx="10" fill="#2563eb"/>
+      <text x="126" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">FR-009</text>
+      <rect x="160" y="62" width="56" height="20" rx="10" fill="#ea580c"/>
+      <text x="188" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">SC-007</text>
+    </g>
+
+    <!-- Aesthetic vocabulary block -->
+    <g transform="translate(310, 142)">
+      <text x="0" y="14" font-family="Courier, monospace" font-size="13" font-weight="700" fill="#1f2937" letter-spacing="2">AESTHETIC VOCABULARY:</text>
+      <text x="0" y="32" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Phosphor green #4ade80 + amber warning #fbbf24 + red critical #f87171 on near-black #050907 deck.</text>
+      <text x="0" y="48" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Mostly Courier mono · italic Georgia serif for the name (humanizing) · ASCII box-drawing for diagrams.</text>
+      <text x="0" y="64" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Static scanlines + radial vignette + dust speckle + chunky bezel + power LED. Reads: built to last.</text>
+    </g>
+
+    <!-- Related stories block -->
+    <g transform="translate(1470, 142)">
+      <text x="0" y="14" font-family="Courier, monospace" font-size="13" font-weight="700" fill="#1f2937" letter-spacing="2">RELATED USER STORIES</text>
+      <rect x="0" y="24" width="80" height="20" rx="10" fill="#0891b2"/>
+      <text x="40" y="38" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-001 P1</text>
+      <rect x="88" y="24" width="80" height="20" rx="10" fill="#0891b2"/>
+      <text x="128" y="38" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-002 P1</text>
+      <rect x="176" y="24" width="80" height="20" rx="10" fill="#0891b2"/>
+      <text x="216" y="38" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-003 P2</text>
+      <rect x="264" y="24" width="80" height="20" rx="10" fill="#0891b2"/>
+      <text x="304" y="38" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">US-004 P1</text>
+      <text x="0" y="64" font-family="system-ui, sans-serif" font-size="12" fill="#4b5563" font-style="italic">Sign-off lands in spec.md § UI Mockup.</text>
+    </g>
+  </g>
+
+  <text x="40" y="1060" fill="#374151" font-family="Courier, monospace" font-size="18" font-weight="bold">047:06 | Portfolio Visual Overhaul — Nostromo CRT | SpecKit</text>
+</svg>

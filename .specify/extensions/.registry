@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "extensions": {
+    "wireframe": {
+      "version": "0.1.1",
+      "source": "local",
+      "manifest_hash": "sha256:246ce4f535c9149c28fa28d38fb7642034b17c44a62d13a59474a2272b753172",
+      "enabled": true,
+      "priority": 10,
+      "registered_commands": {},
+      "registered_skills": [],
+      "installed_at": "2026-05-15T20:14:04.421375+00:00"
+    }
+  }
+}

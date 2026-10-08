@@ -60,6 +60,11 @@ describe('ProjectShowcaseCard', () => {
     render(<ProjectShowcaseCard {...noHref} />);
     expect(screen.queryByRole('link')).not.toBeInTheDocument();
     expect(screen.getByText('My Project')).toBeInTheDocument();
+    // An aria-label on a role-less block fails CI's pa11y (aria-prohibited-attr);
+    // the visible title already names it.
+    const block = screen.getByText('My Project').closest('article');
+    expect(block).not.toBeNull();
+    expect(block).not.toHaveAttribute('aria-label');
   });
 
   it('renders a non-link block in CRT variant when no href is given', () => {
@@ -67,6 +72,11 @@ describe('ProjectShowcaseCard', () => {
     render(<ProjectShowcaseCard {...noHref} variant="crt" />);
     expect(screen.queryByRole('link')).not.toBeInTheDocument();
     expect(screen.getByText('My Project')).toBeInTheDocument();
+    // An aria-label on a role-less block fails CI's pa11y (aria-prohibited-attr);
+    // the visible title already names it.
+    const block = screen.getByText('My Project').closest('article');
+    expect(block).not.toBeNull();
+    expect(block).not.toHaveAttribute('aria-label');
   });
 
   it('renders the image when provided', () => {

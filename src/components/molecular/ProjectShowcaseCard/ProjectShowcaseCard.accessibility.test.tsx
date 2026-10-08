@@ -22,6 +22,20 @@ describe('ProjectShowcaseCard Accessibility', () => {
     expect(results).toHaveNoViolations();
   });
 
+  // Cards for work with no public page render without a link. CI's pa11y caught an
+  // aria-label on that plain block ("Elements must only use permitted ARIA attributes").
+  it.each(['default', 'crt'] as const)(
+    'should have no violations without an href (%s variant)',
+    async (variant) => {
+      const { href: _href, ...noHref } = defaultProps;
+      const { container } = render(
+        <ProjectShowcaseCard {...noHref} variant={variant} />
+      );
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    }
+  );
+
   it('should have no violations with image', async () => {
     const { container } = render(
       <ProjectShowcaseCard

@@ -121,9 +121,9 @@ export default function ProjectShowcaseCard({
 
     if (!href) {
       return (
-        <div className={defaultCardClasses} aria-label={`${title} project`}>
+        <article className={defaultCardClasses}>
           {defaultContent}
-        </div>
+        </article>
       );
     }
 
@@ -277,9 +277,9 @@ export default function ProjectShowcaseCard({
 
   if (!href) {
     return (
-      <div className={crtCardClasses} aria-label={`${title} project`}>
+      <article className={crtCardClasses}>
         {crtContent}
-      </div>
+      </article>
     );
   }
 

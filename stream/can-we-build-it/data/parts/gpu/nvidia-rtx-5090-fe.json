@@ -1,0 +1,29 @@
+{
+  "id": "nvidia-rtx-5090-fe",
+  "category": "gpu",
+  "manufacturer": "NVIDIA",
+  "model": "GeForce RTX 5090 Founders Edition",
+  "status": "candidate",
+  "confidence": "confirmed",
+  "dimensions_mm": {
+    "l": 304,
+    "w": 137,
+    "h": "TODO"
+  },
+  "source_urls": [
+    "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/"
+  ],
+  "last_verified": "2026-09-30",
+  "vram_gb": 32,
+  "tgp_w": 575,
+  "required_system_power_w": 1000,
+  "slot_width": 2,
+  "power_inputs": {
+    "12v_2x6": 1,
+    "alt_pcie_8pin_adapter": 4
+  },
+  "pcie_gen": 5,
+  "todo": [
+    "dimensions_mm.h"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "claims.schema.json",
+  "title": "AI claims, recorded before the checker runs",
+  "type": "object",
+  "required": [
+    "model",
+    "recorded_at",
+    "prompt_sha256",
+    "claims"
+  ],
+  "properties": {
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "rule_id",
+          "claimed_verdict",
+          "quote"
+        ],
+        "properties": {
+          "claimed_verdict": {
+            "enum": [
+              "PASS",
+              "FAIL"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

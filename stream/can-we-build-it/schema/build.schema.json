@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "build.schema.json",
+  "title": "Build",
+  "type": "object",
+  "required": [
+    "slug",
+    "title",
+    "parts",
+    "requirements"
+  ],
+  "properties": {
+    "parts": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "cpu",
+          "gpu",
+          "motherboard",
+          "ram",
+          "psu",
+          "case",
+          "cooler"
+        ]
+      }
+    },
+    "quantities": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "ram"
+        ]
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "description": "How many of a part the build holds, e.g. {\"ram\": 2} for two kits"
+    },
+    "requirements": {
+      "type": "object",
+      "required": [
+        "min_usable_vram_gb",
+        "display_reservation_mib",
+        "psu_headroom_factor",
+        "platform_baseline_w"
+      ]
+    },
+    "planted_fault": {
+      "description": "{rule_id, description}; stripped from published/"
+    }
+  }
+}

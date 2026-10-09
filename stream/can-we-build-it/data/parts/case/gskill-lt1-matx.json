@@ -1,0 +1,30 @@
+{
+  "id": "gskill-lt1-matx",
+  "category": "case",
+  "manufacturer": "G.SKILL",
+  "model": "LT1 mATX Case (GC-TKGW1-LT1)",
+  "status": "owned",
+  "confidence": "inferred",
+  "dimensions_mm": {
+    "l": 422,
+    "w": 205,
+    "h": 405
+  },
+  "source_urls": [
+    "https://www.gskill.com/specification/365/380/1643192939/LT1-mATX-Case-Specification",
+    "https://www.gskill.com/product/365/380/1643192939/LT1-mATX-Case"
+  ],
+  "last_verified": "2026-10-01",
+  "sku": "GC-TKGW1-LT1",
+  "mb_form_factors": ["Micro-ATX", "Mini-ITX"],
+  "max_gpu_len_mm": 360,
+  "max_cooler_h_mm": 165,
+  "psu_form_factors": ["ATX"],
+  "max_psu_len_mm": "TODO",
+  "expansion_slots": "TODO",
+  "notes": "Second tower (owned). Inferred, label not read: early in 2023, weeks before the second tower was built, the builder sent a product image that is identical to G.SKILL's own LT1 product shot (01-lt1-main-product.png). The tower's own photos agree with it: a glass side, a slotted top, two front fans and one rear fan, around a Micro-ATX board. Specs are G.SKILL's specification page; it gives max cooler height as '<=165mm' and states no PSU length or expansion-slot count, so those stay TODO.",
+  "todo": [
+    "max_psu_len_mm",
+    "expansion_slots"
+  ]
+}

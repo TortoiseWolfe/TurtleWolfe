@@ -1,0 +1,30 @@
+{
+  "id": "nvidia-rtx-5080-fe",
+  "category": "gpu",
+  "manufacturer": "NVIDIA",
+  "model": "GeForce RTX 5080 Founders Edition",
+  "status": "candidate",
+  "confidence": "confirmed",
+  "dimensions_mm": {
+    "l": 304,
+    "w": 137,
+    "h": "TODO"
+  },
+  "source_urls": [
+    "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5080/"
+  ],
+  "last_verified": "2026-09-30",
+  "vram_gb": 16,
+  "tgp_w": 360,
+  "required_system_power_w": 850,
+  "slot_width": 2,
+  "power_inputs": {
+    "12v_2x6": 1,
+    "alt_pcie_8pin_adapter": 3
+  },
+  "pcie_gen": 5,
+  "notes": "The near miss: 16 GB can't hold a 64k-context coding model.",
+  "todo": [
+    "dimensions_mm.h"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "vetroo-v5",
+  "category": "cooler",
+  "manufacturer": "Vetroo",
+  "model": "V5 (5 heat pipes, 120 mm PWM fan)",
+  "status": "owned",
+  "confidence": "inferred",
+  "dimensions_mm": {
+    "l": 128,
+    "w": 75,
+    "h": 148
+  },
+  "source_urls": [
+    "https://vetroo.com/products/vetroo-v5-argb-cpu-cooler",
+    "https://www.amazon.com/Vetroo-LGA-1700-Mounting-V240/dp/B09MLKDW95"
+  ],
+  "last_verified": "2026-10-01",
+  "height_mm": 148,
+  "sockets": [
+    "LGA1700"
+  ],
+  "tdp_rating_w": 150,
+  "notes": "Owned. The model comes from the builder's April 2022 parts quote. On that same quote the RAM line was swapped at build time (Corsair Vengeance is installed, the quote said G.Skill), so this part stays inferred until its label is read. The build photo shows a single tower with five heat-pipe ends and one fan, which fits the V5. Figures are from Vetroo's current V5 page, where the Black, White and Pink variants share one spec table: overall dimensions (L x W x H) 128 x 75 x 148 mm, up to 150 W TDP, 5 direct-touch copper heat pipes, one 120 mm PWM ARGB fan. The page is the current product, so whether the April 2022 unit has the same dimensions is not shown by any source; the margin to the Carbide 175R's 160 mm limit is 12 mm. LGA1700 answer: Vetroo's current page lists Intel LGA 1851 / 1700 / 1200 / 115X and AMD AM5 / AM4 and says the box includes brackets for all of them, so a V5 sold now supports LGA1700 out of the box. Earlier V5 boxes evidently did not (inferred from the kit existing, not stated by Vetroo): Vetroo sells a separate Intel LGA1700/1200/115X mounting kit for the V5 (listing MK-LGA1700-V5, one backplate, two Intel brackets, two AMD brackets, two fan clips, thermal grease, four screws; sold on Vetroo's Amazon listing, a retailer page, because no vetroo.com page for the kit was found). Which of the two the owned unit shipped as is not recorded anywhere; the unit is in an LGA1700 build, so it has an LGA1700 mount either way. sockets lists only LGA1700, the one socket this build needs: the other sockets on Vetroo's page include AM5 (September 2022) and LGA1851, which postdate the April 2022 quote, so they are not claimed for this unit. A 150 W rating sits below the 12700KF's 190 W max turbo power; the checker has no TDP rule, so that gap is not tested. Weight is not given on the page and is left out.",
+  "todo": []
+}

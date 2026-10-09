@@ -1,0 +1,23 @@
+{
+  "slug": "workbench-llm",
+  "title": "The workbench that can run its own coding model",
+  "parts": {
+    "cpu": "intel-core-i7-12700kf",
+    "motherboard": "msi-pro-z690-a-ddr4",
+    "ram": "corsair-vengeance-lpx-cmk32gx4m2d3600c18",
+    "case": "corsair-carbide-175r-rgb",
+    "cooler": "vetroo-v5",
+    "psu": "evga-850-bq",
+    "gpu": "nvidia-rtx-3090-fe"
+  },
+  "quantities": {"ram": 2},
+  "requirements": {
+    "min_usable_vram_gb": 23,
+    "min_usable_vram_source": "https://ollama.com/library/glm-4.7-flash/tags (~23 GB VRAM at 64000-token context; Ollama asks for >=64k for coding agents)",
+    "display_reservation_mib": 1187,
+    "display_reservation_source": "nvidia-smi on this machine, 2026-09-30, desktop idle",
+    "psu_headroom_factor": 1.3,
+    "platform_baseline_w": "TODO"
+  },
+  "episode": {"number": 1, "date": "TODO", "vod_url": "TODO"}
+}

@@ -1,0 +1,31 @@
+{
+  "id": "msi-rtx-3070-ti-gaming-x-trio-8g",
+  "category": "gpu",
+  "manufacturer": "MSI",
+  "model": "GeForce RTX 3070 Ti Gaming X Trio 8G",
+  "status": "owned",
+  "confidence": "confirmed",
+  "dimensions_mm": {
+    "l": 323,
+    "w": 140,
+    "h": 56
+  },
+  "source_urls": [
+    "https://www.msi.com/Graphics-Card/GeForce-RTX-3070-Ti-GAMING-X-TRIO-8G/Specification",
+    "https://storage-asset.msi.com/datasheet/vga/global/GeForce-RTX-3070-Ti-GAMING-X-TRIO-8G.pdf",
+    "https://storage-asset.msi.com/datasheet/vga/global/GeForce-RTX-3070-Ti-GAMING-TRIO-8G.pdf",
+    "https://storage-asset.msi.com/datasheet/vga/global/GeForce-RTX-3070-Ti-SUPRIM-X-8G.pdf",
+    "https://storage-asset.msi.com/datasheet/vga/global/GeForce-RTX-3070-Ti-VENTUS-3X-8G-OC.pdf"
+  ],
+  "last_verified": "2026-10-01",
+  "vram_gb": 8,
+  "tgp_w": 310,
+  "required_system_power_w": 750,
+  "slot_width": 3,
+  "power_inputs": {
+    "pcie_8pin": 2
+  },
+  "pcie_gen": 4,
+  "notes": "Owned, MSI GeForce RTX 3070 Ti GAMING X TRIO, confirmed 2026-10-01 from the name printed on the card (read by the owner). Matches nvidia-smi on this PC (2026-09-30): sub system id 0x50521462 (MSI), VBIOS 94.04.65.00.2a, default power limit 310 W (max 330 W), 8192 MiB. Dimensions and power from MSI's Gaming X Trio datasheet (323 x 140 x 56 mm, 750 W system PSU, 2 x 8-pin, PCIe Gen 4). slot_width 3 derived from the 56 mm thickness (20.32 mm per slot).",
+  "todo": []
+}

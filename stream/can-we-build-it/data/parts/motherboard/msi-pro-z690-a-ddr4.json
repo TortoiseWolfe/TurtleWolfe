@@ -1,0 +1,46 @@
+{
+  "id": "msi-pro-z690-a-ddr4",
+  "category": "motherboard",
+  "manufacturer": "MSI",
+  "model": "PRO Z690-A DDR4",
+  "status": "owned",
+  "confidence": "confirmed",
+  "dimensions_mm": {
+    "l": 305,
+    "w": 244,
+    "h": "TODO"
+  },
+  "source_urls": [
+    "https://www.msi.com/Motherboard/PRO-Z690-A-DDR4/Specification",
+    "https://storage-asset.msi.com/datasheet/mb/ca/PRO-Z690-A-DDR4.pdf",
+    "https://download-2.msi.com/archive/mnu_exe/mb/PROZ690-AWIFIDDR4_PROZ690-ADDR4100x150.pdf",
+    "https://www.bitsavers.org/pdf/intel/ATX/ATX_Specification_2.01_199702.PDF"
+  ],
+  "last_verified": "2026-09-30",
+  "socket": "LGA1700",
+  "form_factor": "ATX",
+  "ram_type": "DDR4",
+  "dimm_slots": 4,
+  "max_ram_gb": 128,
+  "pcie_x16_slots": [
+    {
+      "gen": 5,
+      "electrical_lanes": 16,
+      "slot_index": 1
+    },
+    {
+      "gen": 3,
+      "electrical_lanes": 4,
+      "slot_index": 4
+    },
+    {
+      "gen": 3,
+      "electrical_lanes": 1,
+      "slot_index": 6
+    }
+  ],
+  "notes": "Owned. SMBIOS on this PC, 2026-09-30: MSI PRO Z690-A DDR4, board code MS-7D25, BIOS 1.30 (the manual also covers the WIFI variant; this is the non-WIFI board). Chipset Intel Z690 (the schema has no chipset field). pcie_x16_slots lists the three x16-size slots in the manual's order: PCI_E1 is the CPU slot (PCIe 5.0 x16, the one the checker uses for the GPU), PCI_E3 and PCI_E4 come from the chipset (PCIe 3.0 x4 and x1); the fourth slot, PCI_E2, is x1 and not listed. slot_index is the 0-based bracket position from the top of an ATX case (0 = first bracket under the I/O panel), the reading the checker's expansion_slots - slot_index implies. It is derived, not printed anywhere: in the manual's board diagram (p.12) the slots sit at 0, 2, 3 and 5 pitches of 20.32 mm from PCI_E1, and PCI_E4 is 0.79 in above the board's bottom edge, where ATX 2.01 Fig. 3 puts the lowest slot, so PCI_E1 is bracket 2 (index 1), PCI_E3 index 4, PCI_E4 index 6. max_ram_gb is 4 slots x 32 GB. JEDEC/POR memory speeds stop at DDR4-3200; anything faster, such as the 3600 kits fitted here, is an XMP overclock. dimensions_mm l x w is the ATX 12 in x 9.6 in outline from the spec sheet; no source gives a board height.",
+  "todo": [
+    "dimensions_mm.h"
+  ]
+}

@@ -1,5 +1,8 @@
 # Dependencies
 node_modules
+
+# The channel's side jobs are not part of the web image (stream/README.md)
+stream
 npm-debug.log
 yarn-error.log
 

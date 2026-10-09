@@ -10,6 +10,7 @@ Workspace conventions live in `/home/TurtleWolfe/repos/CLAUDE.md` (Docker-first,
 - **Portfolio Mode**: Supabase is currently disabled. `useAuth()` returns a safe default when used outside `AuthProvider`, so no auth secrets are required for CI/CD.
 - **basePath TODO**: once the Squarespace → GitHub Pages redirect is configured, restore `/TurtleWolfe/` as basePath in `public/manifest.json` (icon paths, start_url, scope, shortcuts, screenshots, share_target); `next.config.ts` auto-detects it.
 - GitHub Actions deployment secrets: see `README.md`.
+- **`stream/`** holds the channel's side jobs (go-live alerts Worker, can-we-build-it), each with its own `CLAUDE.md`, tests and Docker setup; the web app's tooling excludes it. See `stream/README.md`.
 
 ## Safety & permissions
 

@@ -1,7 +1,9 @@
 # Who watches the watcher: if the Worker's own cron stops, /health turns 503 after 30 min,
 # and this scheduled check fails. GitHub emails the owner on a failed scheduled run.
 # Kept here, not in the co-op's UptimeRobot account, so personal and client monitoring stay apart.
-name: health
+# The Worker's source is stream/alerts/; this file moved to the repo root with it on 2026-10-09,
+# because GitHub only runs workflows from .github/ at the root.
+name: stream-alerts health
 on:
   schedule:
     - cron: "17 */3 * * *"   # every 3 hours, off the hour

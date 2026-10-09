@@ -23,6 +23,7 @@ const eslintConfig = [
       'next-env.d.ts',
       'coverage/**',
       'scripts/**',
+      'stream/**',
       'storybook-static/**',
       'playwright-report/**',
       'test-results/**',

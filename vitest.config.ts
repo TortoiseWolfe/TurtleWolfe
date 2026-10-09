@@ -20,6 +20,7 @@ export default defineConfig({
       'scripts/**/*.test.js', // Exclude Node.js test runner tests
       'scripts/__tests__/**', // Exclude all script tests
       'tests/e2e/**', // Exclude Playwright E2E tests
+      'stream/**', // The channel's side jobs: each runs its own tests (see stream/README.md)
       '**/.component-backup-*/**', // Exclude backup directories
       // Exclude intentional TDD placeholder tests (not yet implemented)
       'tests/contract/email-notifications.test.ts', // 17 TDD failures

@@ -47,5 +47,5 @@
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", ".next", "out", "supabase", "scripts"]
+  "exclude": ["node_modules", ".next", "out", "supabase", "scripts", "stream"]
 }

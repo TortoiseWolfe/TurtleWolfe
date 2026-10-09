@@ -1,0 +1,20 @@
+name = "afa-stream-alerts"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+
+[triggers]
+crons = ["*/10 * * * *"]
+
+[[kv_namespaces]]
+binding = "STATE"
+id = "33ac6d26f2f140e8bd8cea4f1ee70300"
+
+[vars]
+PUBLIC_URL = "https://afa-stream-alerts.jonpohlner.workers.dev"
+ALWAYS_ON_GRACE_MIN = "15"
+BROADCASTERS = '''
+[
+  {"login": "turtlewolfe", "announce": true, "mention": "none", "watchdog": "none"},
+  {"login": "scripthammer", "announce": false, "mention": "none", "watchdog": "none"}
+]
+'''

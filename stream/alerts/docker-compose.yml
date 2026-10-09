@@ -1,0 +1,25 @@
+# Docker-first: never run npm or wrangler on the host. Everything goes through `dev`.
+#   docker compose run --rm dev npm ci
+#   docker compose run --rm dev npm test
+services:
+  dev:
+    image: node:22-alpine
+    working_dir: /app
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      HOME: /tmp
+      npm_config_cache: /tmp/.npm
+      WRANGLER_SEND_METRICS: "false"
+    volumes:
+      - .:/app
+      # Wrangler's Cloudflare sign-in (OAuth) lives here between runs. Gitignored, mode 700.
+      - ./.wrangler-home:/tmp/.config
+  # Twitch channel tools (tools/twitch-schedule). Reads TWITCH_* from the gitignored .env.
+  #   docker compose run --rm twitch channel info
+  twitch:
+    image: python:3.13-alpine
+    working_dir: /app
+    user: "${UID:-1000}:${GID:-1000}"
+    entrypoint: ["python", "tools/twitch-schedule/twitch_client.py"]
+    volumes:
+      - .:/app

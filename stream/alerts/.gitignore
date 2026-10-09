@@ -1,0 +1,11 @@
+node_modules/
+.wrangler/
+.dev.vars
+.dev.vars.*
+*.log
+coverage/
+.env
+.env.*
+__pycache__/
+*.pyc
+.wrangler-home/

@@ -79,6 +79,31 @@ describe('ProjectShowcaseCard', () => {
     expect(block).not.toHaveAttribute('aria-label');
   });
 
+  it('contains the image instead of cropping it when imageFit is contain', () => {
+    render(
+      <ProjectShowcaseCard
+        {...defaultProps}
+        image={{ src: '/icon.png', alt: 'App icon' }}
+        imageFit="contain"
+      />
+    );
+    expect(screen.getByAltText('App icon').className).toContain(
+      'object-contain'
+    );
+  });
+
+  it('crops the image to fill by default', () => {
+    render(
+      <ProjectShowcaseCard
+        {...defaultProps}
+        image={{ src: '/shot.png', alt: 'Screenshot' }}
+      />
+    );
+    expect(screen.getByAltText('Screenshot').className).toContain(
+      'object-cover'
+    );
+  });
+
   it('renders the image when provided', () => {
     render(
       <ProjectShowcaseCard

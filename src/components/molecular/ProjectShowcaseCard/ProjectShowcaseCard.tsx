@@ -19,6 +19,14 @@ export interface ProjectShowcaseCardProps {
    */
   href?: string;
   hasDetailPage?: boolean;
+  /**
+   * How the image fills its 16:9 frame. `'cover'` (default) crops to fill, for
+   * screenshots. `'contain'` shows the whole image with padding, for square
+   * app icons that cover-fit would cut off.
+   *
+   * @default 'cover'
+   */
+  imageFit?: 'cover' | 'contain';
   className?: string;
   /**
    * Visual variant. `'default'` (the original) renders the DaisyUI-themed card
@@ -75,6 +83,7 @@ export default function ProjectShowcaseCard({
   stack,
   href,
   hasDetailPage = false,
+  imageFit = 'cover',
   className = '',
   variant = 'default',
   asciiArt,
@@ -85,12 +94,14 @@ export default function ProjectShowcaseCard({
     const defaultContent = (
       <>
         {image ? (
-          <figure className="relative aspect-video w-full overflow-hidden">
+          <figure
+            className={`relative aspect-video w-full overflow-hidden${imageFit === 'contain' ? 'bg-base-300' : ''}`}
+          >
             <Image
               src={`${detectedConfig.basePath}${image.src}`}
               alt={image.alt}
               fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className={`${imageFit === 'contain' ? 'object-contain p-4' : 'object-cover'} transition-transform duration-300 group-hover:scale-105`}
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </figure>
@@ -120,11 +131,7 @@ export default function ProjectShowcaseCard({
     const defaultCardClasses = `card bg-base-100 shadow-md group transition-all hover:-translate-y-1 hover:shadow-lg focus-within:ring-primary focus-within:ring-2 overflow-hidden${className ? ` ${className}` : ''}`;
 
     if (!href) {
-      return (
-        <article className={defaultCardClasses}>
-          {defaultContent}
-        </article>
-      );
+      return <article className={defaultCardClasses}>{defaultContent}</article>;
     }
 
     if (hasDetailPage) {
@@ -215,12 +222,14 @@ export default function ProjectShowcaseCard({
           />
         </div>
       ) : image ? (
-        <figure className="relative aspect-video w-full overflow-hidden">
+        <figure
+          className={`relative aspect-video w-full overflow-hidden${imageFit === 'contain' ? 'bg-base-300' : ''}`}
+        >
           <Image
             src={`${detectedConfig.basePath}${image.src}`}
             alt={image.alt}
             fill
-            className="object-cover opacity-90 transition-transform duration-300 group-hover:scale-105"
+            className={`${imageFit === 'contain' ? 'object-contain p-4' : 'object-cover'} opacity-90 transition-transform duration-300 group-hover:scale-105`}
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         </figure>
@@ -276,11 +285,7 @@ export default function ProjectShowcaseCard({
   );
 
   if (!href) {
-    return (
-      <article className={crtCardClasses}>
-        {crtContent}
-      </article>
-    );
+    return <article className={crtCardClasses}>{crtContent}</article>;
   }
 
   if (hasDetailPage) {

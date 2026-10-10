@@ -473,6 +473,7 @@ export default function Home() {
                 image={p.image}
                 stack={p.stack}
                 href={p.href}
+                imageFit="contain"
                 hasDetailPage={false}
               />
             ))}
@@ -487,6 +488,10 @@ export default function Home() {
         className="section-glow px-4 py-12 sm:px-6 lg:px-8"
       >
         <div className="mx-auto max-w-6xl">
+          <div className="text-primary crt-halation mb-4 font-mono text-[10px] tracking-[0.2em] opacity-65 sm:text-xs">
+            ━━ SECTION_01 · FEATURED_WORK
+            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          </div>
           <h2 className="text-base-content mb-4 text-center text-2xl font-bold sm:text-3xl">
             Featured Projects
           </h2>

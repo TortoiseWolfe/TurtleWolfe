@@ -23,7 +23,7 @@ The ScriptHammer channel carries reruns and raids TurtleWolfe at go-live.
 
 | Date | Slot | Show | Repo | Pitch |
 |---|---|---|---|---|
-| Tue 10/13 | 6 PM | **CWBI 003: Can we name every building downtown?** | ScriptHammer (`/chatt`, `model-city-prd.md`) | The atlas holds 13,877 buildings and 10,743 have no type in OpenStreetMap. The AI says where the gaps are; the count decides, and out comes a canvassing route. |
+| Tue 10/13 | 6 PM | **CWBI 003: Can we name every building downtown?** | ScriptHammer (`/chatt`, `model-city-prd.md`); can-we-build-it (run sheet `003-name-every-building.md`, tool `builds/003-chatt-registry/count.py`) | The atlas holds 13,877 buildings and 10,743 have no type in OpenStreetMap. The AI says where the gaps are; the count decides, and out comes a canvassing route. |
 | Wed 10/14 | 7 PM | Drupal I: Install, Recipes and Branding (2 of 3) | gig-city-drupal | What a Recipe is, and why the whole site installs from one. |
 | Fri 10/16 | 6 PM | Rebrand race #1 (DrupalCamp rehearsal) | ScriptHammer | Chat names an app; fork ScriptHammer, run the rebrand script and race the clock to a live URL. |
 | Sat 10/17 | 2 PM | Pig factory | Auto-Blender | Chat picks the traits and headless Blender builds the mascot: procedural characters with no hand modelling. |

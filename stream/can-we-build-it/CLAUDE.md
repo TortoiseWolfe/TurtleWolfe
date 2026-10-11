@@ -17,6 +17,7 @@ deterministic compatibility checker, and a boxes-and-clearances virtual build re
 - `schema/`: JSON Schemas (documentation + editor validation). Python mirrors the required sets; a drift test keeps them equal.
 - `data/parts/<category>/<id>.json`: one part per file.
 - `builds/<slug>/build.json`: parts, requirements and the episode's planted fault. `quantities` (RAM only) says how many of a part the build holds, e.g. `{"ram": 2}` for two kits; the part file stays one kit.
+- `builds/003-chatt-registry/`: episode 3's counting tool, not a parts build (no `build.json`, so `check` and `publish` don't apply). `count.py` copies ScriptHammer's `typeBucket()`; re-check it when `buildings.ts` changes. `briefing.md` is the answer-free prompt the AI sees; the answers live in `episodes/003-name-every-building.md`. `tests/test_chatt_registry.py` pins the numbers and, with ScriptHammer mounted, compares the rule to the TypeScript.
 - `src/partsbin/`: `load`, `schema`, `compat` (rules), `claims`, `cli`.
 - `published/<slug>/`: what turtlewolfe.com reads. It is generated; don't hand-edit.
 - `episodes/`: run sheets.

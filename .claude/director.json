@@ -1,0 +1,16 @@
+{
+  "_comment": [
+    "Checks for ~/.claude/workflows/director.js, for batches under stream/can-we-build-it. Run each from a worktree root. Proven green and red on origin/main baf69cd (2026-10-19), run as bash -c of the exact string.",
+    "CHECK_CWBI is the test stage of stream/can-we-build-it/Dockerfile: `docker compose run --rm test`, the full unittest suite. Ran 67 tests, OK (skipped=3), about 9 s wall (image build included, warm Docker cache). Proven red by flipping PASS/FAIL in src/partsbin/compat.py line 31: exit 1, 27 failures; undone, green again.",
+    "Compose project is cwbi-wf-<worktree folder, lowercased>, so every worktree has its own project and `down --rmi local --remove-orphans` (run even when the tests fail, exit code preserved) removes that worktree's network and image. The code arrives by the compose bind mount (./:/app) of the worktree, so the live tree is tested. Both compose calls carry timeout (600 s run, 120 s down).",
+    "Where Docker's credential helper can't run (WSL interop off), prefix with `export DOCKER_CONFIG=<dir with {\"auths\":{}}>;`.",
+    "NOT covered: the 3 skipped tests (they compare count.py to ScriptHammer's buildings.ts and buildings-wide.json and skip unless ScriptHammer is mounted; left out because they depend on a host path and ScriptHammer's state), the Blender render profile, and the web app (lint, type-check, Vitest, Playwright, Pa11y, Storybook), which stream/ is excluded from and CI covers."
+  ],
+  "base": "origin/main",
+  "panel": {
+    "class": "own"
+  },
+  "checks": {
+    "CHECK_CWBI": "W=${PWD##*/}; W=${W,,}; W=${W//[^a-z0-9]/-}; cd stream/can-we-build-it && timeout 600 docker compose -p cwbi-wf-$W run --rm -T test; rc=$?; timeout 120 docker compose -p cwbi-wf-$W down --rmi local --remove-orphans >/dev/null 2>&1; exit $rc"
+  }
+}

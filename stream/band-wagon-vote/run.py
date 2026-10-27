@@ -173,6 +173,7 @@ def main():
     ap.add_argument("mode", choices=["live", "local", "report", "stop"])
     ap.add_argument("--bandwidthtest", action="store_true")
     ap.add_argument("--seconds", type=int)
+    ap.add_argument("--no-opener", action="store_true", help="skip the opening song (restarting a show already under way)")
     ap.add_argument("--out")
     ap.add_argument("--playlist", default=str(HERE / "playlist.json"))
     a = ap.parse_args()
@@ -200,6 +201,8 @@ def main():
     else:
         target, key, fmt = a.out, "", "flv"
     cfg["font"] = str(Path(cfg["font"]).expanduser())
+    if a.no_opener:
+        cfg.pop("opener", None)
     s = Stream(cfg, target, key, fmt, a.seconds)
     signal.signal(signal.SIGTERM, lambda *_: s.stop.set())
     signal.signal(signal.SIGINT, lambda *_: s.stop.set())

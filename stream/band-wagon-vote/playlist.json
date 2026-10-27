@@ -27,6 +27,12 @@
     {"file": "bw-n10.mp3",    "title": "Static Snow", "group": "other"},
     {"file": "bw-n11.mp3",    "title": "Ghost in the Music Box", "group": "fans"},
     {"file": "bw-jam-2b.mp3", "title": "Should the Machines Take Over? Take 1: long jam B", "group": "jam"},
+    {"file": "bw-psy-1.mp3", "title": "The Doctor Listens", "group": "psy"},
+    {"file": "bw-psy-1b.mp3", "title": "The Doctor Listens, take 2", "group": "psy"},
+    {"file": "bw-psy-2.mp3", "title": "Rule Two Goes Sideways", "group": "psy"},
+    {"file": "bw-psy-2b.mp3", "title": "Rule Two Goes Sideways, take 2", "group": "psy"},
+    {"file": "bw-psy-3.mp3", "title": "Three Rules in Step", "group": "psy"},
+    {"file": "bw-psy-3b.mp3", "title": "Three Rules in Step, take 2", "group": "psy"},
     {"file": "bw-n12.mp3",    "title": "Signal Lost, Signal Found", "group": "other"},
     {"file": "bw-jam-3b.mp3", "title": "Should the Machines Take Over? Take 2: long jam B", "group": "jam"}
   ]

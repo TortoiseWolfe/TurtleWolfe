@@ -9,6 +9,7 @@ working in it.
 |---|---|---|
 | `alerts/` | Twitch go-live posts to Discord, stream watchdogs, and the channel's schedule tools (was `afa-stream-alerts`) | A Cloudflare Worker, deployed with `wrangler` from `alerts/`. The root `.github/workflows/stream-alerts-health.yml` checks its `/health` every 3 hours |
 | `can-we-build-it/` | Parts bin, compatibility checker and virtual build for the "Can we actually build it?" segment | Locally, through its own `compose.yaml` |
+| `band-wagon-vote/` | Loops Band Wagon song clips to Twitch; chat votes `!up` / `!down` on the song on screen | Locally with `python3 run.py live` (host ffmpeg), no Docker |
 
 **The web app ignores this folder.** TurtleWolfe's typecheck, lint, vitest, Prettier and
 Docker build context all exclude `stream/`, so neither side's tooling trips on the other.

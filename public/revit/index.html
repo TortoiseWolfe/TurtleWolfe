@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revit and BIM work | Jonathan Pohlner</title>
+<meta name="description" content="Revit drawings and the C# add-ins behind them: parameters, tagged elevations, sheets and schedules, from three years at Trinam Design.">
+<style>
+  :root { --ink:#1b2430; --muted:#475467; --line:#d0d5dd; --bg:#f7f8fa; --accent:#0b5cad; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:18px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:var(--ink); background:var(--bg); }
+  main { max-width:960px; margin:0 auto; padding:24px 20px 64px; }
+  a { color:var(--accent); }
+  h1 { font-size:2.1rem; line-height:1.2; margin:8px 0 8px; }
+  h2 { font-size:1.45rem; line-height:1.3; margin:44px 0 12px; }
+  .lede { font-size:1.2rem; color:var(--muted); margin:0 0 8px; }
+  figure { margin:28px 0 36px; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  figure img { display:block; width:100%; height:auto; }
+  figcaption { padding:14px 18px 16px; border-top:1px solid var(--line); }
+  figcaption strong { display:block; margin-bottom:4px; }
+  ul { padding-left:1.2em; }
+  li { margin:6px 0; }
+  .facts { display:flex; flex-wrap:wrap; gap:10px; list-style:none; padding:0; margin:20px 0 0; }
+  .facts li { margin:0; padding:6px 14px; border:1px solid var(--line); border-radius:999px; background:#fff; font-size:1rem; }
+  footer { margin-top:48px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:1rem; }
+  @media (max-width:600px) { body { font-size:17px; } h1 { font-size:1.7rem; } }
+</style>
+</head>
+<body>
+<main>
+  <p><a href="/">&larr; turtlewolfe.com</a></p>
+  <h1>Revit and BIM work</h1>
+  <p class="lede">Drawings first, code second. These are screenshots from my own Revit tools on real project models, with client and project names blurred.</p>
+  <ul class="facts">
+    <li>Trinam Design, Mar 2022 to Aug 2024</li>
+    <li>Revit 2023 and Revit 2025 APIs</li>
+    <li>Tools used by a dozen drafters</li>
+    <li>IFC4 export code in my own projects</li>
+  </ul>
+
+  <h2>The drawings</h2>
+
+  <figure>
+    <img src="/revit/01-shared-parameters.png" alt="Revit Properties palette for a curtain panel next to an east building elevation, with the Level Number field and the IFC Parameters block visible" width="1081" height="838">
+    <figcaption><strong>Parameters on a curtain-panel family, with its IFC block</strong>Each panel carries a Level Number, a Module Number, corner-post numbers, a fabrication package and truck, and an IFC Parameters group (Export to IFC, IfcGUID). The highlighted Level Number is the value the numbering tools read and tag in the elevation next to it.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="/revit/02-tagged-elevation.png" alt="A Revit elevation of a glazed facade with dimension chains along the top and bottom, numbered tags on each panel, and level markers at both sides" width="1936" height="1040">
+    <figcaption><strong>A dimensioned, tagged shop elevation</strong>Dimension chains above and below the facade, a numbered tag on every panel, and level markers on both sides. Elevations like this one are what the dimensioning, numbering and elevation add-ins were written to produce without hand placement.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="/revit/03-sheets-schedules.png" alt="Revit project browser listing numbered sheets, with a schedule and an elevation view nested under the first sheets" width="385" height="511">
+    <figcaption><strong>Sheets with schedules and elevation views</strong>The sheet list from a production model: a cover sheet with its schedule, then sheet after sheet, each holding its own views. Creating elevations and views, and keeping them organised by sheet, was another job for the add-ins.</figcaption>
+  </figure>
+
+  <h2>From Dynamo to C#</h2>
+  <p>At Trinam Design I wrote each automation twice. First as a Dynamo graph, to prove the idea on a real model: window-module tagging and automatic dimensioning were the first ones. Dynamo was usually too slow at the scale the drafters needed, so I rewrote the tools as C# add-ins on the Revit API and gave them their own tab on the Revit ribbon, grouped by the work they do (paneling, detailing, shop drawings, fabrication, state and QC).</p>
+  <ul>
+    <li>C# add-ins for dimensioning, numbering, elevations and views, with WPF windows for the controls.</li>
+    <li>Projects set up for both the Revit 2023 and the Revit 2025 APIs.</li>
+    <li>Used day to day by a dozen drafters, checked by hand against real project files with screenshots of the results.</li>
+    <li>Outside the job, IFC4 export code in my own projects, so the open-format side of BIM is familiar ground.</li>
+  </ul>
+
+  <footer>
+    Jonathan Pohlner, Cleveland, Tennessee. <a href="https://www.linkedin.com/in/pohlner">LinkedIn</a> &middot; <a href="https://github.com/TortoiseWolfe">GitHub</a> &middot; <a href="/contact/">Contact</a>
+  </footer>
+</main>
+</body>
+</html>

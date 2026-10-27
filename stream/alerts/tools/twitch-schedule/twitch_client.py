@@ -10,6 +10,8 @@ Usage (from the repo root, Docker-first):  docker compose run --rm twitch <comma
     python3 twitch_client.py schedule update --segment-id "abc123" --title "New Title"
     python3 twitch_client.py schedule delete --segment-id "abc123"
     python3 twitch_client.py categories search --query "Software"
+    python3 twitch_client.py streamkey save --expect-login scripthammer --out KEYFILE --token-out TOKENFILE [--env ENVFILE]
+        # device code sign-in for ANOTHER channel; its key and token go to their own files, never to the env file
 """
 
 import json
@@ -29,6 +31,7 @@ DEVICE_URL = "https://id.twitch.tv/oauth2/device"
 # Only what the schedule and title commands need. Tokens are minted with OUR app
 # ("TurtleWolfe Schedule Manager"), never on a third-party token site.
 SCOPES = "channel:manage:schedule channel:manage:broadcast"
+STREAM_KEY_SCOPE = "channel:read:stream_key"
 
 
 def find_env_file():
@@ -302,6 +305,89 @@ def device_login():
     print("Signed in. Tokens saved to .env (not shown).", file=sys.stderr)
 
 
+def device_flow(client_id, client_secret, scopes, announce):
+    """Run Twitch's device code flow and return the token response. Writes nothing to disk."""
+    import time
+
+    with urlopen(Request(DEVICE_URL, data=urlencode({"client_id": client_id, "scopes": scopes}).encode(),
+                         method="POST")) as resp:
+        start = json.loads(resp.read().decode())
+    announce(start)
+    interval = int(start.get("interval", 5))
+    deadline = time.time() + int(start.get("expires_in", 1800))
+    poll = {
+        "client_id": client_id,
+        "scopes": scopes,
+        "device_code": start["device_code"],
+        "grant_type": "urn:ietf:params:oauth:grant-type:device_code",
+    }
+    if client_secret:
+        poll["client_secret"] = client_secret
+    while time.time() < deadline:
+        time.sleep(interval)
+        try:
+            with urlopen(Request(TOKEN_URL, data=urlencode(poll).encode(), method="POST")) as resp:
+                return json.loads(resp.read().decode())
+        except HTTPError as e:
+            message = json.loads(e.read().decode() or "{}").get("message", "")
+            if message == "authorization_pending":
+                continue
+            if message == "slow_down":
+                interval += 5
+                continue
+            print(f"Error: device login failed ({e.code} {message}).", file=sys.stderr)
+            sys.exit(1)
+    print("Error: the code expired before it was approved. Run it again.", file=sys.stderr)
+    sys.exit(1)
+
+
+def write_secret(path, text):
+    """Write text to path with mode 600 from the first byte (never world-readable, never printed)."""
+    path = Path(path).expanduser()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+    with os.fdopen(fd, "w") as f:
+        f.write(text)
+    os.chmod(path, 0o600)
+
+
+def save_stream_key(opts):
+    """Sign in as another channel by device code and save only its stream key and token.
+
+    Refuses (saves nothing) unless the signed-in login equals --expect-login, so a sign-in as
+    the wrong channel cannot slip through. Never writes the env file: it is read for the app's id/secret only.
+    """
+    env_path = Path(opts["env"]).expanduser() if isinstance(opts.get("env"), str) else find_env_file()
+    env = load_env(env_path)
+    client_id = env.get("TWITCH_CLIENT_ID", "")
+    client_secret = env.get("TWITCH_CLIENT_SECRET", "")
+    expect = opts.get("expect-login")
+    out, token_out = opts.get("out"), opts.get("token-out")
+    if not client_id:
+        print("Error: TWITCH_CLIENT_ID not found (pass --env FILE).", file=sys.stderr)
+        sys.exit(1)
+    if not (isinstance(expect, str) and isinstance(out, str) and isinstance(token_out, str)):
+        print("Error: --expect-login, --out and --token-out are all required.", file=sys.stderr)
+        sys.exit(1)
+
+    def announce(start):
+        print(f"Open {start['verification_uri']} signed in as {expect} and approve code {start['user_code']}. "
+              f"Expires in {int(start.get('expires_in', 1800)) // 60} minutes.", flush=True)
+
+    tokens = device_flow(client_id, client_secret, STREAM_KEY_SCOPE, announce)
+    headers = {"Authorization": f"Bearer {tokens['access_token']}", "Client-Id": client_id}
+    with urlopen(Request(f"{HELIX_BASE}/users", headers=headers)) as resp:
+        user = json.loads(resp.read().decode())["data"][0]
+    if user["login"].lower() != expect.lower():
+        print(f"Error: signed in as {user['login']}, not {expect}. Nothing saved.", file=sys.stderr)
+        sys.exit(1)
+    with urlopen(Request(f"{HELIX_BASE}/streams/key?broadcaster_id={user['id']}", headers=headers)) as resp:
+        key = json.loads(resp.read().decode())["data"][0]["stream_key"]
+    write_secret(out, key)
+    write_secret(token_out, json.dumps({k: tokens.get(k) for k in ("access_token", "refresh_token", "scope", "expires_in")}))
+    print(f"login {user['login']} | key length {len(key)} | starts with live_: {key.startswith('live_')}", flush=True)
+
+
 def parse_args(args):
     """Parse --key value pairs from args list into dict."""
     parsed = {}
@@ -331,6 +417,9 @@ def main():
 
     if (command, subcommand) == ("auth", "device"):
         device_login()
+        return
+    if (command, subcommand) == ("streamkey", "save"):
+        save_stream_key(opts)
         return
 
     client = TwitchClient()

@@ -34,8 +34,8 @@ export function generateMetadata(options: MetadataOptions = {}): Metadata {
 
   const fullTitle =
     title === projectConfig.projectName
-      ? `${title} - Modern Web Starter`
-      : `${title} | ${projectConfig.projectName}`;
+      ? 'Jonathan Pohlner | Graphic Designer and Full-Stack Developer'
+      : `${title} | Jonathan Pohlner`;
 
   const canonicalUrl = `${projectConfig.deployUrl}${path}`;
 

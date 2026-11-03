@@ -94,8 +94,8 @@ export function generateManifest() {
   const basePath = config.basePath || '';
 
   return {
-    name: `${config.projectName} - Modern Web Starter`,
-    short_name: config.projectName,
+    name: 'Jonathan Pohlner | Graphic Designer and Full-Stack Developer',
+    short_name: 'Jonathan Pohlner',
     description: config.projectDescription,
     start_url: `${basePath}/`,
     scope: `${basePath}/`,

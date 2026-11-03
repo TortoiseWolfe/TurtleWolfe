@@ -21,6 +21,8 @@ describe('Project Configuration', () => {
     delete process.env.NEXT_PUBLIC_DEPLOY_URL;
     delete process.env.NEXT_PUBLIC_PROJECT_NAME;
     delete process.env.NEXT_PUBLIC_PROJECT_OWNER;
+    delete process.env.NEXT_PUBLIC_OWNER_NAME;
+    delete process.env.NEXT_PUBLIC_SITE_TITLE;
   });
 
   afterEach(() => {
@@ -39,6 +41,12 @@ describe('Project Configuration', () => {
 
       expect(config.projectName).toBe('TurtleWolfe');
       expect(config.projectOwner).toBe('TortoiseWolfe');
+      expect(config.ownerName).toBe('Jonathan Pohlner');
+      expect(config.siteTitle).toBe(
+        'Jonathan Pohlner | Graphic Designer and Full-Stack Developer'
+      );
+      expect(config.siteTitle).not.toContain('Starter');
+      expect(config.siteTitle.length).toBeLessThanOrEqual(60);
       expect(config.projectDescription).toContain('Jonathan Pohlner');
       expect(config.basePath).toBe('');
       expect(config.deployUrl).toBe('http://localhost:3000');
@@ -48,9 +56,11 @@ describe('Project Configuration', () => {
       process.env.NEXT_PUBLIC_PROJECT_NAME = 'TestProject';
       process.env.NEXT_PUBLIC_PROJECT_OWNER = 'TestOwner';
       process.env.NEXT_PUBLIC_BASE_PATH = '/test-base';
+      process.env.NEXT_PUBLIC_OWNER_NAME = 'Test Person';
 
       const config = getProjectConfig();
 
+      expect(config.ownerName).toBe('Test Person');
       expect(config.projectName).toBe('TestProject');
       expect(config.projectOwner).toBe('TestOwner');
       expect(config.basePath).toBe('/test-base');
@@ -180,7 +190,10 @@ describe('Project Configuration', () => {
     it('should generate a valid PWA manifest', () => {
       const manifest = generateManifest();
 
-      expect(manifest.name).toContain('TurtleWolfe');
+      expect(manifest.name).toBe(
+        'Jonathan Pohlner | Graphic Designer and Full-Stack Developer'
+      );
+      expect(manifest.name).not.toContain('Starter');
       expect(manifest.short_name).toBe('TurtleWolfe');
       expect(manifest.description).toContain('Jonathan Pohlner');
       expect(manifest.start_url).toBe('/');
@@ -248,8 +261,15 @@ describe('Project Configuration', () => {
 
       const manifest = generateManifest();
 
-      expect(manifest.name).toContain('MyApp');
       expect(manifest.short_name).toBe('MyApp');
+    });
+
+    it('should use custom site title in manifest', () => {
+      process.env.NEXT_PUBLIC_SITE_TITLE = 'Someone Else | Photographer';
+
+      const manifest = generateManifest();
+
+      expect(manifest.name).toBe('Someone Else | Photographer');
     });
   });
 

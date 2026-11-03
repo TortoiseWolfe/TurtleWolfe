@@ -6,13 +6,17 @@
  *
  * When forking this template:
  * - The scripts/detect-project.js script runs at build time to auto-detect settings
- * - Or set environment variables: NEXT_PUBLIC_PROJECT_NAME, NEXT_PUBLIC_PROJECT_OWNER
+ * - Or set environment variables: NEXT_PUBLIC_PROJECT_NAME, NEXT_PUBLIC_PROJECT_OWNER,
+ *   NEXT_PUBLIC_OWNER_NAME (the person's name) and NEXT_PUBLIC_SITE_TITLE (the
+ *   home page title shown in the browser tab and in search results)
  */
 
 // Default configuration
 const defaultConfig = {
   projectName: 'TurtleWolfe',
   projectOwner: 'TortoiseWolfe',
+  ownerName: 'Jonathan Pohlner',
+  siteTitle: 'Jonathan Pohlner | Graphic Designer and Full-Stack Developer',
   projectDescription:
     'Jonathan Pohlner — Full Stack Developer. Portfolio showcasing React, TypeScript, and Next.js projects.',
   basePath: '',
@@ -32,6 +36,8 @@ export function getProjectConfig() {
       process.env.NEXT_PUBLIC_PROJECT_NAME || defaultConfig.projectName,
     projectOwner:
       process.env.NEXT_PUBLIC_PROJECT_OWNER || defaultConfig.projectOwner,
+    ownerName: process.env.NEXT_PUBLIC_OWNER_NAME || defaultConfig.ownerName,
+    siteTitle: process.env.NEXT_PUBLIC_SITE_TITLE || defaultConfig.siteTitle,
     projectDescription: defaultConfig.projectDescription,
     basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? defaultConfig.basePath,
   };
@@ -94,8 +100,8 @@ export function generateManifest() {
   const basePath = config.basePath || '';
 
   return {
-    name: 'Jonathan Pohlner | Graphic Designer and Full-Stack Developer',
-    short_name: 'Jonathan Pohlner',
+    name: config.siteTitle,
+    short_name: config.projectName,
     description: config.projectDescription,
     start_url: `${basePath}/`,
     scope: `${basePath}/`,

@@ -17,6 +17,9 @@ let projectConfig = {
   projectName: 'TurtleWolfe',
   projectOwner: 'TortoiseWolfe',
   basePath: '',
+  // Same text as projectDescription in src/config/project.config.ts
+  projectDescription:
+    'Jonathan Pohlner — Full Stack Developer. Portfolio showcasing React, TypeScript, and Next.js projects.',
 };
 
 // Try to load the auto-detected configuration
@@ -50,7 +53,7 @@ if (process.env.NEXT_PUBLIC_BASE_PATH !== undefined) {
 const manifest = {
   name: projectConfig.projectName,
   short_name: projectConfig.projectName.substring(0, 12),
-  description: `${projectConfig.projectName} - Modern Next.js template with PWA, theming, and interactive components`,
+  description: projectConfig.projectDescription,
   theme_color: '#1a1a2e',
   background_color: '#1a1a2e',
   display: 'standalone',
@@ -190,7 +193,9 @@ const manifest = {
 };
 
 // Write manifest to public directory
-const outputPath = path.join(__dirname, '../public/manifest.json');
+const outputPath =
+  process.env.MANIFEST_OUTPUT_PATH ||
+  path.join(__dirname, '../public/manifest.json');
 fs.writeFileSync(outputPath, JSON.stringify(manifest, null, 2));
 
 console.log(`✅ Generated manifest.json for ${projectConfig.projectName}`);

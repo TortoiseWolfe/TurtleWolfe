@@ -39,7 +39,12 @@ coverage
 
 # Documentation
 README.md
-docs
+# docs is skipped except the wireframes: the build's prebuild step
+# (scripts/sync-wireframes.sh) copies them into public/wireframes
+docs/*
+!docs/design
+docs/design/*
+!docs/design/wireframes
 
 # CI/CD
 .github

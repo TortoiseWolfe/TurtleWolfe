@@ -147,24 +147,15 @@ COPY . .
 RUN pnpm run build
 
 # Production image
-FROM base AS runner
-WORKDIR /app
+# next.config.ts sets output: 'export', so the build writes plain files to
+# out/ and there is no Node server to run (no .next/standalone, no
+# server.js). Serve the files with an unprivileged nginx instead; it runs as
+# a non-root user and listens on 8080.
+FROM nginxinc/nginx-unprivileged:stable-alpine AS runner
 
-ENV NODE_ENV=production
+COPY --from=builder /app/out /usr/share/nginx/html
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+EXPOSE 8080
 
-# Copy built application
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
-
-USER nextjs
-
-EXPOSE 3000
-
-ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
-
-CMD ["node", "server.js"]
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+  CMD wget -q --spider http://127.0.0.1:8080/ || exit 1

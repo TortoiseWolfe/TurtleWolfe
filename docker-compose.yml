@@ -70,6 +70,23 @@ services:
     restart: unless-stopped
 
   # ──────────────────────────────────────────────────────────────────────
+  # Production image — the static export served by nginx (profile: prod)
+  #
+  #   docker compose --profile prod up --build turtlewolfe-prod
+  #   docker compose port turtlewolfe-prod 8080
+  # ──────────────────────────────────────────────────────────────────────
+  turtlewolfe-prod:
+    profiles: [prod]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: runner
+    ports:
+      - '127.0.0.1:${SH_PROD_PORT:-0}:8080'
+    init: true
+    restart: unless-stopped
+
+  # ──────────────────────────────────────────────────────────────────────
   # Supabase — optional local stack (profile: supabase)
   #
   # When active, set in .env:

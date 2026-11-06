@@ -1,7 +1,7 @@
 {
-  "name": "turtlewolfe",
-  "short_name": "turtlewolfe",
-  "description": "turtlewolfe - Modern Next.js template with PWA, theming, and interactive components",
+  "name": "TurtleWolfe",
+  "short_name": "TurtleWolfe",
+  "description": "Jonathan Pohlner — Full Stack Developer. Portfolio showcasing React, TypeScript, and Next.js projects.",
   "theme_color": "#1a1a2e",
   "background_color": "#1a1a2e",
   "display": "standalone",

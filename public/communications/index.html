@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Communications portfolio | Jonathan Pohlner</title>
+<meta name="description" content="Plain-language writing, accessible web pages, illustrated stories for children and readable public data, with a live link for each piece.">
+<style>
+  :root { --ink:#1b2430; --muted:#475467; --line:#d0d5dd; --bg:#f7f8fa; --accent:#0b5cad; --card:#ffffff; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; font:19px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:var(--ink); background:var(--bg); }
+  .skip { position:absolute; left:-999px; top:8px; background:#fff; color:var(--ink); padding:10px 16px; border:2px solid var(--accent); border-radius:6px; z-index:10; }
+  .skip:focus { left:8px; }
+  main { max-width:900px; margin:0 auto; padding:24px 20px 64px; }
+  a { color:var(--accent); text-underline-offset:3px; }
+  a:focus-visible { outline:3px solid #0b5cad; outline-offset:3px; border-radius:2px; }
+  h1 { font-size:2.2rem; line-height:1.2; margin:8px 0 12px; }
+  h2 { font-size:1.4rem; line-height:1.3; margin:0 0 8px; }
+  .lede { font-size:1.2rem; color:var(--muted); margin:0 0 16px; }
+  nav[aria-label="On this page"] ol { padding-left:1.4em; margin:8px 0 0; }
+  nav[aria-label="On this page"] li { margin:4px 0; }
+  .toc-title { font-weight:700; margin:28px 0 0; }
+  article { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px 22px 22px; margin:24px 0; }
+  .num { display:inline-block; font-size:1rem; color:var(--muted); font-weight:600; margin:0 0 4px; }
+  .did, .proves { margin:8px 0; }
+  .label { font-weight:700; }
+  .visit { display:inline-block; margin-top:6px; padding:10px 18px; background:var(--accent); color:#fff; border-radius:8px; text-decoration:none; font-weight:600; }
+  .visit:hover { background:#084a8c; }
+  .visit:focus-visible { outline:3px solid #1b2430; outline-offset:3px; }
+  .more ul { padding-left:1.2em; }
+  .more li { margin:8px 0; }
+  footer { margin-top:48px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:1rem; }
+  @media (max-width:600px) { body { font-size:18px; } h1 { font-size:1.75rem; } article { padding:16px 16px 18px; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#start">Skip to the portfolio</a>
+<main id="start">
+  <p><a href="/">&larr; turtlewolfe.com</a></p>
+  <h1>Communications portfolio</h1>
+  <p class="lede">Seven pieces of my own work, each one live on the web. They show how I write in plain language, build pages that everyone can use, make stories for children and families, and turn public data into something a person can read.</p>
+
+  <nav aria-label="On this page">
+    <p class="toc-title">The seven pieces</p>
+    <ol>
+      <li><a href="#accessibility">Accessibility controls</a></li>
+      <li><a href="#writing">Plain-language writing with my byline</a></li>
+      <li><a href="#house">The House that Code Built</a></li>
+      <li><a href="#book">HatCoatAndBoots, a children's book</a></li>
+      <li><a href="#game">A music and stage-lights game for kids</a></li>
+      <li><a href="#families">A site that guides families through steps</a></li>
+      <li><a href="#data">Chattanooga in 3D</a></li>
+    </ol>
+  </nav>
+
+  <article id="accessibility">
+    <p class="num">Piece 1</p>
+    <h2>Accessibility controls</h2>
+    <p class="did"><span class="label">What I did:</span> I built a settings page where a reader chooses text size, line spacing, colour-vision modes and colour themes, and every page of the site follows those choices. The site is tested against the Web Content Accessibility Guidelines (WCAG) 2.1 level AA, with automatic checks on every change.</p>
+    <p class="proves"><span class="label">Why it matters here:</span> Health information has to reach every family, including people who read with low vision or colour blindness.</p>
+    <a class="visit" href="https://turtlewolfe.com/accessibility/">Open the accessibility controls</a>
+  </article>
+
+  <article id="writing">
+    <p class="num">Piece 2</p>
+    <h2>Plain-language writing with my byline</h2>
+    <p class="did"><span class="label">What I did:</span> I wrote &ldquo;How We Built It,&rdquo; a series of thirteen posts for the Chattanooga.Digital blog that explains, for people who are not developers, why and how a community group runs its own online tools. Part 0 is the place to start. Every post is signed &ldquo;By Jonathan Pohlner.&rdquo;</p>
+    <p class="proves"><span class="label">Why it matters here:</span> It is a bylined writing sample that takes a hard topic and explains it step by step.</p>
+    <a class="visit" href="https://chattanooga.digital/blog/2026-06/how-we-built-it-part-0-why-stack">Read part 0 of the series</a>
+  </article>
+
+  <article id="house">
+    <p class="num">Piece 3</p>
+    <h2>The House that Code Built</h2>
+    <p class="did"><span class="label">What I did:</span> I drew an illustrated house in layers. Each chapter switches on another layer, so a reader watches the house get built the same way a web page is built.</p>
+    <p class="proves"><span class="label">Why it matters here:</span> It is my illustration and graphic design, used to explain a technical subject with pictures instead of jargon.</p>
+    <a class="visit" href="https://tortoisewolfe.github.io/The_House_that_Code_Built/">Open the house</a>
+  </article>
+
+  <article id="book">
+    <p class="num">Piece 4</p>
+    <h2>HatCoatAndBoots, a children's book</h2>
+    <p class="did"><span class="label">What I did:</span> I made a children's book about natural building in three chapters, Hat, Coat and Boots, for reading on a screen. The reader can make the text larger and switch the colours to suit their eyes.</p>
+    <p class="proves"><span class="label">Why it matters here:</span> It shows a story for children that is also built for accessible reading.</p>
+    <a class="visit" href="https://tortoisewolfe.github.io/HatCoatAndBoots/">Open the book</a>
+  </article>
+
+  <article id="game">
+    <p class="num">Piece 5</p>
+    <h2>A music and stage-lights game for kids</h2>
+    <p class="did"><span class="label">What I did:</span> I made a game, built on Base44, that plays in the browser. A band of seven robot musicians performs on an outdoor stage, and the player mixes the band, changes the tempo and works the lights and cameras. The light board is Shelly Evans&rsquo;s work.</p>
+    <p class="proves"><span class="label">Why it matters here:</span> It is something a child and a parent can open together and play. It needs no sign-in and no account.</p>
+    <a class="visit" href="https://scripthammer-stage-play.base44.app/">Play the game</a>
+  </article>
+
+  <article id="families">
+    <p class="num">Piece 6</p>
+    <h2>A site that guides families through steps</h2>
+    <p class="did"><span class="label">What I did:</span> This pet-adoption site is built on the starting code from my web studio, ScriptHammer, and I run its code reviews. It explains how adopting works in three plain steps and shows an applicant where their application stands.</p>
+    <p class="proves"><span class="label">Why it matters here:</span> It is the same job a family-facing health page has: say what happens next, in order, in words anyone can follow.</p>
+    <a class="visit" href="https://raisedpaws.com">Open the adoption site</a>
+  </article>
+
+  <article id="data">
+    <p class="num">Piece 7</p>
+    <h2>Chattanooga in 3D</h2>
+    <p class="did"><span class="label">What I did:</span> I turned public map and laser-survey data into an open 3D atlas of 13,877 buildings in Chattanooga that anyone can explore in a web browser.</p>
+    <p class="proves"><span class="label">Why it matters here:</span> It shows I can take a large set of public numbers and present it so a reader sees it at once.</p>
+    <a class="visit" href="https://scripthammer.com/chatt/">Explore the atlas</a>
+  </article>
+
+
+  <section class="more" aria-labelledby="more-h">
+    <h2 id="more-h">More of my work</h2>
+    <ul>
+      <li><a href="https://tortoisewolfe.github.io/Resume/">My interactive resume</a></li>
+      <li><a href="https://tortoisewolfe.github.io/AI_Workflow/">A six-chapter course I wrote</a> that teaches interns at The Software Dojo to work with modern tools</li>
+      <li><a href="https://chattanooga.digital/blog">The full Chattanooga.Digital blog</a></li>
+      <li><a href="https://chattanooga.digital/programs">Chattanooga.Digital programs and workshops</a>, where I volunteer as the technical lead</li>
+      <li><a href="https://scripthammer.com/pricing">ScriptHammer</a>, my web studio: fixed-price websites for local businesses</li>
+      <li><a href="https://www.youtube.com/@JonathanPohlner">My YouTube channel</a>, with replays of live builds</li>
+    </ul>
+  </section>
+
+  <footer>
+    Jonathan Pohlner, Cleveland, Tennessee. <a href="https://www.linkedin.com/in/pohlner">LinkedIn</a> &middot; <a href="https://github.com/TortoiseWolfe">GitHub</a> &middot; <a href="/contact/">Contact</a>
+  </footer>
+</main>
+</body>
+</html>

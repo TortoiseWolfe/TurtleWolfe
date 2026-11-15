@@ -41,6 +41,11 @@
       "actions": ["wait for element footer to be visible"]
     },
     {
+      "url": "http://localhost:3000/contact",
+      "screenCapture": ".pa11y-screenshots/contact.png",
+      "actions": ["wait for element footer to be visible"]
+    },
+    {
       "url": "http://localhost:3000/status",
       "screenCapture": ".pa11y-screenshots/status.png",
       "actions": ["wait for element footer to be visible"]

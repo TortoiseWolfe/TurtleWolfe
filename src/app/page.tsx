@@ -438,7 +438,7 @@ export default function Home() {
         className="px-4 py-12 sm:px-6 lg:px-8"
       >
         <div className="mx-auto max-w-6xl">
-          <div className="text-primary crt-halation mb-4 font-mono text-[10px] tracking-[0.2em] opacity-65 sm:text-xs">
+          <div className="text-primary crt-halation mb-4 font-mono text-[10px] tracking-[0.2em] sm:text-xs">
             ━━ SECTION_00 · 2026 — NOW_SHIPPING
             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           </div>
@@ -461,7 +461,7 @@ export default function Home() {
               />
             ))}
           </div>
-          <div className="text-primary crt-halation mt-10 mb-4 font-mono text-[10px] tracking-[0.2em] opacity-65 sm:text-xs">
+          <div className="text-primary crt-halation mt-10 mb-4 font-mono text-[10px] tracking-[0.2em] sm:text-xs">
             ── IOS_APPS ──────────────────────────────────────────
           </div>
           <div className="grid grid-cols-1 gap-4 min-[500px]:grid-cols-2 lg:grid-cols-3">
@@ -488,7 +488,7 @@ export default function Home() {
         className="section-glow px-4 py-12 sm:px-6 lg:px-8"
       >
         <div className="mx-auto max-w-6xl">
-          <div className="text-primary crt-halation mb-4 font-mono text-[10px] tracking-[0.2em] opacity-65 sm:text-xs">
+          <div className="text-primary crt-halation mb-4 font-mono text-[10px] tracking-[0.2em] sm:text-xs">
             ━━ SECTION_01 · FEATURED_WORK
             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           </div>

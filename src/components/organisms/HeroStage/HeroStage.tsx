@@ -423,7 +423,7 @@ export default function HeroStage({
               '0 0 12px var(--color-primary), 0 0 24px color-mix(in oklch, var(--color-primary) 50%, transparent)',
           }}
         />
-        <div className="text-primary crt-halation mt-2 font-mono text-[10px] tracking-[0.2em] opacity-65 sm:text-xs">
+        <div className="text-primary crt-halation mt-2 font-mono text-[10px] tracking-[0.2em] sm:text-xs">
           ━━ SECTION_00 · NOW_SHIPPING
           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ↓
         </div>

@@ -138,6 +138,28 @@ const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
     stack: ['Claude Code', 'SpecKit', 'Docker'],
     href: 'https://tortoisewolfe.github.io/AI_Workflow/',
   },
+  {
+    title: 'ScriptHammer: Lights, Camera, Action',
+    description:
+      'A music and stage-lights game in the browser, still in progress: seven robot musicians on an outdoor stage while the player mixes the band, sets the tempo and works the lights and cameras. The light board is Shelly Evans’s work.',
+    image: {
+      src: '/portfolio/lights-camera-action/home.png',
+      alt: 'ScriptHammer: Lights, Camera, Action: seven robot musicians on a lit outdoor stage above a soundboard with tempo and instrument controls',
+    },
+    stack: ['Base44', 'Browser game'],
+    href: 'https://scripthammer-stage-play.base44.app',
+  },
+  {
+    title: 'HatCoatAndBoots',
+    description:
+      'An illustrated children’s book about natural building in three chapters, the hat, the coat and the boots, to read on a screen.',
+    image: {
+      src: '/portfolio/hatcoatandboots/home.png',
+      alt: 'HatCoatAndBoots home page: Hat, Coat & Boots, with an illustration of a house with a roof, walls and foundation',
+    },
+    stack: ['Children’s book', 'GitHub Pages'],
+    href: 'https://tortoisewolfe.github.io/HatCoatAndBoots/',
+  },
 ];
 
 const NOW_SHIPPING_APPS: readonly NowShippingItem[] = [

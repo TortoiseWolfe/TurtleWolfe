@@ -1096,6 +1096,13 @@ p:not([class*='text-']) {
     0 0 16px color-mix(in oklch, var(--color-primary) 35%, transparent);
 }
 
+/* Light theme only: the small mono section labels measured 4.44:1 on the
+ * section glow at desktop width (axe needs 4.5:1). A slightly darker slate
+ * clears it. The default and dark themes are untouched. */
+[data-theme='turtlewolfe-light'] .text-primary.crt-halation.font-mono {
+  color: #3a4452;
+}
+
 .crt-halation-strong {
   text-shadow:
     0 0 12px var(--color-primary),

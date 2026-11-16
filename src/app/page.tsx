@@ -62,26 +62,15 @@ interface NowShippingItem {
 // 2026 work, newest-relevant first: live sites, then the iOS apps.
 const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
   {
-    title: 'Raised Paws',
+    title: 'The House That Code Built',
     description:
-      'Pet-adoption tracker so no adopter gets ghosted: one application, a shelter pipeline and a live status page for applicants. Built on ScriptHammer.',
+      'Children\u2019s picture book website. WCAG 2.1 AA checked with axe on the live page, desktop and phone, light and dark (16 Nov 2026). Fixed contrast, a sideways scroll on phones and the click-to-play song.',
     image: {
-      src: '/portfolio/raised-paws/home.png',
-      alt: 'Raised Paws home page: Track your pet adoption applications, with a woman, a dog and a cat in a park',
+      src: '/portfolio/other/house-that-code-built.png',
+      alt: "The House That Code Built children's picture book website",
     },
-    stack: ['Next.js', 'Supabase', 'ScriptHammer'],
-    href: 'https://raisedpaws.com',
-  },
-  {
-    title: 'Chattanooga in 3D',
-    description:
-      'Open-source 3D atlas of downtown Chattanooga in the browser: 13,877 buildings from OpenStreetMap and USGS lidar.',
-    image: {
-      src: '/portfolio/chatt-3d/home.png',
-      alt: 'Three-dimensional map of downtown Chattanooga buildings coloured by type',
-    },
-    stack: ['Three.js', 'OpenStreetMap', 'USGS 3DEP'],
-    href: 'https://scripthammer.com/chatt/',
+    stack: ['Children\u2019s book', 'GitHub Pages'],
+    href: 'https://tortoisewolfe.github.io/The_House_that_Code_Built/',
   },
   {
     title: 'Chattanooga.Digital',
@@ -95,15 +84,15 @@ const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
     href: 'https://chattanooga.digital',
   },
   {
-    title: 'Eduity',
+    title: 'HatCoatAndBoots',
     description:
-      'A consulting firm\u2019s site rebuilt on Drupal CMS v2 and deployed in containers through Portainer.',
+      'An illustrated children’s book about natural building in three chapters, the hat, the coat and the boots, to read on a screen.',
     image: {
-      src: '/portfolio/eduity/home.png',
-      alt: 'Eduity home page: Welcome to Eduity, smart planning for talent and technology',
+      src: '/portfolio/hatcoatandboots/home.png',
+      alt: 'HatCoatAndBoots home page: Hat, Coat & Boots, with an illustration of a house with a roof, walls and foundation',
     },
-    stack: ['Drupal 11', 'Docker', 'Portainer'],
-    href: 'https://eduity.net',
+    stack: ['Children’s book', 'GitHub Pages'],
+    href: 'https://tortoisewolfe.github.io/HatCoatAndBoots/',
   },
   {
     title: 'Harmonic Egg App',
@@ -117,15 +106,15 @@ const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
     href: 'https://app.harmonicegg.com',
   },
   {
-    title: 'geoLARP',
+    title: 'Eduity',
     description:
-      'Geo-located live-action role-playing: the web platform, plus an iOS companion app.',
+      'A consulting firm\u2019s site rebuilt on Drupal CMS v2 and deployed in containers through Portainer.',
     image: {
-      src: '/portfolio/geolarp/home.png',
-      alt: 'geoLARP.com coming-soon page with a gold dodecahedron emblem',
+      src: '/portfolio/eduity/home.png',
+      alt: 'Eduity home page: Welcome to Eduity, smart planning for talent and technology',
     },
-    stack: ['Next.js', 'Supabase', 'Expo'],
-    href: 'https://geolarp.com',
+    stack: ['Drupal 11', 'Docker', 'Portainer'],
+    href: 'https://eduity.net',
   },
   {
     title: 'AI Workflow',
@@ -150,15 +139,37 @@ const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
     href: 'https://scripthammer-stage-play.base44.app',
   },
   {
-    title: 'HatCoatAndBoots',
+    title: 'geoLARP',
     description:
-      'An illustrated children’s book about natural building in three chapters, the hat, the coat and the boots, to read on a screen.',
+      'Geo-located live-action role-playing: the web platform, plus an iOS companion app.',
     image: {
-      src: '/portfolio/hatcoatandboots/home.png',
-      alt: 'HatCoatAndBoots home page: Hat, Coat & Boots, with an illustration of a house with a roof, walls and foundation',
+      src: '/portfolio/geolarp/home.png',
+      alt: 'geoLARP.com coming-soon page with a gold dodecahedron emblem',
     },
-    stack: ['Children’s book', 'GitHub Pages'],
-    href: 'https://tortoisewolfe.github.io/HatCoatAndBoots/',
+    stack: ['Next.js', 'Supabase', 'Expo'],
+    href: 'https://geolarp.com',
+  },
+  {
+    title: 'Chattanooga in 3D',
+    description:
+      'Open-source 3D atlas of downtown Chattanooga in the browser: 13,877 buildings from OpenStreetMap and USGS lidar.',
+    image: {
+      src: '/portfolio/chatt-3d/home.png',
+      alt: 'Three-dimensional map of downtown Chattanooga buildings coloured by type',
+    },
+    stack: ['Three.js', 'OpenStreetMap', 'USGS 3DEP'],
+    href: 'https://scripthammer.com/chatt/',
+  },
+  {
+    title: 'Raised Paws',
+    description:
+      'Pet-adoption tracker so no adopter gets ghosted: one application, a shelter pipeline and a live status page for applicants. Built on ScriptHammer.',
+    image: {
+      src: '/portfolio/raised-paws/home.png',
+      alt: 'Raised Paws home page: Track your pet adoption applications, with a woman, a dog and a cat in a park',
+    },
+    stack: ['Next.js', 'Supabase', 'ScriptHammer'],
+    href: 'https://raisedpaws.com',
   },
 ];
 
@@ -263,17 +274,6 @@ const OTHER_PROJECTS = [
     },
     stack: ['React', 'GitHub Pages', 'Responsive'],
     href: 'https://tortoisewolfe.github.io/Resume/',
-  },
-  {
-    title: 'The House that Code Built',
-    description:
-      'Published children\u2019s picture book introducing programming concepts — HTML is the framework, CSS is the wallpaper, JavaScript is the electrical.',
-    image: {
-      src: '/portfolio/other/house-that-code-built.png',
-      alt: "The House that Code Built children's book website",
-    },
-    stack: ['Education', 'Publishing', 'Community'],
-    href: 'https://tortoisewolfe.github.io/The_House_that_Code_Built/',
   },
   {
     title: 'OpenClaw / Automated Twitch',
@@ -483,6 +483,17 @@ export default function Home() {
               />
             ))}
           </div>
+          <p className="text-base-content/70 mt-6 text-center text-sm">
+            The accessibility fixes behind The House That Code Built:{' '}
+            <a
+              href="https://github.com/TortoiseWolfe/The_House_that_Code_Built/pull/4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link link-primary"
+            >
+              pull request 4 on GitHub
+            </a>
+          </p>
           <div className="text-primary crt-halation mt-10 mb-4 font-mono text-[10px] tracking-[0.2em] sm:text-xs">
             ── IOS_APPS ──────────────────────────────────────────
           </div>
@@ -710,11 +721,11 @@ export default function Home() {
             >
               <div className="card-body items-center text-center">
                 <h3 className="card-title text-primary text-base">
-                  The House that Code Built
+                  The House That Code Built
                 </h3>
                 <p className="text-base-content/70 text-sm">
-                  Published children&apos;s book introducing programming — HTML
-                  is the framework, CSS the wallpaper, JavaScript the electrical
+                  Children&apos;s picture book introducing programming — HTML is
+                  the framework, CSS the wallpaper, JavaScript the electrical
                 </p>
                 <span className="text-primary mt-2 text-xs">
                   Read it online &rarr;

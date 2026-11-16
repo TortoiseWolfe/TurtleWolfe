@@ -62,6 +62,39 @@ interface NowShippingItem {
 // 2026 work, newest-relevant first: live sites, then the iOS apps.
 const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
   {
+    title: 'Harmonic Egg App',
+    description:
+      'Stepped in as lead developer on a client\u2019s sound-therapy app in August 2026: moved it onto her own AWS by her deadline, and now maintain and extend it.',
+    image: {
+      src: '/portfolio/harmonic-egg/home.png',
+      alt: 'Harmonic Egg app landing page: Restorative Sound Experiences',
+    },
+    stack: ['Expo', 'Express', 'AWS'],
+    href: 'https://app.harmonicegg.com',
+  },
+  {
+    title: 'Chattanooga.Digital',
+    description:
+      'A community tech co-op\u2019s site on Drupal CMS v2, plus an 11-part \u201CHow We Built It\u201D series anyone can follow.',
+    image: {
+      src: '/portfolio/chattanooga-digital/home.png',
+      alt: 'Chattanooga.Digital home page: Own your apps. Own your data. Own what you do!',
+    },
+    stack: ['Drupal 11', 'Docker', 'Portainer'],
+    href: 'https://chattanooga.digital',
+  },
+  {
+    title: 'Eduity',
+    description:
+      'A consulting firm\u2019s site rebuilt on Drupal CMS v2 and deployed in containers through Portainer.',
+    image: {
+      src: '/portfolio/eduity/home.png',
+      alt: 'Eduity home page: Welcome to Eduity, smart planning for talent and technology',
+    },
+    stack: ['Drupal 11', 'Docker', 'Portainer'],
+    href: 'https://eduity.net',
+  },
+  {
     title: 'HatCoatAndBoots',
     description:
       'An illustrated children’s book about natural building in three chapters, the hat, the coat and the boots, to read on a screen.',
@@ -93,39 +126,6 @@ const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
     },
     stack: ['Claude Code', 'SpecKit', 'Docker'],
     href: 'https://tortoisewolfe.github.io/AI_Workflow/',
-  },
-  {
-    title: 'Chattanooga.Digital',
-    description:
-      'A community tech co-op\u2019s site on Drupal CMS v2, plus an 11-part \u201CHow We Built It\u201D series anyone can follow.',
-    image: {
-      src: '/portfolio/chattanooga-digital/home.png',
-      alt: 'Chattanooga.Digital home page: Own your apps. Own your data. Own what you do!',
-    },
-    stack: ['Drupal 11', 'Docker', 'Portainer'],
-    href: 'https://chattanooga.digital',
-  },
-  {
-    title: 'Harmonic Egg App',
-    description:
-      'Stepped in as lead developer on a client\u2019s sound-therapy app in August 2026: moved it onto her own AWS by her deadline, and now maintain and extend it.',
-    image: {
-      src: '/portfolio/harmonic-egg/home.png',
-      alt: 'Harmonic Egg app landing page: Restorative Sound Experiences',
-    },
-    stack: ['Expo', 'Express', 'AWS'],
-    href: 'https://app.harmonicegg.com',
-  },
-  {
-    title: 'Eduity',
-    description:
-      'A consulting firm\u2019s site rebuilt on Drupal CMS v2 and deployed in containers through Portainer.',
-    image: {
-      src: '/portfolio/eduity/home.png',
-      alt: 'Eduity home page: Welcome to Eduity, smart planning for talent and technology',
-    },
-    stack: ['Drupal 11', 'Docker', 'Portainer'],
-    href: 'https://eduity.net',
   },
   {
     title: 'Chattanooga in 3D',

@@ -6,6 +6,7 @@ import TemplateStats, {
 import ProjectShowcaseCard from '@/components/molecular/ProjectShowcaseCard';
 import CTABanner from '@/components/molecular/CTABanner';
 import HeroStage from '@/components/organisms/HeroStage';
+import { keepCompounds } from '@/utils/keep-compounds';
 
 // ── Portfolio landing — audience is potential employers and collaborators.
 //     Visual hierarchy: spinning logo + animated name draw the eye,
@@ -298,28 +299,6 @@ const OTHER_PROJECTS = [
     href: 'https://github.com/TortoiseWolfe',
   },
   {
-    title: 'DevCamper API',
-    description:
-      'RESTful bootcamp directory API with JWT auth and role-based access control.',
-    image: {
-      src: '/portfolio/other/devcamper-api.png',
-      alt: 'DevCamper API GitHub repository',
-    },
-    stack: ['Node.js', 'Express', 'MongoDB'],
-    href: 'https://github.com/TurtleWolfe/DevCamperAPIv001',
-  },
-  {
-    title: 'FreeCodeCamp',
-    description:
-      'Frontend Libraries certification projects — React, D3 visualizations, responsive design.',
-    image: {
-      src: '/portfolio/other/freecodecamp.png',
-      alt: 'FreeCodeCamp projects GitHub repository',
-    },
-    stack: ['React', 'D3.js', 'Bootstrap'],
-    href: 'https://github.com/TurtleWolfe/fccTempLate',
-  },
-  {
     title: 'GrimGlow',
     description:
       'Multimedia IP design bible — comic, Three.js, and Unity prototypes.',
@@ -340,6 +319,28 @@ const OTHER_PROJECTS = [
     },
     stack: ['Spec Kit', 'SVG', 'Python', 'HTML'],
     href: 'https://tortoisewolfe.github.io/spec-kit-extension-wireframe/',
+  },
+  {
+    title: 'FreeCodeCamp',
+    description:
+      'Frontend Libraries certification projects — React, D3 visualizations, responsive design.',
+    image: {
+      src: '/portfolio/other/freecodecamp.png',
+      alt: 'FreeCodeCamp projects GitHub repository',
+    },
+    stack: ['React', 'D3.js', 'Bootstrap'],
+    href: 'https://github.com/TurtleWolfe/fccTempLate',
+  },
+  {
+    title: 'DevCamper API',
+    description:
+      'RESTful bootcamp directory API with JWT auth and role-based access control.',
+    image: {
+      src: '/portfolio/other/devcamper-api.png',
+      alt: 'DevCamper API GitHub repository',
+    },
+    stack: ['Node.js', 'Express', 'MongoDB'],
+    href: 'https://github.com/TurtleWolfe/DevCamperAPIv001',
   },
 ] as const;
 
@@ -614,8 +615,12 @@ export default function Home() {
                   <span className="text-3xl" aria-hidden="true">
                     {s.icon}
                   </span>
-                  <h3 className="card-title text-base">{s.title}</h3>
-                  <p className="text-base-content/70 text-sm">{s.desc}</p>
+                  <h3 className="card-title text-base">
+                    {keepCompounds(s.title)}
+                  </h3>
+                  <p className="text-base-content/70 text-sm">
+                    {keepCompounds(s.desc)}
+                  </p>
                 </div>
               </div>
             ))}

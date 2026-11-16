@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { keepCompounds } from '@/utils/keep-compounds';
 
 export interface ServiceCardProps {
   icon: React.ReactNode;
@@ -31,8 +32,10 @@ export default function ServiceCard({
     >
       <div className="card-body">
         <div className="text-primary mb-2 text-3xl">{icon}</div>
-        <h3 className="card-title text-lg">{title}</h3>
-        <p className="text-base-content/70 text-sm">{description}</p>
+        <h3 className="card-title text-lg">{keepCompounds(title)}</h3>
+        <p className="text-base-content/70 text-sm">
+          {keepCompounds(description)}
+        </p>
         <ul className="mt-3 space-y-1">
           {features.map((f) => (
             <li

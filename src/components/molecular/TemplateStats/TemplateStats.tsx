@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { keepCompounds } from '@/utils/keep-compounds';
 
 export interface TemplateStat {
   /** Big number / short claim — rendered in monospace */
@@ -81,10 +82,10 @@ export default function TemplateStats({
                   {stat.value}
                 </span>
                 <span className="text-base-content font-semibold">
-                  {stat.label}
+                  {keepCompounds(stat.label)}
                 </span>
                 <span className="text-base-content/70 order-last w-full text-sm sm:order-none sm:ml-auto sm:w-auto">
-                  {stat.detail}
+                  {keepCompounds(stat.detail)}
                 </span>
                 <span
                   aria-hidden="true"

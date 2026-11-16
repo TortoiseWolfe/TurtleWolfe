@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { detectedConfig } from '@/config/project-detected';
 import AsciiDiagram from '@/components/atomic/AsciiDiagram';
+import { keepCompounds } from '@/utils/keep-compounds';
 
 export interface ProjectShowcaseCardProps {
   title: string;
@@ -115,7 +116,7 @@ export default function ProjectShowcaseCard({
         <div className="card-body p-4">
           <h3 className="card-title text-primary text-lg">{title}</h3>
           <p className="text-base-content/80 text-sm leading-relaxed">
-            {description}
+            {keepCompounds(description)}
           </p>
           <div className="mt-2 flex flex-wrap gap-1">
             {stack.map((tech) => (
@@ -257,7 +258,7 @@ export default function ProjectShowcaseCard({
             (--font-body → --font-mono). Phosphor-green at 80% opacity for
             readable body weight against the dark deck. */}
         <p className="text-base-content/80 text-sm leading-relaxed">
-          {description}
+          {keepCompounds(description)}
         </p>
 
         {/* Stack chips — mono bracket style `[REACT][NEXT][TS]`. Brackets

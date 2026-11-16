@@ -62,17 +62,6 @@ interface NowShippingItem {
 // 2026 work, newest-relevant first: live sites, then the iOS apps.
 const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
   {
-    title: 'Harmonic Egg App',
-    description:
-      'Stepped in as lead developer on a client\u2019s sound-therapy app in August 2026: moved it onto her own AWS by her deadline, and now maintain and extend it.',
-    image: {
-      src: '/portfolio/harmonic-egg/home.png',
-      alt: 'Harmonic Egg app landing page: Restorative Sound Experiences',
-    },
-    stack: ['Expo', 'Express', 'AWS'],
-    href: 'https://app.harmonicegg.com',
-  },
-  {
     title: 'Chattanooga.Digital',
     description:
       'A community tech co-op\u2019s site on Drupal CMS v2, plus an 11-part \u201CHow We Built It\u201D series anyone can follow.',
@@ -84,6 +73,17 @@ const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
     href: 'https://chattanooga.digital',
   },
   {
+    title: 'Harmonic Egg App',
+    description:
+      'Stepped in as lead developer on a client\u2019s sound-therapy app in August 2026: moved it onto her own AWS by her deadline, and now maintain and extend it.',
+    image: {
+      src: '/portfolio/harmonic-egg/home.png',
+      alt: 'Harmonic Egg app landing page: Restorative Sound Experiences',
+    },
+    stack: ['Expo', 'Express', 'AWS'],
+    href: 'https://app.harmonicegg.com',
+  },
+  {
     title: 'Eduity',
     description:
       'A consulting firm\u2019s site rebuilt on Drupal CMS v2 and deployed in containers through Portainer.',
@@ -93,39 +93,6 @@ const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
     },
     stack: ['Drupal 11', 'Docker', 'Portainer'],
     href: 'https://eduity.net',
-  },
-  {
-    title: 'HatCoatAndBoots',
-    description:
-      'An illustrated children’s book about natural building in three chapters, the hat, the coat and the boots, to read on a screen.',
-    image: {
-      src: '/portfolio/hatcoatandboots/home.png',
-      alt: 'HatCoatAndBoots home page: Hat, Coat & Boots, with an illustration of a house with a roof, walls and foundation',
-    },
-    stack: ['Children’s book', 'GitHub Pages'],
-    href: 'https://tortoisewolfe.github.io/HatCoatAndBoots/',
-  },
-  {
-    title: 'The House That Code Built',
-    description:
-      'Children\u2019s picture book website. WCAG 2.1 AA checked with axe on the live page, desktop and phone, light and dark (16 Nov 2026). Fixed contrast, a sideways scroll on phones and the click-to-play song.',
-    image: {
-      src: '/portfolio/other/house-that-code-built.png',
-      alt: "The House That Code Built children's picture book website",
-    },
-    stack: ['Children\u2019s book', 'GitHub Pages'],
-    href: 'https://tortoisewolfe.github.io/The_House_that_Code_Built/',
-  },
-  {
-    title: 'AI Workflow',
-    description:
-      'A Day-1 curriculum for AI-assisted development, and the \u201CAI kitchen\u201D behind this work: a head-chef model plans, cheaper line cooks build, and tests do the tasting.',
-    image: {
-      src: '/portfolio/ai-workflow/home.png',
-      alt: 'AI_Workflow curriculum home page: TSD AI Workflow',
-    },
-    stack: ['Claude Code', 'SpecKit', 'Docker'],
-    href: 'https://tortoisewolfe.github.io/AI_Workflow/',
   },
   {
     title: 'Chattanooga in 3D',
@@ -159,6 +126,39 @@ const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
     },
     stack: ['Base44', 'Browser game'],
     href: 'https://scripthammer-stage-play.base44.app',
+  },
+  {
+    title: 'HatCoatAndBoots',
+    description:
+      'An illustrated children’s book about natural building in three chapters, the hat, the coat and the boots, to read on a screen.',
+    image: {
+      src: '/portfolio/hatcoatandboots/home.png',
+      alt: 'HatCoatAndBoots home page: Hat, Coat & Boots, with an illustration of a house with a roof, walls and foundation',
+    },
+    stack: ['Children’s book', 'GitHub Pages'],
+    href: 'https://tortoisewolfe.github.io/HatCoatAndBoots/',
+  },
+  {
+    title: 'The House That Code Built',
+    description:
+      'Children\u2019s picture book website. WCAG 2.1 AA checked with axe on the live page, desktop and phone, light and dark (16 Nov 2026). Fixed contrast, a sideways scroll on phones and the click-to-play song.',
+    image: {
+      src: '/portfolio/other/house-that-code-built.png',
+      alt: "The House That Code Built children's picture book website",
+    },
+    stack: ['Children\u2019s book', 'GitHub Pages'],
+    href: 'https://tortoisewolfe.github.io/The_House_that_Code_Built/',
+  },
+  {
+    title: 'AI Workflow',
+    description:
+      'A Day-1 curriculum for AI-assisted development, and the \u201CAI kitchen\u201D behind this work: a head-chef model plans, cheaper line cooks build, and tests do the tasting.',
+    image: {
+      src: '/portfolio/ai-workflow/home.png',
+      alt: 'AI_Workflow curriculum home page: TSD AI Workflow',
+    },
+    stack: ['Claude Code', 'SpecKit', 'Docker'],
+    href: 'https://tortoisewolfe.github.io/AI_Workflow/',
   },
   {
     title: 'Raised Paws',

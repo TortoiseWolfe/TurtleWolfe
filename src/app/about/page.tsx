@@ -121,7 +121,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-6xl text-center">
           {/* Headshot placeholder — circular frame ready for photo */}
           <div className="bg-base-300 mx-auto mb-6 flex h-32 w-32 items-center justify-center rounded-full sm:h-40 sm:w-40">
-            <span className="text-base-content/30 text-5xl font-bold">JP</span>
+            <span className="text-base-content/70 text-5xl font-bold">JP</span>
           </div>
           <h1
             className="font-display crt-halation-strong text-primary mb-4 text-5xl italic sm:text-6xl md:text-7xl"
@@ -273,10 +273,10 @@ export default function AboutPage() {
             >
               <div className="card-body items-center text-center">
                 <h3 className="card-title text-primary text-base">
-                  The House that Code Built
+                  The House That Code Built
                 </h3>
                 <p className="text-base-content/70 text-sm">
-                  Published children&apos;s book on programming concepts
+                  Children&apos;s picture book on programming concepts
                 </p>
                 <span className="text-primary mt-2 text-xs">
                   Read online &rarr;

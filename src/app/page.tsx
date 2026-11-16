@@ -62,15 +62,15 @@ interface NowShippingItem {
 // 2026 work, newest-relevant first: live sites, then the iOS apps.
 const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
   {
-    title: 'The House That Code Built',
+    title: 'Harmonic Egg App',
     description:
-      'Children\u2019s picture book website. WCAG 2.1 AA checked with axe on the live page, desktop and phone, light and dark (16 Nov 2026). Fixed contrast, a sideways scroll on phones and the click-to-play song.',
+      'Stepped in as lead developer on a client\u2019s sound-therapy app in August 2026: moved it onto her own AWS by her deadline, and now maintain and extend it.',
     image: {
-      src: '/portfolio/other/house-that-code-built.png',
-      alt: "The House That Code Built children's picture book website",
+      src: '/portfolio/harmonic-egg/home.png',
+      alt: 'Harmonic Egg app landing page: Restorative Sound Experiences',
     },
-    stack: ['Children\u2019s book', 'GitHub Pages'],
-    href: 'https://tortoisewolfe.github.io/The_House_that_Code_Built/',
+    stack: ['Expo', 'Express', 'AWS'],
+    href: 'https://app.harmonicegg.com',
   },
   {
     title: 'Chattanooga.Digital',
@@ -84,6 +84,17 @@ const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
     href: 'https://chattanooga.digital',
   },
   {
+    title: 'Eduity',
+    description:
+      'A consulting firm\u2019s site rebuilt on Drupal CMS v2 and deployed in containers through Portainer.',
+    image: {
+      src: '/portfolio/eduity/home.png',
+      alt: 'Eduity home page: Welcome to Eduity, smart planning for talent and technology',
+    },
+    stack: ['Drupal 11', 'Docker', 'Portainer'],
+    href: 'https://eduity.net',
+  },
+  {
     title: 'HatCoatAndBoots',
     description:
       'An illustrated children’s book about natural building in three chapters, the hat, the coat and the boots, to read on a screen.',
@@ -95,26 +106,15 @@ const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
     href: 'https://tortoisewolfe.github.io/HatCoatAndBoots/',
   },
   {
-    title: 'Harmonic Egg App',
+    title: 'The House That Code Built',
     description:
-      'Stepped in as lead developer on a client\u2019s sound-therapy app in August 2026: moved it onto her own AWS by her deadline, and now maintain and extend it.',
+      'Children\u2019s picture book website. WCAG 2.1 AA checked with axe on the live page, desktop and phone, light and dark (16 Nov 2026). Fixed contrast, a sideways scroll on phones and the click-to-play song.',
     image: {
-      src: '/portfolio/harmonic-egg/home.png',
-      alt: 'Harmonic Egg app landing page: Restorative Sound Experiences',
+      src: '/portfolio/other/house-that-code-built.png',
+      alt: "The House That Code Built children's picture book website",
     },
-    stack: ['Expo', 'Express', 'AWS'],
-    href: 'https://app.harmonicegg.com',
-  },
-  {
-    title: 'Eduity',
-    description:
-      'A consulting firm\u2019s site rebuilt on Drupal CMS v2 and deployed in containers through Portainer.',
-    image: {
-      src: '/portfolio/eduity/home.png',
-      alt: 'Eduity home page: Welcome to Eduity, smart planning for talent and technology',
-    },
-    stack: ['Drupal 11', 'Docker', 'Portainer'],
-    href: 'https://eduity.net',
+    stack: ['Children\u2019s book', 'GitHub Pages'],
+    href: 'https://tortoisewolfe.github.io/The_House_that_Code_Built/',
   },
   {
     title: 'AI Workflow',
@@ -128,15 +128,15 @@ const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
     href: 'https://tortoisewolfe.github.io/AI_Workflow/',
   },
   {
-    title: 'ScriptHammer: Lights, Camera, Action',
+    title: 'Chattanooga in 3D',
     description:
-      'A music and stage-lights game in the browser, still in progress: seven robot musicians on an outdoor stage while the player mixes the band, sets the tempo and works the lights and cameras. The light board is Shelly Evans’s work.',
+      'Open-source 3D atlas of downtown Chattanooga in the browser: 13,877 buildings from OpenStreetMap and USGS lidar.',
     image: {
-      src: '/portfolio/lights-camera-action/home.png',
-      alt: 'ScriptHammer: Lights, Camera, Action: seven robot musicians on a lit outdoor stage above a soundboard with tempo and instrument controls',
+      src: '/portfolio/chatt-3d/home.png',
+      alt: 'Three-dimensional map of downtown Chattanooga buildings coloured by type',
     },
-    stack: ['Base44', 'Browser game'],
-    href: 'https://scripthammer-stage-play.base44.app',
+    stack: ['Three.js', 'OpenStreetMap', 'USGS 3DEP'],
+    href: 'https://scripthammer.com/chatt/',
   },
   {
     title: 'geoLARP',
@@ -150,15 +150,15 @@ const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
     href: 'https://geolarp.com',
   },
   {
-    title: 'Chattanooga in 3D',
+    title: 'ScriptHammer: Lights, Camera, Action',
     description:
-      'Open-source 3D atlas of downtown Chattanooga in the browser: 13,877 buildings from OpenStreetMap and USGS lidar.',
+      'A music and stage-lights game in the browser, still in progress: seven robot musicians on an outdoor stage while the player mixes the band, sets the tempo and works the lights and cameras. The light board is Shelly Evans’s work.',
     image: {
-      src: '/portfolio/chatt-3d/home.png',
-      alt: 'Three-dimensional map of downtown Chattanooga buildings coloured by type',
+      src: '/portfolio/lights-camera-action/home.png',
+      alt: 'ScriptHammer: Lights, Camera, Action: seven robot musicians on a lit outdoor stage above a soundboard with tempo and instrument controls',
     },
-    stack: ['Three.js', 'OpenStreetMap', 'USGS 3DEP'],
-    href: 'https://scripthammer.com/chatt/',
+    stack: ['Base44', 'Browser game'],
+    href: 'https://scripthammer-stage-play.base44.app',
   },
   {
     title: 'Raised Paws',

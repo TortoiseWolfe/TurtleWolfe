@@ -142,12 +142,12 @@ const NOW_SHIPPING_WEB: readonly NowShippingItem[] = [
   {
     title: 'The House That Code Built',
     description:
-      'Children\u2019s picture book website. WCAG 2.1 AA checked with axe on the live page, desktop and phone, light and dark (16 Nov 2026). Fixed contrast, a sideways scroll on phones and the click-to-play song.',
+      'An interactive house that teaches how a website is built, with chapter presets from HTML tags to the backend and layers you switch on and off. WCAG 2.1 AA checked with axe on the live page, desktop and phone, light and dark (16 Nov 2026).',
     image: {
       src: '/portfolio/other/house-that-code-built.png',
-      alt: "The House That Code Built children's picture book website",
+      alt: 'The House That Code Built: a cartoon house at sunset beside a list of chapter presets from Base House to Chapter 5: Backend',
     },
-    stack: ['Children\u2019s book', 'GitHub Pages'],
+    stack: ['Interactive lesson', 'GitHub Pages'],
     href: 'https://tortoisewolfe.github.io/The_House_that_Code_Built/',
   },
   {

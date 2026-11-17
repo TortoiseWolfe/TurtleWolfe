@@ -10,10 +10,10 @@ import { useReducedMotion } from '@/hooks/useReducedMotion';
  */
 export const DEFAULT_MANIFEST_ITEMS = [
   'REACT',
-  'NEXT',
+  'NEXT.JS',
   'TS',
   'NODE',
-  'THREE',
+  'THREE.JS',
   'C#',
   'PYTHON',
   'DOCKER',

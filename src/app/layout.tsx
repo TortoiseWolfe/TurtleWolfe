@@ -20,7 +20,6 @@ import {
   JsonLdScript,
 } from '@/utils/metadata';
 // import PWAInstall from '@/components/PWAInstall'; // PWA disabled — portfolio doesn't need install prompts
-import { CountdownBanner } from '@/components/atomic/CountdownBanner';
 // import { SetupBanner } from '@/components/SetupBanner'; // Supabase disabled — portfolio site
 
 // Display face — the one serif on the page, used for the hero name and
@@ -129,7 +128,9 @@ export default function RootLayout({
           {/* AuthProvider removed — no Supabase backend for portfolio site */}
           <AccessibilityProvider>
             <GlobalNav />
-            <CountdownBanner />
+            {/* New Year Special popup (CountdownBanner) taken off the site at
+                the owner's word. To turn it back on, restore the import at the
+                top of this file and render <CountdownBanner /> here. */}
             {/* SetupBanner removed — no Supabase backend for portfolio site */}
             <ErrorBoundary level="page">
               <div className="bg-base-200 min-h-0 flex-1 overflow-hidden pb-14">

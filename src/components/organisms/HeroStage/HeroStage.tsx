@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Marquee from '@/components/molecular/Marquee';
+import { keepCompounds } from '@/utils/keep-compounds';
 import CursorHalo from '@/components/atomic/CursorHalo';
 import GrainOverlay from '@/components/atomic/GrainOverlay';
 import ScanlineOverlay from '@/components/atomic/ScanlineOverlay';
@@ -336,7 +337,7 @@ export default function HeroStage({
               data-testid="hero-credentials"
               className="text-base-content/65 font-mono text-xs sm:text-sm"
             >
-              {credentials}
+              {keepCompounds(credentials)}
             </p>
 
             {/* Mobile-only: project monitor sits inline. lg+ shows it in
@@ -397,7 +398,7 @@ export default function HeroStage({
                   Jonathan Pohlner
                 </span>
                 <span className="text-base-content/55 ml-2">
-                  · Chattanooga, TN · remote-friendly
+                  · Chattanooga, TN · {keepCompounds('remote-friendly')}
                 </span>
               </div>
             </div>
